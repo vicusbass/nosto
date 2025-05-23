@@ -1,0 +1,77 @@
+---
+const menuItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Apartamente', href: '/apartamente' },
+  { name: 'Stadiu Lucrari', href: '/noutati' },
+  { name: 'Contact', href: '/contact' }
+];
+---
+
+<nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/" class="text-2xl font-bold text-primary">LOGO</a>
+      </div>
+      <div class="hidden sm:ml-6 sm:flex sm:items-center">
+        {menuItems.map(item => (
+          <a
+            href={item.href}
+            class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+      <div class="flex items-center sm:hidden">
+        <button
+          type="button"
+          class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="sm:hidden mobile-menu hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      {menuItems.map(item => (
+        <a
+          href={item.href}
+          class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  function toggleMobileMenu() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    mobileMenu?.classList.toggle('hidden');
+  }
+
+  function setupMobileMenu() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    
+    if (mobileMenuButton) {
+      // Check if a listener is already attached to this specific button instance
+      if (!mobileMenuButton.hasAttribute('data-menu-listener-attached')) {
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        mobileMenuButton.setAttribute('data-menu-listener-attached', 'true');
+      }
+    }
+  }
+
+  // Setup for the initial page load
+  setupMobileMenu();
+
+  // Setup after each Astro page transition
+  document.addEventListener('astro:page-load', setupMobileMenu);
+</script>
