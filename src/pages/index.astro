@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Proiect Rezidential - Nostro">
@@ -23,19 +23,23 @@ import Layout from '../layouts/Layout.astro';
   <!-- About Section -->
   <section id="despre" class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Despre Proiect</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        Despre Proiect
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <img
             src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"
             alt="Building Interior"
-            class="rounded-lg shadow-lg"
+            class="rounded-sm shadow-lg"
           />
         </div>
         <div>
           <p class="text-lg text-gray-600 mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
           </p>
           <ul class="space-y-4">
             <li class="flex items-center text-gray-700">
@@ -58,56 +62,87 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- Apartments Section -->
   <section class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Tipuri de Apartamente</h2>
+    <div class="max-w-[95vw] lg:max-w-[1600px] mx-auto px-2 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
+        Tipuri de Apartamente
+      </h2>
       <div class="pb-[15vh]">
-        {[
-          {
-            type: "Studio",
-            size: "45mp",
-            description: "Apartament modern tip studio, perfect pentru tineri profesioniști sau investiție. Spațiu eficient compartimentat cu zonă de zi multifuncțională, bucătărie și baie.",
-            planImage: "https://images.pexels.com/photos/5524165/pexels-photo-5524165.jpeg",
-            features: ["Suprafață utilă: 45mp", "Living + bucătărie", "Baie", "Balcon"]
-          },
-          {
-            type: "2 Camere",
-            size: "65mp",
-            description: "Apartament spațios cu două camere, ideal pentru cupluri sau familii mici. Dispune de living cu bucătărie, dormitor separat și baie.",
-            planImage: "https://images.pexels.com/photos/5524147/pexels-photo-5524147.jpeg",
-            features: ["Suprafață utilă: 65mp", "Living + bucătărie", "Dormitor", "Baie", "Balcon"]
-          },
-          {
-            type: "3 Camere",
-            size: "85mp",
-            description: "Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.",
-            planImage: "https://images.pexels.com/photos/5524155/pexels-photo-5524155.jpeg",
-            features: ["Suprafață utilă: 85mp", "Living + bucătărie", "2 Dormitoare", "2 Băi", "Balcon"]
-          }
-        ].map((apartment, index) => (
-          <div class={`apartment-section sticky top-20 min-h-[calc(100vh-8rem)] flex items-center ${index > 0 ? 'mt-[20vh]' : ''}`}>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-lg shadow-xl p-8 w-full">
-              <div class="space-y-6">
-                <h3 class="text-2xl font-bold text-primary">{apartment.type}</h3>
-                <p class="text-gray-600">{apartment.description}</p>
-                <ul class="space-y-3">
-                  {apartment.features.map(feature => (
-                    <li class="flex items-center text-gray-700">
-                      <span class="w-6 h-6 mr-2 text-primary">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <img
-                  src={apartment.planImage}
-                  alt={`Plan ${apartment.type}`}
-                  class="w-full h-full object-cover rounded-lg"
-                />
+        {
+          [
+            {
+              type: "Studio",
+              size: "45mp",
+              description:
+                "Apartament modern tip studio, perfect pentru tineri profesioniști sau investiție. Spațiu eficient compartimentat cu zonă de zi multifuncțională, bucătărie și baie.",
+              planImage:
+                "https://images.pexels.com/photos/5524165/pexels-photo-5524165.jpeg",
+              features: [
+                "Suprafață utilă: 45mp",
+                "Living + bucătărie",
+                "Baie",
+                "Balcon",
+              ],
+            },
+            {
+              type: "2 Camere",
+              size: "65mp",
+              description:
+                "Apartament spațios cu două camere, ideal pentru cupluri sau familii mici. Dispune de living cu bucătărie, dormitor separat și baie.",
+              planImage:
+                "https://images.pexels.com/photos/5524147/pexels-photo-5524147.jpeg",
+              features: [
+                "Suprafață utilă: 65mp",
+                "Living + bucătărie",
+                "Dormitor",
+                "Baie",
+                "Balcon",
+              ],
+            },
+            {
+              type: "3 Camere",
+              size: "85mp",
+              description:
+                "Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.",
+              planImage:
+                "https://images.pexels.com/photos/5524155/pexels-photo-5524155.jpeg",
+              features: [
+                "Suprafață utilă: 85mp",
+                "Living + bucătărie",
+                "2 Dormitoare",
+                "2 Băi",
+                "Balcon",
+              ],
+            },
+          ].map((apartment, index) => (
+            <div
+              class={`apartment-section sticky top-20 min-h-[calc(100vh-8rem)] flex items-center ${index > 0 ? "mt-[20vh]" : ""}`}
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 bg-white rounded-sm shadow-xs w-full h-[640px] md:min-h-[420px] lg:min-h-[420px] items-stretch">
+                <div class="space-y-6 flex flex-col justify-between p-8 h-full">
+                  <h3 class="text-2xl font-bold text-primary">
+                    {apartment.type}
+                  </h3>
+                  <p class="text-gray-600">{apartment.description}</p>
+                  <ul class="space-y-3">
+                    {apartment.features.map((feature) => (
+                      <li class="flex items-center text-gray-700">
+                        <span class="w-6 h-6 mr-2 text-primary">✓</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="flex items-center h-full">
+                  <img
+                    src={apartment.planImage}
+                    alt={`Plan ${apartment.type}`}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
@@ -115,35 +150,47 @@ import Layout from '../layouts/Layout.astro';
   <!-- Packages Section -->
   <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Pachete Finisaje</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
+        Pachete Finisaje
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {[
-          {
-            name: "Standard",
-            price: "Inclus în preț",
-            features: ["Parchet laminat", "Gresie și faianță", "Uși interior"]
-          },
-          {
-            name: "Premium",
-            price: "+5000€",
-            features: ["Parchet triplu stratificat", "Gresie porțelanată", "Uși premium"]
-          },
-          {
-            name: "Luxury",
-            price: "+10000€",
-            features: ["Parchet masiv", "Marmură", "Uși custom"]
-          }
-        ].map(packageItem => (
-          <div class="border rounded-lg p-8 text-center">
-            <h3 class="text-2xl font-bold mb-4">{packageItem.name}</h3>
-            <p class="text-primary font-bold mb-6">{packageItem.price}</p>
-            <ul class="space-y-3">
-              {packageItem.features.map(feature => (
-                <li class="text-gray-600">{feature}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {
+          [
+            {
+              name: "Standard",
+              price: "Inclus în preț",
+              features: [
+                "Parchet laminat",
+                "Gresie și faianță",
+                "Uși interior",
+              ],
+            },
+            {
+              name: "Premium",
+              price: "+5000€",
+              features: [
+                "Parchet triplu stratificat",
+                "Gresie porțelanată",
+                "Uși premium",
+              ],
+            },
+            {
+              name: "Luxury",
+              price: "+10000€",
+              features: ["Parchet masiv", "Marmură", "Uși custom"],
+            },
+          ].map((packageItem) => (
+            <div class="border rounded-sm p-8 text-center">
+              <h3 class="text-2xl font-bold mb-4">{packageItem.name}</h3>
+              <p class="text-primary font-bold mb-6">{packageItem.price}</p>
+              <ul class="space-y-3">
+                {packageItem.features.map((feature) => (
+                  <li class="text-gray-600">{feature}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
