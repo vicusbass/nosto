@@ -136,3 +136,7 @@ dist
 .pnp.*
 
 .astro
+
+# Sanity Studio specific
+studio-nosto/.sanity/
+studio-nosto/node_modules/
