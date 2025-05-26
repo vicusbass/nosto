@@ -4,8 +4,10 @@ import tailwindcss from '@tailwindcss/vite';
 
 import icon from 'astro-icon';
 
+import svelte from '@astrojs/svelte';
+
 export default defineConfig({
-  integrations: [icon()],
+  integrations: [icon(), svelte()],
 
   vite: {
     plugins: [tailwindcss()]

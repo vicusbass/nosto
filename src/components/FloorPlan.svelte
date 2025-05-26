@@ -1,7 +1,9 @@
----
-import FloorPlanApartments from "./FloorPlanApartments.astro";
----
+<script>
+  export let floorName;
+  import FloorPlanApartments from "./FloorPlanApartments.svelte";
+</script>
 
+<div>{floorName}</div>
 <svg
   xmlns="http://www.w3.org/2000/svg"
   width="100%"
@@ -17,7 +19,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath10)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path1"></path>
+    id="path1"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -31,22 +34,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m123.26 123.49h10.8"
       clip-path="url(#clipPath12)"
-      id="path2"></path>
+      id="path2"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 123.49v-2.504"
       clip-path="url(#clipPath14)"
-      id="path3"></path>
+      id="path3"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 120.99h-10.8"
       clip-path="url(#clipPath16)"
-      id="path4"></path>
+      id="path4"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m123.26 120.99v2.504"
       clip-path="url(#clipPath18)"
-      id="path5"></path>
+      id="path5"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -54,7 +61,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath20)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path6"></path>
+    id="path6"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -68,22 +76,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m123.26 120.99h10.8"
       clip-path="url(#clipPath22)"
-      id="path7"></path>
+      id="path7"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 120.99v-2.505"
       clip-path="url(#clipPath24)"
-      id="path8"></path>
+      id="path8"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 118.48h-10.8"
       clip-path="url(#clipPath26)"
-      id="path9"></path>
+      id="path9"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m123.26 118.48v2.505"
       clip-path="url(#clipPath28)"
-      id="path10"></path>
+      id="path10"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -91,7 +103,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath30)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path11"></path>
+    id="path11"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -105,22 +118,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m123.26 118.48h10.8"
       clip-path="url(#clipPath32)"
-      id="path12"></path>
+      id="path12"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 118.48v-2.504"
       clip-path="url(#clipPath34)"
-      id="path13"></path>
+      id="path13"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 115.98h-10.8"
       clip-path="url(#clipPath36)"
-      id="path14"></path>
+      id="path14"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m123.26 115.98v2.504"
       clip-path="url(#clipPath38)"
-      id="path15"></path>
+      id="path15"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -128,7 +145,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath40)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path16"></path>
+    id="path16"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -142,22 +160,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m123.26 115.98h10.8"
       clip-path="url(#clipPath42)"
-      id="path17"></path>
+      id="path17"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 115.98v-2.504"
       clip-path="url(#clipPath44)"
-      id="path18"></path>
+      id="path18"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 113.48h-10.8"
       clip-path="url(#clipPath46)"
-      id="path19"></path>
+      id="path19"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m123.26 113.48v2.504"
       clip-path="url(#clipPath48)"
-      id="path20"></path>
+      id="path20"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -165,7 +187,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath50)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path21"></path>
+    id="path21"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -179,17 +202,20 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m123.26 113.48h10.8"
       clip-path="url(#clipPath52)"
-      id="path22"></path>
+      id="path22"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 113.48v-2.504"
       clip-path="url(#clipPath54)"
-      id="path23"></path>
+      id="path23"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 110.97h-5.4"
       clip-path="url(#clipPath56)"
-      id="path24"></path>
+      id="path24"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -197,7 +223,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath58)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path25"></path>
+    id="path25"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m128.66 110.97h5.4"
@@ -208,7 +235,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".15"
-    id="path26"></path>
+    id="path26"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m134.06 110.97v-2.504"
@@ -219,14 +247,16 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".15"
-    id="path27"></path>
+    id="path27"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m126.52 110.97h-3.261v1.512l3.261-1.512"
     clip-path="url(#clipPath64)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path28"></path>
+    id="path28"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m126.52 110.97h-3.261"
@@ -237,7 +267,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".15"
-    id="path29"></path>
+    id="path29"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m123.26 110.97v1.512"
@@ -248,14 +279,16 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".15"
-    id="path30"></path>
+    id="path30"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m123.26 110.97h3.261l5.4-2.504h-8.661v2.504"
     clip-path="url(#clipPath70)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path31"></path>
+    id="path31"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -269,17 +302,20 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m123.26 110.97h3.261"
       clip-path="url(#clipPath72)"
-      id="path32"></path>
+      id="path32"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m131.92 108.47h-8.661"
       clip-path="url(#clipPath74)"
-      id="path33"></path>
+      id="path33"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m123.26 108.47v2.504"
       clip-path="url(#clipPath76)"
-      id="path34"></path>
+      id="path34"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -287,7 +323,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath78)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path35"></path>
+    id="path35"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -301,22 +338,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m123.26 108.47h8.661"
       clip-path="url(#clipPath80)"
-      id="path36"></path>
+      id="path36"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 107.48v-1.512"
       clip-path="url(#clipPath82)"
-      id="path37"></path>
+      id="path37"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 105.96h-10.8"
       clip-path="url(#clipPath84)"
-      id="path38"></path>
+      id="path38"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m123.26 105.96v2.504"
       clip-path="url(#clipPath86)"
-      id="path39"></path>
+      id="path39"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -324,7 +365,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath88)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path40"></path>
+    id="path40"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -338,27 +380,32 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m123.26 105.96h10.8"
       clip-path="url(#clipPath90)"
-      id="path41"></path>
+      id="path41"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 105.96v-2.271"
       clip-path="url(#clipPath92)"
-      id="path42"></path>
+      id="path42"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 103.69v-10.8"
       clip-path="url(#clipPath94)"
-      id="path43"></path>
+      id="path43"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 92.892h-10.8"
       clip-path="url(#clipPath96)"
-      id="path44"></path>
+      id="path44"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m123.26 92.892v13.071"
       clip-path="url(#clipPath98)"
-      id="path45"></path>
+      id="path45"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -366,7 +413,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath100)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path46"></path>
+    id="path46"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -380,22 +428,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m134.06 92.892v10.8"
       clip-path="url(#clipPath102)"
-      id="path47"></path>
+      id="path47"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 103.69h2.505"
       clip-path="url(#clipPath104)"
-      id="path48"></path>
+      id="path48"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.56 103.69v-10.8"
       clip-path="url(#clipPath106)"
-      id="path49"></path>
+      id="path49"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.56 92.892h-2.505"
       clip-path="url(#clipPath108)"
-      id="path50"></path>
+      id="path50"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -403,7 +455,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath110)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path51"></path>
+    id="path51"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -417,22 +470,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m136.56 103.69h2.504"
       clip-path="url(#clipPath112)"
-      id="path52"></path>
+      id="path52"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.06 103.69v-10.8"
       clip-path="url(#clipPath114)"
-      id="path53"></path>
+      id="path53"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.06 92.892h-2.504"
       clip-path="url(#clipPath116)"
-      id="path54"></path>
+      id="path54"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.56 92.892v10.8"
       clip-path="url(#clipPath118)"
-      id="path55"></path>
+      id="path55"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -440,7 +497,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath120)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path56"></path>
+    id="path56"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -454,22 +512,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m139.06 103.69h2.504"
       clip-path="url(#clipPath122)"
-      id="path57"></path>
+      id="path57"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m141.57 103.69v-10.8"
       clip-path="url(#clipPath124)"
-      id="path58"></path>
+      id="path58"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m141.57 92.892h-2.504"
       clip-path="url(#clipPath126)"
-      id="path59"></path>
+      id="path59"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.06 92.892v10.8"
       clip-path="url(#clipPath128)"
-      id="path60"></path>
+      id="path60"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -477,7 +539,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath130)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path61"></path>
+    id="path61"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -491,22 +554,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m141.57 103.69h2.504"
       clip-path="url(#clipPath132)"
-      id="path62"></path>
+      id="path62"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m144.07 103.69v-10.8"
       clip-path="url(#clipPath134)"
-      id="path63"></path>
+      id="path63"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m144.07 92.892h-2.504"
       clip-path="url(#clipPath136)"
-      id="path64"></path>
+      id="path64"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m141.57 92.892v10.8"
       clip-path="url(#clipPath138)"
-      id="path65"></path>
+      id="path65"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -514,7 +581,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath140)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path66"></path>
+    id="path66"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -528,22 +596,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m144.07 103.69h2.504"
       clip-path="url(#clipPath142)"
-      id="path67"></path>
+      id="path67"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m146.58 103.69v-10.8"
       clip-path="url(#clipPath144)"
-      id="path68"></path>
+      id="path68"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m146.58 92.892h-2.504"
       clip-path="url(#clipPath146)"
-      id="path69"></path>
+      id="path69"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m144.07 92.892v10.8"
       clip-path="url(#clipPath148)"
-      id="path70"></path>
+      id="path70"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -551,7 +623,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath150)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path71"></path>
+    id="path71"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -565,22 +638,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m146.58 103.69h2.504"
       clip-path="url(#clipPath152)"
-      id="path72"></path>
+      id="path72"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m149.08 103.69v-10.8"
       clip-path="url(#clipPath154)"
-      id="path73"></path>
+      id="path73"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m149.08 92.892h-2.504"
       clip-path="url(#clipPath156)"
-      id="path74"></path>
+      id="path74"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m146.58 92.892v10.8"
       clip-path="url(#clipPath158)"
-      id="path75"></path>
+      id="path75"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -588,7 +665,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath160)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path76"></path>
+    id="path76"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -602,22 +680,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m149.08 103.69h2.504"
       clip-path="url(#clipPath162)"
-      id="path77"></path>
+      id="path77"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m151.58 103.69v-10.8"
       clip-path="url(#clipPath164)"
-      id="path78"></path>
+      id="path78"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m151.58 92.892h-2.504"
       clip-path="url(#clipPath166)"
-      id="path79"></path>
+      id="path79"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m149.08 92.892v10.8"
       clip-path="url(#clipPath168)"
-      id="path80"></path>
+      id="path80"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -625,7 +707,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath170)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path81"></path>
+    id="path81"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -639,22 +722,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m151.58 103.69h2.504"
       clip-path="url(#clipPath172)"
-      id="path82"></path>
+      id="path82"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m154.09 103.69v-10.8"
       clip-path="url(#clipPath174)"
-      id="path83"></path>
+      id="path83"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m154.09 92.892h-2.504"
       clip-path="url(#clipPath176)"
-      id="path84"></path>
+      id="path84"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m151.58 92.892v10.8"
       clip-path="url(#clipPath178)"
-      id="path85"></path>
+      id="path85"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -662,7 +749,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath180)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path86"></path>
+    id="path86"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -676,22 +764,26 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m154.09 103.69h2.504"
       clip-path="url(#clipPath182)"
-      id="path87"></path>
+      id="path87"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m156.59 103.69v-10.8"
       clip-path="url(#clipPath184)"
-      id="path88"></path>
+      id="path88"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m156.59 92.892h-2.504"
       clip-path="url(#clipPath186)"
-      id="path89"></path>
+      id="path89"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m154.09 92.892v10.8"
       clip-path="url(#clipPath188)"
-      id="path90"></path>
+      id="path90"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
@@ -699,7 +791,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     clip-path="url(#clipPath190)"
     fill="#fff"
     fill-rule="evenodd"
-    id="path91"></path>
+    id="path91"
+  ></path>
   <g
     fill="none"
     stroke="#7f7f7f"
@@ -713,87 +806,104 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m156.59 92.892v10.8"
       clip-path="url(#clipPath192)"
-      id="path92"></path>
+      id="path92"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m156.59 103.69h2.505"
       clip-path="url(#clipPath194)"
-      id="path93"></path>
+      id="path93"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m159.1 103.69v-10.8"
       clip-path="url(#clipPath196)"
-      id="path94"></path>
+      id="path94"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m159.1 92.892h-2.505"
       clip-path="url(#clipPath198)"
-      id="path95"></path>
+      id="path95"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m123.26 113.48 10.8-5.008"
       clip-path="url(#clipPath200)"
-      id="path96"></path>
+      id="path96"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m123.26 112.48 10.8-5.008"
       clip-path="url(#clipPath202)"
-      id="path97"></path>
+      id="path97"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m128.66 123.49v-2.504"
       clip-path="url(#clipPath204)"
-      id="path98"></path>
+      id="path98"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m128.66 120.99v-10.017"
       clip-path="url(#clipPath206)"
-      id="path99"></path>
+      id="path99"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m126.41 113.22 2.25-2.25"
       clip-path="url(#clipPath208)"
-      id="path100"></path>
+      id="path100"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m128.66 110.97 2.25 2.25"
       clip-path="url(#clipPath210)"
-      id="path101"></path>
+      id="path101"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m128.66 109.98v-4.016"
       clip-path="url(#clipPath212)"
-      id="path102"></path>
+      id="path102"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m128.66 105.96v-7.6714"
       clip-path="url(#clipPath214)"
-      id="path103"></path>
+      id="path103"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m128.66 98.292h5.4"
       clip-path="url(#clipPath216)"
-      id="path104"></path>
+      id="path104"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m134.06 98.292h22.537"
       clip-path="url(#clipPath218)"
-      id="path105"></path>
+      id="path105"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m156.59 98.292h2.505"
       clip-path="url(#clipPath220)"
-      id="path106"></path>
+      id="path106"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m156.85 96.042 2.25 2.25"
       clip-path="url(#clipPath222)"
-      id="path107"></path>
+      id="path107"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m159.1 98.292-2.25 2.2504"
       clip-path="url(#clipPath224)"
-      id="path108"></path>
+      id="path108"
+    ></path>
   </g>
   <g clip-path="url(#clipPath227)" id="g109">
     <path
@@ -806,7 +916,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       stroke-linejoin="round"
       stroke-miterlimit="10"
       stroke-width=".15"
-      id="path109"></path>
+      id="path109"
+    ></path>
   </g>
   <g clip-path="url(#clipPath230)" id="g110">
     <path
@@ -819,7 +930,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       stroke-linejoin="round"
       stroke-miterlimit="10"
       stroke-width=".15"
-      id="path110"></path>
+      id="path110"
+    ></path>
   </g>
   <g clip-path="url(#clipPath233)" id="g111">
     <path
@@ -832,7 +944,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       stroke-linejoin="round"
       stroke-miterlimit="10"
       stroke-width=".15"
-      id="path111"></path>
+      id="path111"
+    ></path>
   </g>
   <g clip-path="url(#clipPath236)" id="g112">
     <path
@@ -845,24 +958,28 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       stroke-linejoin="round"
       stroke-miterlimit="10"
       stroke-width=".15"
-      id="path112"></path>
+      id="path112"
+    ></path>
   </g>
   <g fill-rule="evenodd" id="g115">
     <path
       transform="scale(3.7795)"
       d="m110.21 281.44h5.85v3.6h-9.45l3.6-3.6"
-      id="path113"></path>
+      id="path113"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m126.86 281.44h47.7l3.6 3.6h-51.3v-3.6"
       clip-path="url(#clipPath239)"
-      id="path114"></path>
+      id="path114"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m126.86 281.44v3.6h-10.8v-3.6h10.8"
       clip-path="url(#clipPath241)"
       fill="#fff"
-      id="path115"></path>
+      id="path115"
+    ></path>
   </g>
   <g
     fill="none"
@@ -876,57 +993,68 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
         transform="scale(3.7795)"
         d="m126.86 284.14v0.9"
         clip-path="url(#clipPath243)"
-        id="path116"></path>
+        id="path116"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126.86 281.44v2.25"
         clip-path="url(#clipPath245)"
-        id="path117"></path>
+        id="path117"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126.86 283.69v0.45"
         clip-path="url(#clipPath247)"
-        id="path118"></path>
+        id="path118"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m116.06 284.14v0.9"
         clip-path="url(#clipPath249)"
-        id="path119"></path>
+        id="path119"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m116.06 281.44v2.25"
         clip-path="url(#clipPath251)"
-        id="path120"></path>
+        id="path120"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m116.06 283.69v0.45"
         clip-path="url(#clipPath253)"
-        id="path121"></path>
+        id="path121"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m106.61 285.04h9.45"
         clip-path="url(#clipPath255)"
-        id="path122"></path>
+        id="path122"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126.86 285.04h51.3"
         clip-path="url(#clipPath257)"
-        id="path123"></path>
+        id="path123"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m174.56 281.44h-33.75"
         clip-path="url(#clipPath259)"
-        id="path124"></path>
+        id="path124"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m138.56 281.44h-11.7"
         clip-path="url(#clipPath261)"
-        id="path125"></path>
+        id="path125"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m116.06 281.44h-5.85"
         clip-path="url(#clipPath263)"
-        id="path126"></path>
+        id="path126"
+      ></path>
     </g>
     <path
       transform="scale(3.7795)"
@@ -934,46 +1062,54 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       clip-path="url(#clipPath265)"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path127"></path>
+      id="path127"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m116.06 285.04h10.8"
       clip-path="url(#clipPath267)"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path128"></path>
+      id="path128"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g134">
     <path
       transform="scale(3.7795)"
       d="m116.06 283.69v0.45h0.855v-0.45h-0.855"
       clip-path="url(#clipPath269)"
-      id="path129"></path>
+      id="path129"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m121.46 284.14v-0.45h-0.45v0.45h0.45"
       clip-path="url(#clipPath271)"
-      id="path130"></path>
+      id="path130"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m116.91 283.69v0.45h4.095v-0.45h-4.095"
       clip-path="url(#clipPath273)"
-      id="path131"></path>
+      id="path131"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m121.46 283.69v0.45h0.45v-0.45h-0.45"
       clip-path="url(#clipPath275)"
-      id="path132"></path>
+      id="path132"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m126.86 284.14v-0.45h-0.855v0.45h0.855"
       clip-path="url(#clipPath277)"
-      id="path133"></path>
+      id="path133"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m121.91 283.69v0.45h4.095v-0.45h-4.095"
       clip-path="url(#clipPath279)"
-      id="path134"></path>
+      id="path134"
+    ></path>
   </g>
   <g
     fill="none"
@@ -987,124 +1123,148 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
         transform="scale(3.7795)"
         d="m116.06 283.69h0.855"
         clip-path="url(#clipPath281)"
-        id="path135"></path>
+        id="path135"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m116.91 283.69v0.45"
         clip-path="url(#clipPath283)"
-        id="path136"></path>
+        id="path136"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m116.91 284.14h-0.855"
         clip-path="url(#clipPath285)"
-        id="path137"></path>
+        id="path137"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m121.46 284.14h-0.45"
         clip-path="url(#clipPath287)"
-        id="path138"></path>
+        id="path138"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m121.01 284.14v-0.45"
         clip-path="url(#clipPath289)"
-        id="path139"></path>
+        id="path139"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m121.01 283.69h0.45"
         clip-path="url(#clipPath291)"
-        id="path140"></path>
+        id="path140"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m116.91 283.69h4.095"
         clip-path="url(#clipPath293)"
-        id="path141"></path>
+        id="path141"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m121.01 284.14h-4.095"
         clip-path="url(#clipPath295)"
-        id="path142"></path>
+        id="path142"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m121.46 283.69h0.45"
         clip-path="url(#clipPath297)"
-        id="path143"></path>
+        id="path143"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m121.91 283.69v0.45"
         clip-path="url(#clipPath299)"
-        id="path144"></path>
+        id="path144"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m121.91 284.14h-0.45"
         clip-path="url(#clipPath301)"
-        id="path145"></path>
+        id="path145"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126.86 284.14h-0.855"
         clip-path="url(#clipPath303)"
-        id="path146"></path>
+        id="path146"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126 284.14v-0.45"
         clip-path="url(#clipPath305)"
-        id="path147"></path>
+        id="path147"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126 283.69h0.855"
         clip-path="url(#clipPath307)"
-        id="path148"></path>
+        id="path148"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m121.91 283.69h4.095"
         clip-path="url(#clipPath309)"
-        id="path149"></path>
+        id="path149"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126 284.14h-4.095"
         clip-path="url(#clipPath311)"
-        id="path150"></path>
+        id="path150"
+      ></path>
     </g>
     <g stroke="#000" stroke-width=".35" id="g158">
       <path
         transform="scale(3.7795)"
         d="m116.06 283.69v0.45"
         clip-path="url(#clipPath313)"
-        id="path151"></path>
+        id="path151"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m116.06 283.69v0.45"
         clip-path="url(#clipPath315)"
-        id="path152"></path>
+        id="path152"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m116.06 281.44v2.25"
         clip-path="url(#clipPath317)"
-        id="path153"></path>
+        id="path153"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m116.06 284.14v0.9"
         clip-path="url(#clipPath319)"
-        id="path154"></path>
+        id="path154"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126.86 283.69v0.45"
         clip-path="url(#clipPath321)"
-        id="path155"></path>
+        id="path155"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126.86 283.69v0.45"
         clip-path="url(#clipPath323)"
-        id="path156"></path>
+        id="path156"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126.86 281.44v2.25"
         clip-path="url(#clipPath325)"
-        id="path157"></path>
+        id="path157"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m126.86 284.14v0.9"
         clip-path="url(#clipPath327)"
-        id="path158"></path>
+        id="path158"
+      ></path>
     </g>
   </g>
   <path
@@ -1112,7 +1272,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     d="m148.46 168.49v2.25h-9.9v-2.25h9.9"
     clip-path="url(#clipPath329)"
     fill-rule="evenodd"
-    id="path159"></path>
+    id="path159"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -1126,29 +1287,34 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m148.46 168.49h-9.9"
       clip-path="url(#clipPath331)"
-      id="path160"></path>
+      id="path160"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m138.56 168.49v2.25"
       clip-path="url(#clipPath333)"
-      id="path161"></path>
+      id="path161"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m138.56 170.74h9.9"
       clip-path="url(#clipPath335)"
-      id="path162"></path>
+      id="path162"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m148.46 170.74v-2.25"
       clip-path="url(#clipPath337)"
-      id="path163"></path>
+      id="path163"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
     d="m149.81 169.39-1.35-0.9h13.05v0.9h-11.7"
     clip-path="url(#clipPath339)"
     fill-rule="evenodd"
-    id="path164"></path>
+    id="path164"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -1162,24 +1328,28 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m149.81 169.39h11.7"
       clip-path="url(#clipPath341)"
-      id="path165"></path>
+      id="path165"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m161.51 169.39v-0.9"
       clip-path="url(#clipPath343)"
-      id="path166"></path>
+      id="path166"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m161.51 168.49h-13.05"
       clip-path="url(#clipPath345)"
-      id="path167"></path>
+      id="path167"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
     d="m248.36 76.242v-0.9h15.3v0.9h-15.3"
     clip-path="url(#clipPath347)"
     fill-rule="evenodd"
-    id="path168"></path>
+    id="path168"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m248.36 76.242h15.3"
@@ -1190,7 +1360,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path169"></path>
+    id="path169"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m263.66 75.342h-15.3"
@@ -1201,13 +1372,15 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path170"></path>
+    id="path170"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m243.41 46.092v1.35h-21.15v-1.35h21.15"
     clip-path="url(#clipPath353)"
     fill-rule="evenodd"
-    id="path171"></path>
+    id="path171"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -1221,29 +1394,34 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m243.41 46.092h-5.4"
       clip-path="url(#clipPath355)"
-      id="path172"></path>
+      id="path172"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m235.76 46.092h-13.5"
       clip-path="url(#clipPath357)"
-      id="path173"></path>
+      id="path173"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m222.26 47.442h21.15"
       clip-path="url(#clipPath359)"
-      id="path174"></path>
+      id="path174"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m243.41 47.442v-1.35"
       clip-path="url(#clipPath361)"
-      id="path175"></path>
+      id="path175"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
     d="m222.26 47.442h-1.35v-4.5l1.35-1.35v5.85"
     clip-path="url(#clipPath363)"
     fill-rule="evenodd"
-    id="path176"></path>
+    id="path176"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -1257,30 +1435,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m222.26 46.092v-4.5"
       clip-path="url(#clipPath365)"
-      id="path177"></path>
+      id="path177"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m220.91 42.942v4.5"
       clip-path="url(#clipPath367)"
-      id="path178"></path>
+      id="path178"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m220.91 47.442h1.35"
       clip-path="url(#clipPath369)"
-      id="path179"></path>
+      id="path179"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
     d="m206.51 41.592h1.35v1.35h-1.35v-1.35"
     clip-path="url(#clipPath371)"
     fill-rule="evenodd"
-    id="path180"></path>
+    id="path180"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m222.26 41.592-1.35 1.35h-4.95v-1.35h6.3"
     clip-path="url(#clipPath373)"
     fill-rule="evenodd"
-    id="path181"></path>
+    id="path181"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -1294,89 +1477,106 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m207.86 42.942h-0.513"
       clip-path="url(#clipPath375)"
-      id="path182"></path>
+      id="path182"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.86 41.592v1.3491"
       clip-path="url(#clipPath377)"
-      id="path183"></path>
+      id="path183"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.86 41.592h-0.513"
       clip-path="url(#clipPath379)"
-      id="path184"></path>
+      id="path184"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.96 42.942h0.513"
       clip-path="url(#clipPath381)"
-      id="path185"></path>
+      id="path185"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.96 41.592v1.3491"
       clip-path="url(#clipPath383)"
-      id="path186"></path>
+      id="path186"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.96 41.592h0.513"
       clip-path="url(#clipPath385)"
-      id="path187"></path>
+      id="path187"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m222.26 41.592h-6.3"
       clip-path="url(#clipPath387)"
-      id="path188"></path>
+      id="path188"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.86 41.592h-1.35"
       clip-path="url(#clipPath389)"
-      id="path189"></path>
+      id="path189"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m206.51 41.592v1.35"
       clip-path="url(#clipPath391)"
-      id="path190"></path>
+      id="path190"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m206.51 42.942h1.35"
       clip-path="url(#clipPath393)"
-      id="path191"></path>
+      id="path191"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.96 42.942h4.95"
       clip-path="url(#clipPath395)"
-      id="path192"></path>
+      id="path192"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g198">
     <path
       transform="scale(3.7795)"
       d="m215.73 41.592v1.3491h0.225v-1.3491h-0.225"
       clip-path="url(#clipPath397)"
-      id="path193"></path>
+      id="path193"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.84 43.113h0.63v-0.171h-0.63v0.171"
       clip-path="url(#clipPath399)"
-      id="path194"></path>
+      id="path194"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.86 41.592v1.3491h0.225v-1.3491h-0.225"
       clip-path="url(#clipPath401)"
-      id="path195"></path>
+      id="path195"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.97 42.942h-0.63v0.171h0.63v-0.171"
       clip-path="url(#clipPath403)"
-      id="path196"></path>
+      id="path196"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.84 41.592h0.63v-0.171h-0.63v0.171"
       clip-path="url(#clipPath405)"
-      id="path197"></path>
+      id="path197"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.97 41.421h-0.63v0.171h0.63v-0.171"
       clip-path="url(#clipPath407)"
-      id="path198"></path>
+      id="path198"
+    ></path>
   </g>
   <g
     fill="none"
@@ -1391,122 +1591,146 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m215.73 41.592v1.3491"
       clip-path="url(#clipPath409)"
-      id="path199"></path>
+      id="path199"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.73 42.942h0.225"
       clip-path="url(#clipPath411)"
-      id="path200"></path>
+      id="path200"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.96 42.942v-1.3491"
       clip-path="url(#clipPath413)"
-      id="path201"></path>
+      id="path201"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.96 41.592h-0.225"
       clip-path="url(#clipPath415)"
-      id="path202"></path>
+      id="path202"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.84 43.113h0.63"
       clip-path="url(#clipPath417)"
-      id="path203"></path>
+      id="path203"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m216.47 43.113v-0.171"
       clip-path="url(#clipPath419)"
-      id="path204"></path>
+      id="path204"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m216.47 42.942h-0.63"
       clip-path="url(#clipPath421)"
-      id="path205"></path>
+      id="path205"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.84 42.942v0.171"
       clip-path="url(#clipPath423)"
-      id="path206"></path>
+      id="path206"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.86 41.592v1.3491"
       clip-path="url(#clipPath425)"
-      id="path207"></path>
+      id="path207"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.86 42.942h0.225"
       clip-path="url(#clipPath427)"
-      id="path208"></path>
+      id="path208"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m208.08 42.942v-1.3491"
       clip-path="url(#clipPath429)"
-      id="path209"></path>
+      id="path209"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m208.08 41.592h-0.225"
       clip-path="url(#clipPath431)"
-      id="path210"></path>
+      id="path210"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.97 42.942h-0.63"
       clip-path="url(#clipPath433)"
-      id="path211"></path>
+      id="path211"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.34 42.942v0.171"
       clip-path="url(#clipPath435)"
-      id="path212"></path>
+      id="path212"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.34 43.113h0.63"
       clip-path="url(#clipPath437)"
-      id="path213"></path>
+      id="path213"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.97 43.113v-0.171"
       clip-path="url(#clipPath439)"
-      id="path214"></path>
+      id="path214"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.84 41.592h0.63"
       clip-path="url(#clipPath441)"
-      id="path215"></path>
+      id="path215"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m216.47 41.592v-0.171"
       clip-path="url(#clipPath443)"
-      id="path216"></path>
+      id="path216"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m216.47 41.421h-0.63"
       clip-path="url(#clipPath445)"
-      id="path217"></path>
+      id="path217"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.84 41.421v0.171"
       clip-path="url(#clipPath447)"
-      id="path218"></path>
+      id="path218"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.97 41.421h-0.63"
       clip-path="url(#clipPath449)"
-      id="path219"></path>
+      id="path219"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.34 41.421v0.171"
       clip-path="url(#clipPath451)"
-      id="path220"></path>
+      id="path220"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.34 41.592h0.63"
       clip-path="url(#clipPath453)"
-      id="path221"></path>
+      id="path221"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.97 41.592v-0.171"
       clip-path="url(#clipPath455)"
-      id="path222"></path>
+      id="path222"
+    ></path>
   </g>
   <g clip-path="url(#clipPath458)" id="g223">
     <path
@@ -1519,34 +1743,40 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       stroke-linejoin="round"
       stroke-miterlimit="10"
       stroke-width=".15"
-      id="path223"></path>
+      id="path223"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g228">
     <path
       transform="scale(3.7795)"
       d="m215.6 41.592v0.3591h0.108v-0.3591h-0.108"
       clip-path="url(#clipPath460)"
-      id="path224"></path>
+      id="path224"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.96 41.592h-0.252v9e-4h0.252v-9e-4"
       clip-path="url(#clipPath462)"
-      id="path225"></path>
+      id="path225"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.86 41.592v9e-4h0.252v-9e-4h-0.252"
       clip-path="url(#clipPath464)"
-      id="path226"></path>
+      id="path226"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m208.11 41.952h0.108v-0.3591h-0.108v0.3591"
       clip-path="url(#clipPath466)"
-      id="path227"></path>
+      id="path227"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m208.11 33.996v7.596h0.36v-7.596h-0.36"
       clip-path="url(#clipPath468)"
-      id="path228"></path>
+      id="path228"
+    ></path>
   </g>
   <g
     fill="none"
@@ -1560,144 +1790,172 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
         transform="scale(3.7795)"
         d="m215.96 41.592v-9e-4"
         clip-path="url(#clipPath470)"
-        id="path229"></path>
+        id="path229"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m215.96 41.592h-0.252"
         clip-path="url(#clipPath472)"
-        id="path230"></path>
+        id="path230"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m215.7 41.592v0.36"
         clip-path="url(#clipPath474)"
-        id="path231"></path>
+        id="path231"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m215.7 41.952h-0.108"
         clip-path="url(#clipPath476)"
-        id="path232"></path>
+        id="path232"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m215.6 41.952v-0.3591"
         clip-path="url(#clipPath478)"
-        id="path233"></path>
+        id="path233"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m215.6 41.592h0.36"
         clip-path="url(#clipPath480)"
-        id="path234"></path>
+        id="path234"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m208.22 41.592v0.3591"
         clip-path="url(#clipPath482)"
-        id="path235"></path>
+        id="path235"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m208.22 41.952h-0.108"
         clip-path="url(#clipPath484)"
-        id="path236"></path>
+        id="path236"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m208.11 41.952v-0.36"
         clip-path="url(#clipPath486)"
-        id="path237"></path>
+        id="path237"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m208.11 41.592h-0.252"
         clip-path="url(#clipPath488)"
-        id="path238"></path>
+        id="path238"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m207.86 41.592v9e-4"
         clip-path="url(#clipPath490)"
-        id="path239"></path>
+        id="path239"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m207.86 41.592h0.36"
         clip-path="url(#clipPath492)"
-        id="path240"></path>
+        id="path240"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m208.11 33.996v7.596"
         clip-path="url(#clipPath494)"
-        id="path241"></path>
+        id="path241"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m208.11 41.592h0.36"
         clip-path="url(#clipPath496)"
-        id="path242"></path>
+        id="path242"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m208.47 41.592v-7.596"
         clip-path="url(#clipPath498)"
-        id="path243"></path>
+        id="path243"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m208.47 33.996h-0.36"
         clip-path="url(#clipPath500)"
-        id="path244"></path>
+        id="path244"
+      ></path>
     </g>
     <g stroke="#000" stroke-width=".35" id="g256">
       <path
         transform="scale(3.7795)"
         d="m215.96 41.592v1.3491"
         clip-path="url(#clipPath502)"
-        id="path245"></path>
+        id="path245"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m215.96 41.592h0.513"
         clip-path="url(#clipPath504)"
-        id="path246"></path>
+        id="path246"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m215.96 41.592h0.513"
         clip-path="url(#clipPath506)"
-        id="path247"></path>
+        id="path247"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m215.96 41.592v1.3491"
         clip-path="url(#clipPath508)"
-        id="path248"></path>
+        id="path248"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m215.96 42.942h0.513"
         clip-path="url(#clipPath510)"
-        id="path249"></path>
+        id="path249"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m215.96 42.942h0.513"
         clip-path="url(#clipPath512)"
-        id="path250"></path>
+        id="path250"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m207.86 41.592v1.3491"
         clip-path="url(#clipPath514)"
-        id="path251"></path>
+        id="path251"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m207.86 41.592h-0.513"
         clip-path="url(#clipPath516)"
-        id="path252"></path>
+        id="path252"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m207.86 41.592h-0.513"
         clip-path="url(#clipPath518)"
-        id="path253"></path>
+        id="path253"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m207.86 41.592v1.3491"
         clip-path="url(#clipPath520)"
-        id="path254"></path>
+        id="path254"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m207.86 42.942h-0.513"
         clip-path="url(#clipPath522)"
-        id="path255"></path>
+        id="path255"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m207.86 42.942h-0.513"
         clip-path="url(#clipPath524)"
-        id="path256"></path>
+        id="path256"
+      ></path>
     </g>
   </g>
   <path
@@ -1705,13 +1963,15 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     d="m124.16 228.14v-6.102l1.35-1.35v7.452h-1.35"
     clip-path="url(#clipPath692)"
     fill-rule="evenodd"
-    id="path257"></path>
+    id="path257"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m124.16 249.94v-14.598h1.35v14.598h-1.35"
     clip-path="url(#clipPath694)"
     fill-rule="evenodd"
-    id="path258"></path>
+    id="path258"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -1725,78 +1985,94 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m125.51 235.34v0.513"
       clip-path="url(#clipPath696)"
-      id="path259"></path>
+      id="path259"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.16 235.34h1.349"
       clip-path="url(#clipPath698)"
-      id="path260"></path>
+      id="path260"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.16 235.34v0.513"
       clip-path="url(#clipPath700)"
-      id="path261"></path>
+      id="path261"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m125.51 228.14v-0.513"
       clip-path="url(#clipPath702)"
-      id="path262"></path>
+      id="path262"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.16 228.14h1.349"
       clip-path="url(#clipPath704)"
-      id="path263"></path>
+      id="path263"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.16 228.14v-0.513"
       clip-path="url(#clipPath706)"
-      id="path264"></path>
+      id="path264"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m125.51 249.94v-14.598"
       clip-path="url(#clipPath708)"
-      id="path265"></path>
+      id="path265"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m125.51 228.14v-7.452"
       clip-path="url(#clipPath710)"
-      id="path266"></path>
+      id="path266"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.16 222.04v6.102"
       clip-path="url(#clipPath712)"
-      id="path267"></path>
+      id="path267"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.16 235.34v14.598"
       clip-path="url(#clipPath714)"
-      id="path268"></path>
+      id="path268"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g274">
     <path
       transform="scale(3.7795)"
       d="m124.16 228.37h1.349v-0.225h-1.349v0.225"
-      id="path269"></path>
+      id="path269"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m125.68 228.26v-0.63h-0.171v0.63h0.171"
-      id="path270"></path>
+      id="path270"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.16 235.34h1.349v-0.225h-1.349v0.225"
-      id="path271"></path>
+      id="path271"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m125.51 235.23v0.63h0.171v-0.63h-0.171"
-      id="path272"></path>
+      id="path272"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.16 228.26v-0.63h-0.171v0.63h0.171"
-      id="path273"></path>
+      id="path273"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m123.98 235.23v0.63h0.171v-0.63h-0.171"
-      id="path274"></path>
+      id="path274"
+    ></path>
   </g>
   <g
     fill="none"
@@ -1855,29 +2131,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m117.46 235.09c0-3.698 2.998-6.696 6.696-6.696"
       clip-path="url(#clipPath746)"
-      id="path299"></path>
+      id="path299"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g304">
     <path
       transform="scale(3.7795)"
       d="m124.16 228.14h-1e-3v0.252h1e-3v-0.252"
-      id="path300"></path>
+      id="path300"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.52 228.4h-0.359v0.108h0.359v-0.108"
-      id="path301"></path>
+      id="path301"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.16 235.34h1e-3v-0.252h-1e-3v0.252"
-      id="path302"></path>
+      id="path302"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m124.52 234.98h-0.359v0.108h0.359v-0.108"
-      id="path303"></path>
+      id="path303"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m117.46 235.09h6.696v-0.36h-6.696v0.36"
-      id="path304"></path>
+      id="path304"
+    ></path>
   </g>
   <g
     fill="none"
@@ -1951,12 +2233,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m110.21 249.94h17.55v1.35h-17.55v-1.35"
     fill-rule="evenodd"
-    id="path333"></path>
+    id="path333"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m135.86 249.94h2.7v1.35h-2.7v-1.35"
     fill-rule="evenodd"
-    id="path334"></path>
+    id="path334"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -1991,27 +2275,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m127.98 251.29v-1.349h-0.225v1.349h0.225"
-      id="path346"></path>
+      id="path346"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m127.87 249.77h-0.63v0.171h0.63v-0.171"
-      id="path347"></path>
+      id="path347"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.86 251.29v-1.349h-0.225v1.349h0.225"
-      id="path348"></path>
+      id="path348"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.74 249.94h0.63v-0.171h-0.63v0.171"
-      id="path349"></path>
+      id="path349"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m127.87 251.29h-0.63v0.171h0.63v-0.171"
-      id="path350"></path>
+      id="path350"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.74 251.46h0.63v-0.171h-0.63v0.171"
-      id="path351"></path>
+      id="path351"
+    ></path>
   </g>
   <g
     fill="none"
@@ -2070,29 +2360,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m135.6 258.89c-4.195 0-7.596-3.401-7.596-7.596"
       clip-path="url(#clipPath824)"
-      id="path376"></path>
+      id="path376"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g381">
     <path
       transform="scale(3.7795)"
       d="m127.76 251.29v1e-3h0.252v-1e-3h-0.252"
-      id="path377"></path>
+      id="path377"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m128.01 250.93v0.359h0.108v-0.359h-0.108"
-      id="path378"></path>
+      id="path378"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.5 250.93v0.359h0.108v-0.359h-0.108"
-      id="path379"></path>
+      id="path379"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.6 251.29v1e-3h0.252v-1e-3h-0.252"
-      id="path380"></path>
+      id="path380"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.6 258.89v-7.596h-0.36v7.596h0.36"
-      id="path381"></path>
+      id="path381"
+    ></path>
   </g>
   <g
     fill="none"
@@ -2166,53 +2462,65 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m110.21 114.49v9h-3.6v-9h3.6"
-      id="path410"></path>
+      id="path410"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 147.79v-9h3.6v9h-3.6"
-      id="path411"></path>
+      id="path411"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 182.89v-27.9h3.6v27.9h-3.6"
-      id="path412"></path>
+      id="path412"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 192.79v-2.7h3.6v2.7h-3.6"
-      id="path413"></path>
+      id="path413"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 285.04v-49.95h3.6v46.35l-3.6 3.6"
-      id="path414"></path>
+      id="path414"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m110.21 199.99v27.9h-3.6v-27.9h3.6"
-      id="path415"></path>
+      id="path415"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m110.21 92.892v14.4h-3.6v-14.4h3.6"
-      id="path416"></path>
+      id="path416"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g421">
     <path
       transform="scale(3.7795)"
       d="m110.21 107.29v7.2h-3.6v-7.2h3.6"
-      id="path417"></path>
+      id="path417"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m110.21 192.79v7.2h-3.6v-7.2h3.6"
-      id="path418"></path>
+      id="path418"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m110.21 190.09h-3.6v-7.2h3.6v7.2"
-      id="path419"></path>
+      id="path419"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m110.21 154.99h-3.6v-7.2h3.6v7.2"
-      id="path420"></path>
+      id="path420"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m110.21 227.89v7.2h-3.6v-7.2h3.6"
-      id="path421"></path>
+      id="path421"
+    ></path>
   </g>
   <g
     fill="none"
@@ -2330,27 +2638,32 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m110.21 114.49v-7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path475"></path>
+      id="path475"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 114.49v-7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path476"></path>
+      id="path476"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g479">
     <path
       transform="scale(3.7795)"
       d="m107.96 114.49v-0.855h-0.45v0.855h0.45"
-      id="path477"></path>
+      id="path477"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.51 107.29v0.855h0.45v-0.855h-0.45"
-      id="path478"></path>
+      id="path478"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.96 113.64v-5.49h-0.45v5.49h0.45"
-      id="path479"></path>
+      id="path479"
+    ></path>
   </g>
   <g
     fill="none"
@@ -2400,27 +2713,32 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m110.21 199.99v-7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path496"></path>
+      id="path496"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 199.99v-7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path497"></path>
+      id="path497"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g500">
     <path
       transform="scale(3.7795)"
       d="m107.96 199.99v-0.855h-0.45v0.855h0.45"
-      id="path498"></path>
+      id="path498"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.51 192.79v0.855h0.45v-0.855h-0.45"
-      id="path499"></path>
+      id="path499"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.96 199.14v-5.49h-0.45v5.49h0.45"
-      id="path500"></path>
+      id="path500"
+    ></path>
   </g>
   <g
     fill="none"
@@ -2470,27 +2788,32 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m110.21 182.89v7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path517"></path>
+      id="path517"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 182.89v7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path518"></path>
+      id="path518"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g521">
     <path
       transform="scale(3.7795)"
       d="m107.96 182.89h-0.45v0.855h0.45v-0.855"
-      id="path519"></path>
+      id="path519"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.51 190.09h0.45v-0.855h-0.45v0.855"
-      id="path520"></path>
+      id="path520"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.96 183.75h-0.45v5.49h0.45v-5.49"
-      id="path521"></path>
+      id="path521"
+    ></path>
   </g>
   <g
     fill="none"
@@ -2540,27 +2863,32 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m110.21 147.79v7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path538"></path>
+      id="path538"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 147.79v7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path539"></path>
+      id="path539"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g542">
     <path
       transform="scale(3.7795)"
       d="m107.96 147.79h-0.45v0.855h0.45v-0.855"
-      id="path540"></path>
+      id="path540"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.51 154.99h0.45v-0.855h-0.45v0.855"
-      id="path541"></path>
+      id="path541"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.96 148.65h-0.45v5.49h0.45v-5.49"
-      id="path542"></path>
+      id="path542"
+    ></path>
   </g>
   <g
     fill="none"
@@ -2610,27 +2938,32 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m110.21 235.09v-7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path559"></path>
+      id="path559"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 235.09v-7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path560"></path>
+      id="path560"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g563">
     <path
       transform="scale(3.7795)"
       d="m107.96 235.09v-0.855h-0.45v0.855h0.45"
-      id="path561"></path>
+      id="path561"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.51 227.89v0.855h0.45v-0.855h-0.45"
-      id="path562"></path>
+      id="path562"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.96 234.24v-5.49h-0.45v5.49h0.45"
-      id="path563"></path>
+      id="path563"
+    ></path>
   </g>
   <g
     fill="none"
@@ -2681,25 +3014,30 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       clip-path="url(#clipPath1029)"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path580"></path>
+      id="path580"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g584">
     <path
       transform="scale(3.7795)"
       d="m108.54 138.79v-0.36h-1.035v0.36h1.035"
-      id="path581"></path>
+      id="path581"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m108.54 133.75v-0.36h-1.035v0.36h1.035"
-      id="path582"></path>
+      id="path582"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.51 123.49v0.36h1.035v-0.36h-1.035"
-      id="path583"></path>
+      id="path583"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m108.54 138.43v-4.68h-1.035v4.68h1.035"
-      id="path584"></path>
+      id="path584"
+    ></path>
   </g>
   <g
     fill="none"
@@ -2767,7 +3105,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m110.21 222.04v-1.35h15.3l-1.35 1.35h-13.95"
     fill-rule="evenodd"
-    id="path610"></path>
+    id="path610"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m110.21 222.04h13.95"
@@ -2777,7 +3116,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path611"></path>
+    id="path611"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m125.51 220.69h-15.3"
@@ -2787,17 +3127,20 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path612"></path>
+    id="path612"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m110.21 208.99v-2.25h0.9v2.25h-0.9"
     fill-rule="evenodd"
-    id="path613"></path>
+    id="path613"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m119.21 208.99v-2.25h55.35v2.25h-55.35"
     fill-rule="evenodd"
-    id="path614"></path>
+    id="path614"
+  ></path>
   <g
     fill="none"
     stroke-linecap="round"
@@ -2835,21 +3178,25 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       clip-path="url(#clipPath1076)"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path626"></path>
+      id="path626"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g629">
     <path
       transform="scale(3.7795)"
       d="m118.85 206.74v0.675h0.108v0.36h0.252v-1.035h-0.36"
-      id="path627"></path>
+      id="path627"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m111.11 206.74v1.035h0.252v-0.36h0.108v-0.675h-0.36"
-      id="path628"></path>
+      id="path628"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m111.36 215.37h0.36v-7.596h-0.36v7.596"
-      id="path629"></path>
+      id="path629"
+    ></path>
   </g>
   <g
     fill="none"
@@ -2911,53 +3258,65 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m174.56 281.44v-7.2h3.6v10.8l-3.6-3.6"
-      id="path652"></path>
+      id="path652"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m178.16 141.94v9.45h-3.6v-9.45h3.6"
-      id="path653"></path>
+      id="path653"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m174.56 172.09v-7.2h3.6v7.2h-3.6"
-      id="path654"></path>
+      id="path654"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m174.56 216.64v-11.25h3.6v11.25h-3.6"
-      id="path655"></path>
+      id="path655"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m178.16 181.09v13.5h-3.6v-13.5h3.6"
-      id="path656"></path>
+      id="path656"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m174.56 258.04v-25.2h3.6v25.2h-3.6"
-      id="path657"></path>
+      id="path657"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m174.56 139.69v-1.8h3.6v1.8h-3.6"
-      id="path658"></path>
+      id="path658"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g663">
     <path
       transform="scale(3.7795)"
       d="m174.56 258.04h3.6v16.2h-3.6v-16.2"
-      id="path659"></path>
+      id="path659"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m174.56 216.64h3.6v16.2h-3.6v-16.2"
-      id="path660"></path>
+      id="path660"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m174.56 172.09h3.6v9h-3.6v-9"
-      id="path661"></path>
+      id="path661"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m174.56 194.59h3.6v10.8h-3.6v-10.8"
-      id="path662"></path>
+      id="path662"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m174.56 151.39h3.6v13.5h-3.6v-13.5"
-      id="path663"></path>
+      id="path663"
+    ></path>
   </g>
   <g
     fill="none"
@@ -3069,39 +3428,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m174.56 274.24v-16.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path712"></path>
+      id="path712"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m178.16 274.24v-16.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path713"></path>
+      id="path713"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g719">
     <path
       transform="scale(3.7795)"
       d="m176.81 274.24h0.45v-0.855h-0.45v0.855"
-      id="path714"></path>
+      id="path714"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m177.26 266.14h-0.45v0.45h0.45v-0.45"
-      id="path715"></path>
+      id="path715"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 273.39h0.45v-6.795h-0.45v6.795"
-      id="path716"></path>
+      id="path716"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 266.14h0.45v-0.45h-0.45v0.45"
-      id="path717"></path>
+      id="path717"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m177.26 258.04h-0.45v0.855h0.45v-0.855"
-      id="path718"></path>
+      id="path718"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 265.69h0.45v-6.795h-0.45v6.795"
-      id="path719"></path>
+      id="path719"
+    ></path>
   </g>
   <g
     fill="none"
@@ -3167,39 +3534,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m174.56 232.84v-16.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path744"></path>
+      id="path744"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m178.16 232.84v-16.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path745"></path>
+      id="path745"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g751">
     <path
       transform="scale(3.7795)"
       d="m176.81 232.84h0.45v-0.855h-0.45v0.855"
-      id="path746"></path>
+      id="path746"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m177.26 224.74h-0.45v0.45h0.45v-0.45"
-      id="path747"></path>
+      id="path747"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 231.99h0.45v-6.795h-0.45v6.795"
-      id="path748"></path>
+      id="path748"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 224.74h0.45v-0.45h-0.45v0.45"
-      id="path749"></path>
+      id="path749"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m177.26 216.64h-0.45v0.855h0.45v-0.855"
-      id="path750"></path>
+      id="path750"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 224.29h0.45v-6.795h-0.45v6.795"
-      id="path751"></path>
+      id="path751"
+    ></path>
   </g>
   <g
     fill="none"
@@ -3265,39 +3640,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m174.56 181.09v-9"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path776"></path>
+      id="path776"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m178.16 181.09v-9"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path777"></path>
+      id="path777"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g783">
     <path
       transform="scale(3.7795)"
       d="m176.81 181.09h0.45v-0.855h-0.45v0.855"
-      id="path778"></path>
+      id="path778"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m177.26 176.59h-0.45v0.45h0.45v-0.45"
-      id="path779"></path>
+      id="path779"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 180.24h0.45v-3.195h-0.45v3.195"
-      id="path780"></path>
+      id="path780"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 176.59h0.45v-0.45h-0.45v0.45"
-      id="path781"></path>
+      id="path781"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m177.26 172.09h-0.45v0.855h0.45v-0.855"
-      id="path782"></path>
+      id="path782"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 176.14h0.45v-3.195h-0.45v3.195"
-      id="path783"></path>
+      id="path783"
+    ></path>
   </g>
   <g
     fill="none"
@@ -3363,39 +3746,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m174.56 205.39v-10.8"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path808"></path>
+      id="path808"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m178.16 205.39v-10.8"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path809"></path>
+      id="path809"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g815">
     <path
       transform="scale(3.7795)"
       d="m176.81 205.39h0.45v-0.855h-0.45v0.855"
-      id="path810"></path>
+      id="path810"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m177.26 199.99h-0.45v0.45h0.45v-0.45"
-      id="path811"></path>
+      id="path811"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 204.54h0.45v-4.095h-0.45v4.095"
-      id="path812"></path>
+      id="path812"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 199.99h0.45v-0.45h-0.45v0.45"
-      id="path813"></path>
+      id="path813"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m177.26 194.59h-0.45v0.855h0.45v-0.855"
-      id="path814"></path>
+      id="path814"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 199.54h0.45v-4.095h-0.45v4.095"
-      id="path815"></path>
+      id="path815"
+    ></path>
   </g>
   <g
     fill="none"
@@ -3461,39 +3852,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m174.56 164.89v-13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path840"></path>
+      id="path840"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m178.16 164.89v-13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path841"></path>
+      id="path841"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g847">
     <path
       transform="scale(3.7795)"
       d="m176.81 164.89h0.45v-0.855h-0.45v0.855"
-      id="path842"></path>
+      id="path842"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m177.26 158.14h-0.45v0.45h0.45v-0.45"
-      id="path843"></path>
+      id="path843"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 164.04h0.45v-5.445h-0.45v5.445"
-      id="path844"></path>
+      id="path844"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 158.14h0.45v-0.45h-0.45v0.45"
-      id="path845"></path>
+      id="path845"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m177.26 151.39h-0.45v0.855h0.45v-0.855"
-      id="path846"></path>
+      id="path846"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.81 157.69h0.45v-5.445h-0.45v5.445"
-      id="path847"></path>
+      id="path847"
+    ></path>
   </g>
   <g
     fill="none"
@@ -3559,12 +3958,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m135.86 208.99h1.35v17.55h-1.35v-17.55"
     fill-rule="evenodd"
-    id="path872"></path>
+    id="path872"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m135.86 237.79v-3.15h1.35v0.9l-1.35 2.25"
     fill-rule="evenodd"
-    id="path873"></path>
+    id="path873"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -3597,27 +3998,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m137.21 226.77v-0.225h-1.35v0.225h1.35"
-      id="path884"></path>
+      id="path884"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.68 226.66h0.171v-0.63h-0.171v0.63"
-      id="path885"></path>
+      id="path885"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m137.21 234.64v-0.225h-1.35v0.225h1.35"
-      id="path886"></path>
+      id="path886"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.86 234.52h-0.171v0.63h0.171v-0.63"
-      id="path887"></path>
+      id="path887"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m137.21 226.66h0.171v-0.63h-0.171v0.63"
-      id="path888"></path>
+      id="path888"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m137.38 234.52h-0.171v0.63h0.171v-0.63"
-      id="path889"></path>
+      id="path889"
+    ></path>
   </g>
   <g
     fill="none"
@@ -3674,25 +4081,29 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m137.21 226.79c4.196 0 7.596 3.4 7.596 7.596"
       clip-path="url(#clipPath1365)"
-      id="path914"></path>
+      id="path914"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g919">
     <path
       transform="scale(3.7795)"
       d="m137.21 226.79h-0.36v0.108h0.36v-0.108"
-      id="path915"></path>
+      id="path915"
+    ></path>
     <path transform="scale(3.7795)" d="m137.21 226.79v-0.252 0.252" id="path916"
     ></path>
     <path
       transform="scale(3.7795)"
       d="m136.85 234.28v0.108h0.36v-0.108h-0.36"
-      id="path917"></path>
+      id="path917"
+    ></path>
     <path transform="scale(3.7795)" d="m137.21 234.64v-0.252 0.252" id="path918"
     ></path>
     <path
       transform="scale(3.7795)"
       d="m144.8 234.39v-0.36h-7.596v0.36h7.596"
-      id="path919"></path>
+      id="path919"
+    ></path>
   </g>
   <g
     fill="none"
@@ -3764,7 +4175,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m135.86 237.79 1.35-2.25h37.35v2.25h-38.7"
     fill-rule="evenodd"
-    id="path948"></path>
+    id="path948"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -3784,12 +4196,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m138.56 237.79h2.25v0.9h-2.25v-0.9"
     fill-rule="evenodd"
-    id="path952"></path>
+    id="path952"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m138.56 281.44v-34.65h2.25v34.65h-2.25"
     fill-rule="evenodd"
-    id="path953"></path>
+    id="path953"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -3823,27 +4237,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m140.81 246.57h-2.25v0.225h2.25v-0.225"
-      id="path965"></path>
+      id="path965"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m138.38 246.68v0.63h0.171v-0.63h-0.171"
-      id="path966"></path>
+      id="path966"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m140.81 238.69h-2.25v0.225h2.25v-0.225"
-      id="path967"></path>
+      id="path967"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m138.56 238.81v-0.63h-0.171v0.63h0.171"
-      id="path968"></path>
+      id="path968"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m140.81 246.68v0.63h0.171v-0.63h-0.171"
-      id="path969"></path>
+      id="path969"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m140.98 238.81v-0.63h-0.171v0.63h0.171"
-      id="path970"></path>
+      id="path970"
+    ></path>
   </g>
   <g
     fill="none"
@@ -3896,25 +4316,29 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m148.4 238.94c0 4.195-3.4 7.596-7.596 7.596"
       clip-path="url(#clipPath1447)"
-      id="path995"></path>
+      id="path995"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1000">
     <path
       transform="scale(3.7795)"
       d="m140.81 246.43h-0.36v0.108h0.36v-0.108"
-      id="path996"></path>
+      id="path996"
+    ></path>
     <path transform="scale(3.7795)" d="m140.81 246.79v-0.252 0.252" id="path997"
     ></path>
     <path
       transform="scale(3.7795)"
       d="m140.45 239.05h0.36v-0.108h-0.36v0.108"
-      id="path998"></path>
+      id="path998"
+    ></path>
     <path transform="scale(3.7795)" d="m140.81 238.94v-0.252 0.252" id="path999"
     ></path>
     <path
       transform="scale(3.7795)"
       d="m148.4 238.94h-7.596v0.36h7.596v-0.36"
-      id="path1000"></path>
+      id="path1000"
+    ></path>
   </g>
   <g
     fill="none"
@@ -3986,12 +4410,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m121.01 172.09v-32.4l2.25 2.25v30.15h-2.25"
     fill-rule="evenodd"
-    id="path1029"></path>
+    id="path1029"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m121.01 206.74v-26.55h2.25v26.55h-2.25"
     fill-rule="evenodd"
-    id="path1030"></path>
+    id="path1030"
+  ></path>
   <g
     fill="none"
     stroke-linecap="round"
@@ -4027,21 +4453,25 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       clip-path="url(#clipPath1494)"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1041"></path>
+      id="path1041"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1044">
     <path
       transform="scale(3.7795)"
       d="m122.22 172.45h0.675v-0.108h0.36v-0.252h-1.035v0.36"
-      id="path1042"></path>
+      id="path1042"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m122.22 180.19h1.035v-0.252h-0.36v-0.108h-0.675v0.36"
-      id="path1043"></path>
+      id="path1043"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m130.85 179.94v-0.36h-7.596v0.36h7.596"
-      id="path1044"></path>
+      id="path1044"
+    ></path>
   </g>
   <g
     fill="none"
@@ -4103,7 +4533,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m123.26 141.94-2.25-2.25h57.15v2.25h-54.9"
     fill-rule="evenodd"
-    id="path1067"></path>
+    id="path1067"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -4124,7 +4555,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m158.81 90.642 2.25 2.25h-54.45l3.6-2.25h48.6"
     fill-rule="evenodd"
-    id="path1071"></path>
+    id="path1071"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -4146,15 +4578,18 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m158.81 90.642v-18h2.25v20.25l-2.25-2.25"
-      id="path1076"></path>
+      id="path1076"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m161.06 60.492v4.05h-2.25v-4.05h2.25"
-      id="path1077"></path>
+      id="path1077"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m158.81 58.242v-42.3h2.25v42.3h-2.25"
-      id="path1078"></path>
+      id="path1078"
+    ></path>
   </g>
   <g
     fill="none"
@@ -4191,21 +4626,25 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       clip-path="url(#clipPath1543)"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1089"></path>
+      id="path1089"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1092">
     <path
       transform="scale(3.7795)"
       d="m159.84 64.902v-0.36h-1.035v0.252h0.36v0.108h0.675"
-      id="path1090"></path>
+      id="path1090"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m159.84 72.642v-0.36h-0.675v0.108h-0.36v0.252h1.035"
-      id="path1091"></path>
+      id="path1091"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m151.21 72.39h7.596v-0.36h-7.596v0.36"
-      id="path1092"></path>
+      id="path1092"
+    ></path>
   </g>
   <g
     fill="none"
@@ -4267,28 +4706,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m110.21 15.942v44.55h-3.6v-48.15l3.6 3.6"
-      id="path1115"></path>
+      id="path1115"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 83.442v-15.75h3.6v15.75h-3.6"
-      id="path1116"></path>
+      id="path1116"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 92.892v-2.25h3.6l-3.6 2.25"
-      id="path1117"></path>
+      id="path1117"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
     d="m110.21 83.442v7.2h-3.6v-7.2h3.6"
     fill="#fff"
     fill-rule="evenodd"
-    id="path1118"></path>
+    id="path1118"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m110.21 60.492v7.2h-3.6v-7.2h3.6"
     fill="#fff"
     fill-rule="evenodd"
-    id="path1119"></path>
+    id="path1119"
+  ></path>
   <g
     fill="none"
     stroke-linecap="round"
@@ -4341,27 +4785,32 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m110.21 90.642v-7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1139"></path>
+      id="path1139"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 90.642v-7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1140"></path>
+      id="path1140"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1143">
     <path
       transform="scale(3.7795)"
       d="m107.96 90.642v-0.855h-0.45v0.855h0.45"
-      id="path1141"></path>
+      id="path1141"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.51 83.442v0.855h0.45v-0.855h-0.45"
-      id="path1142"></path>
+      id="path1142"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.96 89.787v-5.49h-0.45v5.49h0.45"
-      id="path1143"></path>
+      id="path1143"
+    ></path>
   </g>
   <g
     fill="none"
@@ -4411,27 +4860,32 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m110.21 67.692v-7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1160"></path>
+      id="path1160"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m106.61 67.692v-7.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1161"></path>
+      id="path1161"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1164">
     <path
       transform="scale(3.7795)"
       d="m107.96 67.692v-0.855h-0.45v0.855h0.45"
-      id="path1162"></path>
+      id="path1162"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.51 60.492v0.855h0.45v-0.855h-0.45"
-      id="path1163"></path>
+      id="path1163"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m107.96 66.837v-5.49h-0.45v5.49h0.45"
-      id="path1164"></path>
+      id="path1164"
+    ></path>
   </g>
   <g
     fill="none"
@@ -4481,65 +4935,80 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m106.61 12.342h29.7v3.6h-26.1l-3.6-3.6"
-      id="path1181"></path>
+      id="path1181"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m152.51 15.942v-3.6h13.5v3.6h-13.5"
-      id="path1182"></path>
+      id="path1182"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m179.51 15.942v-3.6h12.15v3.6h-12.15"
-      id="path1183"></path>
+      id="path1183"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m200.66 15.942v-3.6h19.35v3.6h-19.35"
-      id="path1184"></path>
+      id="path1184"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m230.81 15.942v-3.6h19.35v3.6h-19.35"
-      id="path1185"></path>
+      id="path1185"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m266.36 12.342h13.05v3.6h-13.05v-3.6"
-      id="path1186"></path>
+      id="path1186"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m288.41 15.942v-3.6h11.7v3.6h-11.7"
-      id="path1187"></path>
+      id="path1187"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m313.61 15.942v-3.6h8.1v3.6h-8.1"
-      id="path1188"></path>
+      id="path1188"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1195">
     <path
       transform="scale(3.7795)"
       d="m152.51 15.942h-16.2v-3.6h16.2v3.6"
-      id="path1189"></path>
+      id="path1189"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m179.51 15.942h-13.5v-3.6h13.5v3.6"
-      id="path1190"></path>
+      id="path1190"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m200.66 15.942h-9v-3.6h9v3.6"
-      id="path1191"></path>
+      id="path1191"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m230.81 15.942h-10.8v-3.6h10.8v3.6"
-      id="path1192"></path>
+      id="path1192"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m266.36 12.342v3.6h-16.2v-3.6h16.2"
-      id="path1193"></path>
+      id="path1193"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m288.41 15.942h-9v-3.6h9v3.6"
-      id="path1194"></path>
+      id="path1194"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m313.61 15.942h-13.5v-3.6h13.5v3.6"
-      id="path1195"></path>
+      id="path1195"
+    ></path>
   </g>
   <g
     fill="none"
@@ -4682,39 +5151,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m136.31 15.942h16.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1260"></path>
+      id="path1260"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.31 12.342h16.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1261"></path>
+      id="path1261"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1267">
     <path
       transform="scale(3.7795)"
       d="m136.31 13.692h0.855v-0.45h-0.855v0.45"
-      id="path1262"></path>
+      id="path1262"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m144.41 13.242h-0.45v0.45h0.45v-0.45"
-      id="path1263"></path>
+      id="path1263"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m137.16 13.692h6.795v-0.45h-6.795v0.45"
-      id="path1264"></path>
+      id="path1264"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m144.41 13.692h0.45v-0.45h-0.45v0.45"
-      id="path1265"></path>
+      id="path1265"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m152.51 13.242h-0.855v0.45h0.855v-0.45"
-      id="path1266"></path>
+      id="path1266"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m144.86 13.692h6.795v-0.45h-6.795v0.45"
-      id="path1267"></path>
+      id="path1267"
+    ></path>
   </g>
   <g
     fill="none"
@@ -4780,39 +5257,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m166.01 15.942h13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1292"></path>
+      id="path1292"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m166.01 12.342h13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1293"></path>
+      id="path1293"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1299">
     <path
       transform="scale(3.7795)"
       d="m166.01 13.692h0.855v-0.45h-0.855v0.45"
-      id="path1294"></path>
+      id="path1294"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m172.76 13.242h-0.45v0.45h0.45v-0.45"
-      id="path1295"></path>
+      id="path1295"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m166.86 13.692h5.445v-0.45h-5.445v0.45"
-      id="path1296"></path>
+      id="path1296"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m172.76 13.692h0.45v-0.45h-0.45v0.45"
-      id="path1297"></path>
+      id="path1297"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m179.51 13.242h-0.855v0.45h0.855v-0.45"
-      id="path1298"></path>
+      id="path1298"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m173.21 13.692h5.445v-0.45h-5.445v0.45"
-      id="path1299"></path>
+      id="path1299"
+    ></path>
   </g>
   <g
     fill="none"
@@ -4878,39 +5363,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m191.66 15.942h9"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1324"></path>
+      id="path1324"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m191.66 12.342h9"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1325"></path>
+      id="path1325"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1331">
     <path
       transform="scale(3.7795)"
       d="m191.66 13.692h0.675v-0.45h-0.675v0.45"
-      id="path1326"></path>
+      id="path1326"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m196.16 13.242h-0.45v0.45h0.45v-0.45"
-      id="path1327"></path>
+      id="path1327"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m192.33 13.692h3.375v-0.45h-3.375v0.45"
-      id="path1328"></path>
+      id="path1328"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m196.16 13.692h0.45v-0.45h-0.45v0.45"
-      id="path1329"></path>
+      id="path1329"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m200.66 13.242h-0.675v0.45h0.675v-0.45"
-      id="path1330"></path>
+      id="path1330"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m196.61 13.692h3.375v-0.45h-3.375v0.45"
-      id="path1331"></path>
+      id="path1331"
+    ></path>
   </g>
   <g
     fill="none"
@@ -4976,39 +5469,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m220.01 15.942h10.8"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1356"></path>
+      id="path1356"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m220.01 12.342h10.8"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1357"></path>
+      id="path1357"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1363">
     <path
       transform="scale(3.7795)"
       d="m220.01 13.692h0.855v-0.45h-0.855v0.45"
-      id="path1358"></path>
+      id="path1358"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m225.41 13.242h-0.45v0.45h0.45v-0.45"
-      id="path1359"></path>
+      id="path1359"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m220.86 13.692h4.095v-0.45h-4.095v0.45"
-      id="path1360"></path>
+      id="path1360"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m225.41 13.692h0.45v-0.45h-0.45v0.45"
-      id="path1361"></path>
+      id="path1361"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m230.81 13.242h-0.855v0.45h0.855v-0.45"
-      id="path1362"></path>
+      id="path1362"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m225.86 13.692h4.095v-0.45h-4.095v0.45"
-      id="path1363"></path>
+      id="path1363"
+    ></path>
   </g>
   <g
     fill="none"
@@ -5074,39 +5575,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m250.16 12.342h16.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1388"></path>
+      id="path1388"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m250.16 15.942h16.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1389"></path>
+      id="path1389"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1395">
     <path
       transform="scale(3.7795)"
       d="m250.16 14.592v0.45h0.855v-0.45h-0.855"
-      id="path1390"></path>
+      id="path1390"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m258.26 15.042v-0.45h-0.45v0.45h0.45"
-      id="path1391"></path>
+      id="path1391"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m251.01 14.592v0.45h6.795v-0.45h-6.795"
-      id="path1392"></path>
+      id="path1392"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m258.26 14.592v0.45h0.45v-0.45h-0.45"
-      id="path1393"></path>
+      id="path1393"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m266.36 15.042v-0.45h-0.855v0.45h0.855"
-      id="path1394"></path>
+      id="path1394"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m258.71 14.592v0.45h6.795v-0.45h-6.795"
-      id="path1395"></path>
+      id="path1395"
+    ></path>
   </g>
   <g
     fill="none"
@@ -5172,39 +5681,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m279.41 15.942h9"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1420"></path>
+      id="path1420"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m279.41 12.342h9"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1421"></path>
+      id="path1421"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1427">
     <path
       transform="scale(3.7795)"
       d="m279.41 13.692h0.675v-0.45h-0.675v0.45"
-      id="path1422"></path>
+      id="path1422"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m283.91 13.242h-0.45v0.45h0.45v-0.45"
-      id="path1423"></path>
+      id="path1423"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m280.08 13.692h3.375v-0.45h-3.375v0.45"
-      id="path1424"></path>
+      id="path1424"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m283.91 13.692h0.45v-0.45h-0.45v0.45"
-      id="path1425"></path>
+      id="path1425"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m288.41 13.242h-0.675v0.45h0.675v-0.45"
-      id="path1426"></path>
+      id="path1426"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m284.36 13.692h3.375v-0.45h-3.375v0.45"
-      id="path1427"></path>
+      id="path1427"
+    ></path>
   </g>
   <g
     fill="none"
@@ -5270,39 +5787,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m300.11 15.942h13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1452"></path>
+      id="path1452"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m300.11 12.342h13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1453"></path>
+      id="path1453"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1459">
     <path
       transform="scale(3.7795)"
       d="m300.11 13.692h0.855v-0.45h-0.855v0.45"
-      id="path1454"></path>
+      id="path1454"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m306.86 13.242h-0.45v0.45h0.45v-0.45"
-      id="path1455"></path>
+      id="path1455"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m300.96 13.692h5.445v-0.45h-5.445v0.45"
-      id="path1456"></path>
+      id="path1456"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m306.86 13.692h0.45v-0.45h-0.45v0.45"
-      id="path1457"></path>
+      id="path1457"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m313.61 13.242h-0.855v0.45h0.855v-0.45"
-      id="path1458"></path>
+      id="path1458"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m307.31 13.692h5.445v-0.45h-5.445v0.45"
-      id="path1459"></path>
+      id="path1459"
+    ></path>
   </g>
   <g
     fill="none"
@@ -5368,15 +5893,18 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m149.81 58.242h58.05v2.25h-58.05v-2.25"
-      id="path1484"></path>
+      id="path1484"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m215.96 58.242h68.4v2.25h-68.4v-2.25"
-      id="path1485"></path>
+      id="path1485"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.46 58.242h29.25v2.25h-29.25v-2.25"
-      id="path1486"></path>
+      id="path1486"
+    ></path>
   </g>
   <g
     fill="none"
@@ -5442,21 +5970,25 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       clip-path="url(#clipPath1967)"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1512"></path>
+      id="path1512"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1515">
     <path
       transform="scale(3.7795)"
       d="m215.6 59.277h0.36v-1.035h-0.252v0.36h-0.108v0.675"
-      id="path1513"></path>
+      id="path1513"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.86 59.277h0.36v-0.675h-0.108v-0.36h-0.252v1.035"
-      id="path1514"></path>
+      id="path1514"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m208.11 50.646v7.596h0.36v-7.596h-0.36"
-      id="path1515"></path>
+      id="path1515"
+    ></path>
   </g>
   <g
     fill="none"
@@ -5518,27 +6050,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m284.58 58.242h-0.225v2.2491h0.225v-2.2491"
-      id="path1538"></path>
+      id="path1538"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m284.47 60.663v-0.171h-0.63v0.171h0.63"
-      id="path1539"></path>
+      id="path1539"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.46 58.242h-0.225v2.2491h0.225v-2.2491"
-      id="path1540"></path>
+      id="path1540"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.34 60.492v0.171h0.63v-0.171h-0.63"
-      id="path1541"></path>
+      id="path1541"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m284.47 58.242v-0.171h-0.63v0.171h0.63"
-      id="path1542"></path>
+      id="path1542"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.34 58.071v0.171h0.63v-0.171h-0.63"
-      id="path1543"></path>
+      id="path1543"
+    ></path>
   </g>
   <g
     fill="none"
@@ -5601,29 +6139,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m284.61 58.242c0-4.1951 3.401-7.596 7.596-7.596"
       clip-path="url(#clipPath2024)"
-      id="path1568"></path>
+      id="path1568"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1573">
     <path
       transform="scale(3.7795)"
       d="m284.61 58.242h-0.252v9e-4h0.252v-9e-4"
-      id="path1569"></path>
+      id="path1569"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m284.61 58.242v0.3591h0.108v-0.3591h-0.108"
-      id="path1570"></path>
+      id="path1570"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.1 58.602h0.108v-0.3591h-0.108v0.3591"
-      id="path1571"></path>
+      id="path1571"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.2 58.242v9e-4h0.252v-9e-4h-0.252"
-      id="path1572"></path>
+      id="path1572"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.2 50.646h-0.36v7.596h0.36v-7.596"
-      id="path1573"></path>
+      id="path1573"
+    ></path>
   </g>
   <g
     fill="none"
@@ -5697,7 +6241,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m139.46 73.542v1.35h-29.25v-1.35h29.25"
     fill-rule="evenodd"
-    id="path1602"></path>
+    id="path1602"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m139.46 73.542h-29.25"
@@ -5707,7 +6252,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path1603"></path>
+    id="path1603"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m110.21 74.892h29.25"
@@ -5717,17 +6263,20 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path1604"></path>
+    id="path1604"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m139.46 83.442h1.35v7.2h-1.35v-7.2"
     fill-rule="evenodd"
-    id="path1605"></path>
+    id="path1605"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m140.81 58.242v18h-1.35v-18h1.35"
     fill-rule="evenodd"
-    id="path1606"></path>
+    id="path1606"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -5764,27 +6313,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m139.46 83.217v0.225h1.349v-0.225h-1.349"
-      id="path1619"></path>
+      id="path1619"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m140.98 83.325h-0.171v0.63h0.171v-0.63"
-      id="path1620"></path>
+      id="path1620"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.46 76.242v0.225h1.349v-0.225h-1.349"
-      id="path1621"></path>
+      id="path1621"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m140.81 76.359h0.171v-0.63h-0.171v0.63"
-      id="path1622"></path>
+      id="path1622"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.46 83.325h-0.171v0.63h0.171v-0.63"
-      id="path1623"></path>
+      id="path1623"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.28 76.359h0.171v-0.63h-0.171v0.63"
-      id="path1624"></path>
+      id="path1624"
+    ></path>
   </g>
   <g
     fill="none"
@@ -5847,29 +6402,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m139.46 83.19c-3.698 0-6.696-2.9979-6.696-6.696"
       clip-path="url(#clipPath2106)"
-      id="path1649"></path>
+      id="path1649"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1654">
     <path
       transform="scale(3.7795)"
       d="m139.46 83.19v0.252h1e-3v-0.252h-1e-3"
-      id="path1650"></path>
+      id="path1650"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.82 83.082h-0.359v0.108h0.359v-0.108"
-      id="path1651"></path>
+      id="path1651"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.46 76.494h1e-3v-0.252h-1e-3v0.252"
-      id="path1652"></path>
+      id="path1652"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.82 76.494h-0.359v0.108h0.359v-0.108"
-      id="path1653"></path>
+      id="path1653"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m132.76 76.494v0.36h6.696v-0.36h-6.696"
-      id="path1654"></path>
+      id="path1654"
+    ></path>
   </g>
   <g
     fill="none"
@@ -5943,7 +6504,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m174.11 125.74-2.25 3.6v-58.05l2.25 2.25v52.2"
     fill-rule="evenodd"
-    id="path1683"></path>
+    id="path1683"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m174.11 125.74v-52.2"
@@ -5953,7 +6515,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path1684"></path>
+    id="path1684"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m171.86 71.292v58.05"
@@ -5963,17 +6526,20 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path1685"></path>
+    id="path1685"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m171.86 71.292h36.45v2.25h-34.2l-2.25-2.25"
     fill-rule="evenodd"
-    id="path1686"></path>
+    id="path1686"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m246.11 71.292v2.25h-29.7v-2.25h29.7"
     fill-rule="evenodd"
-    id="path1687"></path>
+    id="path1687"
+  ></path>
   <g
     fill="none"
     stroke-linecap="round"
@@ -6009,21 +6575,25 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       clip-path="url(#clipPath2156)"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1698"></path>
+      id="path1698"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1701">
     <path
       transform="scale(3.7795)"
       d="m216.05 72.507v0.675h0.108v0.36h0.252v-1.035h-0.36"
-      id="path1699"></path>
+      id="path1699"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m208.31 72.507v1.035h0.252v-0.36h0.108v-0.675h-0.36"
-      id="path1700"></path>
+      id="path1700"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m208.56 81.138h0.36v-7.596h-0.36v7.596"
-      id="path1701"></path>
+      id="path1701"
+    ></path>
   </g>
   <g
     fill="none"
@@ -6085,12 +6655,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m204.26 73.542h2.25v6.39h-2.25v-6.39"
     fill-rule="evenodd"
-    id="path1724"></path>
+    id="path1724"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m204.26 99.192v-10.26h2.25v8.91l-2.25 1.35"
     fill-rule="evenodd"
-    id="path1725"></path>
+    id="path1725"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -6121,57 +6693,70 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m174.11 125.74h10.35v3.6h-12.6l2.25-3.6"
-      id="path1734"></path>
+      id="path1734"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m200.66 125.74h7.2v3.6h-7.2v-3.6"
-      id="path1735"></path>
+      id="path1735"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m216.86 125.74h12.15v3.6h-12.15v-3.6"
-      id="path1736"></path>
+      id="path1736"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m239.81 125.74h14.85v3.6h-14.85v-3.6"
-      id="path1737"></path>
+      id="path1737"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m268.16 125.74h4.95v3.6h-4.95v-3.6"
-      id="path1738"></path>
+      id="path1738"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m286.61 125.74h13.5v3.6h-13.5v-3.6"
-      id="path1739"></path>
+      id="path1739"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m313.61 125.74h8.1l2.25 3.6h-10.35v-3.6"
-      id="path1740"></path>
+      id="path1740"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1746">
     <path
       transform="scale(3.7795)"
       d="m200.66 125.74v3.6h-16.2v-3.6h16.2"
-      id="path1741"></path>
+      id="path1741"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m216.86 125.74v3.6h-9v-3.6h9"
-      id="path1742"></path>
+      id="path1742"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m239.81 125.74v3.6h-10.8v-3.6h10.8"
-      id="path1743"></path>
+      id="path1743"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m268.16 125.74v3.6h-13.5v-3.6h13.5"
-      id="path1744"></path>
+      id="path1744"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m286.61 125.74v3.6h-13.5v-3.6h13.5"
-      id="path1745"></path>
+      id="path1745"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m313.61 125.74v3.6h-13.5v-3.6h13.5"
-      id="path1746"></path>
+      id="path1746"
+    ></path>
   </g>
   <g
     fill="none"
@@ -6295,39 +6880,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m184.46 125.74h16.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1801"></path>
+      id="path1801"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m184.46 129.34h16.2"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1802"></path>
+      id="path1802"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1808">
     <path
       transform="scale(3.7795)"
       d="m184.46 127.99v0.45h0.855v-0.45h-0.855"
-      id="path1803"></path>
+      id="path1803"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m192.56 128.44v-0.45h-0.45v0.45h0.45"
-      id="path1804"></path>
+      id="path1804"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m185.31 127.99v0.45h6.795v-0.45h-6.795"
-      id="path1805"></path>
+      id="path1805"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m192.56 127.99v0.45h0.45v-0.45h-0.45"
-      id="path1806"></path>
+      id="path1806"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m200.66 128.44v-0.45h-0.855v0.45h0.855"
-      id="path1807"></path>
+      id="path1807"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m193.01 127.99v0.45h6.795v-0.45h-6.795"
-      id="path1808"></path>
+      id="path1808"
+    ></path>
   </g>
   <g
     fill="none"
@@ -6393,39 +6986,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m207.86 125.74h9"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1833"></path>
+      id="path1833"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m207.86 129.34h9"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1834"></path>
+      id="path1834"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1840">
     <path
       transform="scale(3.7795)"
       d="m207.86 127.99v0.45h0.675v-0.45h-0.675"
-      id="path1835"></path>
+      id="path1835"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m212.36 128.44v-0.45h-0.45v0.45h0.45"
-      id="path1836"></path>
+      id="path1836"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m208.53 127.99v0.45h3.375v-0.45h-3.375"
-      id="path1837"></path>
+      id="path1837"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m212.36 127.99v0.45h0.45v-0.45h-0.45"
-      id="path1838"></path>
+      id="path1838"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m216.86 128.44v-0.45h-0.675v0.45h0.675"
-      id="path1839"></path>
+      id="path1839"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m212.81 127.99v0.45h3.375v-0.45h-3.375"
-      id="path1840"></path>
+      id="path1840"
+    ></path>
   </g>
   <g
     fill="none"
@@ -6491,39 +7092,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m229.01 125.74h10.8"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1865"></path>
+      id="path1865"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m229.01 129.34h10.8"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1866"></path>
+      id="path1866"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1872">
     <path
       transform="scale(3.7795)"
       d="m229.01 128.44h0.855v-0.45h-0.855v0.45"
-      id="path1867"></path>
+      id="path1867"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m234.41 127.99h-0.45v0.45h0.45v-0.45"
-      id="path1868"></path>
+      id="path1868"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m229.86 128.44h4.095v-0.45h-4.095v0.45"
-      id="path1869"></path>
+      id="path1869"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m234.41 128.44h0.45v-0.45h-0.45v0.45"
-      id="path1870"></path>
+      id="path1870"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m239.81 127.99h-0.855v0.45h0.855v-0.45"
-      id="path1871"></path>
+      id="path1871"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m234.86 128.44h4.095v-0.45h-4.095v0.45"
-      id="path1872"></path>
+      id="path1872"
+    ></path>
   </g>
   <g
     fill="none"
@@ -6589,39 +7198,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m254.66 125.74h13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1897"></path>
+      id="path1897"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m254.66 129.34h13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1898"></path>
+      id="path1898"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1904">
     <path
       transform="scale(3.7795)"
       d="m254.66 127.99v0.45h0.855v-0.45h-0.855"
-      id="path1899"></path>
+      id="path1899"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m261.41 128.44v-0.45h-0.45v0.45h0.45"
-      id="path1900"></path>
+      id="path1900"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m255.51 127.99v0.45h5.445v-0.45h-5.445"
-      id="path1901"></path>
+      id="path1901"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m261.41 127.99v0.45h0.45v-0.45h-0.45"
-      id="path1902"></path>
+      id="path1902"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m268.16 128.44v-0.45h-0.855v0.45h0.855"
-      id="path1903"></path>
+      id="path1903"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m261.86 127.99v0.45h5.445v-0.45h-5.445"
-      id="path1904"></path>
+      id="path1904"
+    ></path>
   </g>
   <g
     fill="none"
@@ -6687,39 +7304,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m273.11 125.74h13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1929"></path>
+      id="path1929"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m273.11 129.34h13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1930"></path>
+      id="path1930"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1936">
     <path
       transform="scale(3.7795)"
       d="m273.11 127.99v0.45h0.855v-0.45h-0.855"
-      id="path1931"></path>
+      id="path1931"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m279.86 128.44v-0.45h-0.45v0.45h0.45"
-      id="path1932"></path>
+      id="path1932"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m273.96 127.99v0.45h5.445v-0.45h-5.445"
-      id="path1933"></path>
+      id="path1933"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m279.86 127.99v0.45h0.45v-0.45h-0.45"
-      id="path1934"></path>
+      id="path1934"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m286.61 128.44v-0.45h-0.855v0.45h0.855"
-      id="path1935"></path>
+      id="path1935"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m280.31 127.99v0.45h5.445v-0.45h-5.445"
-      id="path1936"></path>
+      id="path1936"
+    ></path>
   </g>
   <g
     fill="none"
@@ -6785,39 +7410,47 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m300.11 125.74h13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1961"></path>
+      id="path1961"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m300.11 129.34h13.5"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path1962"></path>
+      id="path1962"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g1968">
     <path
       transform="scale(3.7795)"
       d="m300.11 127.99v0.45h0.855v-0.45h-0.855"
-      id="path1963"></path>
+      id="path1963"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m306.86 128.44v-0.45h-0.45v0.45h0.45"
-      id="path1964"></path>
+      id="path1964"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m300.96 127.99v0.45h5.445v-0.45h-5.445"
-      id="path1965"></path>
+      id="path1965"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m306.86 127.99v0.45h0.45v-0.45h-0.45"
-      id="path1966"></path>
+      id="path1966"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m313.61 128.44v-0.45h-0.855v0.45h0.855"
-      id="path1967"></path>
+      id="path1967"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m307.31 127.99v0.45h5.445v-0.45h-5.445"
-      id="path1968"></path>
+      id="path1968"
+    ></path>
   </g>
   <g
     fill="none"
@@ -6883,12 +7516,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m248.36 69.492v56.25h-2.25v-56.25h2.25"
     fill-rule="evenodd"
-    id="path1993"></path>
+    id="path1993"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m248.36 60.492v0.9h-2.25v-0.9h2.25"
     fill-rule="evenodd"
-    id="path1994"></path>
+    id="path1994"
+  ></path>
   <g
     fill="none"
     stroke-linecap="round"
@@ -6928,21 +7563,25 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       clip-path="url(#clipPath2466)"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path2007"></path>
+      id="path2007"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2010">
     <path
       transform="scale(3.7795)"
       d="m246.11 69.132v0.36h1.035v-0.252h-0.36v-0.108h-0.675"
-      id="path2008"></path>
+      id="path2008"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m246.11 61.392v0.36h0.675v-0.108h0.36v-0.252h-1.035"
-      id="path2009"></path>
+      id="path2009"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m254.74 61.644h-7.596v0.36h7.596v-0.36"
-      id="path2010"></path>
+      id="path2010"
+    ></path>
   </g>
   <g
     fill="none"
@@ -7004,7 +7643,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m220.37 97.842 1.35 1.35h-17.46l2.25-1.35h13.86"
     fill-rule="evenodd"
-    id="path2033"></path>
+    id="path2033"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m220.37 97.842h-13.86"
@@ -7014,7 +7654,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2034"></path>
+    id="path2034"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m204.26 99.192h16.11"
@@ -7024,20 +7665,24 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2035"></path>
+    id="path2035"
+  ></path>
   <g fill-rule="evenodd" id="g2038">
     <path
       transform="scale(3.7795)"
       d="m221.72 73.542v5.67h-1.35v-5.67h1.35"
-      id="path2036"></path>
+      id="path2036"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m220.37 97.842v-0.675h1.35v2.025l-1.35-1.35"
-      id="path2037"></path>
+      id="path2037"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.72 86.412v2.655h-1.35v-2.655h1.35"
-      id="path2038"></path>
+      id="path2038"
+    ></path>
   </g>
   <g
     fill="none"
@@ -7089,27 +7734,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m221.72 79.437v-0.225h-1.35v0.225h1.35"
-      id="path2057"></path>
+      id="path2057"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m220.2 79.329h0.171v-0.63h-0.171v0.63"
-      id="path2058"></path>
+      id="path2058"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.72 86.412v-0.225h-1.35v0.225h1.35"
-      id="path2059"></path>
+      id="path2059"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m220.37 86.295h-0.171v0.63h0.171v-0.63"
-      id="path2060"></path>
+      id="path2060"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.72 79.329h0.171v-0.63h-0.171v0.63"
-      id="path2061"></path>
+      id="path2061"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.89 86.295h-0.171v0.63h0.171v-0.63"
-      id="path2062"></path>
+      id="path2062"
+    ></path>
   </g>
   <g
     fill="none"
@@ -7172,29 +7823,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m221.72 79.464c3.699 0 6.696 2.9979 6.696 6.696"
       clip-path="url(#clipPath2547)"
-      id="path2087"></path>
+      id="path2087"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2092">
     <path
       transform="scale(3.7795)"
       d="m221.72 79.464h-0.36v0.108h0.36v-0.108"
-      id="path2088"></path>
+      id="path2088"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.72 79.464v-0.252 0.252"
-      id="path2089"></path>
+      id="path2089"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.36 86.052v0.108h0.36v-0.108h-0.36"
-      id="path2090"></path>
+      id="path2090"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.72 86.412v-0.252 0.252"
-      id="path2091"></path>
+      id="path2091"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m228.41 86.16v-0.36h-6.696v0.36h6.696"
-      id="path2092"></path>
+      id="path2092"
+    ></path>
   </g>
   <g
     fill="none"
@@ -7266,27 +7923,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m221.72 96.942h-1.35v0.225h1.35v-0.225"
-      id="path2121"></path>
+      id="path2121"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m220.2 97.05v0.63h0.171v-0.63h-0.171"
-      id="path2122"></path>
+      id="path2122"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.72 89.067h-1.35v0.225h1.35v-0.225"
-      id="path2123"></path>
+      id="path2123"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m220.37 89.184v-0.63h-0.171v0.63h0.171"
-      id="path2124"></path>
+      id="path2124"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.72 97.05v0.63h0.171v-0.63h-0.171"
-      id="path2125"></path>
+      id="path2125"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.89 89.184v-0.63h-0.171v0.63h0.171"
-      id="path2126"></path>
+      id="path2126"
+    ></path>
   </g>
   <g
     fill="none"
@@ -7345,29 +8008,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m229.31 89.319c0 4.1952-3.4 7.596-7.596 7.596"
       clip-path="url(#clipPath2612)"
-      id="path2151"></path>
+      id="path2151"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2156">
     <path
       transform="scale(3.7795)"
       d="m221.72 96.807h-0.36v0.108h0.36v-0.108"
-      id="path2152"></path>
+      id="path2152"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.72 97.167v-0.252 0.252"
-      id="path2153"></path>
+      id="path2153"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.36 89.427h0.36v-0.108h-0.36v0.108"
-      id="path2154"></path>
+      id="path2154"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m221.72 89.319v-0.252 0.252"
-      id="path2155"></path>
+      id="path2155"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m229.31 89.319h-7.596v0.36h7.596v-0.36"
-      id="path2156"></path>
+      id="path2156"
+    ></path>
   </g>
   <g
     fill="none"
@@ -7439,7 +8108,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m220.46 88.392v-1.35h25.65v1.35h-25.65"
     fill-rule="evenodd"
-    id="path2185"></path>
+    id="path2185"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7460,7 +8130,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m206.51 125.74h-2.25v-5.4h2.25v5.4"
     fill-rule="evenodd"
-    id="path2189"></path>
+    id="path2189"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7480,7 +8151,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m220.37 99.192h1.35v26.55h-1.35v-26.55"
     fill-rule="evenodd"
-    id="path2193"></path>
+    id="path2193"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m220.37 99.192v26.55"
@@ -7490,7 +8162,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2194"></path>
+    id="path2194"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m221.72 125.74v-26.55"
@@ -7500,12 +8173,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2195"></path>
+    id="path2195"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m277.61 58.242h-2.25v-42.3h2.25v42.3"
     fill-rule="evenodd"
-    id="path2196"></path>
+    id="path2196"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7526,7 +8201,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m123.26 123.49h-2.25v-30.6h2.25v30.6"
     fill-rule="evenodd"
-    id="path2200"></path>
+    id="path2200"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7547,12 +8223,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m171.86 129.34h3.6v0.45h-3.6v-0.45"
     fill-rule="evenodd"
-    id="path2204"></path>
+    id="path2204"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m171.86 139.69v-1.8h3.6v1.8h-3.6"
     fill-rule="evenodd"
-    id="path2205"></path>
+    id="path2205"
+  ></path>
   <g
     fill="none"
     stroke-linecap="round"
@@ -7590,21 +8268,25 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       clip-path="url(#clipPath2679)"
       stroke="#7f7f7f"
       stroke-width=".15"
-      id="path2217"></path>
+      id="path2217"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2220">
     <path
       transform="scale(3.7795)"
       d="m173.07 137.53v0.36h1.035v-0.252h-0.36v-0.108h-0.675"
-      id="path2218"></path>
+      id="path2218"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m173.07 129.79v0.36h0.675v-0.108h0.36v-0.252h-1.035"
-      id="path2219"></path>
+      id="path2219"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m181.7 130.04h-7.596v0.36h7.596v-0.36"
-      id="path2220"></path>
+      id="path2220"
+    ></path>
   </g>
   <g
     fill="none"
@@ -7670,7 +8352,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m135.41 123.49h-1.35v-19.8l1.35 2.25v17.55"
     fill-rule="evenodd"
-    id="path2245"></path>
+    id="path2245"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7693,7 +8376,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m150.26 123.49h-1.35v-2.25l1.35-1.35v3.6"
     fill-rule="evenodd"
-    id="path2250"></path>
+    id="path2250"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7714,7 +8398,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m150.26 119.89-1.35 1.35h-13.5v-1.35h14.85"
     fill-rule="evenodd"
-    id="path2254"></path>
+    id="path2254"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m150.26 119.89h-14.85"
@@ -7724,7 +8409,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2255"></path>
+    id="path2255"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m135.41 121.24h13.5"
@@ -7734,12 +8420,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2256"></path>
+    id="path2256"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m135.41 105.94-1.35-2.25h16.2v2.25h-14.85"
     fill-rule="evenodd"
-    id="path2257"></path>
+    id="path2257"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7760,7 +8448,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m323.96 129.34-2.25-3.6v-113.4h2.25v117"
     fill-rule="evenodd"
-    id="path2261"></path>
+    id="path2261"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7785,7 +8474,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m295.61 125.74h-2.25v-52.2l2.25-2.25v54.45"
     fill-rule="evenodd"
-    id="path2267"></path>
+    id="path2267"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7806,12 +8496,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m263.66 71.292h1.35v2.25l-1.35-2.25"
     fill-rule="evenodd"
-    id="path2271"></path>
+    id="path2271"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m295.61 71.292-2.25 2.25h-18v-2.25h20.25"
     fill-rule="evenodd"
-    id="path2272"></path>
+    id="path2272"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7839,12 +8531,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m295.61 84.792v-2.25h0.9v2.25h-0.9"
     fill-rule="evenodd"
-    id="path2280"></path>
+    id="path2280"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m304.61 84.792v-2.25h17.1v2.25h-17.1"
     fill-rule="evenodd"
-    id="path2281"></path>
+    id="path2281"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -7880,27 +8574,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m304.38 84.791h0.225v-2.2491h-0.225v2.2491"
-      id="path2293"></path>
+      id="path2293"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m304.49 82.371v0.171h0.63v-0.171h-0.63"
-      id="path2294"></path>
+      id="path2294"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m296.51 84.791h0.225v-2.2491h-0.225v2.2491"
-      id="path2295"></path>
+      id="path2295"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m296.62 82.542v-0.171h-0.63v0.171h0.63"
-      id="path2296"></path>
+      id="path2296"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m304.49 84.792v0.171h0.63v-0.171h-0.63"
-      id="path2297"></path>
+      id="path2297"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m296.62 84.963v-0.171h-0.63v0.171h0.63"
-      id="path2298"></path>
+      id="path2298"
+    ></path>
   </g>
   <g
     fill="none"
@@ -7963,29 +8663,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m304.35 84.792c0 4.1952-3.4 7.596-7.596 7.596"
       clip-path="url(#clipPath2786)"
-      id="path2323"></path>
+      id="path2323"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2328">
     <path
       transform="scale(3.7795)"
       d="m304.25 84.432v0.3591h0.108v-0.3591h-0.108"
-      id="path2324"></path>
+      id="path2324"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m304.35 84.791v9e-4h0.252v-9e-4h-0.252"
-      id="path2325"></path>
+      id="path2325"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m296.51 84.791v9e-4h0.252v-9e-4h-0.252"
-      id="path2326"></path>
+      id="path2326"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m296.76 84.432v0.3591h0.108v-0.3591h-0.108"
-      id="path2327"></path>
+      id="path2327"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m296.76 92.388h0.36v-7.596h-0.36v7.596"
-      id="path2328"></path>
+      id="path2328"
+    ></path>
   </g>
   <g
     fill="none"
@@ -8059,12 +8765,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m294.71 15.942v27h-1.35v-27h1.35"
     fill-rule="evenodd"
-    id="path2357"></path>
+    id="path2357"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m293.36 58.242v-6.3h1.35v6.3h-1.35"
     fill-rule="evenodd"
-    id="path2358"></path>
+    id="path2358"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -8093,12 +8801,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m277.61 41.592h7.65v1.35h-7.65v-1.35"
     fill-rule="evenodd"
-    id="path2367"></path>
+    id="path2367"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m293.36 41.592v1.35h-0.9v-1.35h0.9"
     fill-rule="evenodd"
-    id="path2368"></path>
+    id="path2368"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -8132,27 +8842,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m285.48 41.592h-0.225v1.3491h0.225v-1.3491"
-      id="path2379"></path>
+      id="path2379"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m285.37 43.113v-0.171h-0.63v0.171h0.63"
-      id="path2380"></path>
+      id="path2380"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.46 41.592h-0.225v1.3491h0.225v-1.3491"
-      id="path2381"></path>
+      id="path2381"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.34 42.942v0.171h0.63v-0.171h-0.63"
-      id="path2382"></path>
+      id="path2382"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m285.37 41.592v-0.171h-0.63v0.171h0.63"
-      id="path2383"></path>
+      id="path2383"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.34 41.421v0.171h0.63v-0.171h-0.63"
-      id="path2384"></path>
+      id="path2384"
+    ></path>
   </g>
   <g
     fill="none"
@@ -8215,29 +8931,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m285.51 41.592c0-3.6981 2.998-6.696 6.696-6.696"
       clip-path="url(#clipPath2873)"
-      id="path2409"></path>
+      id="path2409"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2414">
     <path
       transform="scale(3.7795)"
       d="m285.51 41.592h-0.252v9e-4h0.252v-9e-4"
-      id="path2410"></path>
+      id="path2410"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m285.51 41.592v0.3591h0.108v-0.3591h-0.108"
-      id="path2411"></path>
+      id="path2411"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.1 41.952h0.108v-0.3591h-0.108v0.3591"
-      id="path2412"></path>
+      id="path2412"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.2 41.592v9e-4h0.252v-9e-4h-0.252"
-      id="path2413"></path>
+      id="path2413"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m292.2 34.896h-0.36v6.696h0.36v-6.696"
-      id="path2414"></path>
+      id="path2414"
+    ></path>
   </g>
   <g
     fill="none"
@@ -8311,7 +9033,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m263.66 71.292 1.35 2.25v12.15l-1.35-1.35v-13.05"
     fill-rule="evenodd"
-    id="path2443"></path>
+    id="path2443"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -8331,12 +9054,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m248.36 84.342h7.2v1.35h-7.2v-1.35"
     fill-rule="evenodd"
-    id="path2447"></path>
+    id="path2447"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m263.66 84.342 1.35 1.35h-2.25v-1.35h0.9"
     fill-rule="evenodd"
-    id="path2448"></path>
+    id="path2448"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -8370,27 +9095,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m255.78 84.342h-0.225v1.3491h0.225v-1.3491"
-      id="path2459"></path>
+      id="path2459"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m255.67 85.863v-0.171h-0.63v0.171h0.63"
-      id="path2460"></path>
+      id="path2460"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m262.76 84.342h-0.225v1.3491h0.225v-1.3491"
-      id="path2461"></path>
+      id="path2461"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m262.64 85.692v0.171h0.63v-0.171h-0.63"
-      id="path2462"></path>
+      id="path2462"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m255.67 84.342v-0.171h-0.63v0.171h0.63"
-      id="path2463"></path>
+      id="path2463"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m262.64 84.171v0.171h0.63v-0.171h-0.63"
-      id="path2464"></path>
+      id="path2464"
+    ></path>
   </g>
   <g
     fill="none"
@@ -8453,29 +9184,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m255.81 84.342c0-3.6981 2.998-6.696 6.696-6.696"
       clip-path="url(#clipPath2954)"
-      id="path2489"></path>
+      id="path2489"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2494">
     <path
       transform="scale(3.7795)"
       d="m255.81 84.342h-0.252v9e-4h0.252v-9e-4"
-      id="path2490"></path>
+      id="path2490"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m255.81 84.342v0.3591h0.108v-0.3591h-0.108"
-      id="path2491"></path>
+      id="path2491"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m262.4 84.702h0.108v-0.3591h-0.108v0.3591"
-      id="path2492"></path>
+      id="path2492"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m262.5 84.342v9e-4h0.252v-9e-4h-0.252"
-      id="path2493"></path>
+      id="path2493"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m262.5 77.646h-0.36v6.696h0.36v-6.696"
-      id="path2494"></path>
+      id="path2494"
+    ></path>
   </g>
   <g
     fill="none"
@@ -8549,12 +9286,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m306.86 60.492v6.75h-1.35v-6.75h1.35"
     fill-rule="evenodd"
-    id="path2523"></path>
+    id="path2523"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m305.51 82.542v-8.1h1.35v8.1h-1.35"
     fill-rule="evenodd"
-    id="path2524"></path>
+    id="path2524"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -8588,27 +9327,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m306.86 67.467v-0.225h-1.35v0.225h1.35"
-      id="path2535"></path>
+      id="path2535"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m305.34 67.359h0.171v-0.63h-0.171v0.63"
-      id="path2536"></path>
+      id="path2536"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m306.86 74.442v-0.225h-1.35v0.225h1.35"
-      id="path2537"></path>
+      id="path2537"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m305.51 74.325h-0.171v0.63h0.171v-0.63"
-      id="path2538"></path>
+      id="path2538"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m306.86 67.359h0.171v-0.63h-0.171v0.63"
-      id="path2539"></path>
+      id="path2539"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m307.03 74.325h-0.171v0.63h0.171v-0.63"
-      id="path2540"></path>
+      id="path2540"
+    ></path>
   </g>
   <g
     fill="none"
@@ -8671,29 +9416,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m306.86 67.494c3.699 0 6.696 2.9979 6.696 6.696"
       clip-path="url(#clipPath3031)"
-      id="path2565"></path>
+      id="path2565"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2570">
     <path
       transform="scale(3.7795)"
       d="m306.86 67.494h-0.36v0.108h0.36v-0.108"
-      id="path2566"></path>
+      id="path2566"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m306.86 67.494v-0.252 0.252"
-      id="path2567"></path>
+      id="path2567"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m306.5 74.082v0.108h0.36v-0.108h-0.36"
-      id="path2568"></path>
+      id="path2568"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m306.86 74.442v-0.252 0.252"
-      id="path2569"></path>
+      id="path2569"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m313.55 74.19v-0.36h-6.696v0.36h6.696"
-      id="path2570"></path>
+      id="path2570"
+    ></path>
   </g>
   <g
     fill="none"
@@ -8765,7 +9516,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m110.21 45.417v-1.35h19.35v1.35h-19.35"
     fill-rule="evenodd"
-    id="path2599"></path>
+    id="path2599"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m110.21 45.417h19.35"
@@ -8775,7 +9527,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2600"></path>
+    id="path2600"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m129.56 44.067h-19.35"
@@ -8785,12 +9538,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2601"></path>
+    id="path2601"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m130.91 50.817h-1.35v-27.675h1.35v27.675"
     fill-rule="evenodd"
-    id="path2602"></path>
+    id="path2602"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -8814,12 +9569,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m138.56 184.24v-1.35h0.9v1.35h-0.9"
     fill-rule="evenodd"
-    id="path2608"></path>
+    id="path2608"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m174.56 182.89v1.35h-27v-1.35h27"
     fill-rule="evenodd"
-    id="path2609"></path>
+    id="path2609"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -8856,27 +9613,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m147.33 182.89v1.349h0.225v-1.349h-0.225"
-      id="path2622"></path>
+      id="path2622"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m147.44 184.41h0.63v-0.171h-0.63v0.171"
-      id="path2623"></path>
+      id="path2623"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.46 182.89v1.349h0.225v-1.349h-0.225"
-      id="path2624"></path>
+      id="path2624"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.57 184.24h-0.63v0.171h0.63v-0.171"
-      id="path2625"></path>
+      id="path2625"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m147.44 182.89h0.63v-0.171h-0.63v0.171"
-      id="path2626"></path>
+      id="path2626"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.57 182.72h-0.63v0.171h0.63v-0.171"
-      id="path2627"></path>
+      id="path2627"
+    ></path>
   </g>
   <g
     fill="none"
@@ -8939,29 +9702,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m147.3 182.89c0 4.195-3.4 7.596-7.596 7.596"
       clip-path="url(#clipPath3119)"
-      id="path2652"></path>
+      id="path2652"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2657">
     <path
       transform="scale(3.7795)"
       d="m147.2 182.53v0.359h0.108v-0.359h-0.108"
-      id="path2653"></path>
+      id="path2653"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m147.3 182.89v1e-3h0.252v-1e-3h-0.252"
-      id="path2654"></path>
+      id="path2654"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.46 182.89v1e-3h0.252v-1e-3h-0.252"
-      id="path2655"></path>
+      id="path2655"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.71 182.53v0.359h0.108v-0.359h-0.108"
-      id="path2656"></path>
+      id="path2656"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m139.71 190.49h0.36v-7.596h-0.36v7.596"
-      id="path2657"></path>
+      id="path2657"
+    ></path>
   </g>
   <g
     fill="none"
@@ -9035,12 +9804,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m123.26 182.44v-1.35h5.85v1.35h-5.85"
     fill-rule="evenodd"
-    id="path2686"></path>
+    id="path2686"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m136.31 182.44v-1.35h2.25v1.35h-2.25"
     fill-rule="evenodd"
-    id="path2687"></path>
+    id="path2687"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -9076,27 +9847,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m129.33 182.44v-1.349h-0.225v1.349h0.225"
-      id="path2699"></path>
+      id="path2699"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m129.22 180.92h-0.63v0.171h0.63v-0.171"
-      id="path2700"></path>
+      id="path2700"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.31 182.44v-1.349h-0.225v1.349h0.225"
-      id="path2701"></path>
+      id="path2701"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.19 181.09h0.63v-0.171h-0.63v0.171"
-      id="path2702"></path>
+      id="path2702"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m129.22 182.44h-0.63v0.171h0.63v-0.171"
-      id="path2703"></path>
+      id="path2703"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.19 182.61h0.63v-0.171h-0.63v0.171"
-      id="path2704"></path>
+      id="path2704"
+    ></path>
   </g>
   <g
     fill="none"
@@ -9159,29 +9936,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m136.05 189.14c-3.698 0-6.696-2.998-6.696-6.696"
       clip-path="url(#clipPath3197)"
-      id="path2729"></path>
+      id="path2729"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2734">
     <path
       transform="scale(3.7795)"
       d="m129.11 182.44v1e-3h0.252v-1e-3h-0.252"
-      id="path2730"></path>
+      id="path2730"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m129.36 182.08v0.359h0.108v-0.359h-0.108"
-      id="path2731"></path>
+      id="path2731"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.95 182.08v0.359h0.108v-0.359h-0.108"
-      id="path2732"></path>
+      id="path2732"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.05 182.44v1e-3h0.252v-1e-3h-0.252"
-      id="path2733"></path>
+      id="path2733"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.05 189.14v-6.696h-0.36v6.696h0.36"
-      id="path2734"></path>
+      id="path2734"
+    ></path>
   </g>
   <g
     fill="none"
@@ -9255,7 +10038,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m149.81 182.89h-1.35v-14.4l1.35 0.9v13.5"
     fill-rule="evenodd"
-    id="path2763"></path>
+    id="path2763"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m149.81 182.89v-13.5"
@@ -9265,7 +10049,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2764"></path>
+    id="path2764"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m148.46 168.49v14.4"
@@ -9275,12 +10060,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2765"></path>
+    id="path2765"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m123.26 169.84v-1.35h6.3v1.35h-6.3"
     fill-rule="evenodd"
-    id="path2766"></path>
+    id="path2766"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -9300,7 +10087,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m138.56 206.74h-1.35v-24.3h1.35v24.3"
     fill-rule="evenodd"
-    id="path2770"></path>
+    id="path2770"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m138.56 206.74v-24.3"
@@ -9310,7 +10098,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2771"></path>
+    id="path2771"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m137.21 182.44v24.3"
@@ -9320,17 +10109,20 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2772"></path>
+    id="path2772"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m187.61 43.842v-27.9h2.25v27.9h-2.25"
     fill-rule="evenodd"
-    id="path2773"></path>
+    id="path2773"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m187.61 58.242v-6.3h2.25v6.3h-2.25"
     fill-rule="evenodd"
-    id="path2774"></path>
+    id="path2774"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -9366,27 +10158,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m187.61 44.067h2.249v-0.225h-2.249v0.225"
-      id="path2786"></path>
+      id="path2786"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m190.03 43.959v-0.63h-0.171v0.63h0.171"
-      id="path2787"></path>
+      id="path2787"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m187.61 51.942h2.249v-0.225h-2.249v0.225"
-      id="path2788"></path>
+      id="path2788"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m189.86 51.825v0.63h0.171v-0.63h-0.171"
-      id="path2789"></path>
+      id="path2789"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m187.61 43.959v-0.63h-0.171v0.63h0.171"
-      id="path2790"></path>
+      id="path2790"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m187.44 51.825v0.63h0.171v-0.63h-0.171"
-      id="path2791"></path>
+      id="path2791"
+    ></path>
   </g>
   <g
     fill="none"
@@ -9449,29 +10247,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m180.01 51.69c0-4.1951 3.401-7.596 7.596-7.596"
       clip-path="url(#clipPath3285)"
-      id="path2816"></path>
+      id="path2816"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2821">
     <path
       transform="scale(3.7795)"
       d="m187.61 43.842h-1e-3v0.252h1e-3v-0.252"
-      id="path2817"></path>
+      id="path2817"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m187.97 44.094h-0.359v0.108h0.359v-0.108"
-      id="path2818"></path>
+      id="path2818"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m187.61 51.942h1e-3v-0.252h-1e-3v0.252"
-      id="path2819"></path>
+      id="path2819"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m187.97 51.582h-0.359v0.108h0.359v-0.108"
-      id="path2820"></path>
+      id="path2820"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m180.01 51.69h7.596v-0.36h-7.596v0.36"
-      id="path2821"></path>
+      id="path2821"
+    ></path>
   </g>
   <g
     fill="none"
@@ -9545,7 +10349,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m205.16 15.942h1.35v25.65h-1.35v-25.65"
     fill-rule="evenodd"
-    id="path2850"></path>
+    id="path2850"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m205.16 15.942v25.65"
@@ -9555,7 +10360,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2851"></path>
+    id="path2851"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m206.51 41.592v-25.65"
@@ -9565,17 +10371,20 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2852"></path>
+    id="path2852"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m189.86 41.592h0.9v1.35h-0.9v-1.35"
     fill-rule="evenodd"
-    id="path2853"></path>
+    id="path2853"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m206.51 41.592v1.35h-8.55v-1.35h8.55"
     fill-rule="evenodd"
-    id="path2854"></path>
+    id="path2854"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -9611,27 +10420,33 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     <path
       transform="scale(3.7795)"
       d="m197.73 41.592v1.3491h0.225v-1.3491h-0.225"
-      id="path2866"></path>
+      id="path2866"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m197.84 43.113h0.63v-0.171h-0.63v0.171"
-      id="path2867"></path>
+      id="path2867"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m190.76 41.592v1.3491h0.225v-1.3491h-0.225"
-      id="path2868"></path>
+      id="path2868"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m190.87 42.942h-0.63v0.171h0.63v-0.171"
-      id="path2869"></path>
+      id="path2869"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m197.84 41.592h0.63v-0.171h-0.63v0.171"
-      id="path2870"></path>
+      id="path2870"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m190.87 41.421h-0.63v0.171h0.63v-0.171"
-      id="path2871"></path>
+      id="path2871"
+    ></path>
   </g>
   <g
     fill="none"
@@ -9694,29 +10509,35 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m191.01 34.896c3.699 0 6.696 2.9979 6.696 6.696"
       clip-path="url(#clipPath3366)"
-      id="path2896"></path>
+      id="path2896"
+    ></path>
   </g>
   <g fill="#fff" fill-rule="evenodd" id="g2901">
     <path
       transform="scale(3.7795)"
       d="m197.6 41.592v0.3591h0.108v-0.3591h-0.108"
-      id="path2897"></path>
+      id="path2897"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m197.96 41.592h-0.252v9e-4h0.252v-9e-4"
-      id="path2898"></path>
+      id="path2898"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m190.76 41.592v9e-4h0.252v-9e-4h-0.252"
-      id="path2899"></path>
+      id="path2899"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m191.01 41.952h0.108v-0.3591h-0.108v0.3591"
-      id="path2900"></path>
+      id="path2900"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m191.01 34.896v6.696h0.36v-6.696h-0.36"
-      id="path2901"></path>
+      id="path2901"
+    ></path>
   </g>
   <g
     fill="none"
@@ -9790,7 +10611,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m235.76 15.942h2.25v30.15h-2.25v-30.15"
     fill-rule="evenodd"
-    id="path2930"></path>
+    id="path2930"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m235.76 15.942v30.15"
@@ -9800,7 +10622,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2931"></path>
+    id="path2931"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m238.01 46.092v-30.15"
@@ -9810,12 +10633,14 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     stroke-linejoin="round"
     stroke-miterlimit="10"
     stroke-width=".35"
-    id="path2932"></path>
+    id="path2932"
+  ></path>
   <path
     transform="scale(3.7795)"
     d="m206.73 58.242h-1.35v-5.4h1.35v5.4"
     fill-rule="evenodd"
-    id="path2933"></path>
+    id="path2933"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -9836,7 +10661,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     d="m150.26 119.89v-13.923h-14.292v13.923h14.292"
     fill="#fff"
     fill-rule="evenodd"
-    id="path2937"></path>
+    id="path2937"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -9850,178 +10676,213 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       transform="scale(3.7795)"
       d="m135.96 119.89h14.292"
       clip-path="url(#clipPath527)"
-      id="path2938"></path>
+      id="path2938"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.96 105.97v13.923"
       clip-path="url(#clipPath529)"
-      id="path2939"></path>
+      id="path2939"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.26 105.97h-14.292"
       clip-path="url(#clipPath531)"
-      id="path2940"></path>
+      id="path2940"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.26 119.89v-13.923"
       clip-path="url(#clipPath533)"
-      id="path2941"></path>
+      id="path2941"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.26 119.89v1.12"
       clip-path="url(#clipPath535)"
-      id="path2942"></path>
+      id="path2942"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.26 121.01h-0.36"
       clip-path="url(#clipPath537)"
-      id="path2943"></path>
+      id="path2943"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m149.9 121.01v-4.041"
       clip-path="url(#clipPath539)"
-      id="path2944"></path>
+      id="path2944"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m149.9 116.97h-0.36"
       clip-path="url(#clipPath541)"
-      id="path2945"></path>
+      id="path2945"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m149.54 116.97v2.201"
       clip-path="url(#clipPath543)"
-      id="path2946"></path>
+      id="path2946"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m149.54 106.69v2.2"
       clip-path="url(#clipPath545)"
-      id="path2947"></path>
+      id="path2947"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m149.54 108.89h0.72"
       clip-path="url(#clipPath547)"
-      id="path2948"></path>
+      id="path2948"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.26 108.89v-2.92"
       clip-path="url(#clipPath549)"
-      id="path2949"></path>
+      id="path2949"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.26 116.97v-4.041"
       clip-path="url(#clipPath551)"
-      id="path2950"></path>
+      id="path2950"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.26 112.93h-0.18"
       clip-path="url(#clipPath553)"
-      id="path2951"></path>
+      id="path2951"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.08 112.93v4.041"
       clip-path="url(#clipPath555)"
-      id="path2952"></path>
+      id="path2952"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.08 116.97h0.18"
       clip-path="url(#clipPath557)"
-      id="path2953"></path>
+      id="path2953"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.08 112.93v-4.041"
       clip-path="url(#clipPath559)"
-      id="path2954"></path>
+      id="path2954"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.08 108.89h-0.18"
       clip-path="url(#clipPath561)"
-      id="path2955"></path>
+      id="path2955"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m149.9 108.89v4.041"
       clip-path="url(#clipPath563)"
-      id="path2956"></path>
+      id="path2956"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m149.9 112.93h0.18"
       clip-path="url(#clipPath565)"
-      id="path2957"></path>
+      id="path2957"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.96 119.89v-13.923"
       clip-path="url(#clipPath567)"
-      id="path2958"></path>
+      id="path2958"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.68 106.69v12.483"
       clip-path="url(#clipPath569)"
-      id="path2959"></path>
+      id="path2959"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.26 119.89h-14.292"
       clip-path="url(#clipPath571)"
-      id="path2960"></path>
+      id="path2960"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.68 119.17h12.852"
       clip-path="url(#clipPath573)"
-      id="path2961"></path>
+      id="path2961"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m150.26 105.97h-14.292"
       clip-path="url(#clipPath575)"
-      id="path2962"></path>
+      id="path2962"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m136.68 106.69h12.852"
       clip-path="url(#clipPath577)"
-      id="path2963"></path>
+      id="path2963"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.28 116.95v-8.04"
       clip-path="url(#clipPath579)"
-      id="path2964"></path>
+      id="path2964"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.1 116.95v-8.04"
       clip-path="url(#clipPath581)"
-      id="path2965"></path>
+      id="path2965"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.28 116.89h-0.18"
       clip-path="url(#clipPath583)"
-      id="path2966"></path>
+      id="path2966"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.28 108.97h-0.18"
       clip-path="url(#clipPath585)"
-      id="path2967"></path>
+      id="path2967"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.28 116.98h-0.18"
       clip-path="url(#clipPath587)"
-      id="path2968"></path>
+      id="path2968"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.28 108.88h-0.18"
       clip-path="url(#clipPath589)"
-      id="path2969"></path>
+      id="path2969"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.19 116.98v-0.06"
       clip-path="url(#clipPath591)"
-      id="path2970"></path>
+      id="path2970"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m135.19 108.88v0.06"
       clip-path="url(#clipPath593)"
-      id="path2971"></path>
+      id="path2971"
+    ></path>
   </g>
   <path
     transform="scale(3.7795)"
     d="m213.71 71.292h-2.7l1.35 1.35 1.35-1.35"
     fill-rule="evenodd"
-    id="path2972"></path>
+    id="path2972"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -10042,7 +10903,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m246.11 64.092v2.7l1.35-1.35-1.35-1.35"
     fill-rule="evenodd"
-    id="path2976"></path>
+    id="path2976"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -10062,7 +10924,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m161.06 69.942v-2.7l-1.35 1.35 1.35 1.35"
     fill-rule="evenodd"
-    id="path2980"></path>
+    id="path2980"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -10083,7 +10946,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m116.51 206.74h-2.7l1.35 1.35 1.35-1.35"
     fill-rule="evenodd"
-    id="path2984"></path>
+    id="path2984"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -10104,7 +10968,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m121.01 174.79v2.7l1.35-1.35-1.35-1.35"
     fill-rule="evenodd"
-    id="path2988"></path>
+    id="path2988"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -10124,7 +10989,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
     transform="scale(3.7795)"
     d="m210.56 60.492h2.7l-1.35-1.35-1.35 1.35"
     fill-rule="evenodd"
-    id="path2992"></path>
+    id="path2992"
+  ></path>
   <g
     fill="none"
     stroke="#000"
@@ -10152,252 +11018,301 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m146.21 281.44h-5.4"
       stroke="#000"
       stroke-width=".13"
-      id="path2996"></path>
+      id="path2996"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m140.81 281.44v-5.4"
       clip-path="url(#clipPath596)"
       stroke="#000"
       stroke-width=".13"
-      id="path2997"></path>
+      id="path2997"
+    ></path>
     <path
       transform="scale(3.7795)"
       d="m176.25 168.26v-3.346"
       clip-path="url(#clipPath598)"
       stroke="#f60"
       stroke-width=".18"
-      id="path2998"></path>
+      id="path2998"
+    ></path>
     <g stroke="#000" stroke-width=".13" id="g3045">
       <path
         transform="scale(3.7795)"
         d="m160.16 206.74h-21.6"
         clip-path="url(#clipPath600)"
-        id="path2999"></path>
+        id="path2999"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m138.56 206.74v-4.946"
         clip-path="url(#clipPath602)"
-        id="path3000"></path>
+        id="path3000"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m161.06 206.74h12.6"
         clip-path="url(#clipPath604)"
-        id="path3001"></path>
+        id="path3001"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m158.81 168.49h-18"
         clip-path="url(#clipPath606)"
-        id="path3002"></path>
+        id="path3002"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m138.56 263.44v12.6"
         clip-path="url(#clipPath608)"
-        id="path3003"></path>
+        id="path3003"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m110.21 251.29h16.2"
         clip-path="url(#clipPath610)"
-        id="path3004"></path>
+        id="path3004"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m110.21 256.24v-4.95"
         clip-path="url(#clipPath612)"
-        id="path3005"></path>
+        id="path3005"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m130.91 28.767v15.3"
         clip-path="url(#clipPath614)"
-        id="path3006"></path>
+        id="path3006"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m306.41 84.792h15.3"
         clip-path="url(#clipPath616)"
-        id="path3007"></path>
+        id="path3007"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m321.71 84.792v5.4"
         clip-path="url(#clipPath618)"
-        id="path3008"></path>
+        id="path3008"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m246.11 124.39v-10.351"
         clip-path="url(#clipPath620)"
-        id="path3009"></path>
+        id="path3009"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m248.36 91.092v5.4"
         clip-path="url(#clipPath622)"
-        id="path3010"></path>
+        id="path3010"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m248.36 84.342h3.6"
         clip-path="url(#clipPath624)"
-        id="path3011"></path>
+        id="path3011"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m251.96 76.242h-3.6"
         clip-path="url(#clipPath626)"
-        id="path3012"></path>
+        id="path3012"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m248.36 76.242v8.1"
         clip-path="url(#clipPath628)"
-        id="path3013"></path>
+        id="path3013"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m293.36 93.792v27"
         clip-path="url(#clipPath630)"
-        id="path3014"></path>
+        id="path3014"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m206.51 33.022v-12.6"
         clip-path="url(#clipPath632)"
-        id="path3015"></path>
+        id="path3015"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m275.36 21.117v19.8"
         clip-path="url(#clipPath634)"
-        id="path3016"></path>
+        id="path3016"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m240.71 88.391h5.4"
         clip-path="url(#clipPath636)"
-        id="path3017"></path>
+        id="path3017"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m246.11 88.391v10.351"
         clip-path="url(#clipPath638)"
-        id="path3018"></path>
+        id="path3018"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m246.11 124.39v-10.351"
         clip-path="url(#clipPath640)"
-        id="path3019"></path>
+        id="path3019"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m174.11 124.39v-14.31"
         clip-path="url(#clipPath642)"
-        id="path3020"></path>
+        id="path3020"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m204.26 78.942v-5.4"
         clip-path="url(#clipPath644)"
-        id="path3021"></path>
+        id="path3021"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m204.26 73.542h-30.15"
         clip-path="url(#clipPath646)"
-        id="path3022"></path>
+        id="path3022"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m174.11 73.542v5.4"
         clip-path="url(#clipPath648)"
-        id="path3023"></path>
+        id="path3023"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m137.21 214.39v-5.4"
         clip-path="url(#clipPath650)"
-        id="path3024"></path>
+        id="path3024"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m137.21 208.99h10.35"
         clip-path="url(#clipPath652)"
-        id="path3025"></path>
+        id="path3025"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m162.86 208.99h10.351"
         clip-path="url(#clipPath654)"
-        id="path3026"></path>
+        id="path3026"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m110.21 226.99v-4.95"
         clip-path="url(#clipPath656)"
-        id="path3027"></path>
+        id="path3027"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m110.21 222.04h13.95"
         clip-path="url(#clipPath658)"
-        id="path3028"></path>
+        id="path3028"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m124.16 222.04v4.95"
         clip-path="url(#clipPath660)"
-        id="path3029"></path>
+        id="path3029"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m95.806 120.79h10.8"
         clip-path="url(#clipPath662)"
-        id="path3030"></path>
+        id="path3030"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m106.61 120.79v23.85"
         clip-path="url(#clipPath664)"
-        id="path3031"></path>
+        id="path3031"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m106.61 144.64h-10.8"
         clip-path="url(#clipPath666)"
-        id="path3032"></path>
+        id="path3032"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m95.806 144.64v-23.85"
         clip-path="url(#clipPath668)"
-        id="path3033"></path>
+        id="path3033"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m95.806 144.64h-2.7"
         clip-path="url(#clipPath670)"
-        id="path3034"></path>
+        id="path3034"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m93.106 118.09h13.5"
         clip-path="url(#clipPath672)"
-        id="path3035"></path>
+        id="path3035"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m106.61 118.09v26.55"
         clip-path="url(#clipPath674)"
-        id="path3036"></path>
+        id="path3036"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m106.61 144.64h-13.5"
         clip-path="url(#clipPath676)"
-        id="path3037"></path>
+        id="path3037"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m93.106 144.64v-26.55"
         clip-path="url(#clipPath678)"
-        id="path3038"></path>
+        id="path3038"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m178.16 141.94h10.8"
         clip-path="url(#clipPath680)"
-        id="path3039"></path>
+        id="path3039"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m188.96 141.94v-12.6"
         clip-path="url(#clipPath682)"
-        id="path3040"></path>
+        id="path3040"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m191.66 144.64h-13.5"
         clip-path="url(#clipPath684)"
-        id="path3041"></path>
+        id="path3041"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m191.66 144.64v-15.3"
         clip-path="url(#clipPath686)"
-        id="path3042"></path>
+        id="path3042"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m194.36 147.34v-18"
         clip-path="url(#clipPath688)"
-        id="path3043"></path>
+        id="path3043"
+      ></path>
       <path
         transform="scale(3.7795)"
         d="m194.36 147.34h-16.2"
         clip-path="url(#clipPath690)"
-        id="path3044"></path>
+        id="path3044"
+      ></path>
       <path transform="scale(3.7795)" d="m106.61 206.74v-113.85" id="path3045"
       ></path>
     </g>
@@ -10406,7 +11321,8 @@ import FloorPlanApartments from "./FloorPlanApartments.astro";
       d="m220.37 102.61v-3.4204"
       stroke="#00f"
       stroke-width=".35"
-      id="path3046"></path>
+      id="path3046"
+    ></path>
     <g stroke="#000" stroke-width=".13" id="g3051">
       <path transform="scale(3.7795)" d="m115.61 15.942h-5.4" id="path3047"
       ></path>

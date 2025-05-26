@@ -1,53 +1,47 @@
----
+<script>
+  // No frontmatter or Astro syntax needed in Svelte
+</script>
 
----
-
-<style>
-  *[id^="ap"] {
-    transition: fill-opacity 0.3s;
-  }
-  *[id^="ap"]:hover {
-    fill-opacity: 0.9 !important;
-    cursor: pointer;
-  }
-</style>
-
-<!-- Apartment rectangles extracted from GroundFloor.astro -->
 <rect
   style="display:inline;fill:#00b700;fill-opacity:0.343629"
   id="ap6"
   width="269.82877"
   height="294.74527"
   x="402.91989"
-  y="782.13861"></rect>
+  y="782.13861"
+></rect>
 <rect
   style="fill:#00b700;fill-opacity:0.343629"
   id="ap5"
   width="216.34914"
   height="252.81248"
   x="457.00717"
-  y="527.50293"></rect>
+  y="527.50293"
+></rect>
 <rect
   style="fill:#00b700;fill-opacity:0.343629"
   id="ap1"
   width="206.6256"
   height="305.0766"
   x="401.09674"
-  y="44.363731"></rect>
+  y="44.363731"
+></rect>
 <rect
   style="fill:#00b700;fill-opacity:0.343629"
   id="ap2"
   width="438.16772"
   height="182.3167"
   x="606.5069"
-  y="44.971451"></rect>
+  y="44.971451"
+></rect>
 <rect
   style="fill:#00b700;fill-opacity:0.343629"
   id="ap4"
   width="286.23721"
   height="220.60321"
   x="647.83197"
-  y="268.00555"></rect>
+  y="268.00555"
+></rect>
 <path
   id="ap3"
   d="
@@ -60,4 +54,15 @@
     L934,226
     L1044,228
     Z"
-  style="fill:#00b700;fill-opacity:0.343629"></path>
+  style="fill:#00b700;fill-opacity:0.343629"
+></path>
+
+<style>
+  *[id^="ap"] {
+    transition: fill-opacity 0.3s;
+  }
+  *[id^="ap"]:hover {
+    fill-opacity: 0.9 !important;
+    cursor: pointer;
+  }
+</style>

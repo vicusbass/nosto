@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
-import FloorPlan from "../components/FloorPlan.astro";
+import Apartments from "../components/Apartments.svelte";
 ---
 
 <Layout title="Apartamente - Nosto">
@@ -16,7 +16,13 @@ import FloorPlan from "../components/FloorPlan.astro";
       <div
         class="w-full max-w-[95vw] lg:max-w-[1600px] h-auto rounded-sm shadow"
       >
-        <FloorPlan />
+        <Apartments client:only="svelte" />
+      </div>
+    </div>
+    <div class="flex justify-center my-8 px-2 sm:px-6 lg:px-8">
+      <div
+        class="w-full max-w-[95vw] lg:max-w-[1600px] h-auto rounded-sm shadow"
+      >
       </div>
     </div>
   </section>
