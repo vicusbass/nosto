@@ -1,38 +1,76 @@
 <script>
-  import FloorPlan from "./FloorPlan.svelte";
+  import Parter from "./Parter.svelte";
+  import Etaj1 from "./Etaj1.svelte";
+  import Etaj2 from "./Etaj2.svelte";
+  import Etaj3 from "./Etaj3.svelte";
+  import Floor from "./Floor.svelte";
+
   let selectedIdx = 0;
   const floors = [
-    { id: 1, name: "Parter", component: FloorPlan },
-    { id: 2, name: "Etaj 1", component: FloorPlan },
-    { id: 3, name: "Etaj 2", component: FloorPlan },
-    { id: 4, name: "Etaj 3", component: FloorPlan },
-    { id: 5, name: "Etaj 4", component: FloorPlan },
-    { id: 6, name: "Etaj 5", component: FloorPlan },
-    { id: 7, name: "Etaj 6", component: FloorPlan },
-    { id: 8, name: "Etaj 7", component: FloorPlan },
-    { id: 9, name: "Etaj 8", component: FloorPlan },
+    { name: "Parter", component: Parter },
+    { name: "Etaj 1", component: Etaj1 },
+    { name: "Etaj 2", component: Etaj2 },
+    { name: "Etaj 3", component: Etaj3 }
   ];
+
+  // Room filter logic
+  const roomOptions = [1, 2, 3, 4];
+  let selectedRooms = [];
+  function toggleRoom(room) {
+    if (selectedRooms.includes(room)) {
+      selectedRooms = selectedRooms.filter(r => r !== room);
+    } else {
+      selectedRooms = [...selectedRooms, room];
+    }
+  }
 </script>
 
-<div class="flex justify-center gap-4 mb-8">
-  {#each floors as floor, idx}
+<!-- Room filter UI -->
+<div class="flex flex-wrap justify-center gap-2 mb-6">
+  {#each roomOptions as room}
     <button
       type="button"
-      class="px-4 py-2 rounded font-semibold border border-primary transition-colors duration-200 {selectedIdx ===
-      idx
-        ? 'bg-primary ring-2 ring-primary ring-offset-2'
-        : 'text-primary bg-gray-100 hover:bg-primary hover:text-white'}"
-      aria-current={selectedIdx === idx ? "page" : undefined}
-      on:click={() => (selectedIdx = idx)}
+      class="px-3 py-1 rounded border border-primary font-medium transition-colors duration-200
+        {selectedRooms.includes(room) ? 'bg-blue-100 text-blue-800 ring-2 ring-blue-300' : 'bg-white text-primary hover:bg-blue-50'}"
+      aria-pressed={selectedRooms.includes(room)}
+      on:click={() => toggleRoom(room)}
     >
-      {floor.name}
+      {room} camere
     </button>
   {/each}
 </div>
+
+<!-- Responsive floor selector: dropdown on small screens, buttons on md+ -->
+<div class="mb-8">
+  <div class="block md:hidden w-full max-w-xs mx-auto">
+    <select
+      class="w-full rounded border border-gray-300 py-2 px-3 bg-gray-50 text-gray-700 focus:ring-primary focus:border-primary"
+      bind:value={selectedIdx}
+    >
+      {#each floors as floor, idx}
+        <option value={idx}>{floor.name}</option>
+      {/each}
+    </select>
+  </div>
+  <div class="hidden md:flex justify-center gap-2">
+    {#each floors as floor, idx}
+      <button
+        type="button"
+        class="px-3 py-2 rounded font-medium border border-gray-300 text-gray-700 bg-gray-50 transition-colors duration-200
+          {selectedIdx === idx ? 'ring-2 ring-primary bg-primary/10 text-primary' : 'hover:bg-primary/10 hover:text-primary'}"
+        aria-current={selectedIdx === idx ? "page" : undefined}
+        on:click={() => (selectedIdx = idx)}
+      >
+        {floor.name}
+      </button>
+    {/each}
+  </div>
+</div>
 <div>
-  <svelte:component
-    this={floors[selectedIdx].component}
+  <Floor 
+    rooms={selectedRooms}
+    FloorPlan={floors[selectedIdx].component}
     floorName={floors[selectedIdx].name}
+    onApartmentClick={(id) => alert(`Apartment clicked: ${id}`)}
   />
-  <!-- <FloorPlan floorName={floors[selectedIdx].name} /> -->
 </div>
