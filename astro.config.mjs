@@ -8,9 +8,12 @@ dotenv.config();
 
 console.log(process.env.SANITY_STUDIO_PROJECT_ID)
 
+import svelte from '@astrojs/svelte';
+
 export default defineConfig({
   integrations: [
     icon(),
+    svelte(),
     sanity({
       projectId: process.env.SANITY_STUDIO_PROJECT_ID,
       dataset: 'production',
