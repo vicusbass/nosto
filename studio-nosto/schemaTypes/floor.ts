@@ -7,17 +7,17 @@ export const floor = defineType({
   fields: [
     defineField({
       name: 'name',
-      title: 'Floor Name',
+      title: 'Nume Etaj',
       type: 'string',
-      validation: Rule => Rule.required().error('Floor name is required'),
+      validation: Rule => Rule.required().error('Nume etaj obligatoriu'),
       description: 'e.g., Parter, Etajul 1, Etajul 2'
     }),
     defineField({
       name: 'level',
-      title: 'Level Number',
+      title: 'Nivel',
       type: 'number',
-      validation: Rule => Rule.required().min(0).error('Level must be 0 or greater'),
-      description: 'Floor level starting from 0 (ground floor)'
+      validation: Rule => Rule.required().min(0).error('Nivelul incepe de la 0 (Parter)'),
+      description: 'Nivelul etajului incepand de la 0 (Parter)'
     })
   ],
   preview: {
@@ -29,7 +29,7 @@ export const floor = defineType({
       const { title, subtitle } = selection
       return {
         title: title,
-        subtitle: `Level ${subtitle}`
+        subtitle: `Nivel ${subtitle}`
       }
     }
   }

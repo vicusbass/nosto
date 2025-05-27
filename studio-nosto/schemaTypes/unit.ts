@@ -2,55 +2,56 @@ import { defineField, defineType } from 'sanity'
 
 export const unit = defineType({
   name: 'unit',
-  title: 'Unit',
+  title: 'Unitate',
   type: 'document',
   fields: [
     defineField({
       name: 'uniqueId',
-      title: 'Unique ID',
+      title: 'ID unic unitate',
       type: 'string',
-      validation: Rule => Rule.required().error('Unique ID is required'),
-      description: 'Unique identifier for the unit'
+      validation: Rule => Rule.required().error('ID unic unitate obligatoriu'),
+      description: 'ID unic unitate'
     }),
     defineField({
       name: 'name',
-      title: 'Unit Name',
+      title: 'Nume unitate',
       type: 'string',
-      validation: Rule => Rule.required().error('Unit name is required')
+      validation: Rule => Rule.required().error('Nume unitate obligatoriu'),
+      description: 'Nume afisat pe plan'
     }),
     defineField({
       name: 'type',
-      title: 'Unit Type',
+      title: 'Tip unitate',
       type: 'string',
       options: {
         list: [
-          { title: 'Comercial', value: 'comercial' },
-          { title: 'O cameră', value: 'o camera' },
-          { title: '2 camere', value: '2 camere' },
-          { title: '3 camere', value: '3 camere' },
-          { title: '4 camere', value: '4 camere' }
+          { title: 'Comercial', value: 'C' },
+          { title: '1 cameră', value: '1' },
+          { title: '2 camere', value: '2' },
+          { title: '3 camere', value: '3' },
+          { title: '4 camere', value: '4' }
         ]
       },
-      validation: Rule => Rule.required().error('Unit type is required')
+      validation: Rule => Rule.required().error('Tip unitate obligatoriu')
     }),
     defineField({
       name: 'vandut',
-      title: 'Sold Status',
+      title: 'Vandut',
       type: 'boolean',
       initialValue: false,
-      description: 'True if unit is sold, false otherwise'
+      description: 'Bifat daca e vandut, nebifat daca e disponibil'
     }),
     defineField({
       name: 'floor',
-      title: 'Floor',
+      title: 'Etaj',
       type: 'reference',
       to: [{ type: 'floor' }],
-      validation: Rule => Rule.required().error('Floor reference is required'),
-      description: 'Reference to the floor this unit is located on'
+      validation: Rule => Rule.required().error('Etaj obligatoriu'),
+      description: 'Etajul pe care se afla unitatea'
     }),
     defineField({
       name: 'images',
-      title: 'Images',
+      title: 'Imagini',
       type: 'array',
       of: [
         {
@@ -63,12 +64,12 @@ export const unit = defineType({
               name: 'alt',
               type: 'string',
               title: 'Alternative Text',
-              description: 'Important for SEO and accessibility'
+              description: 'Descriere imagine'
             },
             {
               name: 'caption',
               type: 'string',
-              title: 'Caption'
+              title: 'Titlu afisat imagine'
             }
           ]
         }
@@ -76,17 +77,17 @@ export const unit = defineType({
     }),
     defineField({
       name: 'size',
-      title: 'Size (m²)',
+      title: 'Dimensiune (m²)',
       type: 'number',
-      validation: Rule => Rule.required().positive().error('Size must be a positive number'),
-      description: 'Unit size in square meters'
+      validation: Rule => Rule.required().positive().error('Dimensiune obligatorie'),
+      description: 'Dimensiune unitate in metri patrati'
     }),
     defineField({
       name: 'price',
-      title: 'Price',
+      title: 'Preț',
       type: 'number',
-      validation: Rule => Rule.required().positive().error('Price must be a positive number'),
-      description: 'Unit price'
+      validation: Rule => Rule.required().positive().error('Preț obligatoriu'),
+      description: 'Preț unitate'
     })
   ],
   preview: {
@@ -110,22 +111,22 @@ export const unit = defineType({
   },
   orderings: [
     {
-      title: 'Price, Low to High',
+      title: 'Preț, crescător',
       name: 'priceAsc',
       by: [{ field: 'price', direction: 'asc' }]
     },
     {
-      title: 'Price, High to Low',
+      title: 'Preț, descrescător',
       name: 'priceDesc',
       by: [{ field: 'price', direction: 'desc' }]
     },
     {
-      title: 'Size, Small to Large',
+      title: 'Dimensiune, crescătoare',
       name: 'sizeAsc',
       by: [{ field: 'size', direction: 'asc' }]
     },
     {
-      title: 'Available First',
+      title: 'Disponibilitate',
       name: 'availableFirst',
       by: [{ field: 'vandut', direction: 'asc' }]
     }
