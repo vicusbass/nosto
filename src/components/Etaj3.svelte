@@ -1955,7 +1955,7 @@
 <text transform="matrix(1.3333 0 0 1.3333 638.37 305.6)" clip-path="url(#mp)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">80</tspan></text>
 <text transform="matrix(1.3333 0 0 1.3333 640.01 305.6)" clip-path="url(#mo)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0612645" fill="#000000" font-family="Arial" font-size="1.1139px">mp</tspan></text>
 </g>
-<path id="ap23" data-rooms="3" d="m156.73 157.37v186.82h-132.65v-108.41h-22.853v-159.37h77.131v17.674h60.99v21.556h-45.87v36.88h38.719v4.8016z"/>
+<path id="ap23" data-rooms="4" d="m156.73 157.37v186.82h-132.65v-108.41h-22.853v-159.37h77.131v17.674h60.99v21.556h-45.87v36.88h38.719v4.8016z"/>
 <path id="ap24" data-rooms="4" d="m139.32 75.728v18.689h-62.379v-19.66h-55.34v-53.398h12.136v-21.117h106.07v21.117h55.34v9.466h39.563v45.146z"/>
-<path id="ap25" data-rooms="4" d="m193.69 76.699h40.777v-45.146h43.204v-11.408h58.981v140.05h-37.621v20.874h-85.194v-32.039h-59.709v-57.282h39.806z"/>
+<path id="ap25" data-rooms="2.5" d="m193.69 76.699h40.777v-45.146h43.204v-11.408h58.981v140.05h-37.621v20.874h-85.194v-32.039h-59.709v-57.282h39.806z"/>
 </svg>
