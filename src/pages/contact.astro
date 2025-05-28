@@ -98,7 +98,7 @@ import Layout from "../layouts/Layout.astro";
         status.textContent = "Se trimite...";
         const data = Object.fromEntries(new FormData(form));
         // Use Formspree for free email sending
-        const res = await fetch("https://formspree.io/f/mqaqrlpl", {
+        const res = await fetch(process.env.FORMSPREE_URL, {
           method: "POST",
           headers: { Accept: "application/json" },
           body: new FormData(form),
