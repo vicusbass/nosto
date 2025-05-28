@@ -1,9 +1,115 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Contact - Nosto">
-    <section class="py-10">
-        <h1 class="text-3xl font-bold text-center mb-4">Contact</h1>
-    </section>
+  <section class="py-10 max-w-lg mx-auto px-4">
+    <h1 class="text-3xl font-bold text-center mb-4">Contact</h1>
+    <form
+      id="contact-form"
+      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-4"
+      method="POST"
+    >
+      <div>
+        <label for="nume" class="block text-gray-700 text-sm font-bold mb-2"
+          >Nume</label
+        >
+        <input
+          type="text"
+          id="nume"
+          name="nume"
+          required
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div>
+        <label for="telefon" class="block text-gray-700 text-sm font-bold mb-2"
+          >Telefon</label
+        >
+        <input
+          type="text"
+          id="telefon"
+          name="telefon"
+          required
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div>
+        <label for="email" class="block text-gray-700 text-sm font-bold mb-2"
+          >Email</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div>
+        <label for="mesaj" class="block text-gray-700 text-sm font-bold mb-2"
+          >Mesaj</label
+        >
+        <textarea
+          id="mesaj"
+          name="mesaj"
+          rows="4"
+          required
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        ></textarea>
+      </div>
+      <div class="flex items-start">
+        <input
+          type="checkbox"
+          id="confidentialitate"
+          name="confidentialitate"
+          required
+          class="mr-2 mt-1"
+        />
+        <label for="confidentialitate" class="text-sm"
+          >am luat la cunoștintă <a
+            href="/politica-confidentialitate"
+            class="underline text-blue-600">politica de confidențialitate</a
+          ></label
+        >
+      </div>
+      <div class="flex items-start">
+        <input
+          type="checkbox"
+          id="informari"
+          name="informari"
+          class="mr-2 mt-1"
+        />
+        <label for="informari" class="text-sm"
+          >sunt de acord să primesc informări comerciale referitoare la proiect</label
+        >
+      </div>
+      <button
+        class="w-full rounded border border-gray-300 py-2 px-3 bg-gray-50 text-gray-700"
+        type="submit">Trimite</button
+      >
+      <p id="form-status" class="text-center text-green-600 mt-4"></p>
+    </form>
+    <script type="module">
+      const form = document.getElementById("contact-form");
+      const status = document.getElementById("form-status");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        status.textContent = "Se trimite...";
+        const data = Object.fromEntries(new FormData(form));
+        // Use Formspree for free email sending
+        const res = await fetch("https://formspree.io/f/mqaqrlpl", {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+        });
+        if (res.ok) {
+          status.textContent = "Mesaj trimis cu succes!";
+          form.reset();
+        } else {
+          status.textContent = "A apărut o eroare. Încercați din nou.";
+        }
+      });
+    </script>
+  </section>
 </Layout>
