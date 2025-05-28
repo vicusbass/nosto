@@ -5,17 +5,28 @@
   import Etaj3 from "./Etaj3.svelte";
   import Floor from "./Floor.svelte";
 
+  export let units = [];
+
+  const ROOM_TYPE_TO_SANITY_VALUE = {
+    'Studio': '1',
+    '1.5 Camere': '1.5',
+    '2 Camere': '2',
+    '2.5 Camere': '2.5',
+    '3 Camere': '3',
+    '4 Camere': '4',
+  };
+
   let selectedIdx = 0;
   const floors = [
     { name: "Parter", component: Parter },
-    { name: "Etaj 1", component: Etaj1 },
-    { name: "Etaj 2", component: Etaj2 },
-    { name: "Etaj 3", component: Etaj3 }
+    { name: "Etajul 1", component: Etaj1 },
+    { name: "Etajul 2", component: Etaj2 },
+    { name: "Etajul 3", component: Etaj3 }
   ];
 
-  // Room filter logic
-  const roomOptions = [1, 2, 3, 4];
+  const roomOptions = Object.keys(ROOM_TYPE_TO_SANITY_VALUE);
   let selectedRooms = [];
+
   function toggleRoom(room) {
     if (selectedRooms.includes(room)) {
       selectedRooms = selectedRooms.filter(r => r !== room);
@@ -23,9 +34,35 @@
       selectedRooms = [...selectedRooms, room];
     }
   }
+
+  let displayableUnits = [];
+
+  $: {
+    const selectedFloorName = floors[selectedIdx].name;
+    const selectedSanityTypes = selectedRooms.map(roomName => ROOM_TYPE_TO_SANITY_VALUE[roomName]).filter(Boolean);
+
+    const currentFloorUnits = units.filter(unit => unit.floor === selectedFloorName);
+    
+    displayableUnits = currentFloorUnits.filter(unit => {
+      if (selectedSanityTypes.length === 0) return true;
+      return selectedSanityTypes.includes(unit.type);
+    });
+  }
+
+  function handleApartmentClick(apartmentId) {
+    if (apartmentId) {
+      window.location.href = `/apartamente/${apartmentId}`;
+    }
+  }
+
+  $: if (units.length > 0) {
+    const currentSelectedRooms = [...selectedRooms];
+    selectedRooms = [];
+    selectedRooms = currentSelectedRooms;
+  }
+
 </script>
 
-<!-- Room filter UI -->
 <div class="flex flex-wrap justify-center gap-2 mb-6">
   {#each roomOptions as room}
     <button
@@ -35,12 +72,11 @@
       aria-pressed={selectedRooms.includes(room)}
       on:click={() => toggleRoom(room)}
     >
-      {room} camere
+      {room}
     </button>
   {/each}
 </div>
 
-<!-- Responsive floor selector: dropdown on small screens, buttons on md+ -->
 <div class="mb-8">
   <div class="block md:hidden w-full max-w-xs mx-auto">
     <select
@@ -67,10 +103,13 @@
   </div>
 </div>
 <div>
-  <Floor 
-    rooms={selectedRooms}
+  <Floor
+    rooms={displayableUnits.map(unit => ({
+      id: unit.uniqueId,
+      sold: unit.sold
+    }))}
     FloorPlan={floors[selectedIdx].component}
     floorName={floors[selectedIdx].name}
-    onApartmentClick={(id) => alert(`Apartment clicked: ${id}`)}
+    onApartmentClick={handleApartmentClick}
   />
 </div>

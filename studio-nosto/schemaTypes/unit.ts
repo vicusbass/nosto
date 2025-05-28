@@ -26,8 +26,10 @@ export const unit = defineType({
       options: {
         list: [
           { title: 'Comercial', value: 'C' },
-          { title: '1 cameră', value: '1' },
+          { title: 'Studio', value: '1' },
+          { title: '1.5 camere', value: '1.5' },
           { title: '2 camere', value: '2' },
+          { title: '2.5 camere', value: '2.5' },
           { title: '3 camere', value: '3' },
           { title: '4 camere', value: '4' }
         ]
@@ -35,7 +37,7 @@ export const unit = defineType({
       validation: Rule => Rule.required().error('Tip unitate obligatoriu')
     }),
     defineField({
-      name: 'vandut',
+      name: 'sold',
       title: 'Vandut',
       type: 'boolean',
       initialValue: false,
@@ -97,7 +99,7 @@ export const unit = defineType({
       media: 'images.0',
       price: 'price',
       size: 'size',
-      sold: 'vandut'
+      sold: 'sold'
     },
     prepare(selection) {
       const { title, subtitle, media, price, size, sold } = selection
@@ -128,7 +130,7 @@ export const unit = defineType({
     {
       title: 'Disponibilitate',
       name: 'availableFirst',
-      by: [{ field: 'vandut', direction: 'asc' }]
+      by: [{ field: 'sold', direction: 'asc' }]
     }
   ]
 })

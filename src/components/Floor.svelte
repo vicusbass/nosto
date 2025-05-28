@@ -1,52 +1,50 @@
 <script>
-  export let rooms = [];
-  export let FloorPlan;
-  export let onApartmentClick = (id) => console.log(`Apartment clicked: ${id}`);
+  
+  const { rooms = [], FloorPlan, onApartmentClick = (id) => console.log(`Apartment clicked: ${id}`) } = $props();
+  function updateApartmentHighlightsAndClicks() {
+    const apartmentElements = document.querySelectorAll('svg [id]');
 
-  import { afterUpdate, onMount } from 'svelte';
+    apartmentElements.forEach(el => {
+      const apartmentId = el.id;
 
-  function addRectClickHandlers() {
-    document.querySelectorAll('[data-rooms]').forEach(el => {
-      el.onclick = (_e) => onApartmentClick(el.id);
-
-      el.classList.add('highlight-apartment');
+      if (apartmentId) {
+        const room = rooms.find(r => r.id === apartmentId);
+        
+        if (room) {
+          if (room.sold) {
+            el.classList.add('apartment-sold');
+            el.classList.remove('highlight-apartment');
+            el.classList.remove('no-highlight');
+            el.onclick = null;
+          } else {
+            el.classList.add('highlight-apartment');
+            el.classList.remove('no-highlight');
+            el.classList.remove('apartment-sold');
+            el.onclick = (_e) => onApartmentClick(apartmentId);
+          }
+        } else {
+          el.classList.remove('highlight-apartment');
+          el.classList.add('no-highlight');
+          el.classList.remove('apartment-sold');
+          el.onclick = null;
+        }
+      }
     });
   }
 
-  onMount(() => {
-    addRectClickHandlers();
+  let mounted = false;
+  $effect(() => {
+    if (!mounted) {
+      updateApartmentHighlightsAndClicks();
+      mounted = true;
+    }
   });
-  afterUpdate(() => {
-    document.querySelectorAll('[data-rooms]').forEach(el => {
-      if (!rooms || rooms.length === 0 ||
-          rooms.includes(parseInt(el.getAttribute('data-rooms')))) {
-        el.classList.add('highlight-apartment');
-        el.classList.remove('no-highlight');
-      } else {
-        el.classList.remove('highlight-apartment');
-        el.classList.add('no-highlight');
-      }
 
-      el.onclick = (_e) => onApartmentClick(el.id);
-    });
+  $effect(() => {
+    if (rooms) {
+      updateApartmentHighlightsAndClicks();
+    }
   });
 </script>
 
-<svelte:component this={FloorPlan} />
-
-<style>
-  :global(svg .highlight-apartment) {
-    fill: #008000;
-    fill-opacity: 0.2;
-    transition: fill-opacity 0.3s;
-  }
-
-  :global(svg .no-highlight) {
-    opacity: 0;
-  }
-
-  :global(svg .highlight-apartment:hover) {
-    fill-opacity: 0.5 !important;
-    cursor: pointer;
-  }
-</style>
+{@render FloorPlan()}
