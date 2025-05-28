@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import Apartments from "../components/Apartments.svelte";
-import { client } from "../utils/sanity";
+import { sanityClient } from "sanity:client";
 
 let units = [];
 const query = `*[_type == "unit"]{
@@ -11,13 +11,13 @@ const query = `*[_type == "unit"]{
   type,
   price,
   size,
-  vandut,
+  sold,
   "floor": floor->name,
   images
 }`;
 
 try {
-  units = await client.fetch(query);
+  units = await sanityClient.fetch(query);
 } catch (error) {
   console.error("Error fetching units from Sanity:", error);
 }

@@ -1,15 +1,24 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import { client } from '../../../utils/sanity'; // Adjusted path
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import Layout from '../../layouts/Layout.astro';
+import { sanityClient } from "sanity:client";
+import urlForImage from '../../utils/sanityImageUrl';
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const UNITS_QUERY = `*[_type == "unit" && defined(uniqueId)]{
+    "params": {"unitid": uniqueId}
+  }`;
+  const paths = await sanityClient.fetch<{ params: { unitid: string } }[]>(UNITS_QUERY);
+  return paths;
+}
 
 const { unitid } = Astro.params;
 let unit = null;
-let fetchError = null; // Renamed to avoid conflict with a potential 'error' variable in unit data
+let fetchError = null;
 
 if (!unitid) {
-  // This case might be handled by Astro's routing if unitid is mandatory and correctly configured
-  // However, good to have a fallback.
-  Astro.response.status = 400; // Bad Request
+  Astro.response.status = 400;
   fetchError = "ID-ul apartamentului lipsește din URL.";
 } else {
   try {
@@ -19,13 +28,13 @@ if (!unitid) {
       "floorName": floor->name,
       type,
       size,
-      images, // Assuming images field contains enough info for direct URL or needs processing
+      images,
       description
     }`;
-    unit = await client.fetch(query, { unitid });
+    unit = await sanityClient.fetch(query, { unitid });
   } catch (e) {
     console.error("Sanity fetch error:", e);
-    Astro.response.status = 500; // Internal Server Error
+    Astro.response.status = 500;
     fetchError = "Eroare la încărcarea datelor apartamentului.";
   }
 }
@@ -34,22 +43,8 @@ let pageTitle = "Detalii Apartament - Nosto";
 if (unit) {
   pageTitle = `Apartament ${unit.name} - Nosto`;
 } else if (!fetchError) {
-  Astro.response.status = 404; // Not Found
+  Astro.response.status = 404;
   fetchError = `Apartamentul cu ID "${unitid}" nu a fost găsit.`;
-}
-
-// Helper for image URLs - basic version assuming image asset includes URL
-// In a real Sanity setup, you'd use @sanity/image-url or a similar utility
-function getImageUrl(imageAsset) {
-  if (!imageAsset || !imageAsset.asset || !imageAsset.asset._ref) {
-    return null;
-  }
-  // Example _ref: image-a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0-1200x800-jpg
-  // This needs to be parsed to construct a URL, or your query needs to get the direct URL
-  // For simplicity, this example won't construct a full URL from _ref.
-  // If 'url' is directly available on the image asset in your schema, use that.
-  // console.log("Image asset:", imageAsset);
-  return imageAsset.asset.url; // This assumes 'url' is part of the image asset data
 }
 ---
 
@@ -82,16 +77,16 @@ function getImageUrl(imageAsset) {
           <div>
             <p class="text-lg text-gray-600">Preț:</p>
             <p class="text-xl font-semibold text-primary">
-              {unit.price ? unit.price.toLocaleString('ro-RO', { style: 'currency', currency: 'EUR' }) : 'N/A'}
+              {unit.price.toLocaleString('ro-RO', { style: 'currency', currency: 'EUR' })}
             </p>
           </div>
           <div>
             <p class="text-lg text-gray-600">Tip:</p>
-            <p class="text-xl font-semibold text-gray-800">{unit.type || 'N/A'}</p>
+            <p class="text-xl font-semibold text-gray-800">{unit.type || 'N/A'} camere</p>
           </div>
           <div>
             <p class="text-lg text-gray-600">Suprafață utilă:</p>
-            <p class="text-xl font-semibold text-gray-800">{unit.size ? `${unit.size} m²` : 'N/A'}</p>
+            <p class="text-xl font-semibold text-gray-800">{`${unit.size} m²`}</p>
           </div>
         </div>
 
@@ -106,11 +101,18 @@ function getImageUrl(imageAsset) {
           <div class="mt-6">
             <h2 class="text-2xl font-bold text-gray-700 mb-4">Imagini</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {unit.images.map(image => {
-                const imageUrl = getImageUrl(image); // Basic image URL helper
+              {unit.images.map((image: SanityImageSource | null | undefined) => {
+                const imageUrl = image ? urlForImage(image)?.url() : null;
                 return imageUrl ? (
                   <div class="rounded-lg overflow-hidden shadow-md">
-                    <img src={imageUrl} alt={image.alt || `Imagine Apartament ${unit.name}`} class="w-full h-auto object-cover aspect-video" />
+                    {imageUrl && (
+                            <Image
+                                src={imageUrl}
+                                alt={unit.name}
+                                class="aspect-video w-full max-w-2xl mx-auto rounded-xl object-cover shadow-lg"
+                                inferSize={true}
+                            />
+                        )}
                   </div>
                 ) : (
                   <p class="text-sm text-gray-500">Imagine indisponibilă</p>

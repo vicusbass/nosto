@@ -4,10 +4,8 @@
   import Etaj2 from "./Etaj2.svelte";
   import Etaj3 from "./Etaj3.svelte";
   import Floor from "./Floor.svelte";
-  import { onDestroy } from 'svelte';
 
   export let units = [];
-  // $: console.log(units); // Optional: for debugging
 
   const ROOM_TYPE_TO_SANITY_VALUE = {
     'Studio': '1',
@@ -16,20 +14,18 @@
     '2.5 Camere': '2.5',
     '3 Camere': '3',
     '4 Camere': '4',
-    // 'Comercial': 'C', // Uncomment if needed
   };
 
   let selectedIdx = 0;
   const floors = [
     { name: "Parter", component: Parter },
-    { name: "Etaj 1", component: Etaj1 },
-    { name: "Etaj 2", component: Etaj2 },
-    { name: "Etaj 3", component: Etaj3 }
+    { name: "Etajul 1", component: Etaj1 },
+    { name: "Etajul 2", component: Etaj2 },
+    { name: "Etajul 3", component: Etaj3 }
   ];
 
-  // Room filter logic
   const roomOptions = Object.keys(ROOM_TYPE_TO_SANITY_VALUE);
-  let selectedRooms = []; // User-friendly names like "Studio"
+  let selectedRooms = [];
 
   function toggleRoom(room) {
     if (selectedRooms.includes(room)) {
@@ -39,23 +35,18 @@
     }
   }
 
-  // Filtered apartment IDs to display
-  let displayableApartmentIds = [];
+  let displayableUnits = [];
 
   $: {
     const selectedFloorName = floors[selectedIdx].name;
     const selectedSanityTypes = selectedRooms.map(roomName => ROOM_TYPE_TO_SANITY_VALUE[roomName]).filter(Boolean);
 
-    displayableApartmentIds = units
-      .filter(unit => {
-        const isCorrectFloor = unit.floor === selectedFloorName;
-        if (!isCorrectFloor) return false;
-
-        if (selectedSanityTypes.length === 0) return true; // No room type filter, show all on this floor
-        return selectedSanityTypes.includes(unit.type);
-      })
-      .map(unit => unit.uniqueId);
-    // $: console.log("Displayable IDs:", displayableApartmentIds);
+    const currentFloorUnits = units.filter(unit => unit.floor === selectedFloorName);
+    
+    displayableUnits = currentFloorUnits.filter(unit => {
+      if (selectedSanityTypes.length === 0) return true;
+      return selectedSanityTypes.includes(unit.type);
+    });
   }
 
   function handleApartmentClick(apartmentId) {
@@ -64,17 +55,14 @@
     }
   }
 
-  // Ensure component reacts to prop changes if units are loaded async
   $: if (units.length > 0) {
-    // Trigger a recalculation when units are available
     const currentSelectedRooms = [...selectedRooms];
-    selectedRooms = []; // Force a change to trigger reactivity
+    selectedRooms = [];
     selectedRooms = currentSelectedRooms;
   }
 
 </script>
 
-<!-- Room filter UI -->
 <div class="flex flex-wrap justify-center gap-2 mb-6">
   {#each roomOptions as room}
     <button
@@ -89,7 +77,6 @@
   {/each}
 </div>
 
-<!-- Responsive floor selector: dropdown on small screens, buttons on md+ -->
 <div class="mb-8">
   <div class="block md:hidden w-full max-w-xs mx-auto">
     <select
@@ -117,7 +104,10 @@
 </div>
 <div>
   <Floor
-    rooms={displayableApartmentIds}
+    rooms={displayableUnits.map(unit => ({
+      id: unit.uniqueId,
+      sold: unit.sold
+    }))}
     FloorPlan={floors[selectedIdx].component}
     floorName={floors[selectedIdx].name}
     onApartmentClick={handleApartmentClick}

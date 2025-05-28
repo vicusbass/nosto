@@ -37,7 +37,7 @@ export const unit = defineType({
       validation: Rule => Rule.required().error('Tip unitate obligatoriu')
     }),
     defineField({
-      name: 'vandut',
+      name: 'sold',
       title: 'Vandut',
       type: 'boolean',
       initialValue: false,
@@ -99,7 +99,7 @@ export const unit = defineType({
       media: 'images.0',
       price: 'price',
       size: 'size',
-      sold: 'vandut'
+      sold: 'sold'
     },
     prepare(selection) {
       const { title, subtitle, media, price, size, sold } = selection
@@ -130,7 +130,7 @@ export const unit = defineType({
     {
       title: 'Disponibilitate',
       name: 'availableFirst',
-      by: [{ field: 'vandut', direction: 'asc' }]
+      by: [{ field: 'sold', direction: 'asc' }]
     }
   ]
 })
