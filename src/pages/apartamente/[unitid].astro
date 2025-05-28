@@ -1,0 +1,125 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { client } from '../../../utils/sanity'; // Adjusted path
+
+const { unitid } = Astro.params;
+let unit = null;
+let fetchError = null; // Renamed to avoid conflict with a potential 'error' variable in unit data
+
+if (!unitid) {
+  // This case might be handled by Astro's routing if unitid is mandatory and correctly configured
+  // However, good to have a fallback.
+  Astro.response.status = 400; // Bad Request
+  fetchError = "ID-ul apartamentului lipsește din URL.";
+} else {
+  try {
+    const query = `*[_type == "unit" && uniqueId == $unitid][0] {
+      name,
+      price,
+      "floorName": floor->name,
+      type,
+      size,
+      images, // Assuming images field contains enough info for direct URL or needs processing
+      description
+    }`;
+    unit = await client.fetch(query, { unitid });
+  } catch (e) {
+    console.error("Sanity fetch error:", e);
+    Astro.response.status = 500; // Internal Server Error
+    fetchError = "Eroare la încărcarea datelor apartamentului.";
+  }
+}
+
+let pageTitle = "Detalii Apartament - Nosto";
+if (unit) {
+  pageTitle = `Apartament ${unit.name} - Nosto`;
+} else if (!fetchError) {
+  Astro.response.status = 404; // Not Found
+  fetchError = `Apartamentul cu ID "${unitid}" nu a fost găsit.`;
+}
+
+// Helper for image URLs - basic version assuming image asset includes URL
+// In a real Sanity setup, you'd use @sanity/image-url or a similar utility
+function getImageUrl(imageAsset) {
+  if (!imageAsset || !imageAsset.asset || !imageAsset.asset._ref) {
+    return null;
+  }
+  // Example _ref: image-a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0-1200x800-jpg
+  // This needs to be parsed to construct a URL, or your query needs to get the direct URL
+  // For simplicity, this example won't construct a full URL from _ref.
+  // If 'url' is directly available on the image asset in your schema, use that.
+  // console.log("Image asset:", imageAsset);
+  return imageAsset.asset.url; // This assumes 'url' is part of the image asset data
+}
+---
+
+<Layout title={pageTitle}>
+  <section class="container mx-auto py-10 px-4">
+    {fetchError && (
+      <div class="text-center text-red-500 bg-red-100 p-6 rounded-lg shadow-md">
+        <p class="text-xl font-semibold mb-2">Eroare</p>
+        <p>{fetchError}</p>
+        <a href="/apartamente" class="mt-4 inline-block text-primary hover:underline font-medium">
+          &larr; Înapoi la lista de apartamente
+        </a>
+      </div>
+    )}
+
+    {unit && !fetchError && (
+      <div class="bg-white shadow-xl rounded-lg p-6 md:p-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-4 border-b border-gray-200">
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Apartament: {unit.name}</h1>
+          <a href="/apartamente" class="mt-2 md:mt-0 text-primary hover:underline font-medium self-start md:self-center">
+            &larr; Înapoi la listă
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-6">
+          <div>
+            <p class="text-lg text-gray-600">Etaj:</p>
+            <p class="text-xl font-semibold text-gray-800">{unit.floorName || 'N/A'}</p>
+          </div>
+          <div>
+            <p class="text-lg text-gray-600">Preț:</p>
+            <p class="text-xl font-semibold text-primary">
+              {unit.price ? unit.price.toLocaleString('ro-RO', { style: 'currency', currency: 'EUR' }) : 'N/A'}
+            </p>
+          </div>
+          <div>
+            <p class="text-lg text-gray-600">Tip:</p>
+            <p class="text-xl font-semibold text-gray-800">{unit.type || 'N/A'}</p>
+          </div>
+          <div>
+            <p class="text-lg text-gray-600">Suprafață utilă:</p>
+            <p class="text-xl font-semibold text-gray-800">{unit.size ? `${unit.size} m²` : 'N/A'}</p>
+          </div>
+        </div>
+
+        {unit.description && (
+          <div class="mb-6">
+            <h2 class="text-2xl font-bold text-gray-700 mb-2">Descriere</h2>
+            <p class="text-gray-700 whitespace-pre-line">{unit.description}</p>
+          </div>
+        )}
+
+        {unit.images && unit.images.length > 0 && (
+          <div class="mt-6">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Imagini</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {unit.images.map(image => {
+                const imageUrl = getImageUrl(image); // Basic image URL helper
+                return imageUrl ? (
+                  <div class="rounded-lg overflow-hidden shadow-md">
+                    <img src={imageUrl} alt={image.alt || `Imagine Apartament ${unit.name}`} class="w-full h-auto object-cover aspect-video" />
+                  </div>
+                ) : (
+                  <p class="text-sm text-gray-500">Imagine indisponibilă</p>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+    )}
+  </section>
+</Layout>

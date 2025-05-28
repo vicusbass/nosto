@@ -4,6 +4,20 @@
   import Etaj2 from "./Etaj2.svelte";
   import Etaj3 from "./Etaj3.svelte";
   import Floor from "./Floor.svelte";
+  import { onDestroy } from 'svelte';
+
+  export let units = [];
+  // $: console.log(units); // Optional: for debugging
+
+  const ROOM_TYPE_TO_SANITY_VALUE = {
+    'Studio': '1',
+    '1.5 Camere': '1.5',
+    '2 Camere': '2',
+    '2.5 Camere': '2.5',
+    '3 Camere': '3',
+    '4 Camere': '4',
+    // 'Comercial': 'C', // Uncomment if needed
+  };
 
   let selectedIdx = 0;
   const floors = [
@@ -14,8 +28,9 @@
   ];
 
   // Room filter logic
-  const roomOptions = [1, 2, 3, 4];
-  let selectedRooms = [];
+  const roomOptions = Object.keys(ROOM_TYPE_TO_SANITY_VALUE);
+  let selectedRooms = []; // User-friendly names like "Studio"
+
   function toggleRoom(room) {
     if (selectedRooms.includes(room)) {
       selectedRooms = selectedRooms.filter(r => r !== room);
@@ -23,6 +38,40 @@
       selectedRooms = [...selectedRooms, room];
     }
   }
+
+  // Filtered apartment IDs to display
+  let displayableApartmentIds = [];
+
+  $: {
+    const selectedFloorName = floors[selectedIdx].name;
+    const selectedSanityTypes = selectedRooms.map(roomName => ROOM_TYPE_TO_SANITY_VALUE[roomName]).filter(Boolean);
+
+    displayableApartmentIds = units
+      .filter(unit => {
+        const isCorrectFloor = unit.floor === selectedFloorName;
+        if (!isCorrectFloor) return false;
+
+        if (selectedSanityTypes.length === 0) return true; // No room type filter, show all on this floor
+        return selectedSanityTypes.includes(unit.type);
+      })
+      .map(unit => unit.uniqueId);
+    // $: console.log("Displayable IDs:", displayableApartmentIds);
+  }
+
+  function handleApartmentClick(apartmentId) {
+    if (apartmentId) {
+      window.location.href = `/apartamente/${apartmentId}`;
+    }
+  }
+
+  // Ensure component reacts to prop changes if units are loaded async
+  $: if (units.length > 0) {
+    // Trigger a recalculation when units are available
+    const currentSelectedRooms = [...selectedRooms];
+    selectedRooms = []; // Force a change to trigger reactivity
+    selectedRooms = currentSelectedRooms;
+  }
+
 </script>
 
 <!-- Room filter UI -->
@@ -35,7 +84,7 @@
       aria-pressed={selectedRooms.includes(room)}
       on:click={() => toggleRoom(room)}
     >
-      {room} camere
+      {room}
     </button>
   {/each}
 </div>
@@ -67,10 +116,10 @@
   </div>
 </div>
 <div>
-  <Floor 
-    rooms={selectedRooms}
+  <Floor
+    rooms={displayableApartmentIds}
     FloorPlan={floors[selectedIdx].component}
     floorName={floors[selectedIdx].name}
-    onApartmentClick={(id) => alert(`Apartment clicked: ${id}`)}
+    onApartmentClick={handleApartmentClick}
   />
 </div>

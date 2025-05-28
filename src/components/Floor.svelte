@@ -5,30 +5,37 @@
 
   import { afterUpdate, onMount } from 'svelte';
 
-  function addRectClickHandlers() {
-    document.querySelectorAll('[data-rooms]').forEach(el => {
-      el.onclick = (_e) => onApartmentClick(el.id);
+  // This function will be used by both onMount and afterUpdate
+  function updateApartmentHighlightsAndClicks() {
+    const apartmentElements = document.querySelectorAll('svg [id]'); // More generic selector for elements with an ID in SVG
 
-      el.classList.add('highlight-apartment');
+    apartmentElements.forEach(el => {
+      const apartmentId = el.id;
+      // Ensure the element is meant to be interactive (e.g., it's an apartment)
+      // For now, we assume all elements with an ID within the SVG are potential apartments.
+      // If not, a more specific selector or data-attribute check might be needed.
+
+      if (apartmentId) {
+        if (rooms && rooms.includes(apartmentId)) {
+          el.classList.add('highlight-apartment');
+          el.classList.remove('no-highlight');
+        } else {
+          el.classList.remove('highlight-apartment');
+          el.classList.add('no-highlight');
+        }
+        // Assign click handler regardless of current highlight state,
+        // as the user should be able to click any apartment.
+        el.onclick = (_e) => onApartmentClick(apartmentId);
+      }
     });
   }
 
   onMount(() => {
-    addRectClickHandlers();
+    updateApartmentHighlightsAndClicks();
   });
-  afterUpdate(() => {
-    document.querySelectorAll('[data-rooms]').forEach(el => {
-      if (!rooms || rooms.length === 0 ||
-          rooms.includes(parseInt(el.getAttribute('data-rooms')))) {
-        el.classList.add('highlight-apartment');
-        el.classList.remove('no-highlight');
-      } else {
-        el.classList.remove('highlight-apartment');
-        el.classList.add('no-highlight');
-      }
 
-      el.onclick = (_e) => onApartmentClick(el.id);
-    });
+  afterUpdate(() => {
+    updateApartmentHighlightsAndClicks();
   });
 </script>
 
