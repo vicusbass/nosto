@@ -2074,9 +2074,9 @@
 <text transform="matrix(1.3333 0 0 1.3333 560.59 308.16)" clip-path="url(#lv)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.073475398" fill="#000000" font-family="Arial" font-size="1.3359px">mp</tspan></text>
 </g>
 <rect id="ap1" data-rooms="1" x="24.747" y="5.3514" width="70.083" height="107.69" stroke-width=".9922"/>
-<rect id="ap2" data-rooms="2" x="98.069" y="5.4331" width="164.96" height="60.867" stroke-width=".99432"/>
+<rect id="ap2" data-rooms="2.5" x="98.069" y="5.4331" width="164.96" height="60.867" stroke-width=".99432"/>
 <path id="ap3" data-rooms="3" d="m224.13 69.313 41.98 0.13886v-64.292h63.877v158.58h-106.28z" stroke-width=".99781"/>
-<rect id="ap4" data-rooms="3" x="117.02" y="88.424" width="103.77" height="75.174"/>
-<rect id="ap5" data-rooms="2" x="43.375" y="187.03" width="74.338" height="93.724"/>
-<rect id="ap6" data-rooms="3" x="24.686" y="283.82" width="92.887" height="104.6" stroke-width=".9985"/>
+<rect id="ap4" data-rooms="1.5" x="117.02" y="88.424" width="103.77" height="75.174"/>
+<rect id="ap5" data-rooms="1.5" x="43.375" y="187.03" width="74.338" height="93.724"/>
+<rect id="ap6" data-rooms="2.5" x="24.686" y="283.82" width="92.887" height="104.6" stroke-width=".9985"/>
 </svg>

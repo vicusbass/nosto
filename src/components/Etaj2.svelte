@@ -2566,12 +2566,12 @@
 <text transform="matrix(1.3333 0 0 1.3333 555.1 376.1)" clip-path="url(#ke)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">73</tspan></text>
 <text transform="matrix(1.3333 0 0 1.3333 556.75 376.1)" clip-path="url(#kd)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0612645" fill="#000000" font-family="Arial" font-size="1.1139px">mp</tspan></text>
 </g>
-<path id="ap15" data-rooms="3" d="m138.01 114.15h-42.806v-39.362h-71.098v-51.417h8.8565v-23.125h69.868v22.879h36.164z"/>
-<path id="ap16" data-rooms="2" d="m278.24 75.282h-137.52v-52.328h54.123v-22.708h74.788v22.708h9.8405z" stroke-width="1.0017"/>
-<path id="ap17" data-rooms="2" d="m244.54 77.494h36.41v-54.861h53.385v134.08h-33.212v23.863h-55.599z"/>
-<path id="ap18" data-rooms="3" d="m243.25 93.423h-86.784v87.151h38.818v-21.418h48.213z" stroke-width="1.0029"/>
-<path id="ap19" data-rooms="3" d="m180.82 290.05h-85.858v-115.38h63.225v56.337h22.633z"/>
-<rect id="ap20" data-rooms="4" x=".24601" y="290.79" width="157.2" height="53.631"/>
-<path id="ap21" data-rooms="2" d="m77.128 153.51v135.31h-52.903v-54.816h-23.979v-73.088h24.474v-7.4076z" stroke-width="1.0043"/>
+<path id="ap15" data-rooms="2.5" d="m138.01 114.15h-42.806v-39.362h-71.098v-51.417h8.8565v-23.125h69.868v22.879h36.164z"/>
+<path id="ap16" data-rooms="2.5" d="m278.24 75.282h-137.52v-52.328h54.123v-22.708h74.788v22.708h9.8405z" stroke-width="1.0017"/>
+<path id="ap17" data-rooms="3" d="m244.54 77.494h36.41v-54.861h53.385v134.08h-33.212v23.863h-55.599z"/>
+<path id="ap18" data-rooms="1.5" d="m243.25 93.423h-86.784v87.151h38.818v-21.418h48.213z" stroke-width="1.0029"/>
+<path id="ap19" data-rooms="2" d="m180.82 290.05h-85.858v-115.38h63.225v56.337h22.633z"/>
+<rect id="ap20" data-rooms="2.5" x=".24601" y="290.79" width="157.2" height="53.631"/>
+<path id="ap21" data-rooms="2.5" d="m77.128 153.51v135.31h-52.903v-54.816h-23.979v-73.088h24.474v-7.4076z" stroke-width="1.0043"/>
 <path id="ap22" data-rooms="1" d="m92.751 151.12-68.272-0.31019v-17.467h-23.987v-57.567h92.009z"/>
 </svg>

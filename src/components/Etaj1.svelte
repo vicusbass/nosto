@@ -2566,12 +2566,12 @@
 <text transform="matrix(1.3333 0 0 1.3333 555.1 376.1)" clip-path="url(#ke)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">73</tspan></text>
 <text transform="matrix(1.3333 0 0 1.3333 556.75 376.1)" clip-path="url(#kd)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0612645" fill="#000000" font-family="Arial" font-size="1.1139px">mp</tspan></text>
 </g>
-<path id="ap7" data-rooms="3" d="m138.01 114.15h-42.806v-39.362h-71.098v-51.417h8.8565v-23.125h69.868v22.879h36.164z"/>
-<path id="ap8" data-rooms="4" d="m278.24 75.034h-137.52v-52.155h54.123v-22.633h74.788v22.633h9.8405z"/>
-<path id="ap9" data-rooms="2" d="m244.54 77.494h36.41v-54.861h53.385v134.08h-33.212v23.863h-55.599z"/>
-<path id="ap10" data-rooms="4" d="m242.81 93.485h-86.351v87.089h38.624v-21.403h47.973z"/>
-<path id="ap11" data-rooms="3" d="m180.82 290.05h-85.858v-115.38h63.225v56.337h22.633z"/>
-<rect id="ap12" data-rooms="3" x=".24601" y="290.79" width="157.2" height="53.631"/>
-<path id="ap13" data-rooms="2" d="m76.756 153.51v134.82h-52.647v-54.615h-23.863v-72.82h24.355v-7.3804z"/>
+<path id="ap7" data-rooms="2.5" d="m138.01 114.15h-42.806v-39.362h-71.098v-51.417h8.8565v-23.125h69.868v22.879h36.164z"/>
+<path id="ap8" data-rooms="2.5" d="m278.24 75.034h-137.52v-52.155h54.123v-22.633h74.788v22.633h9.8405z"/>
+<path id="ap9" data-rooms="3" d="m244.54 77.494h36.41v-54.861h53.385v134.08h-33.212v23.863h-55.599z"/>
+<path id="ap10" data-rooms="1.5" d="m242.81 93.485h-86.351v87.089h38.624v-21.403h47.973z"/>
+<path id="ap11" data-rooms="2" d="m180.82 290.05h-85.858v-115.38h63.225v56.337h22.633z"/>
+<rect id="ap12" data-rooms="2.5" x=".24601" y="290.79" width="157.2" height="53.631"/>
+<path id="ap13" data-rooms="2.5" d="m76.756 153.51v134.82h-52.647v-54.615h-23.863v-72.82h24.355v-7.3804z"/>
 <path id="ap14" data-rooms="1" d="m92.751 151.12-68.272-0.31019v-17.467h-23.987v-57.567h92.009z"/>
 </svg>
