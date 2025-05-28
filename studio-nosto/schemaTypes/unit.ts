@@ -26,8 +26,10 @@ export const unit = defineType({
       options: {
         list: [
           { title: 'Comercial', value: 'C' },
-          { title: '1 cameră', value: '1' },
+          { title: 'Studio', value: '1' },
+          { title: '1.5 camere', value: '1.5' },
           { title: '2 camere', value: '2' },
+          { title: '2.5 camere', value: '2.5' },
           { title: '3 camere', value: '3' },
           { title: '4 camere', value: '4' }
         ]
