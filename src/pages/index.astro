@@ -201,6 +201,18 @@ import Layout from "../layouts/Layout.astro";
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Locație</h2>
       <div class="flex flex-col items-center">
         <div id="leaflet-map" class="leaflet-map rounded shadow"></div>
+        <div style="z-index: 10;">
+          <button
+            id="zoom-city"
+            class="inline-block mt-4 px-6 py-3 font-semibold rounded shadow hover:bg-primary-700 transition"
+            >Vedere Oras</button
+          >
+          <button
+            id="zoom-area"
+            class="inline-block mt-4 px-6 py-3 font-semibold rounded shadow hover:bg-primary-700 transition"
+            >Vederes Zona</button
+          >
+        </div>
         <a
           href="https://maps.app.goo.gl/VaRfRMyJi5aHt9kYA"
           target="_blank"
@@ -222,6 +234,14 @@ import Layout from "../layouts/Layout.astro";
           center,
           zoom: 16,
           scrollWheelZoom: false,
+          zoomControl: false,
+          attributionControl: false,
+          closePopupOnClick: false,
+          dragging: false,
+          doubleClickZoom: false,
+          boxZoom: false,
+          keyboard: false,
+          renderer: L.canvas(),
         });
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
           maxZoom: 19,
@@ -229,11 +249,14 @@ import Layout from "../layouts/Layout.astro";
         var marker = L.marker(center).addTo(map);
         marker.bindPopup("NOSTO").openPopup();
 
-        // Hide the bottom right Leaflet control container
-        var leafletWatermark = document.querySelector(
-          "#leaflet-map > div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div"
-        );
-        if (leafletWatermark) leafletWatermark.style.display = "none";
+        var zoomCityButton = document.getElementById("zoom-city");
+        var zoomAreaButton = document.getElementById("zoom-area");
+        zoomCityButton.addEventListener("click", function () {
+          map.setView(center, 13);
+        });
+        zoomAreaButton.addEventListener("click", function () {
+          map.setView(center, 16);
+        });
       });
     </script>
   </section>
