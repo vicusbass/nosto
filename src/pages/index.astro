@@ -194,6 +194,49 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </section>
+
+  <!-- Location Map Section -->
+  <section class="py-12 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Locație</h2>
+      <div class="flex flex-col items-center">
+        <div id="leaflet-map" class="leaflet-map rounded shadow"></div>
+        <a
+          href="https://maps.app.goo.gl/VaRfRMyJi5aHt9kYA"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block mt-4 px-6 py-3 font-semibold rounded shadow hover:bg-primary-700 transition"
+          >Vezi pe Google Maps</a
+        >
+      </div>
+    </div>
+    <style is:global>
+      @import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+    </style>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""
+    ></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        var center = [45.752179, 21.275771];
+        var map = L.map("leaflet-map", {
+          center,
+          zoom: 16,
+          scrollWheelZoom: false,
+        });
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+        }).addTo(map);
+        var marker = L.marker(center).addTo(map);
+        marker.bindPopup("NOSTO").openPopup();
+
+        // Hide the bottom right Leaflet control container
+        var leafletWatermark = document.querySelector(
+          "#leaflet-map > div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div"
+        );
+        if (leafletWatermark) leafletWatermark.style.display = "none";
+      });
+    </script>
+  </section>
 </Layout>
 
 <style>
@@ -207,6 +250,17 @@ import Layout from "../layouts/Layout.astro";
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+  .leaflet-map {
+    width: 80%;
+    aspect-ratio: 5/3;
+    z-index: 0;
+  }
+  @media (max-width: 640px) {
+    .leaflet-map {
+      aspect-ratio: 3/5;
+      width: 90%;
     }
   }
 </style>
