@@ -1,15 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import heroImage from "../assets/hero.png";
 ---
 
 <Layout title="Proiect Rezidential - Nostro">
   <!-- Hero Section -->
-  <section class="relative h-screen">
+  <section class="relative h-screen w-full overflow-hidden">
     <div class="absolute inset-0">
-      <img
-        src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg"
+      <Image
+        src={heroImage}
         alt="Apartment Building"
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover object-center"
+        height={750}
+        width={1440}
       />
       <div class="absolute inset-0 bg-black/50"></div>
     </div>
@@ -28,10 +32,11 @@ import Layout from "../layouts/Layout.astro";
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
-          <img
+          <Image
             src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"
             alt="Building Interior"
             class="rounded-sm shadow-lg"
+            inferSize
           />
         </div>
         <div>
@@ -133,10 +138,11 @@ import Layout from "../layouts/Layout.astro";
                   </ul>
                 </div>
                 <div class="flex items-center h-full">
-                  <img
+                  <Image
                     src={apartment.planImage}
                     alt={`Plan ${apartment.type}`}
                     class="w-full h-full object-contain"
+                    inferSize
                   />
                 </div>
               </div>
