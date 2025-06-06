@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import heroImage from "../assets/hero.png";
+import Location from "../components/Location.astro";
 ---
 
 <Layout title="Proiect Rezidential - Nostro">
@@ -202,87 +203,7 @@ import heroImage from "../assets/hero.png";
   </section>
 
   <!-- Location Map Section -->
-  <section class="py-12 bg-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Locație</h2>
-      <div class="flex flex-col items-center">
-        <div id="leaflet-map" class="leaflet-map rounded shadow"></div>
-        <div style="z-index: 10;">
-          <button
-            id="zoom-city"
-            class="inline-block mt-4 px-6 py-3 font-semibold rounded shadow hover:bg-primary-700 transition map-btn"
-            >Vedere Oras</button
-          >
-          <button
-            id="zoom-area"
-            class="inline-block mt-4 px-6 py-3 font-semibold rounded shadow hover:bg-primary-700 transition map-btn selected"
-            >Vedere Zona</button
-          >
-        </div>
-        <a
-          href="https://maps.app.goo.gl/VaRfRMyJi5aHt9kYA"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block mt-4 px-6 py-3 font-semibold rounded shadow hover:bg-primary-700 transition"
-          >Vezi pe Google Maps</a
-        >
-      </div>
-    </div>
-    <style is:global>
-      @import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
-    </style>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""
-    ></script>
-    <script>
-      window.addEventListener("DOMContentLoaded", function () {
-        var center = [45.752179, 21.275771];
-        var map = L.map("leaflet-map", {
-          center,
-          zoom: 16,
-          scrollWheelZoom: false,
-          zoomControl: false,
-          attributionControl: false,
-          closePopupOnClick: false,
-          dragging: false,
-          doubleClickZoom: false,
-          boxZoom: false,
-          keyboard: false,
-          renderer: L.canvas(),
-        });
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          maxZoom: 19,
-        }).addTo(map);
-        var marker = L.marker(center).addTo(map);
-        marker.bindPopup("NOSTO").openPopup();
-
-        var zoomCityButton = document.getElementById("zoom-city");
-        var zoomAreaButton = document.getElementById("zoom-area");
-
-        function updateButtonSelection(selectedBtn) {
-          document.querySelectorAll('.map-btn').forEach(btn => {
-            btn.classList.remove('selected');
-          });
-          selectedBtn.classList.add('selected');
-        }
-        
-        zoomCityButton.addEventListener("click", function () {
-          map.flyTo(center, 13, {
-            duration: 2,
-            easeLinearity: 0.1
-          });
-          updateButtonSelection(zoomCityButton);
-        });
-        
-        zoomAreaButton.addEventListener("click", function () {
-          map.flyTo(center, 16, {
-            duration: 2,
-            easeLinearity: 0.1
-          });
-          updateButtonSelection(zoomAreaButton);
-        });
-      });
-    </script>
-  </section>
+  <Location />
 </Layout>
 
 <style>

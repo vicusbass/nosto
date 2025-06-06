@@ -1,0 +1,212 @@
+---
+// LocationMap.astro
+export interface Props {
+  center?: [number, number];
+  title?: string;
+  googleMapsLink?: string;
+}
+
+const { 
+  center = [45.752179, 21.275771],
+  title = "NOSTO",
+  googleMapsLink = "https://maps.app.goo.gl/VaRfRMyJi5aHt9kYA"
+} = Astro.props;
+---
+
+<!-- Load Leaflet CSS and JS first -->
+<style is:global>
+  @import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+</style>
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+<section class="py-12 bg-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Locație si mobilitate</h2>
+    <div class="relative flex flex-col items-center">
+      <div class="w-full max-w-5xl">
+        <div class="flex space-x-2 mb-2">
+          <button
+            id="zoom-city"
+            class="px-4 py-2 text-sm font-semibold rounded shadow hover:bg-primary-700 transition map-btn"
+          >
+            Vedere Oras
+          </button>
+          <button
+            id="zoom-area"
+            class="px-4 py-2 text-sm font-semibold rounded shadow hover:bg-primary-700 transition map-btn selected"
+          >
+            Vedere Zona
+          </button>
+        </div>
+        <div 
+          id="leaflet-map" 
+          class="leaflet-map rounded shadow"
+          data-center={JSON.stringify(center)}
+          data-title={title}
+        ></div>
+      </div>
+      <a
+        href={googleMapsLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block mt-4 px-6 py-3 font-semibold rounded shadow hover:bg-primary-700 transition"
+      >
+        Vezi pe Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .leaflet-map {
+    width: 80%;
+    aspect-ratio: 5/3;
+    z-index: 0;
+  }
+  
+  @media (max-width: 640px) {
+    .leaflet-map {
+      aspect-ratio: 3/5;
+      width: 90%;
+    }
+  }
+  
+  /* Map button styles */
+  .map-btn {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .map-btn:hover {
+    background-color: #e5e7eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .map-btn:hover::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: currentColor;
+  }
+  
+  .map-btn.selected {
+    background-color: #ffffff;
+    color: #111827;
+    border-color: currentColor;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+</style>
+
+
+
+<script>
+  // Type declaration for Leaflet
+  declare const L: any;
+  
+  let map: { remove: () => void; flyTo: (arg0: any, arg1: number, arg2: { duration: number; easeLinearity: number; }) => void; } | null = null;
+  let marker = null;
+
+  function initializeMap() {
+    const mapElement = document.getElementById("leaflet-map");
+    if (!mapElement) return;
+
+    // Clean up existing map if it exists
+    if (map) {
+      map.remove();
+      map = null;
+      marker = null;
+    }
+
+    // Get data from attributes
+    const center = JSON.parse(mapElement.dataset.center || '[45.752179, 21.275771]');
+    const title = mapElement.dataset.title || 'NOSTO';
+
+    // Initialize map
+    map = L.map("leaflet-map", {
+      center,
+      zoom: 16,
+      scrollWheelZoom: false,
+      zoomControl: false,
+      attributionControl: false,
+      closePopupOnClick: false,
+      dragging: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      renderer: L.canvas(),
+    });
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+    }).addTo(map);
+
+    marker = L.marker(center).addTo(map);
+    marker.bindPopup(title).openPopup();
+
+    // Set up button event listeners
+    setupButtons(center);
+  }
+
+  function setupButtons(center: any) {
+    const zoomCityButton = document.getElementById("zoom-city");
+    const zoomAreaButton = document.getElementById("zoom-area");
+
+    if (!zoomCityButton || !zoomAreaButton) return;
+
+    function updateButtonSelection(selectedBtn: HTMLElement | null) {
+      document.querySelectorAll('.map-btn').forEach(btn => {
+        btn.classList.remove('selected');
+      });
+      selectedBtn?.classList.add('selected');
+    }
+
+    // Remove existing listeners to prevent duplicates
+    zoomCityButton.replaceWith(zoomCityButton.cloneNode(true));
+    zoomAreaButton.replaceWith(zoomAreaButton.cloneNode(true));
+
+    // Get fresh references after cloning
+    const newZoomCityButton = document.getElementById("zoom-city");
+    const newZoomAreaButton = document.getElementById("zoom-area");
+
+    newZoomCityButton?.addEventListener("click", function () {
+      if (map) {
+        map.flyTo(center, 13, {
+          duration: 2,
+          easeLinearity: 0.1
+        });
+        updateButtonSelection(newZoomCityButton);
+      }
+    });
+
+    newZoomAreaButton?.addEventListener("click", function () {
+      if (map) {
+        map.flyTo(center, 16, {
+          duration: 2,
+          easeLinearity: 0.1
+        });
+        updateButtonSelection(newZoomAreaButton);
+      }
+    });
+  }
+
+  // Listen for both initial load and page transitions
+  document.addEventListener('astro:page-load', initializeMap);
+  document.addEventListener('DOMContentLoaded', initializeMap);
+
+  // Clean up on page leave
+  document.addEventListener('astro:before-preparation', () => {
+    if (map) {
+      map.remove();
+      map = null;
+      marker = null;
+    }
+  });
+</script>
