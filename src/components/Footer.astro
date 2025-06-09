@@ -1,13 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
-
-const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer-gray">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
+      <div class="pl-[52px] pt-[52px]">
         <h3 class="text-xl mb-4 text-black">NOSTO</h3>
         <div class="flex flex-col gap-2 text-gray-600">
           <p class="flex items-center gap-2"><Icon name="mdi:phone" class="h-4 w-4" />+40 123 456 789</p>
@@ -15,5 +13,14 @@ const currentYear = new Date().getFullYear();
           <p class="flex items-center gap-2"><Icon name="mdi:home" class="h-4 w-4" />Adresa</p>
         </div>
       </div>
+      
+      <div class="col-span-2 flex items-center justify-center md:justify-end px-4 md:px-0 mt-6 md:mt-0">
+        <div class="flex flex-nowrap gap-4 justify-center md:justify-end w-full overflow-x-auto pb-2">
+          <button class="btn-dark hidden md:inline-block">CONTACT</button>
+          <button class="btn-dark">VEZI APARTAMENTE</button>
+          <button class="btn-dark">SUNĂ ACUM</button>
+        </div>
+      </div>
+    </div>
   </div>
 </footer>
