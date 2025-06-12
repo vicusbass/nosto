@@ -1,4 +1,4 @@
-import { defineType, defineField } from 'sanity'
+import {defineType, defineField} from 'sanity'
 
 export const newsPost = defineType({
   name: 'newsPost',
@@ -9,7 +9,7 @@ export const newsPost = defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (rule) => rule.required().max(100)
+      validation: (rule) => rule.required().max(100),
     }),
     defineField({
       name: 'slug',
@@ -18,12 +18,9 @@ export const newsPost = defineType({
       options: {
         source: 'title',
         maxLength: 96,
-        slugify: input => input
-          .toLowerCase()
-          .replace(/\s+/g, '-')
-          .slice(0, 96)
+        slugify: (input) => input.toLowerCase().replace(/\s+/g, '-').slice(0, 96),
       },
-      validation: (rule) => rule.required()
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'date',
@@ -32,24 +29,24 @@ export const newsPost = defineType({
       validation: (rule) => rule.required(),
       options: {
         dateFormat: 'YYYY-MM-DD',
-        timeFormat: 'HH:mm'
-      }
+        timeFormat: 'HH:mm',
+      },
     }),
     defineField({
       name: 'image',
       title: 'Featured Image',
       type: 'image',
       options: {
-        hotspot: true
+        hotspot: true,
       },
       fields: [
         {
           name: 'alt',
           title: 'Alt Text',
           type: 'string',
-          description: 'Alternative text for accessibility'
-        }
-      ]
+          description: 'Alternative text for accessibility',
+        },
+      ],
     }),
     defineField({
       name: 'text',
@@ -59,17 +56,17 @@ export const newsPost = defineType({
         {
           type: 'block',
           styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'H1', value: 'h1' },
-            { title: 'H2', value: 'h2' },
-            { title: 'H3', value: 'h3' },
-            { title: 'Quote', value: 'blockquote' }
+            {title: 'Normal', value: 'normal'},
+            {title: 'H1', value: 'h1'},
+            {title: 'H2', value: 'h2'},
+            {title: 'H3', value: 'h3'},
+            {title: 'Quote', value: 'blockquote'},
           ],
           marks: {
             decorators: [
-              { title: 'Strong', value: 'strong' },
-              { title: 'Emphasis', value: 'em' },
-              { title: 'Code', value: 'code' }
+              {title: 'Strong', value: 'strong'},
+              {title: 'Emphasis', value: 'em'},
+              {title: 'Code', value: 'code'},
             ],
             annotations: [
               {
@@ -80,42 +77,42 @@ export const newsPost = defineType({
                   {
                     title: 'URL',
                     name: 'href',
-                    type: 'url'
-                  }
-                ]
-              }
-            ]
-          }
-        }
+                    type: 'url',
+                  },
+                ],
+              },
+            ],
+          },
+        },
       ],
-      validation: (rule) => rule.required()
-    })
+      validation: (rule) => rule.required(),
+    }),
   ],
   preview: {
     select: {
       title: 'title',
       date: 'date',
-      media: 'image'
+      media: 'image',
     },
     prepare(selection) {
-      const { title, date, media } = selection
+      const {title, date, media} = selection
       return {
         title,
         subtitle: date ? new Date(date).toLocaleDateString() : 'No date',
-        media
+        media,
       }
-    }
+    },
   },
   orderings: [
     {
       title: 'Date, New',
       name: 'dateDesc',
-      by: [{ field: 'date', direction: 'desc' }]
+      by: [{field: 'date', direction: 'desc'}],
     },
     {
       title: 'Date, Old',
       name: 'dateAsc',
-      by: [{ field: 'date', direction: 'asc' }]
-    }
-  ]
+      by: [{field: 'date', direction: 'asc'}],
+    },
+  ],
 })

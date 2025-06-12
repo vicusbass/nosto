@@ -1,9 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import heroImage from "../assets/hero-img.png";
-import heroLogo from "../assets/hero-logo.svg";
-import Location from "../components/Location.astro";
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/hero-img.png';
+import heroLogo from '../assets/hero-logo.svg';
+import Location from '../components/Location.astro';
 ---
 
 <Layout title="Proiect Rezidential - Nostro">
@@ -24,9 +24,7 @@ import Location from "../components/Location.astro";
   <!-- About Section -->
   <section id="despre" class="py-12 bg-main">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-        Despre Proiect
-      </h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Despre Proiect</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <Image
@@ -38,10 +36,9 @@ import Location from "../components/Location.astro";
         </div>
         <div>
           <p class="text-lg text-gray-600 mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <ul class="space-y-4">
             <li class="flex items-center text-gray-700">
@@ -65,65 +62,53 @@ import Location from "../components/Location.astro";
   <!-- Apartments Section -->
   <section class="py-12 bg-main">
     <div class="max-w-[95vw] lg:max-w-[1600px] mx-auto px-2 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
-        Tipuri de Apartamente
-      </h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Tipuri de Apartamente</h2>
       <div class="pb-[15vh]">
         {
           [
             {
-              type: "Studio",
-              size: "45mp",
+              type: 'Studio',
+              size: '45mp',
               description:
-                "Apartament modern tip studio, perfect pentru tineri profesioniști sau investiție. Spațiu eficient compartimentat cu zonă de zi multifuncțională, bucătărie și baie.",
-              planImage:
-                "https://images.pexels.com/photos/5524165/pexels-photo-5524165.jpeg",
+                'Apartament modern tip studio, perfect pentru tineri profesioniști sau investiție. Spațiu eficient compartimentat cu zonă de zi multifuncțională, bucătărie și baie.',
+              planImage: 'https://images.pexels.com/photos/5524165/pexels-photo-5524165.jpeg',
+              features: ['Suprafață utilă: 45mp', 'Living + bucătărie', 'Baie', 'Balcon'],
+            },
+            {
+              type: '2 Camere',
+              size: '65mp',
+              description:
+                'Apartament spațios cu două camere, ideal pentru cupluri sau familii mici. Dispune de living cu bucătărie, dormitor separat și baie.',
+              planImage: 'https://images.pexels.com/photos/5524147/pexels-photo-5524147.jpeg',
               features: [
-                "Suprafață utilă: 45mp",
-                "Living + bucătărie",
-                "Baie",
-                "Balcon",
+                'Suprafață utilă: 65mp',
+                'Living + bucătărie',
+                'Dormitor',
+                'Baie',
+                'Balcon',
               ],
             },
             {
-              type: "2 Camere",
-              size: "65mp",
+              type: '3 Camere',
+              size: '85mp',
               description:
-                "Apartament spațios cu două camere, ideal pentru cupluri sau familii mici. Dispune de living cu bucătărie, dormitor separat și baie.",
-              planImage:
-                "https://images.pexels.com/photos/5524147/pexels-photo-5524147.jpeg",
+                'Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.',
+              planImage: 'https://images.pexels.com/photos/5524155/pexels-photo-5524155.jpeg',
               features: [
-                "Suprafață utilă: 65mp",
-                "Living + bucătărie",
-                "Dormitor",
-                "Baie",
-                "Balcon",
-              ],
-            },
-            {
-              type: "3 Camere",
-              size: "85mp",
-              description:
-                "Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.",
-              planImage:
-                "https://images.pexels.com/photos/5524155/pexels-photo-5524155.jpeg",
-              features: [
-                "Suprafață utilă: 85mp",
-                "Living + bucătărie",
-                "2 Dormitoare",
-                "2 Băi",
-                "Balcon",
+                'Suprafață utilă: 85mp',
+                'Living + bucătărie',
+                '2 Dormitoare',
+                '2 Băi',
+                'Balcon',
               ],
             },
           ].map((apartment, index) => (
             <div
-              class={`apartment-section sticky top-20 min-h-[calc(100vh-8rem)] flex items-center ${index > 0 ? "mt-[20vh]" : ""}`}
+              class={`apartment-section sticky top-20 min-h-[calc(100vh-8rem)] flex items-center ${index > 0 ? 'mt-[20vh]' : ''}`}
             >
               <div class="grid grid-cols-1 md:grid-cols-2 bg-white rounded-sm shadow-xs w-full h-[640px] md:min-h-[420px] lg:min-h-[420px] items-stretch overflow-hidden">
                 <div class="space-y-6 flex flex-col justify-between p-8 h-full">
-                  <h3 class="text-2xl font-bold text-primary">
-                    {apartment.type}
-                  </h3>
+                  <h3 class="text-2xl font-bold text-primary">{apartment.type}</h3>
                   <p class="text-gray-600">{apartment.description}</p>
                   <ul class="space-y-3">
                     {apartment.features.map((feature) => (
@@ -153,34 +138,24 @@ import Location from "../components/Location.astro";
   <!-- Packages Section -->
   <section class="py-12 bg-main">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
-        Pachete Finisaje
-      </h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Pachete Finisaje</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
           [
             {
-              name: "Standard",
-              price: "Inclus în preț",
-              features: [
-                "Parchet laminat",
-                "Gresie și faianță",
-                "Uși interior",
-              ],
+              name: 'Standard',
+              price: 'Inclus în preț',
+              features: ['Parchet laminat', 'Gresie și faianță', 'Uși interior'],
             },
             {
-              name: "Premium",
-              price: "+5000€",
-              features: [
-                "Parchet triplu stratificat",
-                "Gresie porțelanată",
-                "Uși premium",
-              ],
+              name: 'Premium',
+              price: '+5000€',
+              features: ['Parchet triplu stratificat', 'Gresie porțelanată', 'Uși premium'],
             },
             {
-              name: "Luxury",
-              price: "+10000€",
-              features: ["Parchet masiv", "Marmură", "Uși custom"],
+              name: 'Luxury',
+              price: '+10000€',
+              features: ['Parchet masiv', 'Marmură', 'Uși custom'],
             },
           ].map((packageItem) => (
             <div class="border rounded-sm p-8 text-center">
@@ -249,7 +224,7 @@ import Location from "../components/Location.astro";
   }
 
   .map-btn:hover::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;

@@ -1,5 +1,5 @@
 ---
-import config from "../config/map";
+import config from '../config/map';
 ---
 
 <link
@@ -75,22 +75,22 @@ import config from "../config/map";
   let mapInstance = null;
 
   function initializeLeafletMap() {
-    const mapContainer = document.getElementById("leaflet-map");
+    const mapContainer = document.getElementById('leaflet-map');
 
     if (!mapContainer) {
       return;
     }
 
-    const configData = mapContainer.getAttribute("data-config");
+    const configData = mapContainer.getAttribute('data-config');
     if (!configData) {
-      console.error("Leaflet map data-config attribute not found.");
+      console.error('Leaflet map data-config attribute not found.');
       return;
     }
 
     const { center, title } = JSON.parse(configData);
 
     if (!center || !title) {
-      console.error("Map configuration (center, title) is missing or invalid in data-config.");
+      console.error('Map configuration (center, title) is missing or invalid in data-config.');
       return;
     }
 
@@ -105,7 +105,7 @@ import config from "../config/map";
     }
 
     // Initialize the map
-    mapInstance = L.map("leaflet-map", {
+    mapInstance = L.map('leaflet-map', {
       center,
       zoom: 16,
       scrollWheelZoom: false,
@@ -119,15 +119,15 @@ import config from "../config/map";
       renderer: L.canvas(),
     });
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
     }).addTo(mapInstance);
 
     const marker = L.marker(center).addTo(mapInstance);
     marker.bindPopup(title).openPopup();
 
-    const zoomCityButton = document.getElementById("zoom-city");
-    const zoomAreaButton = document.getElementById("zoom-area");
+    const zoomCityButton = document.getElementById('zoom-city');
+    const zoomAreaButton = document.getElementById('zoom-area');
 
     if (zoomCityButton) {
       zoomCityButton.onclick = () => {
@@ -137,8 +137,8 @@ import config from "../config/map";
             easeLinearity: 0.1,
           });
         }
-        zoomCityButton.classList.add("selected");
-        zoomAreaButton?.classList.remove("selected");
+        zoomCityButton.classList.add('selected');
+        zoomAreaButton?.classList.remove('selected');
       };
     }
 
@@ -150,11 +150,11 @@ import config from "../config/map";
             easeLinearity: 0.1,
           });
         }
-        zoomAreaButton.classList.add("selected");
-        zoomCityButton?.classList.remove("selected");
+        zoomAreaButton.classList.add('selected');
+        zoomCityButton?.classList.remove('selected');
       };
     }
   }
 
-  document.addEventListener("astro:page-load", initializeLeafletMap);
+  document.addEventListener('astro:page-load', initializeLeafletMap);
 </script>
