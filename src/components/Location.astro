@@ -1,0 +1,160 @@
+---
+import config from "../config/map";
+---
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+
+<section class="py-0 bg-gray-100">
+  <div class="w-full relative h-[60vh] min-h-[400px]">
+    <!-- Map container with buttons positioned absolutely inside -->
+    <div
+      id="leaflet-map"
+      class="leaflet-map rounded shadow"
+      data-config={JSON.stringify(config)}
+      role="img"
+      aria-label={`Hartă cu locația ${config.title}`}
+    >
+    </div>
+    <div class="absolute top-4 left-4 flex space-x-2">
+      <button
+        id="zoom-city"
+        class="px-4 py-2 text-sm font-semibold rounded shadow bg-white hover:bg-gray-100 transition map-btn"
+        data-zoom="13"
+        aria-label="VEDERE ORAȘ"
+      >
+        VEDERE ORAȘ
+      </button>
+      <button
+        id="zoom-area"
+        class="px-4 py-2 text-sm font-semibold rounded shadow bg-white hover:bg-gray-100 transition map-btn selected"
+        data-zoom="16"
+        aria-label="VEDERE ZONĂ"
+      >
+        VEDERE ZONĂ
+      </button>
+    </div>
+    <!-- Google Maps link button -->
+    <a
+      href={config.googleMapsLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="absolute bottom-4 left-4 px-4 py-2 text-sm font-semibold rounded shadow bg-white hover:bg-gray-100 transition map-btn"
+      aria-label="Deschide locația în Google Maps"
+    >
+      VEZI PE GOOGLE MAPS
+    </a>
+  </div>
+</section>
+
+<style>
+  .leaflet-map {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  @media (min-width: 768px) {
+    .map-btn:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  .map-btn.selected {
+    background-color: #000000;
+    color: white;
+  }
+</style>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script is:inline>
+  let mapInstance = null;
+
+  function initializeLeafletMap() {
+    const mapContainer = document.getElementById("leaflet-map");
+
+    if (!mapContainer) {
+      return;
+    }
+
+    const configData = mapContainer.getAttribute("data-config");
+    if (!configData) {
+      console.error("Leaflet map data-config attribute not found.");
+      return;
+    }
+
+    const { center, title } = JSON.parse(configData);
+
+    if (!center || !title) {
+      console.error("Map configuration (center, title) is missing or invalid in data-config.");
+      return;
+    }
+
+    if (typeof L === 'undefined') {
+      console.error('Leaflet library (L) not loaded. Map cannot be initialized.');
+      return;
+    }
+
+    if (mapInstance) {
+      mapInstance.remove();
+      mapInstance = null;
+    }
+
+    // Initialize the map
+    mapInstance = L.map("leaflet-map", {
+      center,
+      zoom: 16,
+      scrollWheelZoom: false,
+      zoomControl: false,
+      attributionControl: false,
+      closePopupOnClick: false,
+      dragging: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      renderer: L.canvas(),
+    });
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+    }).addTo(mapInstance);
+
+    const marker = L.marker(center).addTo(mapInstance);
+    marker.bindPopup(title).openPopup();
+
+    const zoomCityButton = document.getElementById("zoom-city");
+    const zoomAreaButton = document.getElementById("zoom-area");
+
+    if (zoomCityButton) {
+      zoomCityButton.onclick = () => {
+        if (mapInstance) {
+          mapInstance.flyTo(center, 13, {
+            duration: 2,
+            easeLinearity: 0.1,
+          });
+        }
+        zoomCityButton.classList.add("selected");
+        zoomAreaButton?.classList.remove("selected");
+      };
+    }
+
+    if (zoomAreaButton) {
+      zoomAreaButton.onclick = () => {
+        if (mapInstance) {
+          mapInstance.flyTo(center, 16, {
+            duration: 2,
+            easeLinearity: 0.1,
+          });
+        }
+        zoomAreaButton.classList.add("selected");
+        zoomCityButton?.classList.remove("selected");
+      };
+    }
+  }
+
+  document.addEventListener("astro:page-load", initializeLeafletMap);
+</script>

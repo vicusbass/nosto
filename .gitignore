@@ -141,3 +141,5 @@ dist
 # Sanity Studio specific
 studio-nosto/.sanity/
 studio-nosto/node_modules/
+
+.DS_Store

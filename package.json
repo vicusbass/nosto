@@ -10,23 +10,27 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^4.3.0",
     "@astrojs/svelte": "^7.1.0",
     "@iconify-json/ic": "^1.2.2",
     "@iconify-json/mdi": "^1.2.3",
     "@sanity/astro": "^3.2.6",
-    "@sanity/client": "^6.29.1",
+    "@sanity/client": "^6.28.2",
     "@tailwindcss/vite": "^4.1.7",
-    "astro": "^5.8.0",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "astro": "^5.9.0",
     "astro-icon": "^1.1.5",
-    "svelte": "^5.33.2",
-    "typescript": "^5.8.3",
     "astro-portabletext": "^0.11.1",
     "dotenv": "^16.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-is": "^19.1.0",
-    "sanity": "^3.89.0",
+    "sanity": "^3.91.0",
+    "sharp": "^0.34.2",
     "styled-components": "^6.1.18",
-    "tailwindcss": "^4.1.7"
+    "svelte": "^5.33.2",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.8.3"
   }
 }
