@@ -1,32 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import heroImage from "../assets/hero.png";
+import heroImage from "../assets/hero-img.png";
+import heroLogo from "../assets/hero-logo.svg";
 import Location from "../components/Location.astro";
 ---
 
 <Layout title="Proiect Rezidential - Nostro">
   <!-- Hero Section -->
   <section class="relative h-screen w-full overflow-hidden">
-    <div class="absolute inset-0">
-      <Image
-        src={heroImage}
-        alt="Apartment Building"
-        class="w-full h-full object-cover object-center"
-        height={750}
-        width={1440}
-      />
-      <div class="absolute inset-0 bg-black/50"></div>
-    </div>
-    <div class="relative h-full flex items-center justify-center">
-      <div class="text-center text-white">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Numele Proiectului</h1>
-      </div>
-    </div>
+    <Image
+      src={heroImage}
+      alt="Apartment Building"
+      class="w-full h-full object-cover object-center"
+    />
+    <Image
+      src={heroLogo}
+      alt="Hero Logo"
+      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
   </section>
 
   <!-- About Section -->
-  <section id="despre" class="py-12 bg-white">
+  <section id="despre" class="py-12 bg-main">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
         Despre Proiect
@@ -67,7 +63,7 @@ import Location from "../components/Location.astro";
   </section>
 
   <!-- Apartments Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-main">
     <div class="max-w-[95vw] lg:max-w-[1600px] mx-auto px-2 sm:px-6 lg:px-8">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
         Tipuri de Apartamente
@@ -155,7 +151,7 @@ import Location from "../components/Location.astro";
   </section>
 
   <!-- Packages Section -->
-  <section class="py-12 bg-white">
+  <section class="py-12 bg-main">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
         Pachete Finisaje
@@ -203,7 +199,9 @@ import Location from "../components/Location.astro";
   </section>
 
   <!-- Location Map Section -->
-  <Location />
+  <div class="px-8 md:px-16">
+    <Location />
+  </div>
 </Layout>
 
 <style>
@@ -230,7 +228,7 @@ import Location from "../components/Location.astro";
       width: 90%;
     }
   }
-  
+
   /* Map button styles */
   .map-btn {
     background-color: #f3f4f6;
@@ -241,13 +239,15 @@ import Location from "../components/Location.astro";
     position: relative;
     overflow: hidden;
   }
-  
+
   .map-btn:hover {
     background-color: #e5e7eb;
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
-  
+
   .map-btn:hover::after {
     content: "";
     position: absolute;
@@ -257,11 +257,13 @@ import Location from "../components/Location.astro";
     height: 3px;
     background-color: currentColor;
   }
-  
+
   .map-btn.selected {
     background-color: #ffffff;
     color: #111827;
     border-color: currentColor;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 </style>
