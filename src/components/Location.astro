@@ -70,17 +70,42 @@ import config from "../config/map";
   }
 </style>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""
-></script>
-<script>
-  const config = document
-    .getElementById("leaflet-map")
-    ?.getAttribute("data-config");
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script is:inline>
+  let mapInstance = null;
 
-  const { center, title } = JSON.parse(config || "{}");
+  function initializeLeafletMap() {
+    const mapContainer = document.getElementById("leaflet-map");
 
-  window.addEventListener("DOMContentLoaded", function () {
-    var map = L.map("leaflet-map", {
+    if (!mapContainer) {
+      return;
+    }
+
+    const configData = mapContainer.getAttribute("data-config");
+    if (!configData) {
+      console.error("Leaflet map data-config attribute not found.");
+      return;
+    }
+
+    const { center, title } = JSON.parse(configData);
+
+    if (!center || !title) {
+      console.error("Map configuration (center, title) is missing or invalid in data-config.");
+      return;
+    }
+
+    if (typeof L === 'undefined') {
+      console.error('Leaflet library (L) not loaded. Map cannot be initialized.');
+      return;
+    }
+
+    if (mapInstance) {
+      mapInstance.remove();
+      mapInstance = null;
+    }
+
+    // Initialize the map
+    mapInstance = L.map("leaflet-map", {
       center,
       zoom: 16,
       scrollWheelZoom: false,
@@ -96,30 +121,40 @@ import config from "../config/map";
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
-    }).addTo(map);
+    }).addTo(mapInstance);
 
-    const marker = L.marker(center).addTo(map);
+    const marker = L.marker(center).addTo(mapInstance);
     marker.bindPopup(title).openPopup();
 
     const zoomCityButton = document.getElementById("zoom-city");
     const zoomAreaButton = document.getElementById("zoom-area");
 
-    zoomCityButton?.addEventListener("click", (el) => {
-      map.flyTo(center, 13, {
-        duration: 2,
-        easeLinearity: 0.1,
-      });
-      zoomCityButton?.classList.add("selected");
-      zoomAreaButton?.classList.remove("selected");
-    });
+    if (zoomCityButton) {
+      zoomCityButton.onclick = () => {
+        if (mapInstance) {
+          mapInstance.flyTo(center, 13, {
+            duration: 2,
+            easeLinearity: 0.1,
+          });
+        }
+        zoomCityButton.classList.add("selected");
+        zoomAreaButton?.classList.remove("selected");
+      };
+    }
 
-    zoomAreaButton?.addEventListener("click", () => {
-      map.flyTo(center, 16, {
-        duration: 2,
-        easeLinearity: 0.1,
-      });
-      zoomAreaButton?.classList.add("selected");
-      zoomCityButton?.classList.remove("selected");
-    });
-  });
+    if (zoomAreaButton) {
+      zoomAreaButton.onclick = () => {
+        if (mapInstance) {
+          mapInstance.flyTo(center, 16, {
+            duration: 2,
+            easeLinearity: 0.1,
+          });
+        }
+        zoomAreaButton.classList.add("selected");
+        zoomCityButton?.classList.remove("selected");
+      };
+    }
+  }
+
+  document.addEventListener("astro:page-load", initializeLeafletMap);
 </script>
