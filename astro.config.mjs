@@ -10,7 +10,6 @@ console.log(process.env.SANITY_STUDIO_PROJECT_ID);
 import svelte from '@astrojs/svelte';
 
 import sanity from '@sanity/astro';
-import react from '@astrojs/react';
 
 export default defineConfig({
   integrations: [
@@ -21,7 +20,6 @@ export default defineConfig({
       dataset: 'production',
       useCdn: false,
     }),
-    react(),
   ],
 
   vite: {
