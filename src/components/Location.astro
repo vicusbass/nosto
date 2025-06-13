@@ -64,45 +64,19 @@ const { showGoogleMapsLink = true } = Astro.props;
 <section id="location-details" class="bg-[var(--color-secondary)] py-6 mt-8">
   <div class="w-full">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
-      <div class="flex items-center p-1 pl-4">
-        <div class="w-12 h-12 bg-white mr-3 flex-shrink-0 flex items-center justify-center">
-          <Icon name="mdi:car" class="w-8 h-8" />
-        </div>
-        <div>
-          <h3 class="font-medium text-base font-heading">Centru Cluj</h3>
-          <p class="text-sm">5 minute</p>
-        </div>
-      </div>
-
-      <div class="flex items-center p-1 pl-4">
-        <div class="w-12 h-12 bg-white mr-3 flex-shrink-0 flex items-center justify-center">
-          <Icon name="mdi:walk" class="w-8 h-8" />
-        </div>
-        <div>
-          <h3 class="font-medium text-base font-heading">Centru Cluj</h3>
-          <p class="text-sm">15 minute</p>
-        </div>
-      </div>
-
-      <div class="flex items-center p-1 pl-4">
-        <div class="w-12 h-12 bg-white mr-3 flex-shrink-0 flex items-center justify-center">
-          <Icon name="mdi:bus" class="w-8 h-8" />
-        </div>
-        <div>
-          <h3 class="font-medium text-base font-heading">Stații de transport în comun</h3>
-          <p class="text-sm">în proximitate</p>
-        </div>
-      </div>
-
-      <div class="flex items-center p-1 pl-4">
-        <div class="w-12 h-12 bg-white mr-3 flex-shrink-0 flex items-center justify-center">
-          <Icon name="mdi:tree" class="w-8 h-8" />
-        </div>
-        <div>
-          <h3 class="font-medium text-base font-heading">Parcuri publice</h3>
-          <p class="text-sm">15 minute de mers pe jos</p>
-        </div>
-      </div>
+      {
+        config.locationDetails.map((item) => (
+          <div class="flex items-center p-1 pl-4">
+            <div class="w-12 h-12 bg-white mr-3 flex-shrink-0 flex items-center justify-center">
+              <Icon name={item.icon} class="w-8 h-8" />
+            </div>
+            <div>
+              <h3 class="font-medium text-base font-heading">{item.title}</h3>
+              <p class="text-sm">{item.details}</p>
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
