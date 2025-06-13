@@ -1,5 +1,12 @@
 ---
+import { Icon } from 'astro-icon/components';
 import config from '../config/map';
+
+interface Props {
+  showGoogleMapsLink?: boolean;
+}
+
+const { showGoogleMapsLink = true } = Astro.props;
 ---
 
 <link
@@ -38,16 +45,39 @@ import config from '../config/map';
         VEDERE ZONĂ
       </button>
     </div>
-    <!-- Google Maps link button -->
-    <a
-      href={config.googleMapsLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="absolute bottom-4 left-4 px-4 py-2 text-sm font-semibold rounded shadow bg-white hover:bg-gray-100 transition map-btn"
-      aria-label="Deschide locația în Google Maps"
-    >
-      VEZI PE GOOGLE MAPS
-    </a>
+    <!-- Google Maps link button (conditionally rendered) -->
+    {
+      showGoogleMapsLink && (
+        <a
+          href={config.googleMapsLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="absolute bottom-4 left-4 px-4 py-2 text-sm font-semibold rounded shadow bg-white hover:bg-gray-100 transition map-btn"
+          aria-label="Deschide locația în Google Maps"
+        >
+          VEZI PE GOOGLE MAPS
+        </a>
+      )
+    }
+  </div>
+</section>
+<section id="location-details" class="bg-[var(--color-secondary)] py-6 mt-8">
+  <div class="w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
+      {
+        config.locationDetails.map((item) => (
+          <div class="flex items-center p-1 pl-4">
+            <div class="w-12 h-12 bg-white mr-3 flex-shrink-0 flex items-center justify-center">
+              <Icon name={item.icon} class="w-8 h-8" />
+            </div>
+            <div>
+              <h3 class="font-medium text-base font-heading">{item.title}</h3>
+              <p class="text-sm">{item.details}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
 
@@ -124,7 +154,7 @@ import config from '../config/map';
     }).addTo(mapInstance);
 
     const marker = L.marker(center).addTo(mapInstance);
-    marker.bindPopup(title).openPopup();
+    // marker.bindPopup(title).openPopup();
 
     const zoomCityButton = document.getElementById('zoom-city');
     const zoomAreaButton = document.getElementById('zoom-area');
