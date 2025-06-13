@@ -1,9 +1,9 @@
 ---
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import Layout from '../../layouts/Layout.astro';
-import { sanityClient } from "sanity:client";
+import { sanityClient } from 'sanity:client';
 import urlForImage from '../../utils/sanityImageUrl';
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const UNITS_QUERY = `*[_type == "unit" && defined(uniqueId)]{
@@ -19,7 +19,7 @@ let fetchError = null;
 
 if (!unitid) {
   Astro.response.status = 400;
-  fetchError = "ID-ul apartamentului lipsește din URL.";
+  fetchError = 'ID-ul apartamentului lipsește din URL.';
 } else {
   try {
     const query = `*[_type == "unit" && uniqueId == $unitid][0] {
@@ -33,13 +33,13 @@ if (!unitid) {
     }`;
     unit = await sanityClient.fetch(query, { unitid });
   } catch (e) {
-    console.error("Sanity fetch error:", e);
+    console.error('Sanity fetch error:', e);
     Astro.response.status = 500;
-    fetchError = "Eroare la încărcarea datelor apartamentului.";
+    fetchError = 'Eroare la încărcarea datelor apartamentului.';
   }
 }
 
-let pageTitle = "Detalii Apartament - Nosto";
+let pageTitle = 'Detalii Apartament - Nosto';
 if (unit) {
   pageTitle = `Apartament ${unit.name} - Nosto`;
 } else if (!fetchError) {
@@ -50,78 +50,85 @@ if (unit) {
 
 <Layout title={pageTitle}>
   <section class="container mx-auto py-10 px-4">
-    {fetchError && (
-      <div class="text-center text-red-500 bg-red-100 p-6 rounded-lg shadow-md">
-        <p class="text-xl font-semibold mb-2">Eroare</p>
-        <p>{fetchError}</p>
-        <a href="/apartamente" class="mt-4 inline-block text-primary hover:underline font-medium">
-          &larr; Înapoi la lista de apartamente
-        </a>
-      </div>
-    )}
-
-    {unit && !fetchError && (
-      <div class="bg-white shadow-xl rounded-lg p-6 md:p-8">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-4 border-b border-gray-200">
-          <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Apartament: {unit.name}</h1>
-          <a href="/apartamente" class="mt-2 md:mt-0 text-primary hover:underline font-medium self-start md:self-center">
-            &larr; Înapoi la listă
+    {
+      fetchError && (
+        <div class="text-center text-red-500 bg-red-100 p-6 rounded-lg shadow-md">
+          <p class="text-xl font-semibold mb-2">Eroare</p>
+          <p>{fetchError}</p>
+          <a href="/apartamente" class="mt-4 inline-block text-primary hover:underline font-medium">
+            &larr; Înapoi la lista de apartamente
           </a>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-6">
-          <div>
-            <p class="text-lg text-gray-600">Etaj:</p>
-            <p class="text-xl font-semibold text-gray-800">{unit.floorName || 'N/A'}</p>
-          </div>
-          <div>
-            <p class="text-lg text-gray-600">Preț:</p>
-            <p class="text-xl font-semibold text-primary">
-              {unit.price.toLocaleString('ro-RO', { style: 'currency', currency: 'EUR' })}
-            </p>
-          </div>
-          <div>
-            <p class="text-lg text-gray-600">Tip:</p>
-            <p class="text-xl font-semibold text-gray-800">{unit.type || 'N/A'} camere</p>
-          </div>
-          <div>
-            <p class="text-lg text-gray-600">Suprafață utilă:</p>
-            <p class="text-xl font-semibold text-gray-800">{`${unit.size} m²`}</p>
-          </div>
-        </div>
+      )
+    }
 
-        {unit.description && (
-          <div class="mb-6">
-            <h2 class="text-2xl font-bold text-gray-700 mb-2">Descriere</h2>
-            <p class="text-gray-700 whitespace-pre-line">{unit.description}</p>
+    {
+      unit && !fetchError && (
+        <div class="bg-white shadow-xl rounded-lg p-6 md:p-8">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-4 border-b border-gray-200">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Apartament: {unit.name}</h1>
+            <a
+              href="/apartamente"
+              class="mt-2 md:mt-0 text-primary hover:underline font-medium self-start md:self-center"
+            >
+              &larr; Înapoi la listă
+            </a>
           </div>
-        )}
 
-        {unit.images && unit.images.length > 0 && (
-          <div class="mt-6">
-            <h2 class="text-2xl font-bold text-gray-700 mb-4">Imagini</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {unit.images.map((image: SanityImageSource | null | undefined) => {
-                const imageUrl = image ? urlForImage(image)?.url() : null;
-                return imageUrl ? (
-                  <div class="rounded-lg overflow-hidden shadow-md">
-                    {imageUrl && (
-                            <Image
-                                src={imageUrl}
-                                alt={unit.name}
-                                class="aspect-video w-full max-w-2xl mx-auto rounded-xl object-cover shadow-lg"
-                                inferSize={true}
-                            />
-                        )}
-                  </div>
-                ) : (
-                  <p class="text-sm text-gray-500">Imagine indisponibilă</p>
-                );
-              })}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-6">
+            <div>
+              <p class="text-lg text-gray-600">Etaj:</p>
+              <p class="text-xl font-semibold text-gray-800">{unit.floorName || 'N/A'}</p>
+            </div>
+            <div>
+              <p class="text-lg text-gray-600">Preț:</p>
+              <p class="text-xl font-semibold text-primary">
+                {unit.price.toLocaleString('ro-RO', { style: 'currency', currency: 'EUR' })}
+              </p>
+            </div>
+            <div>
+              <p class="text-lg text-gray-600">Tip:</p>
+              <p class="text-xl font-semibold text-gray-800">{unit.type || 'N/A'} camere</p>
+            </div>
+            <div>
+              <p class="text-lg text-gray-600">Suprafață utilă:</p>
+              <p class="text-xl font-semibold text-gray-800">{`${unit.size} m²`}</p>
             </div>
           </div>
-        )}
-      </div>
-    )}
+
+          {unit.description && (
+            <div class="mb-6">
+              <h2 class="text-2xl font-bold text-gray-700 mb-2">Descriere</h2>
+              <p class="text-gray-700 whitespace-pre-line">{unit.description}</p>
+            </div>
+          )}
+
+          {unit.images && unit.images.length > 0 && (
+            <div class="mt-6">
+              <h2 class="text-2xl font-bold text-gray-700 mb-4">Imagini</h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {unit.images.map((image: SanityImageSource | null | undefined) => {
+                  const imageUrl = image ? urlForImage(image)?.url() : null;
+                  return imageUrl ? (
+                    <div class="rounded-lg overflow-hidden shadow-md">
+                      {imageUrl && (
+                        <Image
+                          src={imageUrl}
+                          alt={unit.name}
+                          class="aspect-video w-full max-w-2xl mx-auto rounded-xl object-cover shadow-lg"
+                          inferSize={true}
+                        />
+                      )}
+                    </div>
+                  ) : (
+                    <p class="text-sm text-gray-500">Imagine indisponibilă</p>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      )
+    }
   </section>
 </Layout>

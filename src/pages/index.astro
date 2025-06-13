@@ -1,36 +1,31 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import heroImage from "../assets/hero.png";
-import Location from "../components/Location.astro";
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/hero-img.png';
+import heroLogo from '../assets/hero-logo.svg';
+import Location from '../components/Location.astro';
+import SectionTitle from '../components/SectionTitle.astro';
 ---
 
 <Layout title="Proiect Rezidential - Nostro">
   <!-- Hero Section -->
   <section class="relative h-screen w-full overflow-hidden">
-    <div class="absolute inset-0">
-      <Image
-        src={heroImage}
-        alt="Apartment Building"
-        class="w-full h-full object-cover object-center"
-        height={750}
-        width={1440}
-      />
-      <div class="absolute inset-0 bg-black/50"></div>
-    </div>
-    <div class="relative h-full flex items-center justify-center">
-      <div class="text-center text-white">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Numele Proiectului</h1>
-      </div>
-    </div>
+    <Image
+      src={heroImage}
+      alt="Apartment Building"
+      class="w-full h-full object-cover object-center"
+    />
+    <Image
+      src={heroLogo}
+      alt="Hero Logo"
+      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
   </section>
 
   <!-- About Section -->
-  <section id="despre" class="py-12 bg-white">
+  <section id="despre" class="py-12 bg-main">
+    <SectionTitle title="Despre Proiect" id="despre-proiect-title" />
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-        Despre Proiect
-      </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <Image
@@ -42,10 +37,9 @@ import Location from "../components/Location.astro";
         </div>
         <div>
           <p class="text-lg text-gray-600 mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <ul class="space-y-4">
             <li class="flex items-center text-gray-700">
@@ -67,67 +61,55 @@ import Location from "../components/Location.astro";
   </section>
 
   <!-- Apartments Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-main">
+    <SectionTitle title="Tipuri de Apartamente" id="apartamente-title" />
     <div class="max-w-[95vw] lg:max-w-[1600px] mx-auto px-2 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
-        Tipuri de Apartamente
-      </h2>
       <div class="pb-[15vh]">
         {
           [
             {
-              type: "Studio",
-              size: "45mp",
+              type: 'Studio',
+              size: '45mp',
               description:
-                "Apartament modern tip studio, perfect pentru tineri profesioniști sau investiție. Spațiu eficient compartimentat cu zonă de zi multifuncțională, bucătărie și baie.",
-              planImage:
-                "https://images.pexels.com/photos/5524165/pexels-photo-5524165.jpeg",
+                'Apartament modern tip studio, perfect pentru tineri profesioniști sau investiție. Spațiu eficient compartimentat cu zonă de zi multifuncțională, bucătărie și baie.',
+              planImage: 'https://images.pexels.com/photos/5524165/pexels-photo-5524165.jpeg',
+              features: ['Suprafață utilă: 45mp', 'Living + bucătărie', 'Baie', 'Balcon'],
+            },
+            {
+              type: '2 Camere',
+              size: '65mp',
+              description:
+                'Apartament spațios cu două camere, ideal pentru cupluri sau familii mici. Dispune de living cu bucătărie, dormitor separat și baie.',
+              planImage: 'https://images.pexels.com/photos/5524147/pexels-photo-5524147.jpeg',
               features: [
-                "Suprafață utilă: 45mp",
-                "Living + bucătărie",
-                "Baie",
-                "Balcon",
+                'Suprafață utilă: 65mp',
+                'Living + bucătărie',
+                'Dormitor',
+                'Baie',
+                'Balcon',
               ],
             },
             {
-              type: "2 Camere",
-              size: "65mp",
+              type: '3 Camere',
+              size: '85mp',
               description:
-                "Apartament spațios cu două camere, ideal pentru cupluri sau familii mici. Dispune de living cu bucătărie, dormitor separat și baie.",
-              planImage:
-                "https://images.pexels.com/photos/5524147/pexels-photo-5524147.jpeg",
+                'Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.',
+              planImage: 'https://images.pexels.com/photos/5524155/pexels-photo-5524155.jpeg',
               features: [
-                "Suprafață utilă: 65mp",
-                "Living + bucătărie",
-                "Dormitor",
-                "Baie",
-                "Balcon",
-              ],
-            },
-            {
-              type: "3 Camere",
-              size: "85mp",
-              description:
-                "Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.",
-              planImage:
-                "https://images.pexels.com/photos/5524155/pexels-photo-5524155.jpeg",
-              features: [
-                "Suprafață utilă: 85mp",
-                "Living + bucătărie",
-                "2 Dormitoare",
-                "2 Băi",
-                "Balcon",
+                'Suprafață utilă: 85mp',
+                'Living + bucătărie',
+                '2 Dormitoare',
+                '2 Băi',
+                'Balcon',
               ],
             },
           ].map((apartment, index) => (
             <div
-              class={`apartment-section sticky top-20 min-h-[calc(100vh-8rem)] flex items-center ${index > 0 ? "mt-[20vh]" : ""}`}
+              class={`apartment-section sticky top-20 min-h-[calc(100vh-8rem)] flex items-center ${index > 0 ? 'mt-[20vh]' : ''}`}
             >
               <div class="grid grid-cols-1 md:grid-cols-2 bg-white rounded-sm shadow-xs w-full h-[640px] md:min-h-[420px] lg:min-h-[420px] items-stretch overflow-hidden">
                 <div class="space-y-6 flex flex-col justify-between p-8 h-full">
-                  <h3 class="text-2xl font-bold text-primary">
-                    {apartment.type}
-                  </h3>
+                  <h3 class="text-2xl font-bold text-primary">{apartment.type}</h3>
                   <p class="text-gray-600">{apartment.description}</p>
                   <ul class="space-y-3">
                     {apartment.features.map((feature) => (
@@ -155,36 +137,26 @@ import Location from "../components/Location.astro";
   </section>
 
   <!-- Packages Section -->
-  <section class="py-12 bg-white">
+  <section class="py-12 bg-main">
+    <SectionTitle title="Pachete Finisaje" id="finisaje-title" />
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
-        Pachete Finisaje
-      </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
           [
             {
-              name: "Standard",
-              price: "Inclus în preț",
-              features: [
-                "Parchet laminat",
-                "Gresie și faianță",
-                "Uși interior",
-              ],
+              name: 'Standard',
+              price: 'Inclus în preț',
+              features: ['Parchet laminat', 'Gresie și faianță', 'Uși interior'],
             },
             {
-              name: "Premium",
-              price: "+5000€",
-              features: [
-                "Parchet triplu stratificat",
-                "Gresie porțelanată",
-                "Uși premium",
-              ],
+              name: 'Premium',
+              price: '+5000€',
+              features: ['Parchet triplu stratificat', 'Gresie porțelanată', 'Uși premium'],
             },
             {
-              name: "Luxury",
-              price: "+10000€",
-              features: ["Parchet masiv", "Marmură", "Uși custom"],
+              name: 'Luxury',
+              price: '+10000€',
+              features: ['Parchet masiv', 'Marmură', 'Uși custom'],
             },
           ].map((packageItem) => (
             <div class="border rounded-sm p-8 text-center">
@@ -203,7 +175,9 @@ import Location from "../components/Location.astro";
   </section>
 
   <!-- Location Map Section -->
-  <Location />
+  <div class="px-8 md:px-16">
+    <Location />
+  </div>
 </Layout>
 
 <style>
@@ -230,7 +204,7 @@ import Location from "../components/Location.astro";
       width: 90%;
     }
   }
-  
+
   /* Map button styles */
   .map-btn {
     background-color: #f3f4f6;
@@ -241,15 +215,17 @@ import Location from "../components/Location.astro";
     position: relative;
     overflow: hidden;
   }
-  
+
   .map-btn:hover {
     background-color: #e5e7eb;
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
-  
+
   .map-btn:hover::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -257,11 +233,13 @@ import Location from "../components/Location.astro";
     height: 3px;
     background-color: currentColor;
   }
-  
+
   .map-btn.selected {
     background-color: #ffffff;
     color: #111827;
     border-color: currentColor;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 </style>

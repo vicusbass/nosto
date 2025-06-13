@@ -4,7 +4,7 @@ export default defineCliConfig({
   studioHost: 'nosto',
   api: {
     projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
-    dataset: 'production'
+    dataset: 'production',
   },
   /**
    * Enable auto-updates for studios.
