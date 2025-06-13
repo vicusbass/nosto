@@ -1,10 +1,11 @@
 ---
 import type { SanityDocument } from '@sanity/client';
 import { sanityClient } from 'sanity:client';
-import Layout from '../layouts/Layout.astro';
-import { PortableText } from 'astro-portabletext';
-import urlForImage from '../utils/sanityImageUrl';
 import { Image } from 'astro:assets';
+import { PortableText } from 'astro-portabletext';
+import Layout from '../layouts/Layout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import urlForImage from '../utils/sanityImageUrl';
 
 const POSTS_QUERY = `*[
   _type == "newsPost"
@@ -26,20 +27,13 @@ const posts = await sanityClient.fetch<SanityDocument[]>(POSTS_QUERY);
       />
       <!-- Optional overlay with text -->
       <div class="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-30">
-        <div class="text-center text-white">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4 heading-font text-black">
-            Stadiu Șantier
-          </h1>
-        </div>
+        <h2 class="font-bold text-center">Stadiu Șantier</h2>
       </div>
     </div>
   </section>
-  <section id="'timeline-title">
-    <div class="relative mb-8 py-10">
-      <div class="w-8 h-8 bg-main-orange absolute left-0 top-1/2 transform -translate-y-1/2"></div>
-      <h1 class="text-5xl font-bold text-gray-900 text-center heading-font">Timeline</h1>
-    </div>
-  </section>
+
+  <SectionTitle title="Timeline" id="timeline-title" />
+
   <section id="articles" class="px-10">
     <!-- News Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

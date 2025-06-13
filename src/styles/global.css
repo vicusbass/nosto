@@ -1,11 +1,13 @@
 @import 'tailwindcss';
 
-:root {
+/* Tailwind 4 Theme Variables */
+@theme {
   --color-bg: #f9f7f0;
   --color-bg-footer: #3d3d3d;
   --color-main-orange: #c56d44;
 }
 
+/* Base layer: HTML elements and browser defaults */
 @layer base {
   html {
     overflow-y: scroll; /* Always show vertical scrollbar */
@@ -17,23 +19,34 @@
     min-height: 100vh;
     background-color: var(--color-bg);
   }
+
+  h2 {
+    @apply text-4xl font-light text-black md:text-5xl lg:text-6xl;
+    font-family: 'Josefin Sans', sans-serif;
+  }
 }
 
+/* Components layer: Reusable component classes */
 @layer components {
+  /* Button variants */
   .btn-dark {
-    @apply text-white bg-gray-800 hover:bg-gray-900  font-medium rounded-lg text-sm px-4 py-2 me-2 mb-2;
+    @apply text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-4 py-2 me-2 mb-2;
   }
 
   .btn-primary {
     @apply bg-[#C56D44] hover:bg-orange-500 text-white px-6 py-3 uppercase font-medium rounded-s rounded-tr-2xl transition-colors duration-300;
   }
 
+  /* Layout components */
   .footer-gray {
     @apply bg-gray-100 text-black;
   }
-}
 
-@layer globals {
+  .navbar {
+    color: var(--color-bg);
+  }
+
+  /* Background utilities using CSS custom properties */
   .bg-main {
     background-color: var(--color-bg);
   }
@@ -46,34 +59,50 @@
     background-color: var(--color-bg-footer);
   }
 
+  /* Typography utilities */
   .heading-font {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 200;
     font-style: normal;
   }
+
+  /* Section title component */
+  .section-title {
+    @apply relative mb-8 py-10;
+  }
+
+  .section-title::before {
+    content: '';
+    @apply w-8 h-8 bg-main-orange absolute left-0 top-1/2 transform -translate-y-1/2;
+  }
+
+  .section-title h2 {
+    @apply text-center;
+  }
+
+  /* Floor component styles */
+  svg .highlight-apartment {
+    fill: #008000;
+    fill-opacity: 0.2;
+    transition: fill-opacity 0.3s;
+  }
+
+  svg .highlight-apartment:hover {
+    fill-opacity: 0.5;
+    cursor: pointer;
+  }
+
+  svg .apartment-sold {
+    fill: #cf8c4d;
+    fill-opacity: 0.2;
+  }
+
+  svg .no-highlight {
+    opacity: 0;
+  }
 }
 
-.navbar {
-  color: var(--color-bg);
-}
-
-/* Floor component styles */
-svg .highlight-apartment {
-  fill: #008000;
-  fill-opacity: 0.2;
-  transition: fill-opacity 0.3s;
-}
-
-svg .no-highlight {
-  opacity: 0;
-}
-
-svg .highlight-apartment:hover {
-  fill-opacity: 0.5 !important;
-  cursor: pointer;
-}
-
-svg .apartment-sold {
-  fill: #cf8c4d;
-  fill-opacity: 0.2;
+/* Utilities layer: Single-purpose utility classes */
+@layer utilities {
+  /* Add any custom utilities here if needed */
 }

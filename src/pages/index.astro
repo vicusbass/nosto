@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import heroImage from '../assets/hero-img.png';
 import heroLogo from '../assets/hero-logo.svg';
 import Location from '../components/Location.astro';
+import SectionTitle from '../components/SectionTitle.astro';
 ---
 
 <Layout title="Proiect Rezidential - Nostro">
@@ -23,8 +24,8 @@ import Location from '../components/Location.astro';
 
   <!-- About Section -->
   <section id="despre" class="py-12 bg-main">
+    <SectionTitle title="Despre Proiect" id="despre-proiect-title" />
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Despre Proiect</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <Image
@@ -61,8 +62,8 @@ import Location from '../components/Location.astro';
 
   <!-- Apartments Section -->
   <section class="py-12 bg-main">
+    <SectionTitle title="Tipuri de Apartamente" id="apartamente-title" />
     <div class="max-w-[95vw] lg:max-w-[1600px] mx-auto px-2 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Tipuri de Apartamente</h2>
       <div class="pb-[15vh]">
         {
           [
@@ -137,8 +138,8 @@ import Location from '../components/Location.astro';
 
   <!-- Packages Section -->
   <section class="py-12 bg-main">
+    <SectionTitle title="Pachete Finisaje" id="finisaje-title" />
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Pachete Finisaje</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
           [
