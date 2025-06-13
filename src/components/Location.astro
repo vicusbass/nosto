@@ -180,7 +180,7 @@ const { showGoogleMapsLink = true } = Astro.props;
     }).addTo(mapInstance);
 
     const marker = L.marker(center).addTo(mapInstance);
-    marker.bindPopup(title).openPopup();
+    // marker.bindPopup(title).openPopup();
 
     const zoomCityButton = document.getElementById('zoom-city');
     const zoomAreaButton = document.getElementById('zoom-area');
