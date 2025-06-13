@@ -2,9 +2,13 @@
 
 /* Tailwind 4 Theme Variables */
 @theme {
+  --font-heading: 'Josefin Sans', sans-serif;
+  --font-sans: 'Amiko', sans-serif;
   --color-bg: #f9f7f0;
   --color-bg-footer: #3d3d3d;
   --color-main-orange: #c56d44;
+  --color-secondary: #d8d2c2;
+  --color-text-body: #3d3d3d;
 }
 
 /* Base layer: HTML elements and browser defaults */
@@ -18,11 +22,12 @@
     margin: 0;
     min-height: 100vh;
     background-color: var(--color-bg);
+    @apply font-sans font-normal text-xl text-[var(--color-text-body)];
   }
 
   h2 {
-    @apply text-4xl font-light text-black md:text-5xl lg:text-6xl;
-    font-family: 'Josefin Sans', sans-serif;
+    @apply text-3xl md:text-4xl lg:text-5xl font-light text-black;
+    font-family: var(--font-heading);
   }
 }
 
@@ -39,7 +44,7 @@
 
   /* Layout components */
   .footer-gray {
-    @apply bg-gray-100 text-black;
+    @apply bg-[#333333] text-black text-base font-semibold;
   }
 
   .navbar {
@@ -61,7 +66,7 @@
 
   /* Typography utilities */
   .heading-font {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: var(--font-heading);
     font-weight: 200;
     font-style: normal;
   }
