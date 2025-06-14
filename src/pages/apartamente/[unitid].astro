@@ -5,6 +5,8 @@ import { sanityClient } from 'sanity:client';
 import urlForImage from '../../utils/sanityImageUrl';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import SectionTitle from '../../components/SectionTitle.astro';
+import FAQ from '../../components/FAQ.astro';
 
 export async function getStaticPaths() {
   const UNITS_QUERY = `*[_type == "unit" && defined(uniqueId)]{
@@ -70,13 +72,13 @@ if (unit) {
     {
       unit && !fetchError && (
         <div class="mt-8">
-          <div class="flex flex-col lg:flex-row gap-8 bg-secondary/30 p-4 lg:p-8">
+          <div class="flex flex-col lg:flex-row gap-8 bg-secondary p-4 lg:p-8">
             {/* Left column - Room details and pricing */}
             <div class="lg:w-1/3 flex flex-col gap-6">
               {/* Room details */}
               <div class="bg-white/80 p-6 w-full">
                 {unit.rooms && unit.rooms.length > 0 ? (
-                  <div>
+                  <>
                     {unit.rooms.map((room: { name: string; surface: number }, index: number) => (
                       <div
                         class={`flex justify-between py-3 ${index === unit.rooms.length - 1 ? '' : 'border-b border-gray-200'}`}
@@ -90,13 +92,11 @@ if (unit) {
                       <span>Suprafață utilă</span>
                       <span>{unit.size}mp</span>
                     </div>
-                  </div>
+                  </>
                 ) : (
-                  <div>
-                    <div class="flex justify-between py-3 border-b border-gray-200">
-                      <span>Suprafață utilă</span>
-                      <span>{unit.size}mp</span>
-                    </div>
+                  <div class="flex justify-between py-3 border-b border-gray-200">
+                    <span>Suprafață utilă</span>
+                    <span>{unit.size}mp</span>
                   </div>
                 )}
               </div>
@@ -115,16 +115,14 @@ if (unit) {
             {/* Right side - Floor plan image */}
             <div class="lg:w-2/3 bg-white p-4 flex flex-col">
               {/* Apartment info at the top */}
-              <div class="text-center mb-6 font-light">
-                <div class="flex justify-center items-center gap-2">
-                  <h1 class="text-2xl md:text-4xl">{unit.name}</h1>
-                  <span class="mx-2 md:mx-6" />
-                  <span>{unit.type === 'C' ? 'COMERCIAL' : `${unit.type} CAMERE`}</span>
-                  <span class="mx-2 md:mx-6">|</span>
-                  <span>{unit.size} MP</span>
-                  <span class="mx-2 md:mx-6">|</span>
-                  <span>ETAJ {unit.floorName}</span>
-                </div>
+              <div class="flex justify-center items-center gap-2 text-center mb-6 font-light">
+                <h1 class="text-2xl md:text-4xl">{unit.name}</h1>
+                <span class="mx-2 md:mx-6" />
+                <span>{unit.type === 'C' ? 'COMERCIAL' : `${unit.type} CAMERE`}</span>
+                <span class="mx-2 md:mx-6">|</span>
+                <span>{unit.size} MP</span>
+                <span class="mx-2 md:mx-6">|</span>
+                <span>ETAJ {unit.floorName}</span>
               </div>
 
               {/* Floor plan image */}
@@ -145,4 +143,7 @@ if (unit) {
       )
     }
   </section>
+  <SectionTitle title="Pachete finisaje și dotări" class="mt-8" />
+  <SectionTitle title="Întrebări frecvente" />
+  <FAQ />
 </Layout>
