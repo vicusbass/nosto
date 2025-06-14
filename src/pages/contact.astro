@@ -1,94 +1,159 @@
 ---
 import { Icon } from 'astro-icon/components';
+import contact from '../config/contact';
 import Layout from '../layouts/Layout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
 ---
 
 <Layout title="Contact - Nosto">
-  <section class="py-10 max-w-lg mx-auto px-4">
-    <h1 class="text-3xl font-bold text-center mb-4">Contact</h1>
-    <form
-      id="contact-form"
-      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-4"
-      method="POST"
-    >
-      <div>
-        <label for="nume" class="block text-gray-700 text-sm font-bold mb-2">Nume</label>
-        <input
-          type="text"
-          id="nume"
-          name="nume"
-          required
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-      </div>
-      <div>
-        <label for="telefon" class="block text-gray-700 text-sm font-bold mb-2">Telefon</label>
-        <input
-          type="text"
-          id="telefon"
-          name="telefon"
-          required
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-      </div>
-      <div>
-        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-      </div>
-      <div>
-        <label for="mesaj" class="block text-gray-700 text-sm font-bold mb-2">Mesaj</label>
-        <textarea
-          id="mesaj"
-          name="mesaj"
-          rows="4"
-          required
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        ></textarea>
-      </div>
-      <div class="flex items-start">
-        <input
-          type="checkbox"
-          id="confidentialitate"
-          name="confidentialitate"
-          required
-          class="mr-2 mt-1"
-        />
-        <label for="confidentialitate" class="text-sm"
-          >am luat la cunoștintă <a
-            href="/politica-confidentialitate"
-            class="underline text-blue-600">politica de confidențialitate</a
-          ></label
-        >
-      </div>
-      <div class="flex items-start">
-        <input type="checkbox" id="informari" name="informari" class="mr-2 mt-1" />
-        <label for="informari" class="text-sm"
-          >sunt de acord să primesc informări comerciale referitoare la proiect</label
-        >
-      </div>
-      <button
-        class="w-full rounded border border-gray-300 py-2 px-3 bg-gray-50 text-gray-700"
-        type="submit">Trimite</button
+  <SectionTitle title="Contact" />
+  <section class="section-x-padding font-heading py-0 md:py-4">
+    <div class="flex flex-col md:flex-row gap-4 mx-auto max-w-[95%] md:max-w-[90%] px-4">
+      <div
+        class="w-full md:w-1/2 min-h-[250px] md:min-h-[300px] max-h-[400px] flex items-center"
+        id="contact-details"
       >
-      <a
-        href=`https://wa.me/${process.env.WHATSAPP_NUMBER}`
-        target="_blank"
-        rel="noopener noreferrer"
-        class="w-full flex items-center justify-center mt-2 rounded border border-green-500 py-2 px-3 bg-green-50 text-green-700 font-semibold hover:bg-green-100 transition"
-        aria-label="Contactează pe WhatsApp"
-      >
-        <Icon name="mdi:whatsapp" class="h-6 w-6 flex-shrink-0 text-primary" />
-        WhatsApp
-      </a>
-      <p id="form-status" class="text-center text-green-600 mt-4"></p>
-    </form>
-    <script type="module">
+        <div class="flex flex-col gap-6 p-3 md:p-6 w-full">
+          <div class="md:hidden flex items-center">
+            <div class="w-12 flex justify-end">
+              <Icon name="mdi:phone" class="h-10 w-10 color-orange" />
+            </div>
+            <div class="flex-1 pl-3">
+              <a href={`tel:${contact.phone}`} class="text-xl hover:underline">{contact.phone}</a>
+            </div>
+          </div>
+
+          <div class="md:hidden flex items-center">
+            <div class="w-12 flex justify-end">
+              <Icon name="mdi:email" class="h-10 w-10 color-orange" />
+            </div>
+            <div class="flex-1 pl-3">
+              <a href={`mailto:${contact.email}`} class="text-xl hover:underline">{contact.email}</a
+              >
+            </div>
+          </div>
+
+          <div class="md:hidden flex items-center">
+            <div class="w-12 flex justify-end">
+              <Icon name="mdi:map-marker" class="h-10 w-10 color-orange" />
+            </div>
+            <div class="flex-1 pl-3">
+              <a
+                href={contact.address}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xl hover:underline">Vezi pe hartă</a
+              >
+            </div>
+          </div>
+
+          <div class="md:hidden flex items-center">
+            <div class="w-12 flex justify-end">
+              <Icon name="mdi:whatsapp" class="h-10 w-10 color-orange" />
+            </div>
+            <div class="flex-1 pl-3">
+              <a
+                href={`https://wa.me/${contact.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xl hover:underline">WhatsApp</a
+              >
+            </div>
+          </div>
+
+          <div class="hidden md:flex md:flex-row md:justify-start md:items-center md:gap-3">
+            <Icon name="mdi:phone" class="h-10 w-10 color-orange" />
+            <a href={`tel:${contact.phone}`} class="text-xl hover:underline">{contact.phone}</a>
+          </div>
+          <div class="hidden md:flex md:flex-row md:justify-start md:items-center md:gap-3">
+            <Icon name="mdi:email" class="h-10 w-10 color-orange" />
+            <a href={`mailto:${contact.email}`} class="text-xl hover:underline">{contact.email}</a>
+          </div>
+          <div class="hidden md:flex md:flex-row md:justify-start md:items-center md:gap-3">
+            <Icon name="mdi:map-marker" class="h-10 w-10 color-orange" />
+            <a
+              href={contact.address}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xl hover:underline">Vezi pe hartă</a
+            >
+          </div>
+          <div class="hidden md:flex md:flex-row md:justify-start md:items-center md:gap-3">
+            <Icon name="mdi:whatsapp" class="h-10 w-10 color-orange" />
+            <a
+              href={`https://wa.me/${contact.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xl hover:underline">WhatsApp</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2 bg-secondary py-4 px-2 md:px-6">
+        <form id="contact-form" class="space-y-3" method="POST">
+          <div>
+            <label for="nume" class="block mb-1 text-sm">Nume</label>
+            <input
+              type="text"
+              id="nume"
+              name="nume"
+              required
+              class="w-full py-2 px-2 bg-white border-none"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block mb-1 text-sm">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full py-2 px-2 bg-white border-none"
+            />
+          </div>
+
+          <div>
+            <label for="mesaj" class="block mb-1 text-sm">Mesajul dumneavoastră</label>
+            <textarea
+              id="mesaj"
+              name="mesaj"
+              rows="3"
+              required
+              class="w-full py-2 px-2 bg-white border-none"></textarea>
+          </div>
+
+          <div class="flex items-start mt-1">
+            <input
+              type="checkbox"
+              id="confidentialitate"
+              name="confidentialitate"
+              required
+              class="mr-2 mt-0.5"
+            />
+            <label for="confidentialitate" class="text-xs"
+              >am luat la cunoștintă <a
+                href="/politica-confidentialitate"
+                class="underline text-blue-600">politica de confidențialitate</a
+              ></label
+            >
+          </div>
+
+          <div class="flex items-start -mt-1">
+            <input type="checkbox" id="informari" name="informari" class="mr-2 mt-0.5" />
+            <label for="informari" class="text-xs"
+              >sunt de acord să primesc informări comerciale referitoare la proiect</label
+            >
+          </div>
+
+          <button class="btn-primary w-full" type="submit">Trimite</button>
+          <p id="form-status" class="text-center text-green-600 mt-4"></p>
+        </form>
+      </div>
+    </div>
+
+    <script is:inline>
       const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
       form.addEventListener('submit', async (e) => {
@@ -110,4 +175,5 @@ import Layout from '../layouts/Layout.astro';
       });
     </script>
   </section>
+  <SectionTitle title="Întrebări frecvente" />
 </Layout>
