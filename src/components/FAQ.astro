@@ -1,0 +1,104 @@
+---
+import type { SanityDocument } from '@sanity/client';
+import { sanityClient } from 'sanity:client';
+
+interface Props {
+  faqs?: SanityDocument[];
+}
+
+const { faqs: propsFaqs } = Astro.props;
+
+// Query FAQs from Sanity if not provided as props
+const FAQ_QUERY = '*[_type == "faq"]|order(priority asc){title,details}';
+const fetchedFaqs = propsFaqs || (await sanityClient.fetch<SanityDocument[]>(FAQ_QUERY));
+
+// Use either the provided FAQs or the ones fetched from Sanity
+const faqs = fetchedFaqs;
+---
+
+<section id="faq" class="section-x-padding max-w-4xl mx-auto py-2 md:py-4">
+  {
+    faqs.map((faq: SanityDocument, index: number) => (
+      <div class="faq-item mb-6 rounded-lg shadow-md overflow-hidden">
+        <button
+          class="faq-question w-full text-left flex items-center justify-between py-5 px-6 rounded-t-lg"
+          aria-expanded="false"
+          aria-controls={`faq-answer-${index}`}
+        >
+          <div class="flex items-center gap-3">
+            <span class="faq-icon transform transition-transform duration-300">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+            <span class="text-xl font-semibold font-heading">{faq.title}</span>
+          </div>
+        </button>
+        <div
+          id={`faq-answer-${index}`}
+          class="faq-answer max-h-0 overflow-hidden px-8 transition-all duration-500 ease-in-out"
+        >
+          <p class="py-5">{faq.details}</p>
+        </div>
+      </div>
+    ))
+  }
+
+  <script is:inline>
+    // Use astro:page-load event for compatibility with Astro's view transitions
+    document.addEventListener('astro:page-load', () => {
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      const faqAnswers = document.querySelectorAll('.faq-answer');
+
+      // Function to close all FAQ items
+      const closeAllFaqs = () => {
+        faqAnswers.forEach((answer) => {
+          answer.style.maxHeight = '0';
+        });
+
+        faqQuestions.forEach((q) => {
+          q.setAttribute('aria-expanded', 'false');
+          const qIcon = q.querySelector('.faq-icon');
+          qIcon.classList.remove('rotate-180');
+        });
+      };
+
+      // Initialize - all closed
+      closeAllFaqs();
+
+      faqQuestions.forEach((question) => {
+        question.addEventListener('click', () => {
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector('.faq-icon');
+          const isExpanded = question.getAttribute('aria-expanded') === 'true';
+
+          // Close all FAQs first
+          closeAllFaqs();
+
+          // If it wasn't expanded, open it (otherwise it stays closed)
+          if (!isExpanded) {
+            // Calculate the scroll height to allow animation
+            const scrollHeight = answer.scrollHeight;
+            answer.style.maxHeight = `${scrollHeight}px`;
+
+            // Update aria-expanded
+            question.setAttribute('aria-expanded', 'true');
+
+            // Rotate the icon
+            icon.classList.add('rotate-180');
+          }
+        });
+      });
+    });
+  </script>
+</section>
