@@ -91,6 +91,47 @@ export const unit = defineType({
       validation: (Rule) => Rule.required().positive().error('Preț obligatoriu'),
       description: 'Preț unitate',
     }),
+    defineField({
+      name: 'rooms',
+      title: 'Camere',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          title: 'Camera',
+          fields: [
+            {
+              name: 'name',
+              title: 'Nume camera',
+              type: 'string',
+              validation: (Rule) => Rule.required().error('Numele camerei este obligatoriu'),
+              description: 'Ex: Living, Dormitor, Bucătărie, Baie, etc.',
+            },
+            {
+              name: 'surface',
+              title: 'Suprafață (m²)',
+              type: 'number',
+              validation: (Rule) => Rule.required().positive().error('Suprafața este obligatorie'),
+              description: 'Suprafața camerei în metri pătrați',
+            },
+          ],
+          preview: {
+            select: {
+              title: 'name',
+              subtitle: 'surface',
+            },
+            prepare(selection) {
+              const {title, subtitle} = selection
+              return {
+                title: title,
+                subtitle: `${subtitle} m²`,
+              }
+            },
+          },
+        },
+      ],
+      description: 'Lista camerelor cu suprafețele lor',
+    }),
   ],
   preview: {
     select: {
