@@ -5,6 +5,7 @@ import heroImage from '../assets/hero-img.png';
 import heroLogo from '../assets/hero-logo.svg';
 import Location from '../components/Location.astro';
 import SectionTitle from '../components/SectionTitle.astro';
+import ApartmentShowcase from '../components/ApartmentShowcase.svelte';
 ---
 
 <Layout title="Proiect Rezidential - Nostro">
@@ -64,75 +65,83 @@ import SectionTitle from '../components/SectionTitle.astro';
   <section class="py-12 bg-main">
     <SectionTitle title="Tipuri de Apartamente" id="apartamente-title" />
     <div class="max-w-[95vw] lg:max-w-[1600px] mx-auto px-2 sm:px-6 lg:px-8">
-      <div class="pb-[15vh]">
-        {
-          [
-            {
-              type: 'Studio',
-              size: '45mp',
-              description:
-                'Apartament modern tip studio, perfect pentru tineri profesioniști sau investiție. Spațiu eficient compartimentat cu zonă de zi multifuncțională, bucătărie și baie.',
-              planImage: 'https://images.pexels.com/photos/5524165/pexels-photo-5524165.jpeg',
-              features: ['Suprafață utilă: 45mp', 'Living + bucătărie', 'Baie', 'Balcon'],
-            },
-            {
-              type: '2 Camere',
-              size: '65mp',
-              description:
-                'Apartament spațios cu două camere, ideal pentru cupluri sau familii mici. Dispune de living cu bucătărie, dormitor separat și baie.',
-              planImage: 'https://images.pexels.com/photos/5524147/pexels-photo-5524147.jpeg',
-              features: [
-                'Suprafață utilă: 65mp',
-                'Living + bucătărie',
-                'Dormitor',
-                'Baie',
-                'Balcon',
-              ],
-            },
-            {
-              type: '3 Camere',
-              size: '85mp',
-              description:
-                'Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.',
-              planImage: 'https://images.pexels.com/photos/5524155/pexels-photo-5524155.jpeg',
-              features: [
-                'Suprafață utilă: 85mp',
-                'Living + bucătărie',
-                '2 Dormitoare',
-                '2 Băi',
-                'Balcon',
-              ],
-            },
-          ].map((apartment, index) => (
-            <div
-              class={`apartment-section sticky top-20 min-h-[calc(100vh-8rem)] flex items-center ${index > 0 ? 'mt-[20vh]' : ''}`}
-            >
-              <div class="grid grid-cols-1 md:grid-cols-2 bg-white rounded-sm shadow-xs w-full h-[640px] md:min-h-[420px] lg:min-h-[420px] items-stretch overflow-hidden">
-                <div class="space-y-6 flex flex-col justify-between p-8 h-full">
-                  <h3 class="text-2xl font-bold text-primary">{apartment.type}</h3>
-                  <p class="text-gray-600">{apartment.description}</p>
-                  <ul class="space-y-3">
-                    {apartment.features.map((feature) => (
-                      <li class="flex items-center text-gray-700">
-                        <span class="w-6 h-6 mr-2 text-primary">✓</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div class="flex items-center h-full">
-                  <Image
-                    src={apartment.planImage}
-                    alt={`Plan ${apartment.type}`}
-                    class="w-full h-full object-contain"
-                    inferSize
-                  />
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
+      <ApartmentShowcase
+        client:load
+        apartments={[
+          {
+            type: 'STUDIO',
+            size: '45mp',
+            description:
+              'Apartament modern tip studio, perfect pentru tineri profesioniști sau investiție. Spațiu eficient compartimentat cu zonă de zi multifuncțională, bucătărie și baie.',
+            planImage: 'https://images.pexels.com/photos/5524165/pexels-photo-5524165.jpeg',
+            features: ['Suprafață utilă: 45mp', 'Living + bucătărie', 'Baie', 'Balcon'],
+          },
+          {
+            type: '1.5 CAMERE',
+            size: '65mp',
+            description:
+              'Apartament spațios cu două camere, ideal pentru cupluri sau familii mici. Dispune de living cu bucătărie, dormitor separat și baie.',
+            planImage: 'https://images.pexels.com/photos/5524147/pexels-photo-5524147.jpeg',
+            features: ['Suprafață utilă: 65mp', 'Living + bucătărie', 'Dormitor', 'Baie', 'Balcon'],
+          },
+          {
+            type: '2 CAMERE',
+            size: '85mp',
+            description:
+              'Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.',
+            planImage: 'https://images.pexels.com/photos/5524155/pexels-photo-5524155.jpeg',
+            features: [
+              'Suprafață utilă: 85mp',
+              'Living + bucătărie',
+              '2 Dormitoare',
+              '2 Băi',
+              'Balcon',
+            ],
+          },
+          {
+            type: '2.5 CAMERE',
+            size: '85mp',
+            description:
+              'Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.',
+            planImage: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg',
+            features: [
+              'Suprafață utilă: 85mp',
+              'Living + bucătărie',
+              '2 Dormitoare',
+              '2 Băi',
+              'Balcon',
+            ],
+          },
+          {
+            type: '3 CAMERE',
+            size: '85mp',
+            description:
+              'Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.',
+            planImage: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg',
+            features: [
+              'Suprafață utilă: 85mp',
+              'Living + bucătărie',
+              '2 Dormitoare',
+              '2 Băi',
+              'Balcon',
+            ],
+          },
+          {
+            type: '4 CAMERE',
+            size: '85mp',
+            description:
+              'Apartament generos cu trei camere, perfect pentru familii. Include living cu bucătărie, două dormitoare și două băi.',
+            planImage: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg',
+            features: [
+              'Suprafață utilă: 85mp',
+              'Living + bucătărie',
+              '2 Dormitoare',
+              '2 Băi',
+              'Balcon',
+            ],
+          },
+        ]}
+      />
     </div>
   </section>
 

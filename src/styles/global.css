@@ -5,6 +5,7 @@
   --font-heading: 'Josefin Sans', sans-serif;
   --font-sans: 'Amiko', sans-serif;
   --color-bg: #f9f7f0;
+  --color-bg-secondary: #c56d44;
   --color-bg-footer: #3d3d3d;
   --color-main-orange: #c56d44;
   --color-secondary: #d8d2c2;
@@ -39,7 +40,7 @@
   }
 
   .btn-primary {
-    @apply bg-[var(--color-main-orange)] hover:bg-orange-500 text-white px-4 py-2 uppercase text-sm font-medium rounded-s rounded-tr-2xl transition-colors duration-300;
+    @apply bg-[var(--color-main-orange)] hover:bg-orange-500 text-white px-4 py-2 uppercase text-sm font-medium rounded-tr-2xl transition-colors duration-300;
   }
 
   /* Layout components */
@@ -54,6 +55,10 @@
   /* Background utilities using CSS custom properties */
   .bg-main {
     background-color: var(--color-bg);
+  }
+
+  .bg-secondary {
+    background-color: var(--color-bg-secondary);
   }
 
   .bg-main-orange {
@@ -105,9 +110,4 @@
   svg .no-highlight {
     opacity: 0;
   }
-}
-
-/* Utilities layer: Single-purpose utility classes */
-@layer utilities {
-  /* Add any custom utilities here if needed */
 }

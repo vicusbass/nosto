@@ -5,7 +5,7 @@ import headerLogo from '../assets/header-logo.svg';
 const menuItems = [
   { name: 'Apartamente', href: '/apartamente' },
   { name: 'Locație', href: '/locatie' },
-  { name: 'Stadiu Santier', href: '/noutati' },
+  { name: 'Stadiu Șantier', href: '/noutati' },
   { name: 'Contact', href: '/contact' },
 ];
 ---
@@ -17,18 +17,18 @@ const menuItems = [
         <Image src={headerLogo} alt="Nosto Logo" height={50} />
       </a>
     </div>
-    <div class="hidden sm:ml-6 sm:flex sm:items-center heading-font">
+    <div class="hidden sm:flex sm:items-center">
       {
         menuItems.map((item) => (
           <a
             href={item.href}
-            class="px-3 py-2 text-xl text-black hover:text-primary transition-colors"
+            class="px-5 py-2 text-xl heading-font hover:text-primary transition-colors"
           >
             {item.name}
           </a>
         ))
       }
-      <a href="tel:123456789" class="btn-primary">SUNĂ ACUM</a>
+      <a href="tel:123456789" class="btn-primary ml-6">SUNĂ ACUM</a>
     </div>
     <div class="flex items-center sm:hidden">
       <button
