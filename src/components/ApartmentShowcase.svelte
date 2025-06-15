@@ -17,8 +17,6 @@
 
         if (visibleTabIndex === `${apartments.length - 1}`) {
           areTabsActive = true;
-        } else if (visibleTabIndex !== undefined) {
-          activeIndex = parseInt(visibleTabIndex, 10);
         } else {
           activeIndex = -1;
         }
@@ -61,7 +59,7 @@
       class:z-2={areTabsActive && index === activeIndex}
     >
       <div
-        class="heading-font text-2xl font-normal rounded-tr-sm rounded-tl-sm shadow-sm flex items-center justify-center py-3 -mb-[2px] overflow-hidden"
+        class="heading-font text-sm md:text-2xl shadow-md font-normal py-3 px-2 -mb-[2px] overflow-hidden min-h-10 whitespace-nowrap overflow-ellipsis md:flex md:items-center md:justify-center"
         class:bg-main={index % 2 === 0}
         class:bg-secondary={index % 2 !== 0}
         style="
@@ -73,27 +71,35 @@
         {apartment.type}
       </div>
       <div
-        class="grid grid-cols-1 md:grid-cols-2 shadow-sm rounded-sm w-full h-[640px] md:min-h-[420px] lg:min-h-[420px] items-stretch overflow-hidden"
+        class="grid grid-cols-1 md:grid-cols-2 p-6 md:px-12 md:py-20 shadow-md w-full h-[700px] md:h-[600px] md:min-h-[400px] overflow-hidden"
         class:bg-main={index % 2 === 0}
         class:bg-secondary={index % 2 !== 0}
       >
-        <div class="space-y-6 flex flex-col justify-between p-8 h-full">
-          <p class="text-gray-600 heading-font">{apartment.description}</p>
-          <ul class="space-y-3">
+        <img
+          src={apartment.planImage}
+          alt={`Plan ${apartment.type}`}
+          class="object-contain rounded-tr-[120px]"
+        />
+        <div class="space-y-4 md:space-y-6 md:ml-12 h-full flex flex-col justify-around">
+          <p class="text-xl">{apartment.description}</p>
+          <ul class="space-y-3 list-disc pl-6">
             {#each apartment.features as feature}
-              <li class="flex items-center text-gray-700">
-                <span class="w-6 h-6 mr-2 text-primary">✓</span>
+              <li class="text-base font-bold">
                 {feature}
               </li>
             {/each}
           </ul>
-        </div>
-        <div class="flex items-center h-full">
-          <img
-            src={apartment.planImage}
-            alt={`Plan ${apartment.type}`}
-            class="w-full h-full object-contain"
-          />
+          <div>
+            <a
+              href={apartment.link}
+              class="btn-primary px-6 py-3"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`More details about ${apartment.type}`}
+            >
+              VEZI MAI MULTE OPȚIUNI
+            </a>
+          </div>
         </div>
       </div>
     </div>
