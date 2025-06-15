@@ -96,6 +96,16 @@
     cursor: pointer;
   }
 
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
   svg .apartment-sold {
     fill: #cf8c4d;
     fill-opacity: 0.2;
