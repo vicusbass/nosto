@@ -98,7 +98,7 @@
 
   /* Floor component styles */
   svg .highlight-apartment {
-    fill: #008000;
+    fill: #28bb2d;
     fill-opacity: 0.2;
     transition: fill-opacity 0.3s;
   }
@@ -110,16 +110,16 @@
 
   /* Hide scrollbar but keep functionality */
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
-  
+
   .no-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
 
   svg .apartment-sold {
-    fill: #cf8c4d;
+    fill: #858382;
     fill-opacity: 0.2;
   }
 
