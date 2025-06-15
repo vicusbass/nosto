@@ -68,7 +68,7 @@
   }
 
   .bg-footer {
-    background-color: var(--color-bg-footer);
+    background-color: var(--color-secondary);
   }
 
   /* Typography utilities */
@@ -92,6 +92,10 @@
     @apply text-center;
   }
 
+  .section-x-padding {
+    @apply px-6 md:px-[70px];
+  }
+
   /* Floor component styles */
   svg .highlight-apartment {
     fill: #008000;
@@ -104,6 +108,16 @@
     cursor: pointer;
   }
 
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
   svg .apartment-sold {
     fill: #cf8c4d;
     fill-opacity: 0.2;
@@ -111,5 +125,12 @@
 
   svg .no-highlight {
     opacity: 0;
+  }
+}
+
+/* Utilities layer: Single-purpose utility classes */
+@layer utilities {
+  .color-orange {
+    color: var(--color-main-orange);
   }
 }
