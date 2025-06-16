@@ -6,6 +6,7 @@ import heroLogo from '../assets/hero-logo.svg';
 import Location from '../components/Location.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import ApartmentShowcase from '../components/ApartmentShowcase.svelte';
+import Finish from '../components/Finish.astro';
 ---
 
 <Layout title="Proiect Rezidential - Nostro">
@@ -25,7 +26,7 @@ import ApartmentShowcase from '../components/ApartmentShowcase.svelte';
 
   <!-- About Section -->
   <section id="despre" class="py-12 bg-main">
-    <SectionTitle title="Despre Proiect" id="despre-proiect-title" />
+    <SectionTitle title="Prezentarea generală a proiectului" id="despre-proiect-title" />
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
@@ -62,7 +63,7 @@ import ApartmentShowcase from '../components/ApartmentShowcase.svelte';
   </section>
 
   <!-- Apartments Section -->
-  <section class="py-12 bg-main">
+  <section class="pt-12 pb-0 bg-main">
     <SectionTitle title="Tipuri de Apartamente" id="apartamente-title" />
     <div class="max-w-[95vw] lg:max-w-[1600px] mx-auto px-2 sm:px-6 lg:px-8">
       <ApartmentShowcase
@@ -158,47 +159,18 @@ import ApartmentShowcase from '../components/ApartmentShowcase.svelte';
   </section>
 
   <!-- Packages Section -->
-  <section class="py-12 bg-main">
-    <SectionTitle title="Pachete Finisaje" id="finisaje-title" />
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {
-          [
-            {
-              name: 'Standard',
-              price: 'Inclus în preț',
-              features: ['Parchet laminat', 'Gresie și faianță', 'Uși interior'],
-            },
-            {
-              name: 'Premium',
-              price: '+5000€',
-              features: ['Parchet triplu stratificat', 'Gresie porțelanată', 'Uși premium'],
-            },
-            {
-              name: 'Luxury',
-              price: '+10000€',
-              features: ['Parchet masiv', 'Marmură', 'Uși custom'],
-            },
-          ].map((packageItem) => (
-            <div class="border rounded-sm p-8 text-center">
-              <h3 class="text-2xl font-bold mb-4">{packageItem.name}</h3>
-              <p class="text-primary font-bold mb-6">{packageItem.price}</p>
-              <ul class="space-y-3">
-                {packageItem.features.map((feature) => (
-                  <li class="text-gray-600">{feature}</li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
-      </div>
-    </div>
+  <section id="finisaje" class="pt-0 pb-12 bg-main w-full">
+    <SectionTitle title="Pachete Finisaje și dotări" id="finisaje-title" />
+    <Finish />
   </section>
 
   <!-- Location Map Section -->
-  <div class="px-8 md:px-16">
-    <Location />
-  </div>
+  <section id="location" class="py-12 bg-main w-full">
+    <SectionTitle title="Locație si mobilitate" id="location-title" />
+    <div class="px-8 md:px-16">
+      <Location />
+    </div>
+  </section>
 </Layout>
 
 <style>

@@ -37,7 +37,7 @@
   });
 </script>
 
-<div class="pb-[15vh]">
+<div class="pb-0">
   <div class="h-14 w-full z-3 cursor-pointer sticky top-24 flex">
     {#each apartments as apartment, index (apartment.type)}
       <button
