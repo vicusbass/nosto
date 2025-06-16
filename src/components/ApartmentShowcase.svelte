@@ -54,7 +54,7 @@
     <div
       bind:this={apartmentRefs[index]}
       data-index={index}
-      class="sticky top-24 min-h-[calc(100vh-8rem)] flex-col"
+      class="sticky top-16 min-h-[calc(100vh-8rem)] flex-col"
       class:mt-[20vh]={index > 0}
       class:z-2={areTabsActive && index === activeIndex}
     >
