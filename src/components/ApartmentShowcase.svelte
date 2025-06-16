@@ -78,7 +78,7 @@
         <img
           src={apartment.planImage}
           alt={`Plan ${apartment.type}`}
-          class="object-contain rounded-tr-[120px]"
+          class="object-contain rounded-tr-[120px] max-h-[460px]"
         />
         <div class="space-y-4 md:space-y-6 md:ml-12 h-full flex flex-col justify-around">
           <p class="text-xl">{apartment.description}</p>
