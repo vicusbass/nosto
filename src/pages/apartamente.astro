@@ -25,19 +25,10 @@ try {
 
 <Layout title="Apartamente - Nosto">
   <section class="py-10">
-    <h1
-      class="text-3xl md:text-4xl font-bold text-center mb-4 flex items-center justify-center gap-2"
-    >
-      <Icon name="mdi:building" class="h-6 w-6 flex-shrink-0 text-primary" />
-      Apartamente
-    </h1>
     <div class="flex justify-center my-8 px-2 sm:px-6 lg:px-8">
-      <div class="w-full max-w-[95vw] lg:max-w-[1600px] h-auto rounded-sm shadow">
+      <div class="w-full max-w-[95vw] lg:max-w-[1600px] h-auto">
         <Apartments units={units} client:only="svelte" />
       </div>
-    </div>
-    <div class="flex justify-center my-8 px-2 sm:px-6 lg:px-8">
-      <div class="w-full max-w-[95vw] lg:max-w-[1600px] h-auto rounded-sm shadow"></div>
     </div>
   </section>
 </Layout>

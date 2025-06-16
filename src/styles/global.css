@@ -5,6 +5,8 @@
   --font-heading: 'Josefin Sans', sans-serif;
   --font-sans: 'Amiko', sans-serif;
   --color-bg: #f9f7f0;
+  --color-bg-secondary: #c56d44;
+  --color-bg-footer: #3d3d3d;
   --color-main-orange: #c56d44;
   --color-secondary: #d8d2c2;
   --color-text-body: #3d3d3d;
@@ -38,7 +40,9 @@
   }
 
   .btn-primary {
-    @apply bg-[var(--color-main-orange)] hover:bg-orange-500 text-white px-4 py-2 uppercase text-sm font-medium rounded-s rounded-tr-2xl transition-colors duration-300;
+    @apply bg-[var(--color-main-orange)] hover:bg-orange-500 text-white px-4 py-2 uppercase text-sm font-medium rounded-tr-2xl transition-colors duration-300;
+    font-family: var(--font-heading);
+    font-size: 1rem;
   }
 
   /* Layout components */
@@ -56,6 +60,14 @@
   }
 
   .bg-secondary {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .bg-main-orange {
+    background-color: var(--color-main-orange);
+  }
+
+  .bg-footer {
     background-color: var(--color-secondary);
   }
 
@@ -86,7 +98,7 @@
 
   /* Floor component styles */
   svg .highlight-apartment {
-    fill: #008000;
+    fill: #28bb2d;
     fill-opacity: 0.2;
     transition: fill-opacity 0.3s;
   }
@@ -98,16 +110,16 @@
 
   /* Hide scrollbar but keep functionality */
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
-  
+
   .no-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
 
   svg .apartment-sold {
-    fill: #cf8c4d;
+    fill: #858382;
     fill-opacity: 0.2;
   }
 
