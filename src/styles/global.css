@@ -8,6 +8,7 @@
   --color-bg-secondary: #c56d44;
   --color-bg-footer: #3d3d3d;
   --color-main-orange: #c56d44;
+  --color-main-hover: #c8592d;
   --color-secondary: #d8d2c2;
   --color-text-body: #3d3d3d;
 }
@@ -40,7 +41,7 @@
   }
 
   .btn-primary {
-    @apply bg-[var(--color-main-orange)] hover:bg-orange-500 text-white px-4 py-2 uppercase text-sm font-medium rounded-tr-2xl transition-colors duration-300;
+    @apply bg-[var(--color-main-orange)] hover:bg-[var(--color-main-hover)] text-white px-4 py-2 uppercase text-sm font-medium rounded-tr-2xl transition-colors duration-300;
     font-family: var(--font-heading);
     font-size: 1rem;
   }
@@ -69,6 +70,10 @@
 
   .bg-footer {
     background-color: var(--color-secondary);
+  }
+
+  .color-main-hover {
+    color: var(--color-main-hover);
   }
 
   /* Typography utilities */

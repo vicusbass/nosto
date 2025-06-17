@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import { finishesData } from '../config/finishes';
+
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+
+const { items, topLeftImage, bottomRightImage } = finishesData;
+
+const leftItems = items.slice(0, Math.ceil(items.length / 2));
+const rightItems = items.slice(Math.ceil(items.length / 2));
+---
+
+<div class="container mx-auto relative">
+  <div
+    class="vertical-text absolute left-16 top-1/2 transform -translate-y-1/2 text-3xl font-light heading-font hidden md:block"
+  >
+    FINISAJE
+  </div>
+  <div
+    class={`grid grid-cols-1 md:grid-cols-2 gap-4 ${className}`}
+    style="padding-left: max(16px, min(118px, 10vw)); padding-right: max(16px, min(118px, 10vw));"
+  >
+    <div class="aspect-square rounded-br-[120px] overflow-hidden">
+      <Image
+        src={topLeftImage}
+        alt="Room finish image"
+        width={400}
+        height={400}
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <div class="p-4 md:p-6 rounded-lg shadow-sm">
+      <div class="space-y-4">
+        {
+          leftItems.map((item: { label: string; value: string }) => (
+            <div class="border-b border-gray-200 pb-3 grid grid-cols-1 md:grid-cols-[40%_60%] items-start gap-1 md:gap-0">
+              <h3 class="font-light text-gray-900 text-sm font-heading">{item.label}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{item.value}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="p-4 md:p-6 rounded-lg shadow-sm">
+      <div class="space-y-4">
+        {
+          rightItems.map((item: { label: string; value: string }) => (
+            <div class="border-b border-gray-200 pb-3 grid grid-cols-1 md:grid-cols-[40%_60%] items-start gap-1 md:gap-0">
+              <h3 class="font-light text-gray-900 text-sm font-heading">{item.label}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{item.value}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="aspect-square rounded-tl-[120px] overflow-hidden">
+      <Image
+        src={bottomRightImage}
+        alt="Room finish image"
+        width={400}
+        height={400}
+        class="w-full h-full object-cover"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+</style>

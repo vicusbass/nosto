@@ -37,7 +37,7 @@
   });
 </script>
 
-<div class="pb-[15vh]">
+<div class="pb-0">
   <div class="h-14 w-full z-3 cursor-pointer sticky top-24 flex">
     {#each apartments as apartment, index (apartment.type)}
       <button
@@ -54,7 +54,7 @@
     <div
       bind:this={apartmentRefs[index]}
       data-index={index}
-      class="sticky top-24 min-h-[calc(100vh-8rem)] flex-col"
+      class="sticky top-16 min-h-[calc(100vh-8rem)] flex-col"
       class:mt-[20vh]={index > 0}
       class:z-2={areTabsActive && index === activeIndex}
     >

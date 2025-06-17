@@ -30,7 +30,7 @@ const { showGoogleMapsLink = true } = Astro.props;
     <div class="absolute top-4 left-4 flex space-x-2">
       <button
         id="zoom-city"
-        class="px-4 py-2 text-sm font-semibold rounded shadow bg-white hover:bg-gray-100 transition map-btn"
+        class="btn-primary map-btn transition"
         data-zoom="13"
         aria-label="VEDERE ORAȘ"
       >
@@ -38,7 +38,7 @@ const { showGoogleMapsLink = true } = Astro.props;
       </button>
       <button
         id="zoom-area"
-        class="px-4 py-2 text-sm font-semibold rounded shadow bg-white hover:bg-gray-100 transition map-btn selected"
+        class="btn-primary map-btn selected transition"
         data-zoom="16"
         aria-label="VEDERE ZONĂ"
       >
@@ -52,7 +52,7 @@ const { showGoogleMapsLink = true } = Astro.props;
           href={config.googleMapsLink}
           target="_blank"
           rel="noopener noreferrer"
-          class="absolute bottom-4 left-4 px-4 py-2 text-sm font-semibold rounded shadow bg-white hover:bg-gray-100 transition map-btn"
+          class="btn-primary map-btn transition absolute bottom-4 left-4"
           aria-label="Deschide locația în Google Maps"
         >
           VEZI PE GOOGLE MAPS
@@ -89,14 +89,15 @@ const { showGoogleMapsLink = true } = Astro.props;
   }
 
   @media (min-width: 768px) {
-    .map-btn:hover {
+    .map-btn:not(.selected):hover {
       transform: translateY(-2px);
     }
   }
 
   .map-btn.selected {
-    background-color: #000000;
-    color: white;
+    background-color: white;
+    color: black;
+    pointer-events: none;
   }
 </style>
 
