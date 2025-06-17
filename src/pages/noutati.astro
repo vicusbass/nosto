@@ -40,10 +40,32 @@ const posts = await sanityClient.fetch<SanityDocument[]>(POSTS_QUERY);
 
   <SectionTitle title="Timeline" id="timeline-title" />
 
-  <section id="articles">
+  <section id="articles" class="relative">
     <!-- Horizontal scrolling news container -->
     <div class="section-x-padding">
+      <!-- Left scroll arrow for mobile -->
+      <button
+        id="scroll-left"
+        class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow-md md:hidden"
+        aria-label="Scroll left"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+      </button>
+
       <div
+        id="articles-container"
         class="flex overflow-x-auto pb-6 no-scrollbar snap-x snap-mandatory scroll-px-4"
         style="-webkit-overflow-scrolling: touch;"
       >
@@ -83,6 +105,121 @@ const posts = await sanityClient.fetch<SanityDocument[]>(POSTS_QUERY);
           })
         }
       </div>
+
+      <!-- Right scroll arrow for mobile -->
+      <button
+        id="scroll-right"
+        class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow-md md:hidden"
+        aria-label="Scroll right"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m9 18 6-6-6-6"></path>
+        </svg>
+      </button>
     </div>
   </section>
+
+  <script is:inline>
+    // Function to initialize the scroll arrows
+    function initScrollArrows() {
+      console.log('Initializing scroll arrows');
+      const container = document.getElementById('articles-container');
+      const leftBtn = document.getElementById('scroll-left');
+      const rightBtn = document.getElementById('scroll-right');
+      const articles = container?.querySelectorAll('article');
+
+      if (container && leftBtn && rightBtn && articles?.length) {
+        // Remove any existing event listeners (for re-initialization)
+        const newLeftBtn = leftBtn.cloneNode(true);
+        const newRightBtn = rightBtn.cloneNode(true);
+        leftBtn.parentNode.replaceChild(newLeftBtn, leftBtn);
+        rightBtn.parentNode.replaceChild(newRightBtn, rightBtn);
+        
+        // Function to scroll to a specific article
+        const scrollToArticle = (index) => {
+          if (articles[index]) {
+            articles[index].scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest',
+              inline: 'center',
+            });
+          }
+        };
+
+        // Find the current centered article index
+        const getCurrentArticleIndex = () => {
+          const containerRect = container.getBoundingClientRect();
+          const containerCenter = containerRect.left + containerRect.width / 2;
+
+          let closestIndex = 0;
+          let closestDistance = Number.MAX_VALUE;
+
+          articles.forEach((article, index) => {
+            const articleRect = article.getBoundingClientRect();
+            const articleCenter = articleRect.left + articleRect.width / 2;
+            const distance = Math.abs(containerCenter - articleCenter);
+
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              closestIndex = index;
+            }
+          });
+
+          return closestIndex;
+        };
+
+        // Navigate to previous article
+        newLeftBtn.addEventListener('click', () => {
+          console.log('Left arrow clicked');
+          const currentIndex = getCurrentArticleIndex();
+          const prevIndex = Math.max(0, currentIndex - 1);
+          scrollToArticle(prevIndex);
+        });
+
+        // Navigate to next article
+        newRightBtn.addEventListener('click', () => {
+          console.log('Right arrow clicked');
+          const currentIndex = getCurrentArticleIndex();
+          const nextIndex = Math.min(articles.length - 1, currentIndex + 1);
+          scrollToArticle(nextIndex);
+        });
+
+        // Show/hide arrows based on scroll position
+        const updateArrowVisibility = () => {
+          const currentIndex = getCurrentArticleIndex();
+          newLeftBtn.style.opacity = currentIndex > 0 ? '1' : '0.3';
+          newRightBtn.style.opacity = currentIndex < articles.length - 1 ? '1' : '0.3';
+        };
+
+        // Initial visibility
+        updateArrowVisibility();
+
+        // Update on scroll
+        container.addEventListener('scroll', () => {
+          // Use requestAnimationFrame to limit updates during scroll
+          requestAnimationFrame(updateArrowVisibility);
+        });
+
+        // Update on resize
+        window.addEventListener('resize', updateArrowVisibility);
+      }
+    }
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', initScrollArrows);
+    
+    // Re-initialize on Astro view transitions
+    document.addEventListener('astro:page-load', initScrollArrows);
+    document.addEventListener('astro:after-swap', initScrollArrows);
+  </script>
 </Layout>
