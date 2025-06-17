@@ -4,12 +4,11 @@
 @theme {
   --font-heading: 'Josefin Sans', sans-serif;
   --font-sans: 'Amiko', sans-serif;
-  --color-bg: #f9f7f0;
+  --color-bg-primary: #f9f7f0;
   --color-bg-secondary: #c56d44;
-  --color-bg-footer: #3d3d3d;
-  --color-main-orange: #c56d44;
-  --color-main-hover: #c8592d;
-  --color-secondary: #d8d2c2;
+  --color-main-btn: #c56d44;
+  --color-main-btn-hover: #c8592d;
+  --color-tab-secondary: #d8d2c2;
   --color-text-body: #3d3d3d;
 }
 
@@ -23,7 +22,7 @@
   body {
     margin: 0;
     min-height: 100vh;
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-primary);
     @apply font-sans font-normal text-xl text-[var(--color-text-body)];
   }
 
@@ -41,40 +40,21 @@
   }
 
   .btn-primary {
-    @apply bg-[var(--color-main-orange)] hover:bg-[var(--color-main-hover)] text-white px-4 py-2 uppercase text-sm font-medium rounded-tr-2xl transition-colors duration-300;
+    @apply bg-[var(--color-main-btn)] hover:bg-[var(--color-main-btn-hover)] text-white px-4 py-2 uppercase text-sm font-medium rounded-tr-2xl transition-colors duration-300;
     font-family: var(--font-heading);
     font-size: 1rem;
   }
 
   /* Layout components */
   .footer {
-    @apply bg-[#333333] text-white text-base font-semibold;
+    @apply bg-[var(--color-text-body)] text-white text-base font-semibold;
   }
 
   .navbar {
-    color: var(--color-bg);
+    color: var(--color-bg-primary);
   }
 
   /* Background utilities using CSS custom properties */
-  .bg-main {
-    background-color: var(--color-bg);
-  }
-
-  .bg-secondary {
-    background-color: var(--color-bg-secondary);
-  }
-
-  .bg-main-orange {
-    background-color: var(--color-main-orange);
-  }
-
-  .bg-footer {
-    background-color: var(--color-secondary);
-  }
-
-  .color-main-hover {
-    color: var(--color-main-hover);
-  }
 
   /* Typography utilities */
   .heading-font {
@@ -90,7 +70,7 @@
 
   .section-title::before {
     content: '';
-    @apply w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-main-orange absolute left-0 top-1/2 transform -translate-y-1/2;
+    @apply w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-main-btn absolute left-0 top-1/2 transform -translate-y-1/2;
   }
 
   .section-title h2 {
@@ -135,7 +115,27 @@
 
 /* Utilities layer: Single-purpose utility classes */
 @layer utilities {
-  .color-orange {
-    color: var(--color-main-orange);
+  .color-main-btn {
+    color: var(--color-main-btn);
+  }
+
+  .bg-main {
+    background-color: var(--color-bg-primary);
+  }
+
+  .bg-secondary {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .bg-tab-secondary {
+    background-color: var(--color-tab-secondary);
+  }
+
+  .bg-main-btn {
+    background-color: var(--color-main-btn);
+  }
+
+  .color-main-btn-hover {
+    color: var(--color-main-btn-hover);
   }
 }

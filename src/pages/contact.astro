@@ -63,15 +63,15 @@ import FAQ from '../components/FAQ.astro';
           </div>
 
           <div class="hidden md:flex md:flex-row md:justify-start md:items-center md:gap-3">
-            <Icon name="mdi:phone" class="h-10 w-10 color-orange" />
+            <Icon name="mdi:phone" class="h-10 w-10 color-main-btn" />
             <a href={`tel:${contact.phone}`} class="text-xl hover:underline">{contact.phone}</a>
           </div>
           <div class="hidden md:flex md:flex-row md:justify-start md:items-center md:gap-3">
-            <Icon name="mdi:email" class="h-10 w-10 color-orange" />
+            <Icon name="mdi:email" class="h-10 w-10 color-main-btn" />
             <a href={`mailto:${contact.email}`} class="text-xl hover:underline">{contact.email}</a>
           </div>
           <div class="hidden md:flex md:flex-row md:justify-start md:items-center md:gap-3">
-            <Icon name="mdi:map-marker" class="h-10 w-10 color-orange" />
+            <Icon name="mdi:map-marker" class="h-10 w-10 color-main-btn" />
             <a
               href={contact.address}
               target="_blank"
@@ -80,7 +80,7 @@ import FAQ from '../components/FAQ.astro';
             >
           </div>
           <div class="hidden md:flex md:flex-row md:justify-start md:items-center md:gap-3">
-            <Icon name="mdi:whatsapp" class="h-10 w-10 color-orange" />
+            <Icon name="mdi:whatsapp" class="h-10 w-10 color-main-btn" />
             <a
               href={`https://wa.me/${contact.whatsapp}`}
               target="_blank"
@@ -91,7 +91,7 @@ import FAQ from '../components/FAQ.astro';
         </div>
       </div>
 
-      <div class="w-full md:w-1/2 bg-secondary py-4 px-2 md:px-6">
+      <div class="w-full md:w-1/2 bg-tab-secondary py-4 px-2 md:px-6">
         <form id="contact-form" class="space-y-3" method="POST">
           <div>
             <label for="nume" class="block mb-1 text-sm">Nume</label>

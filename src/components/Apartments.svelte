@@ -150,7 +150,7 @@
     <button
       type="button"
       class="font-heading font-light text-base uppercase mx-2 px-3 py-1
-        {selectedRooms.includes(room) ? 'color-orange font-medium border-b-2' : ''}"
+        {selectedRooms.includes(room) ? 'color-main-btn font-medium border-b-2' : ''}"
       aria-pressed={selectedRooms.includes(room)}
       onclick={() => toggleRoom(room)}
     >
@@ -176,7 +176,7 @@
       <div class="mb-4">
         <button
           type="button"
-          class="w-full px-3 py-4 font-medium text-left rounded-tr-2xl bg-secondary transition-all flex items-center justify-between"
+          class="w-full px-3 py-4 font-medium text-left rounded-tr-2xl bg-tab-secondary transition-all flex items-center justify-between"
           aria-expanded={selectedIdx === idx}
           aria-controls={`floor-panel-${idx}`}
           onclick={() => selectFloor(idx)}
@@ -194,7 +194,7 @@
           </svg>
         </button>
         {#if selectedIdx === idx && isFloorInfoExpanded}
-          <div id={`floor-panel-${idx}`} class="bg-secondary px-6 py-6 shadow">
+          <div id={`floor-panel-${idx}`} class="bg-tab-secondary px-6 py-6 shadow">
             <p class="mb-2">Apartamente disponibile</p>
             <ul class="ml-4">
               {#each displayableUnits.filter((unit) => unit.floor === floor.name) as unit}
