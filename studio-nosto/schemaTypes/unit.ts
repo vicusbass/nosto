@@ -132,6 +132,15 @@ export const unit = defineType({
       ],
       description: 'Lista camerelor cu suprafețele lor',
     }),
+    defineField({
+      name: 'plan',
+      title: 'Plan PDF',
+      type: 'file',
+      options: {
+        accept: 'application/pdf',
+      },
+      description: 'Încarcă planul PDF pentru această unitate',
+    }),
   ],
   preview: {
     select: {

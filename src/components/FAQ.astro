@@ -19,9 +19,9 @@ const faqs = fetchedFaqs;
 <section id="faq" class="section-x-padding max-w-4xl mx-auto py-2 md:py-4">
   {
     faqs.map((faq: SanityDocument, index: number) => (
-      <div class="faq-item mb-6 rounded-lg shadow-md overflow-hidden">
+      <div class="faq-item mb-6 rounded-tr-2xl shadow-md overflow-hidden">
         <button
-          class="faq-question w-full text-left flex items-center justify-between py-5 px-6 rounded-t-lg"
+          class="faq-question w-full text-left flex items-center justify-between py-5 px-6"
           aria-expanded="false"
           aria-controls={`faq-answer-${index}`}
         >
