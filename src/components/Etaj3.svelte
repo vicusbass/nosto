@@ -1929,11 +1929,14 @@
 <text transform="matrix(1.3333 0 0 1.3333 511.17 515.38)" clip-path="url(#nt)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0145735 0.0145735 0.0145735 0.0145735 0.0145735" fill="#000000" font-size="1.6708px">TERASA</tspan></text>
 <text transform="matrix(1.3333 0 0 1.3333 717.28 365.63)" clip-path="url(#ns)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0145735 0.0145735 0.0145735 0.0145735 0.0145735" fill="#000000" font-size="1.6708px">TERASA</tspan></text>
 <text transform="matrix(1.3333 0 0 1.3333 473.59 261.49)" clip-path="url(#nr)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0145735 0.0145735 0.0145735 0.0145735 0.0145735" fill="#000000" font-size="1.6708px">TERASA</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 508.79 259.99)" clip-path="url(#nq)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap25">Ap.25</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 509.89 270.25)" clip-path="url(#nn)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap25">S=63.39mp</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 501.18 424.31)" clip-path="url(#nh)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap24">Ap.24</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 501.91 434.57)" clip-path="url(#nd)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap24">S=116.23mp</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 673.01 323.34)" clip-path="url(#mw)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap23">Ap.23</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 673.78 333.6)" clip-path="url(#mt)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap23">S=111.80mp</tspan></text>
+<text transform="matrix(1.3333 0 0 1.3333 508.79 259.99)" clip-path="url(#nq)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap25">AP. 25</tspan></text>
+<text transform="matrix(1.3333 0 0 1.3333 509.89 270.25)" clip-path="url(#nn)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap25">2.5</tspan></text>
+<!-- <text transform="matrix(1.3333 0 0 1.3333 509.89 270.25)" clip-path="url(#nn)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap25">S=63.39mp</tspan></text> -->
+<text transform="matrix(1.3333 0 0 1.3333 501.18 424.31)" clip-path="url(#nh)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap24">AP. 24</tspan></text>
+<text transform="matrix(1.3333 0 0 1.3333 501.91 434.57)" clip-path="url(#nd)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap24">4 camere</tspan></text>
+<!-- <text transform="matrix(1.3333 0 0 1.3333 501.91 434.57)" clip-path="url(#nd)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap24">S=116.23mp</tspan></text> -->
+<text transform="matrix(1.3333 0 0 1.3333 673.01 323.34)" clip-path="url(#mw)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap23">AP. 23</tspan></text>
+<text transform="matrix(1.3333 0 0 1.3333 673.78 333.6)" clip-path="url(#mt)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap23">4 camere</tspan></text>
+<!-- <text transform="matrix(1.3333 0 0 1.3333 673.78 333.6)" clip-path="url(#mt)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap23">S=111.80mp</tspan></text> -->
 </g>
 </svg>
