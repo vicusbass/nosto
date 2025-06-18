@@ -117,6 +117,20 @@ if (unit) {
                   </div>
                 )}
               </div>
+              {/* PDF Download Button */}
+              {unit.planUrl && (
+                <div class="mt-6 flex justify-center">
+                  <a
+                    href={unit.planUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex btn-primary transition-colors"
+                  >
+                    <Icon name="mdi:file-pdf-box" class="w-6 h-6" />
+                    Descarcă planul
+                  </a>
+                </div>
+              )}
 
               {/* Pricing information */}
               {unit.price && (
@@ -125,21 +139,6 @@ if (unit) {
                   <p class="text-center text-4xl md:text-6xl font-light mt-2">
                     {new Intl.NumberFormat('ro-RO').format(unit.price)}€
                   </p>
-
-                  {/* PDF Download Button */}
-                  {unit.planUrl && (
-                    <div class="mt-6 flex justify-center">
-                      <a
-                        href={unit.planUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex btn-primary transition-colors"
-                      >
-                        <Icon name="mdi:file-pdf-box" class="w-6 h-6" />
-                        Descarcă planul
-                      </a>
-                    </div>
-                  )}
                 </div>
               )}
             </div>
