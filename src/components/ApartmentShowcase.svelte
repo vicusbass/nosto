@@ -61,7 +61,7 @@
       <div
         class="heading-font text-sm md:text-2xl shadow-md font-normal py-3 px-1 -mb-[2px] overflow-hidden min-h-10 whitespace-nowrap overflow-ellipsis flex items-center justify-center"
         class:bg-main={index % 2 === 0}
-        class:bg-secondary={index % 2 !== 0}
+        class:bg-tab-secondary={index % 2 !== 0}
         style="
             width:calc({100 / apartments.length}%);
             max-width:{100 / apartments.length}%;
@@ -74,7 +74,7 @@
       <div
         class="grid grid-cols-1 md:grid-cols-2 p-6 md:px-12 md:py-20 shadow-md w-full h-[700px] md:h-[600px] md:min-h-[400px] overflow-hidden"
         class:bg-main={index % 2 === 0}
-        class:bg-secondary={index % 2 !== 0}
+        class:bg-tab-secondary={index % 2 !== 0}
       >
         <img
           src={apartment.planImage}

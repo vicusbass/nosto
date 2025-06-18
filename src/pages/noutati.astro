@@ -29,7 +29,7 @@ const posts = await sanityClient.fetch<SanityDocument[]>(POSTS_QUERY);
         <h2 class="font-medium text-center">Stadiu Șantier</h2>
       </div>
     </div>
-    <p class="pt-4">
+    <p class="pt-8">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
@@ -144,7 +144,7 @@ const posts = await sanityClient.fetch<SanityDocument[]>(POSTS_QUERY);
         const newRightBtn = rightBtn.cloneNode(true);
         leftBtn.parentNode.replaceChild(newLeftBtn, leftBtn);
         rightBtn.parentNode.replaceChild(newRightBtn, rightBtn);
-        
+
         // Function to scroll to a specific article
         const scrollToArticle = (index) => {
           if (articles[index]) {
@@ -214,10 +214,10 @@ const posts = await sanityClient.fetch<SanityDocument[]>(POSTS_QUERY);
         window.addEventListener('resize', updateArrowVisibility);
       }
     }
-    
+
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', initScrollArrows);
-    
+
     // Re-initialize on Astro view transitions
     document.addEventListener('astro:page-load', initScrollArrows);
     document.addEventListener('astro:after-swap', initScrollArrows);
