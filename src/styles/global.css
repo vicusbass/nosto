@@ -84,12 +84,12 @@
   /* Floor component styles */
   svg .highlight-apartment {
     fill: #28bb2d;
-    fill-opacity: 0.2;
+    fill-opacity: 0.8;
     transition: fill-opacity 0.3s;
   }
 
   svg .highlight-apartment:hover {
-    fill-opacity: 0.5;
+    fill-opacity: 0.9;
     cursor: pointer;
   }
 
@@ -110,6 +110,15 @@
 
   svg .no-highlight {
     opacity: 0;
+  }
+
+  svg .primary-label {
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  svg .secondary-label {
+    font-size: 9px;
   }
 }
 
