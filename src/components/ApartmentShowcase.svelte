@@ -38,12 +38,19 @@
 </script>
 
 <div class="pb-0">
-  <div class="h-14 w-full z-3 cursor-pointer sticky top-24 flex">
+  <div class="h-12 md:h-14 w-full z-3 cursor-pointer sticky top-20 flex">
     {#each apartments as apartment, index (apartment.type)}
       <button
         class="flex-1 h-full"
-        on:click={() => {
-          if (areTabsActive) activeIndex = index;
+        on:click={(e) => {
+          if (!areTabsActive) return;
+
+          const tab = document.querySelector(`[data-index="${index}"]`);
+          tab.style.opacity = '0.7';
+          activeIndex = index;
+          setTimeout(() => {
+            tab.style.opacity = '1';
+          }, 300);
         }}
         aria-label={`Show ${apartment.type} details`}
       >
@@ -54,7 +61,7 @@
     <div
       bind:this={apartmentRefs[index]}
       data-index={index}
-      class="sticky top-16 min-h-[calc(100vh-8rem)] flex-col"
+      class="sticky top-20 min-h-[calc(100vh-8rem)] flex-col transition-opacity duration-300"
       class:mt-[20vh]={index > 0}
       class:z-2={areTabsActive && index === activeIndex}
     >

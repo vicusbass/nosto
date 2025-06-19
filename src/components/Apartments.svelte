@@ -4,7 +4,7 @@
   import Etaj2 from './Etaj2.svelte';
   import Etaj3 from './Etaj3.svelte';
   import Floor from './Floor.svelte';
-  import { is } from 'css-select';
+  import { slide } from 'svelte/transition';
 
   const { units = [] } = $props();
 
@@ -149,8 +149,10 @@
   {#each roomOptions as room}
     <button
       type="button"
-      class="font-heading font-light text-base uppercase mx-2 px-3 py-1
-        {selectedRooms.includes(room) ? 'color-main-btn font-medium border-b-2' : ''}"
+      class="min-w-28 font-heading font-light text-base uppercase px-2 md:mx-2 md:px-3 py-1 cursor-pointer hover:text-[var(--color-bg-secondary)] hover:underline
+        {selectedRooms.includes(room)
+        ? 'color-main-btn font-medium border-b-2 border-bg-secondary'
+        : ''}"
       aria-pressed={selectedRooms.includes(room)}
       onclick={() => toggleRoom(room)}
     >
@@ -160,7 +162,7 @@
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-  <div class="md:col-span-3">
+  <div class="md:col-span-3 p-3 md:p-6">
     <Floor
       rooms={displayableUnits.map((unit) => ({
         id: unit.uniqueId,
@@ -181,25 +183,29 @@
           aria-controls={`floor-panel-${idx}`}
           onclick={() => selectFloor(idx)}
         >
-          <span class="font-heading text-lg">{floor.name}</span>
-          <svg
-            class="w-6 h-6 transition-transform duration-200"
-            style="transform: rotate({selectedIdx === idx && isFloorInfoExpanded ? 180 : 0}deg);"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
+          <span class="font-heading text-2xl font-light">{floor.name}</span>
+          <div class="flex">
+            <span class="font-heading text-lg font-light mr-3"
+              >{units.filter((unit) => unit.floor === floor.name && !unit.sold).length} apartamente disponibile</span
+            >
+            <svg
+              class="w-6 h-6 transition-transform duration-200"
+              style="transform: rotate({selectedIdx === idx && isFloorInfoExpanded ? 180 : 0}deg);"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </button>
         {#if selectedIdx === idx && isFloorInfoExpanded}
-          <div id={`floor-panel-${idx}`} class="bg-tab-secondary px-6 py-6 shadow">
-            <p class="mb-2">Apartamente disponibile</p>
-            <ul class="ml-4">
-              {#each displayableUnits.filter((unit) => unit.floor === floor.name) as unit}
-                <li>
-                  {unit.name}
+          <div id={`floor-panel-${idx}`} class="bg-tab-secondary px-3 pb-8 shadow">
+            <ul>
+              {#each displayableUnits.filter((unit) => unit.floor === floor.name && !unit.sold) as unit}
+                <li class="text-lg">
+                  {unit.name.replace('Ap', 'Apartament ')}
                 </li>
               {/each}
             </ul>

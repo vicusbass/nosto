@@ -1922,40 +1922,21 @@
 <path transform="scale(3.7795)" d="m142.82 125.56-0.126 0.126" stroke-width=".025788"/>
 <path transform="scale(3.7795)" d="m142.82 125.56-0.126-0.126" stroke-width=".025788"/>
 </g>
-<g transform="translate(-425.73 -218.62)">
-<text transform="matrix(1.3333 0 0 1.3333 511.17 515.38)" clip-path="url(#nt)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0145735 0.0145735 0.0145735 0.0145735 0.0145735" fill="#000000" font-family="Arial" font-size="1.6708px">TERASA</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 717.28 365.63)" clip-path="url(#ns)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0145735 0.0145735 0.0145735 0.0145735 0.0145735" fill="#000000" font-family="Arial" font-size="1.6708px">TERASA</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 473.59 261.49)" clip-path="url(#nr)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0145735 0.0145735 0.0145735 0.0145735 0.0145735" fill="#000000" font-family="Arial" font-size="1.6708px">TERASA</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 578.79 279.99)" clip-path="url(#nq)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" fill="#000000" font-family="Arial" font-size="2.7848px" font-weight="700">Ap</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 583.64 279.99)" clip-path="url(#np)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="2.7848px" font-weight="700">.</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 584.68 279.99)" clip-path="url(#no)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.00742601" fill="#000000" font-family="Arial" font-size="2.7848px" font-weight="700">25</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 579.89 282.25)" clip-path="url(#nn)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">S</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 580.88 282.25)" clip-path="url(#nm)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">=</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 581.75 282.25)" clip-path="url(#nl)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">63</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 583.39 282.25)" clip-path="url(#nk)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">.</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 583.81 282.25)" clip-path="url(#nj)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">39</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 585.45 282.25)" clip-path="url(#ni)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0612645" fill="#000000" font-family="Arial" font-size="1.1139px">mp</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 551.18 384.31)" clip-path="url(#nh)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" fill="#000000" font-family="Arial" font-size="2.7848px" font-weight="700">Ap</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 556.03 384.31)" clip-path="url(#ng)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="2.7848px" font-weight="700">.</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 557.07 384.31)" clip-path="url(#nf)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="2.7848px" font-weight="700">2</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 559.13 384.31)" clip-path="url(#ne)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="2.7848px" font-weight="700">4</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 551.91 386.57)" clip-path="url(#nd)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">S</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 552.91 386.57)" clip-path="url(#nc)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">=</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 553.78 386.57)" clip-path="url(#nb)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.0227731 -0.0227731" fill="#000000" font-family="Arial" font-size="1.1139px">116</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 556.16 386.57)" clip-path="url(#mz)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">.</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 556.58 386.57)" clip-path="url(#my)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">23</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 558.22 386.57)" clip-path="url(#mx)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0612645" fill="#000000" font-family="Arial" font-size="1.1139px">mp</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 633.01 303.34)" clip-path="url(#mw)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" fill="#000000" font-family="Arial" font-size="2.7848px" font-weight="700">Ap</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 637.86 303.34)" clip-path="url(#mv)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="2.7848px" font-weight="700">.</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 638.9 303.34)" clip-path="url(#mu)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.00742601" fill="#000000" font-family="Arial" font-size="2.7848px" font-weight="700">23</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 633.78 305.6)" clip-path="url(#mt)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">S</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 634.77 305.6)" clip-path="url(#ms)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">=</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 635.65 305.6)" clip-path="url(#mr)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.042575799 -0.042575799" fill="#000000" font-family="Arial" font-size="1.1139px">111</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 637.95 305.6)" clip-path="url(#mq)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">.</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 638.37 305.6)" clip-path="url(#mp)" xml:space="preserve"><tspan x="0" y="0" fill="#000000" font-family="Arial" font-size="1.1139px">80</tspan></text>
-<text transform="matrix(1.3333 0 0 1.3333 640.01 305.6)" clip-path="url(#mo)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0612645" fill="#000000" font-family="Arial" font-size="1.1139px">mp</tspan></text>
-</g>
 <path id="ap24" data-rooms="4" d="m156.73 157.37v186.82h-132.65v-108.41h-22.853v-159.37h77.131v17.674h60.99v21.556h-45.87v36.88h38.719v4.8016z"/>
 <path id="ap25" data-rooms="2.5" d="m139.32 75.728v18.689h-62.379v-19.66h-55.34v-53.398h12.136v-21.117h106.07v21.117h55.34v9.466h39.563v45.146z"/>
 <path id="ap23" data-rooms="4" d="m193.69 76.699h40.777v-45.146h43.204v-11.408h58.981v140.05h-37.621v20.874h-85.194v-32.039h-59.709v-57.282h39.806z"/>
+<g transform="translate(-425.73 -218.62)">
+<text transform="matrix(1.3333 0 0 1.3333 511.17 515.38)" clip-path="url(#nt)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0145735 0.0145735 0.0145735 0.0145735 0.0145735" fill="#000000" font-size="1.6708px">TERASA</tspan></text>
+<text transform="matrix(1.3333 0 0 1.3333 717.28 365.63)" clip-path="url(#ns)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0145735 0.0145735 0.0145735 0.0145735 0.0145735" fill="#000000" font-size="1.6708px">TERASA</tspan></text>
+<text transform="matrix(1.3333 0 0 1.3333 473.59 261.49)" clip-path="url(#nr)" xml:space="preserve"><tspan x="0" y="0" dx="0 0.0145735 0.0145735 0.0145735 0.0145735 0.0145735" fill="#000000" font-size="1.6708px">TERASA</tspan></text>
+<text transform="matrix(1.3333 0 0 1.3333 508.79 259.99)" clip-path="url(#nq)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap25">AP. 25</tspan></text>
+<text transform="matrix(1.3333 0 0 1.3333 509.89 270.25)" clip-path="url(#nn)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap25">2.5</tspan></text>
+<!-- <text transform="matrix(1.3333 0 0 1.3333 509.89 270.25)" clip-path="url(#nn)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap25">S=63.39mp</tspan></text> -->
+<text transform="matrix(1.3333 0 0 1.3333 501.18 424.31)" clip-path="url(#nh)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap24">AP. 24</tspan></text>
+<text transform="matrix(1.3333 0 0 1.3333 501.91 434.57)" clip-path="url(#nd)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap24">4 camere</tspan></text>
+<!-- <text transform="matrix(1.3333 0 0 1.3333 501.91 434.57)" clip-path="url(#nd)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap24">S=116.23mp</tspan></text> -->
+<text transform="matrix(1.3333 0 0 1.3333 673.01 323.34)" clip-path="url(#mw)" xml:space="preserve"><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap23">AP. 23</tspan></text>
+<text transform="matrix(1.3333 0 0 1.3333 673.78 333.6)" clip-path="url(#mt)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap23">4 camere</tspan></text>
+<!-- <text transform="matrix(1.3333 0 0 1.3333 673.78 333.6)" clip-path="url(#mt)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap23">S=111.80mp</tspan></text> -->
+</g>
 </svg>

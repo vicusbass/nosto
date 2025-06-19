@@ -9,6 +9,10 @@
   --color-main-btn: #c56d44;
   --color-main-btn-hover: #c8592d;
   --color-tab-secondary: #d8d2c2;
+  --color-sold-apt: #d8d2c2;
+  --color-selected-apt: #c56d44;
+  --color-not-selected-apt: #f0b193;
+  --color-apt-hover: #a89588;
   --color-text-body: #3d3d3d;
 }
 
@@ -82,16 +86,6 @@
   }
 
   /* Floor component styles */
-  svg .highlight-apartment {
-    fill: #28bb2d;
-    fill-opacity: 0.2;
-    transition: fill-opacity 0.3s;
-  }
-
-  svg .highlight-apartment:hover {
-    fill-opacity: 0.5;
-    cursor: pointer;
-  }
 
   /* Hide scrollbar but keep functionality */
   .no-scrollbar {
@@ -103,13 +97,44 @@
     display: none; /* Chrome, Safari, Opera */
   }
 
+  svg .highlight-apartment {
+    fill: var(--color-bg-secondary);
+    fill-opacity: 0.8;
+    transition: fill-opacity 0.3s;
+  }
+
+  svg .highlight-apartment:hover {
+    fill: var(--color-apt-hover);
+    fill-opacity: 0.9;
+    cursor: pointer;
+  }
+
   svg .apartment-sold {
-    fill: #858382;
-    fill-opacity: 0.2;
+    fill: var(--color-sold-apt);
+    fill-opacity: 0.8;
   }
 
   svg .no-highlight {
-    opacity: 0;
+    fill: var(--color-not-selected-apt);
+    fill-opacity: 0.8;
+  }
+
+  svg .no-highlight:hover {
+    fill: var(--color-apt-hover);
+    fill-opacity: 0.9;
+    cursor: pointer;
+  }
+
+  svg .primary-label {
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  svg .secondary-label {
+    font-size: 9px;
+    cursor: pointer;
   }
 }
 
