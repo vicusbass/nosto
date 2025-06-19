@@ -149,7 +149,7 @@
   {#each roomOptions as room}
     <button
       type="button"
-      class="min-w-28 font-heading font-light text-base uppercase px-2 md:mx-2 md:px-3 py-1
+      class="min-w-28 font-heading font-light text-base uppercase px-2 md:mx-2 md:px-3 py-1 cursor-pointer hover:text-[var(--color-bg-secondary)] hover:underline
         {selectedRooms.includes(room)
         ? 'color-main-btn font-medium border-b-2 border-bg-secondary'
         : ''}"
