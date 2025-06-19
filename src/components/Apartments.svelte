@@ -9,12 +9,12 @@
   const { units = [] } = $props();
 
   const ROOM_TYPE_TO_SANITY_VALUE = {
-    Studio: '1',
-    '1.5 Camere': '1.5',
-    '2 Camere': '2',
-    '2.5 Camere': '2.5',
-    '3 Camere': '3',
-    '4 Camere': '4',
+    studio: '1',
+    '1.5 camere': '1.5',
+    '2 camere': '2',
+    '2.5 camere': '2.5',
+    '3 camere': '3',
+    '4 camere': '4',
   };
 
   const floors = [
