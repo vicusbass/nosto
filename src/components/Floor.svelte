@@ -16,8 +16,12 @@
         const label = document.querySelector(`.secondary-label[data-ap-id="${apartmentId}"]`);
         if (label) {
           label.onmouseenter = () => {
-            el.style = `fill: var(--color-apt-hover);fill-opacity: 0.9;cursor: pointer;`;
-            if (room?.sold && label) label.innerHTML = label.dataset.originalText;
+            if (!room?.sold) {
+              el.style = `fill: var(--color-apt-hover);fill-opacity: 0.9;cursor: pointer;`;
+              label.onclick = () => onApartmentClick(apartmentId);
+            } else {
+              label.style = `cursor: default;`;
+            }
           };
         }
 
@@ -33,18 +37,11 @@
             el.classList.add('apartment-sold');
             el.classList.remove('highlight-apartment');
             el.classList.remove('no-highlight');
+            el.onclick = null;
 
             if (label) {
-              // Save original text if not already saved
-              if (!label.dataset.originalText) {
-                label.dataset.originalText = label.innerHTML;
-              }
+              label.onclick = null;
               label.innerHTML = 'vândut';
-
-              // Add hover listeners to restore and revert text
-              el.onmouseenter = () => {
-                label.innerHTML = label.dataset.originalText;
-              };
             }
           } else {
             el.classList.add('highlight-apartment');

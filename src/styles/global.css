@@ -114,12 +114,6 @@
     fill-opacity: 0.8;
   }
 
-  svg .apartment-sold:hover {
-    fill: var(--color-apt-hover);
-    fill-opacity: 0.9;
-    cursor: pointer;
-  }
-
   svg .no-highlight {
     fill: var(--color-not-selected-apt);
     fill-opacity: 0.8;
