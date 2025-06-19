@@ -161,7 +161,7 @@
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-  <div class="md:col-span-3 p-3 md:p-6">
+  <div class="md:col-span-3 p-3 md:p-6 md:max-w-150 lg:ml-20">
     <Floor
       units={units
         .filter((unit) => unit.floor === floors[selectedIdx].name)
