@@ -92,7 +92,7 @@
           </ul>
           <div>
             <a
-              href="/apartamente"
+              href={`/apartamente?floor=parter&rooms=${apartment.type.replace(/ /g, '+').toLowerCase()}`}
               class="btn-primary px-6 py-3"
               aria-label={`More details about ${apartment.type}`}
             >
