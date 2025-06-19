@@ -202,19 +202,25 @@
             </svg>
           </div>
         </button>
-        {#if selectedIdx === idx && isFloorInfoExpanded}
-          <div id={`floor-panel-${idx}`} class="bg-tab-secondary px-3 pb-8 shadow">
-            <ul>
-              {#each displayableUnits
-                .filter((unit) => unit.floor === floor.name && !unit.sold)
-                .sort((a, b) => parseInt(a.name.replace('Ap', '')) - parseInt(b.name.replace('Ap', ''))) as unit}
-                <li class="text-lg">
-                  {unit.name.replace('Ap', 'Apartament ')}
-                </li>
-              {/each}
-            </ul>
-          </div>
-        {/if}
+        <div
+          id={`floor-panel-${idx}`}
+          class="bg-tab-secondary px-3 overflow-hidden transition-all duration-300 ease-in-out"
+          style="max-height: {selectedIdx === idx && isFloorInfoExpanded
+            ? '500px'
+            : '0px'}; opacity: {selectedIdx === idx && isFloorInfoExpanded
+            ? '1'
+            : '0'}; padding-bottom: {selectedIdx === idx && isFloorInfoExpanded ? '2rem' : '0'};"
+        >
+          <ul class="py-2">
+            {#each displayableUnits
+              .filter((unit) => unit.floor === floor.name && !unit.sold)
+              .sort((a, b) => parseInt(a.name.replace('Ap', '')) - parseInt(b.name.replace('Ap', ''))) as unit}
+              <li class="text-lg">
+                {unit.name.replace('Ap', 'Apartament ')}
+              </li>
+            {/each}
+          </ul>
+        </div>
       </div>
     {/each}
   </div>
