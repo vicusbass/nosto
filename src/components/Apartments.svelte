@@ -4,7 +4,6 @@
   import Etaj2 from './Etaj2.svelte';
   import Etaj3 from './Etaj3.svelte';
   import Floor from './Floor.svelte';
-  import { slide } from 'svelte/transition';
 
   const { units = [] } = $props();
 
@@ -149,7 +148,7 @@
   {#each roomOptions as room}
     <button
       type="button"
-      class="min-w-28 font-heading font-light text-base uppercase px-2 md:mx-2 md:px-3 py-1 cursor-pointer hover:text-[var(--color-bg-secondary)] hover:underline
+      class="min-w-28 font-heading font-light text-base uppercase px-2 md:mx-2 md:px-3 py-1 cursor-pointer hover:text-[var(--color-bg-secondary)] hover:border-b-2 hover:border-bg-secondary transition-all
         {selectedRooms.includes(room)
         ? 'color-main-btn font-medium border-b-2 border-bg-secondary'
         : ''}"
@@ -164,10 +163,13 @@
 <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
   <div class="md:col-span-3 p-3 md:p-6">
     <Floor
-      rooms={displayableUnits.map((unit) => ({
-        id: unit.uniqueId,
-        sold: unit.sold,
-      }))}
+      units={units
+        .filter((unit) => unit.floor === floors[selectedIdx].name)
+        .map((unit) => ({
+          id: unit.uniqueId,
+          sold: unit.sold,
+          shouldHighlight: displayableUnits.some((du) => du.uniqueId === unit.uniqueId),
+        }))}
       FloorPlan={floors[selectedIdx].component}
       floorName={floors[selectedIdx].name}
       onApartmentClick={handleApartmentClick}
@@ -203,7 +205,9 @@
         {#if selectedIdx === idx && isFloorInfoExpanded}
           <div id={`floor-panel-${idx}`} class="bg-tab-secondary px-3 pb-8 shadow">
             <ul>
-              {#each displayableUnits.filter((unit) => unit.floor === floor.name && !unit.sold) as unit}
+              {#each displayableUnits
+                .filter((unit) => unit.floor === floor.name && !unit.sold)
+                .sort((a, b) => parseInt(a.name.replace('Ap', '')) - parseInt(b.name.replace('Ap', ''))) as unit}
                 <li class="text-lg">
                   {unit.name.replace('Ap', 'Apartament ')}
                 </li>
