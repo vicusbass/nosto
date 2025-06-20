@@ -38,7 +38,7 @@ const {
 // Default classes
 const defaultContainerClass = 'flex overflow-x-auto pb-6 no-scrollbar snap-x snap-mandatory';
 const defaultArticleClass =
-  'overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 w-[calc(100vw-3rem)] md:w-[525px] h-auto sm:h-[507px] flex flex-col flex-shrink-0 mx-3 md:ml-0 md:mr-6 last:mr-6 md:last:mr-0';
+  'overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 mobile-card-width md:w-[525px] h-auto sm:h-[507px] flex flex-col flex-shrink-0 ml-0 mr-6 md:ml-0 md:mr-6 last:mr-6 md:last:mr-0';
 const defaultImageContainerClass = 'w-full h-[50vw] sm:h-[40vw] md:h-[348px] overflow-hidden';
 const defaultContentClass = 'p-3 flex-1 overflow-hidden';
 const defaultTitleClass =
@@ -46,6 +46,14 @@ const defaultTitleClass =
 const defaultTextClass =
   'text-gray-600 text-base leading-relaxed prose prose-base max-w-none line-clamp-3';
 ---
+
+<style>
+  @media (max-width: 767px) {
+    .mobile-card-width {
+      width: calc(100vw - 3rem);
+    }
+  }
+</style>
 
 <section id={sectionId} class={`${sectionClass}`}>
   <!-- Horizontal scrolling articles container -->
@@ -196,7 +204,7 @@ const defaultTextClass =
             articles[index].scrollIntoView({
               behavior: 'smooth',
               block: 'nearest',
-              inline: 'center',
+              inline: 'start',
             });
           } else {
             // Desktop: smooth scroll to bring next card into view
