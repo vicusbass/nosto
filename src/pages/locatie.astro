@@ -2,6 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 import Location from '../components/Location.astro';
 import SectionTitle from '../components/SectionTitle.astro';
+import { sanityClient } from 'sanity:client';
+import urlForImage from '../utils/sanityImageUrl';
+import HorizontalArticles from '../components/HorizontalArticles.astro';
+
+const query = `*[_type == "location"]|order(title asc){title,description,image}`;
+const locations = await sanityClient.fetch(query);
+const articles = locations.map((location: { title: string; description: string; image: any }) => ({
+  imageUrl: location?.image ? urlForImage(location.image)?.url() : null,
+  text: location.description,
+  title: location.title,
+}));
 ---
 
 <Layout title="Locatie - Nosto">
@@ -16,4 +27,8 @@ import SectionTitle from '../components/SectionTitle.astro';
     </p>
     <Location showGoogleMapsLink={true} />
   </div>
+  <HorizontalArticles
+    articles={articles}
+    sectionClass="pt-8 section-x-padding-left md:overflow-x-visible"
+  />
 </Layout>
