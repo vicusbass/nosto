@@ -163,6 +163,11 @@ export const unit = defineType({
   },
   orderings: [
     {
+      title: 'ID unic, crescător',
+      name: 'uniqueIdAsc',
+      by: [{field: 'uniqueId', direction: 'asc'}],
+    },
+    {
       title: 'Preț, crescător',
       name: 'priceAsc',
       by: [{field: 'price', direction: 'asc'}],
