@@ -69,7 +69,7 @@ import FAQ from '../components/FAQ.astro';
             >
           </div>
 
-          <button class="btn-primary w-full" type="submit">Trimite</button>
+          <button id="submit-button" class="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed" type="submit" disabled>Trimite</button>
           <p id="form-status" class="text-center text-green-600 mt-4"></p>
         </form>
       </div>
@@ -142,20 +142,46 @@ import FAQ from '../components/FAQ.astro';
     <script is:inline>
       const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
+      const confidentialitateCheckbox = document.getElementById('confidentialitate');
+      const informariCheckbox = document.getElementById('informari');
+      const submitButton = document.getElementById('submit-button');
+      
+      // Function to check if both checkboxes are ticked
+      function updateSubmitButton() {
+        // Button is enabled only when both checkboxes are checked
+        submitButton.disabled = !(confidentialitateCheckbox.checked && informariCheckbox.checked);
+      }
+      
+      // Add event listeners to both checkboxes
+      confidentialitateCheckbox.addEventListener('change', updateSubmitButton);
+      informariCheckbox.addEventListener('change', updateSubmitButton);
+      
+      // Initialize button state
+      updateSubmitButton();
+      
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         status.textContent = 'Se trimite...';
-        const data = Object.fromEntries(new FormData(form));
-        // Use Formspree for free email sending
-        const res = await fetch(process.env.FORMSPREE_URL, {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: new FormData(form),
-        });
-        if (res.ok) {
-          status.textContent = 'Mesaj trimis cu succes!';
-          form.reset();
-        } else {
+        const formData = Object.fromEntries(new FormData(form));
+        
+        try {
+          const res = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: { 
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData),
+          });
+          
+          if (res.ok) {
+            status.textContent = 'Mesaj trimis cu succes!';
+            form.reset();
+            // Reset button state after form submission
+            updateSubmitButton();
+          } else {
+            status.textContent = 'A apărut o eroare. Încercați din nou.';
+          }
+        } catch (error) {
           status.textContent = 'A apărut o eroare. Încercați din nou.';
         }
       });
