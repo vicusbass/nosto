@@ -4,7 +4,8 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 export default defineConfig({
   name: 'default',
-  title: 'nosto',
+  title: 'nosto-official',
+  // title: 'nosto',
 
   projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
   dataset: 'production',
