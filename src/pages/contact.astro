@@ -6,6 +6,8 @@ import contact from '../config/contact';
 import Layout from '../layouts/Layout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import FAQ from '../components/FAQ.astro';
+
+
 ---
 
 <Layout title="Contact - Nosto">
@@ -139,50 +141,52 @@ import FAQ from '../components/FAQ.astro';
       </div>
     </div>
 
-    <script is:inline>
+        <script is:inline>
       const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
       const confidentialitateCheckbox = document.getElementById('confidentialitate');
-      const informariCheckbox = document.getElementById('informari');
       const submitButton = document.getElementById('submit-button');
-      
-      // Function to check if both checkboxes are ticked
-      function updateSubmitButton() {
-        // Button is enabled only when both checkboxes are checked
-        submitButton.disabled = !(confidentialitateCheckbox.checked && informariCheckbox.checked);
+
+      function updateSubmitButtonState() {
+        if (confidentialitateCheckbox instanceof HTMLInputElement && submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = !confidentialitateCheckbox.checked;
+        }
       }
-      
-      // Add event listeners to both checkboxes
-      confidentialitateCheckbox.addEventListener('change', updateSubmitButton);
-      informariCheckbox.addEventListener('change', updateSubmitButton);
-      
-      // Initialize button state
-      updateSubmitButton();
-      
-      form.addEventListener('submit', async (e) => {
+
+      confidentialitateCheckbox?.addEventListener('change', updateSubmitButtonState);
+      updateSubmitButtonState(); // Initial state
+
+      form?.addEventListener('submit', async (e) => {
         e.preventDefault();
+        if (!(form instanceof HTMLFormElement) || !status || !(submitButton instanceof HTMLButtonElement)) return;
+
         status.textContent = 'Se trimite...';
-        const formData = Object.fromEntries(new FormData(form));
+        submitButton.disabled = true;
         
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
         try {
-          const res = await fetch('/api/send-email', {
+          const response = await fetch('/api/send-email', {
             method: 'POST',
-            headers: { 
-              'Content-Type': 'application/json'
+            headers: {
+              'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify(data),
           });
-          
-          if (res.ok) {
-            status.textContent = 'Mesaj trimis cu succes!';
+
+          const result = await response.json();
+
+          if (response.ok) {
+            status.textContent = result.message;
             form.reset();
-            // Reset button state after form submission
-            updateSubmitButton();
           } else {
-            status.textContent = 'A apărut o eroare. Încercați din nou.';
+            status.textContent = result.message || 'A apărut o eroare. Încercați din nou.';
           }
         } catch (error) {
-          status.textContent = 'A apărut o eroare. Încercați din nou.';
+          status.textContent = 'A apărut o eroare de rețea. Încercați din nou.';
+        } finally {
+            updateSubmitButtonState();
         }
       });
     </script>
