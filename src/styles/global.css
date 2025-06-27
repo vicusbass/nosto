@@ -82,11 +82,11 @@
   }
 
   .section-x-padding {
-    @apply px-6 md:px-[70px];
+    @apply px-6 md:px-16;
   }
 
   .section-x-padding-left {
-    @apply pl-6 md:pl-[70px];
+    @apply pl-6 md:pl-16;
   }
 
   /* Floor component styles */
