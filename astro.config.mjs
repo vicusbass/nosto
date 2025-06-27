@@ -11,6 +11,8 @@ import svelte from '@astrojs/svelte';
 
 import sanity from '@sanity/astro';
 
+import vercel from '@astrojs/vercel';
+
 export default defineConfig({
   integrations: [
     icon(),
@@ -25,4 +27,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
+  adapter: vercel(),
 });
