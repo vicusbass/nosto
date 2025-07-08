@@ -32,5 +32,5 @@ export default defineConfig({
     webAnalytics: { enabled: true },
   }),
 
-  output: 'server',
+  output: 'static',
 });
