@@ -21,6 +21,16 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
+    <script>
+      console.log('ClientRouter loaded');
+      document.addEventListener('astro:before-preparation', () =>
+        console.log('Before preparation')
+      );
+      document.addEventListener('astro:after-preparation', () => console.log('After preparation'));
+      document.addEventListener('astro:before-swap', () => console.log('Before swap'));
+      document.addEventListener('astro:after-swap', () => console.log('After swap'));
+      document.addEventListener('astro:page-load', () => console.log('Page loaded'));
+    </script>
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
