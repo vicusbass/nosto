@@ -23,6 +23,8 @@ type UnitType = {
   planUrl?: string;
 };
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const UNITS_QUERY = `*[_type == "unit" && defined(uniqueId)]{
     "params": {"unitid": uniqueId}

@@ -11,7 +11,7 @@ import svelte from '@astrojs/svelte';
 
 import sanity from '@sanity/astro';
 
-import vercel from '@astrojs/vercel';
+import vercelStatic from '@astrojs/vercel';
 
 export default defineConfig({
   integrations: [
@@ -28,9 +28,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  adapter: vercel({
-    webAnalytics: { enabled: true }
+  adapter: vercelStatic({
+    webAnalytics: { enabled: true },
   }),
-  
-  output: 'hybrid',
+
+  output: 'static',
 });
