@@ -1,0 +1,124 @@
+---
+import ScrollArrow from './ScrollArrow.astro';
+
+interface Props {
+  containerSelector: string;
+  scrollAmount?: number;
+  showMobileArrows?: boolean;
+  arrowSize?: 'small' | 'medium' | 'large';
+  arrowClassName?: string;
+}
+
+const { 
+  containerSelector, 
+  scrollAmount = 250, 
+  showMobileArrows = false, 
+  arrowSize = 'medium',
+  arrowClassName = ''
+} = Astro.props;
+
+const uniqueId = Math.random().toString(36).substr(2, 9);
+const leftBtnClass = `scroll-left-${uniqueId}`;
+const rightBtnClass = `scroll-right-${uniqueId}`;
+const leftBtnMobileClass = `scroll-left-mobile-${uniqueId}`;
+const rightBtnMobileClass = `scroll-right-mobile-${uniqueId}`;
+---
+
+<!-- Desktop arrows -->
+<ScrollArrow 
+  direction="left" 
+  variant="desktop" 
+  size={arrowSize}
+  className={`${leftBtnClass} ${arrowClassName}`}
+/>
+<ScrollArrow 
+  direction="right" 
+  variant="desktop" 
+  size={arrowSize}
+  className={`${rightBtnClass} ${arrowClassName}`}
+/>
+
+<!-- Mobile arrows -->
+{showMobileArrows && (
+  <>
+    <ScrollArrow 
+      direction="left" 
+      variant="mobile" 
+      size={arrowSize}
+      className={`${leftBtnMobileClass} ${arrowClassName}`}
+    />
+    <ScrollArrow 
+      direction="right" 
+      variant="mobile" 
+      size={arrowSize}
+      className={`${rightBtnMobileClass} ${arrowClassName}`}
+    />
+  </>
+)}
+
+<script define:vars={{ containerSelector, scrollAmount, uniqueId, showMobileArrows }}>
+  function initScrollArrows() {
+    const container = document.querySelector(containerSelector);
+    const leftBtn = document.querySelector(`.scroll-left-${uniqueId}`);
+    const rightBtn = document.querySelector(`.scroll-right-${uniqueId}`);
+    const leftBtnMobile = showMobileArrows ? document.querySelector(`.scroll-left-mobile-${uniqueId}`) : null;
+    const rightBtnMobile = showMobileArrows ? document.querySelector(`.scroll-right-mobile-${uniqueId}`) : null;
+    
+    if (!container || !leftBtn || !rightBtn) return;
+    
+    // Handle left arrow click
+    const handleLeftClick = () => {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    };
+    
+    // Handle right arrow click
+    const handleRightClick = () => {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    };
+    
+    // Add event listeners
+    leftBtn.addEventListener('click', handleLeftClick);
+    rightBtn.addEventListener('click', handleRightClick);
+    
+    if (leftBtnMobile) leftBtnMobile.addEventListener('click', handleLeftClick);
+    if (rightBtnMobile) rightBtnMobile.addEventListener('click', handleRightClick);
+    
+    // Update arrow visibility based on scroll position
+    const updateArrowVisibility = () => {
+      const isAtStart = container.scrollLeft <= 10;
+      const isAtEnd = container.scrollLeft >= container.scrollWidth - container.clientWidth - 10;
+      
+      // Desktop arrows
+      leftBtn.style.opacity = isAtStart ? '0.2' : '0.5';
+      rightBtn.style.opacity = isAtEnd ? '0.2' : '0.5';
+      leftBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
+      rightBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+      
+      // Mobile arrows
+      if (leftBtnMobile) {
+        leftBtnMobile.style.opacity = isAtStart ? '0.2' : '0.5';
+        leftBtnMobile.style.pointerEvents = isAtStart ? 'none' : 'auto';
+      }
+      if (rightBtnMobile) {
+        rightBtnMobile.style.opacity = isAtEnd ? '0.2' : '0.5';
+        rightBtnMobile.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+      }
+    };
+    
+    // Initial visibility check
+    updateArrowVisibility();
+    
+    // Update on scroll
+    container.addEventListener('scroll', updateArrowVisibility);
+    
+    // Update on resize
+    window.addEventListener('resize', updateArrowVisibility);
+  }
+  
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initScrollArrows);
+  
+  // Re-initialize on Astro view transitions
+  document.addEventListener('astro:page-load', initScrollArrows);
+  document.addEventListener('astro:after-swap', initScrollArrows);
+</script>

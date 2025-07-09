@@ -2,6 +2,7 @@
 import { sanityClient } from 'sanity:client';
 import urlForImage from '../utils/sanityImageUrl';
 import { Image } from 'astro:assets';
+import ScrollArrowController from './ScrollArrowController.astro';
 
 const query = `*[_type == "dotari"]|order(title asc){title,image}`;
 const dotari = await sanityClient.fetch(query);
@@ -11,82 +12,43 @@ const articles = dotari.map((dotare: { title: string; image: any }) => ({
 }));
 ---
 
-<div class="container mx-auto relative mt-8">
+<div class="relative mt-16">
   <div
-    class="vertical-text absolute left-4 md:left-16 top-1/2 transform -translate-y-1/2 text-3xl font-light heading-font block z-10 text-black"
+    class="vertical-text absolute left-4 md:left-16 top-1/2 transform -translate-y-1/2 text-3xl font-light heading-font hidden md:block z-10 text-black"
   >
-    DOTARI
+    DOTĂRI
   </div>
-  <div
-    style="padding-left: max(16px, min(118px, 10vw)); padding-right: max(16px, min(118px, 10vw));"
-  >
-    <div class="relative">
-      <!-- Left scroll arrow -->
-      <button
-        class="scroll-left absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white/50 rounded-full p-2 transition-all duration-300 backdrop-blur-sm opacity-50"
-        aria-label="Scroll left"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="text-gray-800"
-        >
-          <path d="m15 18-6-6 6-6"></path>
-        </svg>
-      </button>
+  <ScrollArrowController
+    containerSelector=".articles-container"
+    scrollAmount={250}
+    showMobileArrows={true}
+    arrowSize="small"
+  />
 
-      <!-- Right scroll arrow -->
-      <button
-        class="scroll-right absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white/50 rounded-full p-2 transition-all duration-300 backdrop-blur-sm opacity-50"
-        aria-label="Scroll right"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="text-gray-800"
-        >
-          <path d="m9 18 6-6-6-6"></path>
-        </svg>
-      </button>
-
-      <div class="articles-container flex overflow-x-auto gap-4 pb-4 scrollbar-hide">
-        {
-          articles.map((article: { title: string; imageUrl: string }) => (
-            <div class="flex-shrink-0 w-32 h-32 md:w-60 md:h-60 bg-white shadow hover:shadow-md transition-shadow">
-              <div class="w-full h-3/4 overflow-hidden">
-                {article.imageUrl && (
-                  <Image
-                    src={article.imageUrl}
-                    alt={article.title}
-                    class="w-full h-full object-cover"
-                    width={240}
-                    height={180}
-                    format="webp"
-                    loading="lazy"
-                  />
-                )}
-              </div>
-              <div class="h-1/4 p-2 flex items-center justify-center">
-                <h3 class="text-sm font-medium text-center text-black truncate">{article.title}</h3>
-              </div>
+  <div class="overflow-x-hidden">
+    <div class="articles-container flex overflow-x-auto gap-4 pb-4 scrollbar-hide pl-0 px-fluid">
+      {
+        articles.map((article: { title: string; imageUrl: string }) => (
+          <div class="flex-shrink-0 w-32 h-32 md:w-60 md:h-60 bg-white shadow hover:shadow-md transition-shadow">
+            <div class="w-full h-3/4 overflow-hidden">
+              {article.imageUrl && (
+                <Image
+                  src={article.imageUrl}
+                  alt={article.title}
+                  class="w-full h-full object-cover"
+                  width={240}
+                  height={180}
+                  format="webp"
+                  loading="lazy"
+                />
+              )}
             </div>
-          ))
-        }
-      </div>
+            <div class="h-1/4 p-2 flex items-center justify-center">
+              <h3 class="text-sm font-medium text-center text-black truncate">{article.title}</h3>
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </div>
@@ -107,53 +69,3 @@ const articles = dotari.map((dotare: { title: string; image: any }) => ({
     display: none;
   }
 </style>
-
-<script>
-  function initDotariScrollArrows() {
-    const container = document.querySelector('.articles-container');
-    const leftBtn = document.querySelector('.scroll-left');
-    const rightBtn = document.querySelector('.scroll-right');
-
-    if (!container || !leftBtn || !rightBtn) return;
-
-    const scrollAmount = 250; // Scroll by ~1 card width
-
-    // Handle left arrow click
-    leftBtn.addEventListener('click', () => {
-      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-
-    // Handle right arrow click
-    rightBtn.addEventListener('click', () => {
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
-
-    // Update arrow visibility based on scroll position
-    const updateArrowVisibility = () => {
-      const isAtStart = container.scrollLeft <= 10;
-      const isAtEnd = container.scrollLeft >= container.scrollWidth - container.clientWidth - 10;
-
-      leftBtn.style.opacity = isAtStart ? '0.2' : '0.5';
-      rightBtn.style.opacity = isAtEnd ? '0.2' : '0.5';
-
-      leftBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
-      rightBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
-    };
-
-    // Initial visibility check
-    updateArrowVisibility();
-
-    // Update on scroll
-    container.addEventListener('scroll', updateArrowVisibility);
-
-    // Update on resize
-    window.addEventListener('resize', updateArrowVisibility);
-  }
-
-  // Initialize on page load
-  document.addEventListener('DOMContentLoaded', initDotariScrollArrows);
-
-  // Re-initialize on Astro view transitions
-  document.addEventListener('astro:page-load', initDotariScrollArrows);
-  document.addEventListener('astro:after-swap', initDotariScrollArrows);
-</script>
