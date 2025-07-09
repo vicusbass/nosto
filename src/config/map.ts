@@ -5,23 +5,23 @@ export default {
   locationDetails: [
     {
       icon: 'mdi:car',
-      title: 'Centru Cluj',
-      details: '5 minute',
+      title: 'Centru Timișoara',
+      details: '8 minute',
+    },
+    {
+      icon: 'mdi:bike',
+      title: 'Centru Timișoara',
+      details: '15 minute',
     },
     {
       icon: 'mdi:walk',
-      title: 'Centru Cluj',
-      details: '15 minute',
+      title: 'Centru Timișoara',
+      details: '30 minute pe jos',
     },
     {
       icon: 'mdi:bus',
       title: 'Stații de transport în comun',
       details: 'în proximitate',
-    },
-    {
-      icon: 'mdi:tree',
-      title: 'Parcuri publice',
-      details: '15 minute de mers pe jos',
     },
   ],
 };
