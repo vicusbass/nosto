@@ -20,10 +20,7 @@ const rightItems = items.slice(Math.ceil(items.length / 2));
   >
     FINISAJE
   </div>
-  <div
-    class={`grid grid-cols-1 md:grid-cols-2 gap-4 ${className}`}
-    style="padding-left: max(16px, min(118px, 10vw)); padding-right: max(16px, min(118px, 10vw));"
-  >
+  <div class={`px-fluid grid grid-cols-1 md:grid-cols-2 gap-4 ${className}`}>
     <div class="aspect-square rounded-br-[120px] overflow-hidden">
       <Image
         src={topLeftImage}
@@ -34,7 +31,7 @@ const rightItems = items.slice(Math.ceil(items.length / 2));
       />
     </div>
 
-    <div class="p-4 md:p-6 rounded-lg shadow-sm">
+    <div class="p-4 md:p-6 rounded-lg shadow-figma">
       <div class="space-y-4">
         {
           leftItems.map((item: { label: string; value: string }) => (
@@ -47,7 +44,7 @@ const rightItems = items.slice(Math.ceil(items.length / 2));
       </div>
     </div>
 
-    <div class="p-4 md:p-6 rounded-lg shadow-sm">
+    <div class="p-4 md:p-6 rounded-lg shadow-figma">
       <div class="space-y-4">
         {
           rightItems.map((item: { label: string; value: string }) => (
@@ -71,11 +68,3 @@ const rightItems = items.slice(Math.ceil(items.length / 2));
     </div>
   </div>
 </div>
-
-<style>
-  .vertical-text {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-  }
-</style>

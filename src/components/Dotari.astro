@@ -1,0 +1,74 @@
+---
+import { sanityClient } from 'sanity:client';
+import urlForImage from '../utils/sanityImageUrl';
+import { Image } from 'astro:assets';
+import ScrollArrowController from './ScrollArrowController.astro';
+
+const query = `*[_type == "dotari"]|order(title asc){title,image}`;
+const dotari = await sanityClient.fetch(query);
+const articles = dotari.map((dotare: { title: string; image: any }) => ({
+  imageUrl: dotare?.image ? urlForImage(dotare.image)?.url() : null,
+  title: dotare.title,
+}));
+---
+
+<div class="container mx-auto relative mt-16">
+  <div
+    class="vertical-text absolute left-16 top-1/2 transform -translate-y-1/2 text-3xl font-light heading-font hidden md:block z-10 text-black"
+  >
+    DOTĂRI
+  </div>
+  <ScrollArrowController
+    containerSelector=".articles-container"
+    scrollAmount={250}
+    showMobileArrows={true}
+    arrowSize="small"
+  />
+
+  <div class="px-fluid">
+    <div
+      class="articles-container flex overflow-x-auto gap-4 pb-4 scrollbar-hide pr-4 md:pr-0"
+      style="margin-right: calc(-100vw + max(16px, min(118px, 10vw))); padding-right: 100vw;"
+    >
+      {
+        articles.map((article: { title: string; imageUrl: string }) => (
+          <div class="flex-shrink-0 w-60 h-60 hover:shadow-md transition-shadow">
+            <div class="w-full h-3/4 overflow-hidden">
+              {article.imageUrl && (
+                <Image
+                  src={article.imageUrl}
+                  alt={article.title}
+                  class="w-full h-full object-cover"
+                  width={240}
+                  height={180}
+                  format="webp"
+                  loading="lazy"
+                />
+              )}
+            </div>
+            <div class="h-1/4 p-2 flex items-center justify-center">
+              <h3 class="text-lg font-medium text-center text-black truncate">{article.title}</h3>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>

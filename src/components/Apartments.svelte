@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import Parter from './Parter.svelte';
   import Etaj1 from './Etaj1.svelte';
   import Etaj2 from './Etaj2.svelte';
@@ -30,6 +31,11 @@
   let selectedRooms = $state([]);
   let displayableUnits = $state([]);
   let isFloorInfoExpanded = $state(false);
+
+  // Dispatch event when component is mounted to signal readiness
+  onMount(() => {
+    window.dispatchEvent(new CustomEvent('apartments-ready'));
+  });
 
   // Load saved state when component initializes
   $effect(() => {

@@ -1,0 +1,57 @@
+---
+interface Props {
+  direction: 'left' | 'right';
+  className?: string;
+  size?: 'small' | 'medium' | 'large';
+  variant?: 'mobile' | 'desktop';
+}
+
+const { direction, className = '', size = 'medium', variant = 'desktop' } = Astro.props;
+
+const sizeClasses = {
+  small: 'p-2',
+  medium: 'p-3',
+  large: 'p-4'
+};
+
+const iconSizes = {
+  small: { width: '16', height: '16' },
+  medium: { width: '20', height: '20' },
+  large: { width: '24', height: '24' }
+};
+
+const baseClasses = variant === 'desktop' 
+  ? 'bg-white/20 hover:bg-white/40 backdrop-blur-sm md:flex hidden items-center justify-center' 
+  : 'bg-white/80 hover:bg-white shadow-md md:hidden';
+
+const positionClasses = direction === 'left' 
+  ? 'absolute left-20 md:left-32 top-1/2 -translate-y-1/2' 
+  : 'absolute right-2 md:right-0 top-1/2 -translate-y-1/2';
+
+const arrowPath = direction === 'left' 
+  ? 'm15 18-6-6 6-6' 
+  : 'm9 18 6-6-6-6';
+
+const scrollClass = `scroll-${direction}${variant === 'mobile' ? '-mobile' : ''}`;
+const iconSize = iconSizes[size];
+---
+
+<button
+  class={`${scrollClass} ${positionClasses} z-10 ${baseClasses} rounded-full ${sizeClasses[size]} transition-all duration-300 ${className}`}
+  aria-label={`Scroll ${direction}`}
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={iconSize.width}
+    height={iconSize.height}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="text-gray-800"
+  >
+    <path d={arrowPath}></path>
+  </svg>
+</button>
