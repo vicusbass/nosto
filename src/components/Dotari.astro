@@ -12,9 +12,9 @@ const articles = dotari.map((dotare: { title: string; image: any }) => ({
 }));
 ---
 
-<div class="relative mt-16">
+<div class="container mx-auto relative mt-16">
   <div
-    class="vertical-text absolute left-4 md:left-16 top-1/2 transform -translate-y-1/2 text-3xl font-light heading-font hidden md:block z-10 text-black"
+    class="vertical-text absolute left-16 top-1/2 transform -translate-y-1/2 text-3xl font-light heading-font hidden md:block z-10 text-black"
   >
     DOTĂRI
   </div>
@@ -26,7 +26,7 @@ const articles = dotari.map((dotare: { title: string; image: any }) => ({
   />
 
   <div class="overflow-x-hidden">
-    <div class="articles-container flex overflow-x-auto gap-4 pb-4 scrollbar-hide pl-0 px-fluid">
+    <div class="articles-container flex overflow-x-auto gap-4 pb-4 scrollbar-hide px-fluid pr-0">
       {
         articles.map((article: { title: string; imageUrl: string }) => (
           <div class="flex-shrink-0 w-32 h-32 md:w-60 md:h-60 bg-white shadow hover:shadow-md transition-shadow">
