@@ -25,14 +25,14 @@ const articles = dotari.map((dotare: { title: string; image: any }) => ({
     arrowSize="small"
   />
 
-  <div class="overflow-x-hidden px-fluid">
+  <div class="px-fluid">
     <div
       class="articles-container flex overflow-x-auto gap-4 pb-4 scrollbar-hide pr-4 md:pr-0"
-      style="margin-right: -50vw; padding-right: 50vw;"
+      style="margin-right: calc(-100vw + max(16px, min(118px, 10vw))); padding-right: 100vw;"
     >
       {
         articles.map((article: { title: string; imageUrl: string }) => (
-          <div class="flex-shrink-0 w-32 h-32 md:w-60 md:h-60 hover:shadow-md transition-shadow">
+          <div class="flex-shrink-0 w-60 h-60 hover:shadow-md transition-shadow">
             <div class="w-full h-3/4 overflow-hidden">
               {article.imageUrl && (
                 <Image
@@ -47,7 +47,7 @@ const articles = dotari.map((dotare: { title: string; image: any }) => ({
               )}
             </div>
             <div class="h-1/4 p-2 flex items-center justify-center">
-              <h3 class="text-sm font-medium text-center text-black truncate">{article.title}</h3>
+              <h3 class="text-lg font-medium text-center text-black truncate">{article.title}</h3>
             </div>
           </div>
         ))
