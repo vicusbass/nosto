@@ -181,8 +181,4 @@
       var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
-  .px-fluid {
-    padding-left: clamp(16px, 10vw, 118px);
-    padding-right: clamp(16px, 10vw, 118px);
-  }
 }
