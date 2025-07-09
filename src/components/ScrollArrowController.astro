@@ -89,14 +89,14 @@ const rightBtnMobileClass = `scroll-right-mobile-${uniqueId}`;
       const isAtEnd = container.scrollLeft >= container.scrollWidth - container.clientWidth - 10;
       
       // Desktop arrows
-      leftBtn.style.opacity = isAtStart ? '0.2' : '0.5';
+      leftBtn.style.opacity = isAtStart ? '0' : '0.5';
       rightBtn.style.opacity = isAtEnd ? '0.2' : '0.5';
       leftBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
       rightBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
       
       // Mobile arrows
       if (leftBtnMobile) {
-        leftBtnMobile.style.opacity = isAtStart ? '0.2' : '0.5';
+        leftBtnMobile.style.opacity = isAtStart ? '0' : '0.5';
         leftBtnMobile.style.pointerEvents = isAtStart ? 'none' : 'auto';
       }
       if (rightBtnMobile) {
