@@ -3,6 +3,9 @@ import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import heroImage from '../assets/hero-img.png';
+import proiectImgLarge from '../assets/despre_proiect_big.jpeg';
+import proiectImg1 from '../assets/despre_proiect_1.jpeg';
+import proiectImg2 from '../assets/despre_proiect_2.jpeg';
 import heroLogo from '../assets/hero-logo-ded.svg';
 import Location from '../components/Location.astro';
 import SectionTitle from '../components/SectionTitle.astro';
@@ -45,10 +48,9 @@ import Dotari from '../components/Dotari.astro';
       <div class="flex flex-col md:flex-row gap-8">
         <div class="md:w-1/2">
           <Image
-            src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"
+            src={proiectImgLarge}
             alt="Building Interior"
             class="shadow-lg w-full h-full object-cover"
-            inferSize
           />
         </div>
 
@@ -56,18 +58,16 @@ import Dotari from '../components/Dotari.astro';
           <div class="flex gap-4 h-1/2">
             <div class="w-1/2">
               <Image
-                src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg"
+                src={proiectImg1}
                 alt="Interior Detail 1"
                 class="shadow-lg w-full h-full object-cover"
-                inferSize
               />
             </div>
             <div class="w-1/2">
               <Image
-                src="https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg"
+                src={proiectImg2}
                 alt="Interior Detail 2"
                 class="shadow-lg w-full h-full object-cover"
-                inferSize
               />
             </div>
           </div>
