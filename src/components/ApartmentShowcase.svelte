@@ -79,9 +79,7 @@
         <span class="hidden md:block">{apartment.type}</span>
       </div>
       <div
-        class="grid grid-cols-1 md:grid-cols-2 p-6 md:px-12 md:py-20 w-full h-[700px] md:h-[600px] md:min-h-[400px] overflow-hidden"
-        class:bg-main={index % 2 === 0}
-        class:bg-tab-secondary={index % 2 !== 0}
+        class="grid grid-cols-1 md:grid-cols-2 p-6 md:px-12 md:py-20 w-full h-[700px] md:h-[600px] md:min-h-[400px] overflow-hidden bg-main"
         class:shadow-xl={index === 0}
       >
         <img
@@ -91,13 +89,6 @@
         />
         <div class="space-y-4 md:space-y-6 md:ml-12 h-full flex flex-col justify-around">
           <p class="text-xl">{apartment.description}</p>
-          <ul class="space-y-3 list-disc pl-6">
-            {#each apartment.features as feature}
-              <li class="text-base font-bold">
-                {feature}
-              </li>
-            {/each}
-          </ul>
           <div>
             <a
               href={`/apartamente?floor=parter&rooms=${apartment.type.replace(/ /g, '+').toLowerCase()}`}
