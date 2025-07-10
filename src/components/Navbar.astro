@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import headerLogo from '../assets/header-logo.svg';
-
+import contact from '../config/contact';
 const menuItems = [
   { name: 'Apartamente', href: '/apartamente' },
   { name: 'Locație', href: '/locatie' },
@@ -28,7 +28,7 @@ const menuItems = [
           </a>
         ))
       }
-      <a href="tel:123456789" class="btn-primary ml-6">SUNĂ ACUM</a>
+      <a href={`tel:${contact.phone}`} class="btn-primary ml-6">SUNĂ ACUM</a>
     </div>
     <div class="flex items-center sm:hidden">
       <button

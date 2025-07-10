@@ -91,13 +91,6 @@
         />
         <div class="space-y-4 md:space-y-6 md:ml-12 h-full flex flex-col justify-around">
           <p class="text-xl">{apartment.description}</p>
-          <ul class="space-y-3 list-disc pl-6">
-            {#each apartment.features as feature}
-              <li class="text-base font-bold">
-                {feature}
-              </li>
-            {/each}
-          </ul>
           <div>
             <a
               href={`/apartamente?floor=parter&rooms=${apartment.type.replace(/ /g, '+').toLowerCase()}`}

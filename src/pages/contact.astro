@@ -6,8 +6,6 @@ import contact from '../config/contact';
 import Layout from '../layouts/Layout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import FAQ from '../components/FAQ.astro';
-
-
 ---
 
 <Layout title="Contact - Nosto">
@@ -71,7 +69,12 @@ import FAQ from '../components/FAQ.astro';
             >
           </div>
 
-          <button id="submit-button" class="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed" type="submit" disabled>Trimite</button>
+          <button
+            id="submit-button"
+            class="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+            type="submit"
+            disabled>Trimite</button
+          >
           <p id="form-status" class="text-center text-green-600 mt-4"></p>
         </form>
       </div>
@@ -97,7 +100,7 @@ import FAQ from '../components/FAQ.astro';
               href={contact.address}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-xl hover:underline">Adresă</a
+              class="text-xl hover:underline">{contact.addressText}</a
             >
           </div>
 
@@ -125,7 +128,7 @@ import FAQ from '../components/FAQ.astro';
               href={contact.address}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-xl hover:underline">Adresă</a
+              class="text-xl hover:underline">{contact.addressText}</a
             >
           </div>
           <div class="hidden md:flex items-center">
@@ -141,14 +144,17 @@ import FAQ from '../components/FAQ.astro';
       </div>
     </div>
 
-        <script is:inline>
+    <script is:inline>
       const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
       const confidentialitateCheckbox = document.getElementById('confidentialitate');
       const submitButton = document.getElementById('submit-button');
 
       function updateSubmitButtonState() {
-        if (confidentialitateCheckbox instanceof HTMLInputElement && submitButton instanceof HTMLButtonElement) {
+        if (
+          confidentialitateCheckbox instanceof HTMLInputElement &&
+          submitButton instanceof HTMLButtonElement
+        ) {
           submitButton.disabled = !confidentialitateCheckbox.checked;
         }
       }
@@ -158,11 +164,16 @@ import FAQ from '../components/FAQ.astro';
 
       form?.addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (!(form instanceof HTMLFormElement) || !status || !(submitButton instanceof HTMLButtonElement)) return;
+        if (
+          !(form instanceof HTMLFormElement) ||
+          !status ||
+          !(submitButton instanceof HTMLButtonElement)
+        )
+          return;
 
         status.textContent = 'Se trimite...';
         submitButton.disabled = true;
-        
+
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
@@ -186,7 +197,7 @@ import FAQ from '../components/FAQ.astro';
         } catch (error) {
           status.textContent = 'A apărut o eroare de rețea. Încercați din nou.';
         } finally {
-            updateSubmitButtonState();
+          updateSubmitButtonState();
         }
       });
     </script>
