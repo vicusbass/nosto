@@ -17,7 +17,7 @@ export const techDetails = [
   },
   {
     title: 'Lift',
-    value: '',
+    value: 'Imobil dotat cu Lift, acces facil la etajele superioare',
   },
   {
     title: 'Amenajări exterioare',

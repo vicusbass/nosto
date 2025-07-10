@@ -13,7 +13,10 @@ import sanity from '@sanity/astro';
 
 import vercelStatic from '@astrojs/vercel';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
+  site: 'https://nosto.ro',
   integrations: [
     icon(),
     svelte(),
@@ -22,6 +25,7 @@ export default defineConfig({
       dataset: 'production',
       useCdn: false,
     }),
+    sitemap(),
   ],
 
   vite: {
