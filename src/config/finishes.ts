@@ -6,36 +6,44 @@ export const finishesData = {
   bottomRightImage,
   items: [
     {
-      label: 'PLĂCI CERAMICE',
-      value: 'Casalgrande Padana Eco Concrete nuanțe Cenere, Bianco & Grigio',
+      label: 'PLĂCI CERAMICE MARAZZI import ITALIA',
+      value: 'colecția BERICI BEIGE; BERICI GRIGIO; POSTER WHITE; NATURALIA WHITE',
     },
     {
-      label: 'CADĂ DE BAIE',
-      value: 'Geberit Selnova Square',
+      label: 'PARCHET HARO import GERMANIA',
+      value: 'OAK EMILIA PURO*; OAK ELEGANZA NATURE*; SILVER MAPLE VARIO*',
     },
     {
-      label: 'PARAVAN DUȘ',
-      value: 'Sticlă securizată 8mm',
+      label: 'PLINTĂ DUROPOLIMER 8CM',
+      value: '',
     },
     {
-      label: 'VAS WC',
-      value: 'Vas suspendat Geberit Smyle Square/ Modo',
+      label: 'UȘI PRUM import GERMANIA',
+      value: '',
     },
     {
-      label: 'CLAPETĂ ACȚIONARE',
-      value: 'Geberit Sigma 01',
+      label: 'PACHET MOBILIER SUSPENDAT',
+      value: '+ LAVOAR 60CM (BAI)',
     },
     {
-      label: 'VENTILATOR BAIE',
-      value: 'Meltem VARIO II Classic Line',
+      label: 'PACHET REZERVOR INCASTRAT',
+      value: 'VAS WC SUSPENDAT',
     },
     {
-      label: 'LAVOAR',
-      value: 'Geberit Smyle Square / Modo',
+      label: 'CADĂ ACRIL 170 CM',
+      value: 'PANOU FRONTAL',
     },
     {
-      label: 'BATERII',
-      value: 'Baterii cadă, duș și lavoar Hansgrohe Logis 100/ Vernis',
+      label: 'COLOANĂ DUȘ',
+      value: '',
+    },
+    {
+      label: 'BATERII PENTRU LAVOAR ȘI CADA',
+      value: '',
+    },
+    {
+      label: 'PRIZE SI INTRERUPĂTOARE',
+      value: '',
     },
   ],
 };

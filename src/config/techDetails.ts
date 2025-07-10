@@ -1,32 +1,27 @@
 export const techDetails = [
   {
-    title: 'Detaliu 1',
-    value:
-      'Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. ',
+    title: 'Fundație',
+    value: 'Fundație tip radier general, structura in cadre, zidărie de cărămidă',
   },
   {
-    title: 'Detaliu 2',
-    value:
-      'Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. ',
+    title: 'Termoizolație',
+    value: 'Termoizolația fațadei realizată din Polistiren EPS 80 10 cm',
   },
   {
-    title: 'Detaliu 3',
-    value:
-      'Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. ',
+    title: 'Ferestre',
+    value: 'Ferestrele SALAMANDER proEVOLUTION',
   },
   {
-    title: 'Detaliu 4',
-    value:
-      'Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. ',
+    title: 'Încălzire',
+    value: 'Încălzire in pardoseală cu microcentrală proprie pentru fiecare apartament',
   },
   {
-    title: 'Detaliu 5',
-    value:
-      'Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. ',
+    title: 'Lift',
+    value: 'Imobil dotat cu Lift, acces facil la etajele superioare',
   },
   {
-    title: 'Detaliu 6',
+    title: 'Amenajări exterioare',
     value:
-      'Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. ',
+      'Amenajări exterioare : gazon si arbori ornamentali in curtea interioară; sistem de irigare; pavaje în zona parcărilor',
   },
 ];

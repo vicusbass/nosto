@@ -1,9 +1,11 @@
+@import '@fontsource/amiko';
+@import '@fontsource-variable/josefin-sans';
 @import 'tailwindcss';
 
 /* Tailwind 4 Theme Variables */
 @theme {
-  --font-heading: 'Josefin Sans', sans-serif;
   --font-sans: 'Amiko', sans-serif;
+  --font-heading: 'Josefin Sans Variable', sans-serif;
   --color-bg-primary: #f9f7f0;
   --color-bg-secondary: #c56d44;
   --color-main-btn: #c56d44;
@@ -28,6 +30,8 @@
     min-height: 100vh;
     background-color: var(--color-bg-primary);
     @apply font-sans font-normal text-xl text-[var(--color-text-body)];
+    /* Debug: force Amiko to test */
+    font-family: 'Amiko', sans-serif !important;
   }
 
   h2 {
@@ -180,5 +184,4 @@
     box-shadow:
       var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
-
 }
