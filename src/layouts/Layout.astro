@@ -16,7 +16,7 @@ const { title, description, image, url } = Astro.props;
 
 const defaultDescription =
   'Proiect NOU in TIMIȘOARA, vânzare direct de la dezvoltator, apartamente cu finisaje moderne si de calitate, preturi competitive, zonă liniștită si verde preponderent rezidențiala.';
-const defaultImage = new URL('/og.png', Astro.url).href;
+const defaultImage = new URL('/og.jpg', Astro.url).href;
 const canonicalURL = url || Astro.url.href;
 const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
 ---
@@ -42,13 +42,16 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:locale" content="ro_RO" />
     <meta property="og:site_name" content="Nosto - Proiect Rezidential" />
-    
+
     <!-- WhatsApp specific -->
     <meta name="theme-color" content="#c56d44" />
-    <meta property="og:image:alt" content="Proiect Rezidential Nosto - Apartamente moderne în Timișoara" />
+    <meta
+      property="og:image:alt"
+      content="Proiect Rezidential Nosto - Apartamente moderne în Timișoara"
+    />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
