@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import heroImage from '../assets/hero-img.png';
+import heroImage from '../assets/hero-img-min.png';
 import proiectImgLarge from '../assets/despre_proiect_big.jpeg';
 import proiectImg1 from '../assets/despre_proiect_1.jpeg';
 import proiectImg2 from '../assets/despre_proiect_2.jpeg';
@@ -27,6 +27,7 @@ import { techDetails } from '../config/techDetails.ts';
       src={heroImage}
       alt="Apartment Building"
       class="w-full h-full object-cover object-center"
+      quality={70}
     />
     <Image
       src={heroLogo}
@@ -56,6 +57,7 @@ import { techDetails } from '../config/techDetails.ts';
             src={proiectImgLarge}
             alt="Building Interior"
             class="shadow-lg w-full h-full object-cover"
+            width={600}
           />
         </div>
 
@@ -66,6 +68,7 @@ import { techDetails } from '../config/techDetails.ts';
                 src={proiectImg1}
                 alt="Interior Detail 1"
                 class="shadow-lg w-full h-full object-cover"
+                width={300}
               />
             </div>
             <div class="w-1/2">
@@ -73,6 +76,7 @@ import { techDetails } from '../config/techDetails.ts';
                 src={proiectImg2}
                 alt="Interior Detail 2"
                 class="shadow-lg w-full h-full object-cover"
+                width={300}
               />
             </div>
           </div>
