@@ -1,5 +1,5 @@
-import topLeftImage from '../assets/finish/finisaje1.webp';
-import bottomRightImage from '../assets/finish/finisaje2.webp';
+import topLeftImage from '../assets/finish/mood1.jpg';
+import bottomRightImage from '../assets/finish/mood2.jpg';
 
 export const finishesData = {
   topLeftImage,

@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+  apartments: Array<{
+    type: string;
+    mobileType: string;
+    size: string;
+    description: string;
+    planImage: any;
+  }>;
+}
+
+const { apartments } = Astro.props;
+---
+
+<div class="pb-0" id="apartment-showcase">
+  <div class="h-12 md:h-14 w-full z-3 cursor-pointer sticky top-20 flex" id="tabs-container">
+    {apartments.map((apartment, index) => (
+      <button
+        class="flex-1 h-full tab-button"
+        data-index={index}
+        aria-label={`Show ${apartment.type} details`}
+      >
+      </button>
+    ))}
+  </div>
+  {apartments.map((apartment, index) => (
+    <div
+      class={`apartment-card sticky top-20 min-h-[calc(100vh-8rem)] flex-col transition-opacity duration-300 ${index > 0 ? 'mt-[20vh]' : ''}`}
+      data-index={index}
+    >
+      <div
+        class={`heading-font text-sm md:text-2xl shadow-xl font-normal py-3 px-1 -mb-[2px] overflow-hidden min-h-10 whitespace-nowrap overflow-ellipsis flex items-center justify-center ${index % 2 === 0 ? 'bg-main' : 'bg-tab-secondary'}`}
+        style={`width:calc(${100 / apartments.length}%); max-width:${100 / apartments.length}%; margin-left:${(index / apartments.length) * 100}%;`}
+      >
+        <span class="block md:hidden">{apartment.mobileType || apartment.type}</span>
+        <span class="hidden md:block">{apartment.type}</span>
+      </div>
+      <div
+        class={`grid grid-cols-1 md:grid-cols-2 p-6 md:px-12 md:py-20 w-full h-[700px] md:h-[600px] md:min-h-[400px] overflow-hidden bg-main ${index === 0 ? 'shadow-xl' : ''}`}
+      >
+        <Image
+          src={apartment.planImage}
+          alt={`Plan ${apartment.type}`}
+          class="object-contain rounded-tr-[120px] max-h-[460px]"
+          width={600}
+          height={460}
+        />
+        <div class="space-y-4 md:space-y-6 md:ml-12 h-full flex flex-col justify-around">
+          <p class="text-xl">{apartment.description}</p>
+          <div>
+            <a
+              href={`/apartamente?floor=parter&rooms=${apartment.type.replace(/ /g, '+').toLowerCase()}`}
+              class="btn-primary px-6 py-3"
+              aria-label={`More details about ${apartment.type}`}
+            >
+              VEZI MAI MULTE OPȚIUNI
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  let activeIndex = -1;
+  let apartmentRefs: HTMLElement[] = [];
+  let observer: IntersectionObserver;
+  let areTabsActive = false;
+  let initialized = false;
+
+  function cleanup() {
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+    }
+    apartmentRefs = [];
+    activeIndex = -1;
+    areTabsActive = false;
+    initialized = false;
+  }
+
+  function initializeObserver() {
+    if (initialized) return;
+    
+    apartmentRefs = Array.from(document.querySelectorAll('.apartment-card'));
+    
+    if (apartmentRefs.length === 0) return;
+    
+    observer = new IntersectionObserver(
+      (entries) => {
+        areTabsActive = entries.length === apartmentRefs.length && entries.every((entry) => entry.isIntersecting);
+
+        const activeEntry = entries.find((entry) => entry.isIntersecting);
+        const visibleTabIndex = activeEntry?.target?.getAttribute('data-index');
+
+        if (visibleTabIndex === `${apartmentRefs.length - 1}`) {
+          areTabsActive = true;
+        } else {
+          activeIndex = -1;
+        }
+      },
+      { threshold: 1 }
+    );
+
+    apartmentRefs.forEach((ref) => ref && observer.observe(ref));
+    
+    document.querySelectorAll('.tab-button').forEach((button, index) => {
+      button.addEventListener('click', () => handleTabClick(index));
+    });
+    
+    initialized = true;
+  }
+
+  function handleTabClick(index: number) {
+    if (!areTabsActive) return;
+
+    const tab = document.querySelector(`[data-index="${index}"]`);
+    if (tab) {
+      (tab as HTMLElement).style.opacity = '0.7';
+      activeIndex = index;
+      setTimeout(() => {
+        (tab as HTMLElement).style.opacity = '1';
+      }, 300);
+    }
+  }
+
+  function handleReady() {
+    cleanup();
+    initializeObserver();
+  }
+
+  // Handle initial load and client-side navigation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleReady);
+  } else {
+    handleReady();
+  }
+
+  // Handle Astro client-side navigation
+  document.addEventListener('astro:page-load', handleReady);
+  document.addEventListener('astro:before-preparation', cleanup);
+  
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', cleanup);
+</script>

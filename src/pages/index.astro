@@ -7,12 +7,17 @@ import proiectImgLarge from '../assets/despre_proiect_big.jpeg';
 import proiectImg1 from '../assets/despre_proiect_1.jpeg';
 import proiectImg2 from '../assets/despre_proiect_2.jpeg';
 import heroLogo from '../assets/hero-logo-ded.svg';
+import tipStudio from '../assets/apartmentTypes/tip_studio.jpg';
+import tip15 from '../assets/apartmentTypes/tip_1_5.jpg';
+import tip2cam from '../assets/apartmentTypes/tip_2cam.jpg';
+import tip25 from '../assets/apartmentTypes/tip_2_5.jpg';
+import tip3cam from '../assets/apartmentTypes/tip_3cam.jpg';
+import tip4cam from '../assets/apartmentTypes/tip_4cam.jpg';
 import Location from '../components/Location.astro';
 import SectionTitle from '../components/SectionTitle.astro';
-import ApartmentShowcase from '../components/ApartmentShowcase.svelte';
+import ApartmentShowcase from '../components/ApartmentShowcase.astro';
 import Finish from '../components/Finish.astro';
 import { techDetails } from '../config/techDetails.ts';
-import Dotari from '../components/Dotari.astro';
 ---
 
 <Layout title="Proiect Rezidential - Nosto">
@@ -102,7 +107,6 @@ import Dotari from '../components/Dotari.astro';
     <SectionTitle title="Tipuri de Apartamente" id="apartamente-title" />
     <div class="max-w-[95vw] lg:max-w-[1600px] mx-auto px-2 sm:px-6 lg:px-8">
       <ApartmentShowcase
-        client:load
         apartments={[
           {
             type: 'STUDIO',
@@ -110,8 +114,7 @@ import Dotari from '../components/Dotari.astro';
             size: '45mp',
             description:
               'Apartamentele de 1 cameră le-am transformat în spații de locuit funcționale, în apartamente tip studio, cu delimitarea zonei de zi de zona de noapte prin crearea unei nișe care să îndeplinească funcția de dormitor.',
-            planImage:
-              'https://www.conceptdraw.com/samples/resource/images/solutions//Building-Floor-Plans-House-Plan-Sample.png',
+            planImage: tipStudio,
           },
           {
             type: '1.5 CAMERE',
@@ -119,8 +122,7 @@ import Dotari from '../components/Dotari.astro';
             size: '65mp',
             description:
               'Chiar dacă are o suprafața redusă față de standardul apartamentelor de 2 camere acest tip de apartament îndeplinește  cu succes funcțiile unui apartament de 2 camere.',
-            planImage:
-              'https://www.conceptdraw.com/samples/resource/images/solutions//Building-Floor-Plans-House-Plan-Sample.png',
+            planImage: tip15,
           },
           {
             type: '2 CAMERE',
@@ -128,8 +130,7 @@ import Dotari from '../components/Dotari.astro';
             size: '85mp',
             description:
               'Apartamente decomandate, potrivite familiilor care își doresc bucătărie închisă sau care vor camere separate.',
-            planImage:
-              'https://www.conceptdraw.com/samples/resource/images/solutions//Building-Floor-Plans-House-Plan-Sample.png',
+            planImage: tip2cam,
           },
           {
             type: '2.5 CAMERE',
@@ -137,8 +138,7 @@ import Dotari from '../components/Dotari.astro';
             size: '85mp',
             description:
               'Apartamentele de 2 camere cu suprafețe mai generoase au fost transformate în apartamente tip 2,5 camere , cu 1 zonă de zi + bucătărie, 1 dormitor, 1 birou/cameră copii, cu intenția de a răspunde celor care au nevoie de o a treia cameră (chiar dacă aceasta este de dimensiuni reduse) dar nu au buget pentru un apartament de 3 camere.',
-            planImage:
-              'https://www.conceptdraw.com/samples/resource/images/solutions//Building-Floor-Plans-House-Plan-Sample.png',
+            planImage: tip25,
           },
           {
             type: '3 CAMERE',
@@ -146,8 +146,7 @@ import Dotari from '../components/Dotari.astro';
             size: '85mp',
             description:
               'Apartament pentru familii cu copii. Suprafața decentă, cele două băii precum si cămara aferentă bucătăriei satisface nevoile unei familii  cu 3 sau 4 membri.',
-            planImage:
-              'https://www.conceptdraw.com/samples/resource/images/solutions//Building-Floor-Plans-House-Plan-Sample.png',
+            planImage: tip3cam,
           },
           {
             type: '4 CAMERE',
@@ -155,17 +154,7 @@ import Dotari from '../components/Dotari.astro';
             size: '85mp',
             description:
               'Apartamentele de 4 camere au suprafețe mari și beneficiază de terase generoase, pentru familiile care își doresc și un spațiu exterior tip TERASĂ, nu doar un balcon.',
-            planImage:
-              'https://www.conceptdraw.com/samples/resource/images/solutions//Building-Floor-Plans-House-Plan-Sample.png',
-          },
-          {
-            type: '5 CAMERE',
-            mobileType: '5 CAM',
-            size: '85mp',
-            description:
-              'Apartamentele de 4 camere au suprafețe mari și beneficiază de terase generoase, pentru familiile care își doresc și un spațiu exterior tip TERASĂ, nu doar un balcon.',
-            planImage:
-              'https://www.conceptdraw.com/samples/resource/images/solutions//Building-Floor-Plans-House-Plan-Sample.png',
+            planImage: tip4cam,
           },
         ]}
       />
