@@ -17,7 +17,9 @@ const posts = await sanityClient.fetch<SanityDocument[]>(query);
 // Transform posts to match the component interface
 const articles = posts.map((post) => ({
   ...post,
-  imageUrl: post?.image ? urlForImage(post.image)?.url() : null,
+  imageUrl: post?.image
+    ? urlForImage(post.image)?.auto('format').width(600).height(400).url()
+    : null,
   title: new Date(post.date).toLocaleString('ro-RO', {
     month: 'long',
     year: 'numeric',

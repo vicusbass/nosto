@@ -163,12 +163,53 @@ if (unit) {
               <div class="flex items-center justify-center flex-grow">
                 {unit.images && unit.images.length > 0 && (
                   <Image
-                    src={urlForImage(unit.images[0])?.url() || ''}
+                    id="main-image"
+                    src={
+                      urlForImage(unit.images[0])?.auto('format').width(800).height(600).url() || ''
+                    }
                     alt={`Plan apartament ${unit.name}`}
                     class="max-w-full h-auto"
                     width={800}
                     height={600}
                   />
+                )}
+              </div>
+
+              {/* Mobile image gallery - only visible on mobile */}
+              <div class="lg:hidden mt-4">
+                {unit.images && unit.images.length > 1 && (
+                  <div class="relative">
+                    <div
+                      id="mobile-gallery"
+                      class="flex gap-3 overflow-x-auto scrollbar-hide pb-2"
+                      style="scroll-behavior: smooth; -webkit-overflow-scrolling: touch;"
+                    >
+                      {unit.images.map((image: SanityImageSource, index: number) => (
+                        <div
+                          class={`flex-shrink-0 cursor-pointer transition-all duration-200 ${index === 0 ? 'ring-2 ring-primary' : ''}`}
+                          data-mobile-thumbnail-index={index}
+                          data-mobile-image-src={urlForImage(image)?.url() || ''}
+                          data-mobile-image-alt={`Imagine ${index + 1} apartament ${unit.name}`}
+                        >
+                          <Image
+                            src={urlForImage(image)?.width(120).height(120).url() || ''}
+                            alt={`Imagine ${index + 1} apartament ${unit.name}`}
+                            class="w-20 h-20 object-cover rounded-md"
+                            width={120}
+                            height={120}
+                          />
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Scroll arrow indicator */}
+                    <div
+                      id="scroll-arrow"
+                      class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg animate-pulse"
+                    >
+                      <Icon name="mdi:chevron-right" class="w-5 h-5" />
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
@@ -178,7 +219,12 @@ if (unit) {
               {unit.images && unit.images.length > 0 ? (
                 <div class="flex flex-col gap-3">
                   {unit.images.slice(0, 4).map((image: SanityImageSource, index: number) => (
-                    <div class="cursor-pointer hover:opacity-80 transition-opacity aspect-square w-full">
+                    <div
+                      class={`cursor-pointer hover:opacity-80 transition-all duration-200 aspect-square w-full border-2 ${index === 0 ? 'border-primary' : 'border-transparent'} hover:border-primary/50`}
+                      data-thumbnail-index={index}
+                      data-image-src={urlForImage(image)?.url() || ''}
+                      data-image-alt={`Imagine ${index + 1} apartament ${unit.name}`}
+                    >
                       <Image
                         src={urlForImage(image)?.width(200).height(200).url() || ''}
                         alt={`Imagine ${index + 1} apartament ${unit.name}`}
@@ -203,4 +249,146 @@ if (unit) {
   <Dotari />
   <SectionTitle title="Întrebări frecvente" />
   <FAQ />
+
+  <style>
+    /* Hide scrollbar for mobile gallery */
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Smooth scrolling for mobile gallery */
+    #mobile-gallery {
+      scroll-snap-type: x mandatory;
+    }
+
+    #mobile-gallery > div {
+      scroll-snap-align: start;
+    }
+  </style>
+
+  <script is:inline>
+    // Image gallery functionality
+    function initializeImageGallery() {
+      console.log('Initializing image gallery...');
+
+      const mainImage = document.getElementById('main-image');
+      const thumbnails = document.querySelectorAll('[data-thumbnail-index]');
+      const mobileThumbnails = document.querySelectorAll('[data-mobile-thumbnail-index]');
+      const mobileGallery = document.getElementById('mobile-gallery');
+      const scrollArrow = document.getElementById('scroll-arrow');
+
+      console.log('Elements found:', {
+        mainImage: !!mainImage,
+        thumbnails: thumbnails.length,
+        mobileThumbnails: mobileThumbnails.length,
+        mobileGallery: !!mobileGallery,
+        scrollArrow: !!scrollArrow,
+      });
+
+      if (!mainImage) return;
+
+      // Desktop thumbnail functionality
+      function updateDesktopActiveState(activeIndex) {
+        thumbnails.forEach((thumb, index) => {
+          if (index === activeIndex) {
+            thumb.classList.remove('border-transparent');
+            thumb.classList.add('border-primary');
+          } else {
+            thumb.classList.remove('border-primary');
+            thumb.classList.add('border-transparent');
+          }
+        });
+      }
+
+      // Mobile thumbnail functionality
+      function updateMobileActiveState(activeIndex) {
+        mobileThumbnails.forEach((thumb, index) => {
+          if (index === activeIndex) {
+            thumb.classList.add('ring-2', 'ring-primary');
+          } else {
+            thumb.classList.remove('ring-2', 'ring-primary');
+          }
+        });
+      }
+
+      // Desktop thumbnails
+      thumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', function () {
+          const newSrc = this.dataset.imageSrc;
+          const newAlt = this.dataset.imageAlt;
+
+          if (newSrc && mainImage) {
+            mainImage.src = newSrc;
+            mainImage.alt = newAlt;
+            updateDesktopActiveState(index);
+          }
+        });
+      });
+
+      // Mobile thumbnails - add both click and touch events
+      mobileThumbnails.forEach((thumbnail, index) => {
+        function handleMobileThumbnailClick(event) {
+          event.preventDefault();
+          console.log('Mobile thumbnail clicked:', index);
+
+          const newSrc = this.dataset.mobileImageSrc;
+          const newAlt = this.dataset.mobileImageAlt;
+
+          console.log('Image data:', { newSrc, newAlt });
+
+          if (newSrc && mainImage) {
+            mainImage.src = newSrc;
+            mainImage.alt = newAlt;
+            updateMobileActiveState(index);
+          }
+        }
+
+        // Add both click and touchend events for better mobile support
+        thumbnail.addEventListener('click', handleMobileThumbnailClick);
+        thumbnail.addEventListener('touchend', handleMobileThumbnailClick);
+      });
+
+      // Mobile scroll arrow functionality
+      if (mobileGallery && scrollArrow) {
+        // Hide arrow after user scrolls or clicks
+        function hideScrollArrow() {
+          scrollArrow.style.display = 'none';
+        }
+
+        // Hide arrow on scroll
+        mobileGallery.addEventListener('scroll', hideScrollArrow);
+
+        // Hide arrow on click and scroll to next image
+        scrollArrow.addEventListener('click', function (event) {
+          event.preventDefault();
+          const scrollAmount = 100; // Adjust this value as needed
+          mobileGallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          hideScrollArrow();
+        });
+
+        // Hide arrow on touch
+        scrollArrow.addEventListener('touchend', function (event) {
+          event.preventDefault();
+          const scrollAmount = 100;
+          mobileGallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          hideScrollArrow();
+        });
+
+        // Hide arrow when user taps on gallery
+        mobileGallery.addEventListener('touchstart', hideScrollArrow);
+      }
+    }
+
+    // Initialize on both page load events
+    document.addEventListener('astro:page-load', initializeImageGallery);
+    document.addEventListener('astro:after-swap', initializeImageGallery);
+
+    // Also initialize on DOMContentLoaded as fallback
+    document.addEventListener('DOMContentLoaded', initializeImageGallery);
+  </script>
 </Layout>

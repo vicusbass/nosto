@@ -9,7 +9,9 @@ import HorizontalArticles from '../components/HorizontalArticles.astro';
 const query = `*[_type == "location"]|order(title asc){title,description,image}`;
 const locations = await sanityClient.fetch(query);
 const articles = locations.map((location: { title: string; description: string; image: any }) => ({
-  imageUrl: location?.image ? urlForImage(location.image)?.url() : null,
+  imageUrl: location?.image
+    ? urlForImage(location.image)?.auto('format').width(600).height(400).url()
+    : null,
   text: location.description,
   title: location.title,
 }));
