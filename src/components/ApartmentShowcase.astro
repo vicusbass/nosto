@@ -40,7 +40,7 @@ const { apartments } = Astro.props;
           <span class="hidden md:block">{apartment.type}</span>
         </div>
         <div
-          class={`grid grid-cols-1 md:grid-cols-2 p-6 md:px-12 md:py-20 w-full h-[700px] md:h-[600px] md:min-h-[400px] overflow-hidden bg-main ${index === 0 ? 'shadow-xl' : ''}`}
+          class={`flex flex-col md:grid md:grid-cols-2 p-6 md:px-12 md:py-20 w-full h-[700px] md:h-[600px] md:min-h-[400px] overflow-hidden bg-main ${index === 0 ? 'shadow-xl' : ''}`}
         >
           <Image
             src={apartment.planImage}
@@ -49,8 +49,10 @@ const { apartments } = Astro.props;
             width={600}
             height={460}
           />
-          <div class="space-y-4 md:space-y-6 md:ml-12 h-full flex flex-col justify-around">
-            <p class="text-xl text-justify">{apartment.description}</p>
+          <div class="md:ml-12 flex flex-col flex-1 justify-between pb-20 pt-4 md:justify-around">
+            <p class="text-xl text-justify indent-8 max-h-[33vh] overflow-hidden text-ellipsis mb-4">
+              {apartment.description}
+            </p>
             <div>
               <a
                 href={`/apartamente?floor=parter&rooms=${apartment.type.replace(/ /g, '+').toLowerCase()}`}
