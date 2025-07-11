@@ -168,7 +168,7 @@ if (unit) {
                       urlForImage(unit.images[0])?.auto('format').width(800).height(600).url() || ''
                     }
                     alt={`Plan apartament ${unit.name}`}
-                    class="max-w-full h-auto"
+                    class="max-w-full h-auto cursor-pointer lg:cursor-default"
                     width={800}
                     height={600}
                   />
@@ -244,9 +244,28 @@ if (unit) {
       )
     }
   </section>
+
+  <!-- Image Modal for Mobile -->
+  <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 hidden">
+    <div class="relative max-w-full max-h-full">
+      <button 
+        id="close-modal" 
+        class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-75 transition-all"
+        aria-label="Close"
+      >
+        <Icon name="mdi:close" class="w-6 h-6" />
+      </button>
+      <img 
+        id="modal-image" 
+        src="" 
+        alt="" 
+        class="max-w-full max-h-full object-contain"
+      />
+    </div>
+  </div>
   <SectionTitle title="Pachete finisaje și dotări" class="mt-8" />
   <Finish />
-  <Dotari />
+  <!-- <Dotari /> -->
   <SectionTitle title="Întrebări frecvente" />
   <FAQ />
 
@@ -375,6 +394,57 @@ if (unit) {
 
         // Hide arrow when user taps on gallery
         mobileGallery.addEventListener('touchstart', hideScrollArrow);
+      }
+
+      // Mobile image modal functionality
+      const imageModal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image');
+      const closeModal = document.getElementById('close-modal');
+
+      if (mainImage && imageModal && modalImage) {
+        function openImageModal() {
+          // Only open modal on mobile screens
+          if (window.innerWidth >= 1024) return; // lg breakpoint
+          
+          modalImage.src = mainImage.src;
+          modalImage.alt = mainImage.alt;
+          imageModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeImageModal() {
+          imageModal.classList.add('hidden');
+          document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        mainImage.addEventListener('click', openImageModal);
+        mainImage.addEventListener('touchend', function(event) {
+          event.preventDefault();
+          openImageModal();
+        });
+
+        // Close modal events
+        if (closeModal) {
+          closeModal.addEventListener('click', closeImageModal);
+          closeModal.addEventListener('touchend', function(event) {
+            event.preventDefault();
+            closeImageModal();
+          });
+        }
+
+        // Close modal when clicking outside the image
+        imageModal.addEventListener('click', function(event) {
+          if (event.target === imageModal) {
+            closeImageModal();
+          }
+        });
+
+        // Close modal with escape key
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && !imageModal.classList.contains('hidden')) {
+            closeImageModal();
+          }
+        });
       }
     }
 
