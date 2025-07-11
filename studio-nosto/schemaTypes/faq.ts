@@ -39,4 +39,11 @@ export const faq = defineType({
       }
     },
   },
+  orderings: [
+    {
+      title: 'Sortare dupa prioritate',
+      name: 'priorityAsc',
+      by: [{field: 'priority', direction: 'asc'}],
+    },
+  ],
 })
