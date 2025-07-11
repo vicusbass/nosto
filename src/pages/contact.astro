@@ -55,9 +55,11 @@ import FAQ from '../components/FAQ.astro';
               class="mr-2 mt-0.5"
             />
             <label for="confidentialitate" class="text-xs"
-              >am luat la cunoștintă <a
-                href="/politica-confidentialitate"
-                class="underline text-blue-600">politica de confidențialitate</a
+              >am luat la cunoștintă <button
+                type="button"
+                id="privacy-policy-btn"
+                class="underline text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                >politica de confidențialitate</button
               ></label
             >
           </div>
@@ -144,11 +146,67 @@ import FAQ from '../components/FAQ.astro';
       </div>
     </div>
 
+    <!-- Privacy Policy Popup Modal -->
+    <div id="privacy-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+      <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center p-6 border-b">
+          <h2 class="text-xl font-bold">Politica de Confidențialitate</h2>
+          <button id="close-modal-btn" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">
+            &times;
+          </button>
+        </div>
+        <div class="p-6 space-y-4">
+          <h3 class="text-lg font-semibold">Colectarea și procesarea datelor personale</h3>
+          <p class="text-gray-700">
+            Prin completarea formularului de contact, sunteți de acord cu colectarea și procesarea datelor personale 
+            furnizate (nume, adresă de email, mesaj) în scopul răspunsului la solicitarea dumneavoastră.
+          </p>
+          
+          <h3 class="text-lg font-semibold">Utilizarea datelor</h3>
+          <p class="text-gray-700">
+            Datele personale furnizate vor fi utilizate exclusiv pentru:
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
+            <li>Răspunsul la solicitarea dumneavoastră</li>
+            <li>Comunicarea directă cu dumneavoastră</li>
+            <li>Furnizarea de informații despre serviciile noastre (doar dacă ați bifat această opțiune)</li>
+          </ul>
+          
+          <h3 class="text-lg font-semibold">Protecția datelor</h3>
+          <p class="text-gray-700">
+            Ne angajăm să protejăm datele dumneavoastră personale și să nu le transmitem către terți 
+            fără consimțământul dumneavoastră explicit.
+          </p>
+          
+          <h3 class="text-lg font-semibold">Drepturile dumneavoastră</h3>
+          <p class="text-gray-700">
+            Aveți dreptul să solicitați accesul, rectificarea, ștersarea sau portabilitatea datelor personale, 
+            precum și dreptul de a vă opune procesării acestora.
+          </p>
+          
+          <h3 class="text-lg font-semibold">Contact</h3>
+          <p class="text-gray-700">
+            Pentru orice întrebări legate de procesarea datelor personale, ne puteți contacta prin intermediul 
+            informațiilor de contact disponibile pe acest site.
+          </p>
+        </div>
+        <div class="flex justify-end p-6 border-t">
+          <button id="accept-privacy-btn" class="btn-primary">
+            Am înțeles
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script is:inline>
       const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
       const confidentialitateCheckbox = document.getElementById('confidentialitate');
       const submitButton = document.getElementById('submit-button');
+      const privacyPolicyBtn = document.getElementById('privacy-policy-btn');
+      const privacyModal = document.getElementById('privacy-modal');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+      const acceptPrivacyBtn = document.getElementById('accept-privacy-btn');
 
       function updateSubmitButtonState() {
         if (
@@ -161,6 +219,44 @@ import FAQ from '../components/FAQ.astro';
 
       confidentialitateCheckbox?.addEventListener('change', updateSubmitButtonState);
       updateSubmitButtonState(); // Initial state
+
+      // Privacy policy popup functionality
+      function openPrivacyModal() {
+        if (privacyModal) {
+          privacyModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          // Scroll to top of modal content
+          const modalContent = privacyModal.querySelector('.max-w-2xl');
+          if (modalContent) {
+            modalContent.scrollTop = 0;
+          }
+        }
+      }
+
+      function closePrivacyModal() {
+        if (privacyModal) {
+          privacyModal.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        }
+      }
+
+      privacyPolicyBtn?.addEventListener('click', openPrivacyModal);
+      closeModalBtn?.addEventListener('click', closePrivacyModal);
+      acceptPrivacyBtn?.addEventListener('click', closePrivacyModal);
+
+      // Close modal when clicking outside
+      privacyModal?.addEventListener('click', (e) => {
+        if (e.target === privacyModal) {
+          closePrivacyModal();
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !privacyModal?.classList.contains('hidden')) {
+          closePrivacyModal();
+        }
+      });
 
       form?.addEventListener('submit', async (e) => {
         e.preventDefault();
