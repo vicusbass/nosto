@@ -282,14 +282,6 @@ if (unit) {
       const mobileGallery = document.getElementById('mobile-gallery');
       const scrollArrow = document.getElementById('scroll-arrow');
 
-      console.log('Elements found:', {
-        mainImage: !!mainImage,
-        thumbnails: thumbnails.length,
-        mobileThumbnails: mobileThumbnails.length,
-        mobileGallery: !!mobileGallery,
-        scrollArrow: !!scrollArrow,
-      });
-
       if (!mainImage) return;
 
       // Desktop thumbnail functionality
@@ -323,7 +315,9 @@ if (unit) {
           const newAlt = this.dataset.imageAlt;
 
           if (newSrc && mainImage) {
-            mainImage.src = newSrc;
+            // Apply same formatting as main image
+            const formattedSrc = newSrc.replace(/\?.*$/, '') + '?auto=format&w=800&h=600';
+            mainImage.src = formattedSrc;
             mainImage.alt = newAlt;
             updateDesktopActiveState(index);
           }
@@ -339,10 +333,10 @@ if (unit) {
           const newSrc = this.dataset.mobileImageSrc;
           const newAlt = this.dataset.mobileImageAlt;
 
-          console.log('Image data:', { newSrc, newAlt });
-
           if (newSrc && mainImage) {
-            mainImage.src = newSrc;
+            // Apply same formatting as main image
+            const formattedSrc = newSrc.replace(/\?.*$/, '') + '?auto=format&w=800&h=600';
+            mainImage.src = formattedSrc;
             mainImage.alt = newAlt;
             updateMobileActiveState(index);
           }
