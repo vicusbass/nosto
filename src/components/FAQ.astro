@@ -1,6 +1,7 @@
 ---
 import type { SanityDocument } from '@sanity/client';
 import { sanityClient } from 'sanity:client';
+import { PortableText } from 'astro-portabletext';
 
 interface Props {
   faqs?: SanityDocument[];
@@ -48,11 +49,39 @@ const faqs = fetchedFaqs;
           id={`faq-answer-${index}`}
           class="faq-answer max-h-0 overflow-hidden px-8 transition-all duration-500 ease-in-out"
         >
-          <p class="py-5">{faq.details}</p>
+          <div class="py-5 faq-content prose">
+            {typeof faq.details === 'string' ? (
+              faq.details
+            ) : faq.details && Array.isArray(faq.details) ? (
+              <PortableText value={faq.details} />
+            ) : null}
+          </div>
         </div>
       </div>
     ))
   }
+
+  <style>
+    /* Removed custom list styles; handled by Tailwind's prose class */
+
+    .faq-content ol li {
+      display: list-item;
+      list-style-type: decimal;
+      margin-bottom: 8px;
+    }
+
+    .faq-content strong {
+      font-weight: bold;
+    }
+
+    .faq-content b {
+      font-weight: bold;
+    }
+
+    .faq-content p {
+      margin: 12px 0;
+    }
+  </style>
 
   <script is:inline>
     // Use astro:page-load event for compatibility with Astro's view transitions
