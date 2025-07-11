@@ -80,6 +80,11 @@
   .section-title::before {
     content: '';
     @apply w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-main-btn absolute left-0 top-1/2 transform -translate-y-1/2;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-appearance: none;
+    background-clip: padding-box;
   }
 
   .section-title h2 {
