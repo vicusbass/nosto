@@ -119,10 +119,7 @@ const menuItems = [
       });
     }
 
-    // Setup for the initial page load
     setupMobileMenu();
-
-    // Setup after each Astro page transition
     document.addEventListener('astro:page-load', setupMobileMenu);
   </script>
 </nav>
