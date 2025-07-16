@@ -31,6 +31,7 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
+    <GoogleAnalytics />
     <title>{title}</title>
     <meta name="description" content={description || defaultDescription} />
     <link rel="canonical" href={canonicalURL} />
@@ -85,8 +86,6 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
 
     <!-- Copyright -->
     <meta name="copyright" content="Nosto Development" />
-    <GoogleAnalytics />
-
     <!-- Business schema -->
     <script type="application/ld+json">
       {
