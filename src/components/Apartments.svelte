@@ -71,8 +71,10 @@
         const roomsList = roomsParam.split(',');
         const validRooms = roomsList.filter((room) => roomOptions.includes(room));
         if (validRooms.length > 0) selectedRooms = validRooms;
-      } else {
-        // Fall back to localStorage
+      }
+      // Only load from localStorage if there are URL parameters present
+      // This prevents loading old filters when visiting /apartamente directly
+      else if (url.searchParams.toString()) {
         const savedRooms = localStorage.getItem('selectedRooms');
         if (savedRooms) {
           try {

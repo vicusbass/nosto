@@ -107,7 +107,7 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
   </head>
   <body class="font-sans flex flex-col min-h-screen">
     <Navbar transition:persist />
-    <main class="pt-16 flex-grow mb-16">
+    <main class="pt-16 flex-grow mb-16 pb-16 md:pb-0">
       <slot />
     </main>
     <Footer transition:persist />
