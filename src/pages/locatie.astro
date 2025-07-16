@@ -5,6 +5,7 @@ import SectionTitle from '../components/SectionTitle.astro';
 import { sanityClient } from 'sanity:client';
 import urlForImage from '../utils/sanityImageUrl';
 import HorizontalArticles from '../components/HorizontalArticles.astro';
+import YoutubePlayer from '../components/YoutubePlayer.astro';
 
 const query = `*[_type == "location"]|order(title asc){title,description,image}`;
 const locations = await sanityClient.fetch(query);
@@ -28,15 +29,7 @@ const articles = locations.map((location: { title: string; description: string; 
       provocat de șantiere viitoare
     </p>
     <div class="mb-8 max-w-4xl mx-auto">
-      <div class="relative w-full" style="padding-bottom: 56.25%;">
-        <iframe
-          class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-          src="https://www.youtube.com/embed/2oytPB6_w5g"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
+      <YoutubePlayer videoId="2oytPB6_w5g" />
     </div>
     <Location showGoogleMapsLink={true} />
   </div>
