@@ -165,12 +165,17 @@ if (unit) {
                   <Image
                     id="main-image"
                     src={
-                      urlForImage(unit.images[0])?.auto('format').width(800).height(600).url() || ''
+                      urlForImage(unit.images[0])
+                        ?.auto('format')
+                        .width(1200)
+                        .height(900)
+                        .quality(85)
+                        .url() || ''
                     }
                     alt={`Plan apartament ${unit.name}`}
                     class="max-w-full h-auto cursor-pointer lg:cursor-default"
-                    width={800}
-                    height={600}
+                    width={1200}
+                    height={900}
                   />
                 )}
               </div>
@@ -332,8 +337,8 @@ if (unit) {
           const newAlt = this.dataset.imageAlt;
 
           if (newSrc && mainImage) {
-            // Apply same formatting as main image
-            const formattedSrc = newSrc.replace(/\?.*$/, '') + '?auto=format&w=800&h=600';
+            // Use the original URL with high quality parameters
+            const formattedSrc = newSrc.replace(/\?.*$/, '') + '?auto=format&w=1200&h=900&q=85';
             mainImage.src = formattedSrc;
             mainImage.alt = newAlt;
             updateDesktopActiveState(index);
@@ -351,8 +356,8 @@ if (unit) {
           const newAlt = this.dataset.mobileImageAlt;
 
           if (newSrc && mainImage) {
-            // Apply same formatting as main image
-            const formattedSrc = newSrc.replace(/\?.*$/, '') + '?auto=format&w=800&h=600';
+            // Use the original URL with high quality parameters
+            const formattedSrc = newSrc.replace(/\?.*$/, '') + '?auto=format&w=1200&h=900&q=85';
             mainImage.src = formattedSrc;
             mainImage.alt = newAlt;
             updateMobileActiveState(index);
