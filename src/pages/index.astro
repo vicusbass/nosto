@@ -18,6 +18,7 @@ import SectionTitle from '../components/SectionTitle.astro';
 import ApartmentShowcase from '../components/ApartmentShowcase.astro';
 import Finish from '../components/Finish.astro';
 import { techDetails } from '../config/techDetails.ts';
+import YoutubePlayer from '../components/YoutubePlayer.astro';
 ---
 
 <Layout title="Proiect Rezidential - Nosto">
@@ -193,6 +194,9 @@ import { techDetails } from '../config/techDetails.ts';
   <section id="location" class="py-12 bg-main w-full">
     <SectionTitle title="Locație si mobilitate" id="location-title" />
     <div class="px-8 md:px-16">
+      <div class="mb-8 max-w-4xl mx-auto">
+        <YoutubePlayer videoId="2oytPB6_w5g" />
+      </div>
       <Location />
     </div>
   </section>
