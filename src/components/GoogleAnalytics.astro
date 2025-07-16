@@ -1,0 +1,14 @@
+---
+const GA_MEASUREMENT_ID = 'G-VCW28E91Y5';
+---
+
+<script type="text/partytown" src=`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
+></script>
+<script type="text/partytown">
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', '${GA_MEASUREMENT_ID}');
+</script>

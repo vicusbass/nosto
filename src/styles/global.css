@@ -54,6 +54,14 @@
     font-size: 1rem;
   }
 
+  .btn-secondary {
+    @apply bg-white border-2 border-[var(--color-main-btn)] text-[var(--color-main-btn)] 
+      hover:bg-[var(--color-main-btn-hover)] hover:text-white
+      px-4 py-2 uppercase text-sm font-medium rounded-tr-2xl transition-colors duration-300;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+  }
+
   /* Layout components */
   .footer {
     @apply bg-[var(--color-text-body)] text-white text-base font-semibold;
