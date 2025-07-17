@@ -4,7 +4,6 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
 import SpeedInsights from '@vercel/speed-insights/astro';
-import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 
 interface Props {
   title: string;
@@ -31,7 +30,6 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
-    <GoogleAnalytics />
     <title>{title}</title>
     <meta name="description" content={description || defaultDescription} />
     <link rel="canonical" href={canonicalURL} />

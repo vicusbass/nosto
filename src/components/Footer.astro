@@ -34,7 +34,12 @@ import contact from '../config/contact';
         <div class="flex flex-wrap md:flex-nowrap gap-4">
           <a href="/contact" class="btn-primary">Contact</a>
           <a href="/apartamente" class="btn-primary hidden md:inline-flex">Vezi apartamente</a>
-          <a href={`tel:${contact.phone}`} class="btn-primary" onclick="if (typeof gtag !== 'undefined') { gtag('event', 'click', {event_category: 'engagement', event_label: 'call_phone'}); }">Sună acum</a>
+          <a
+            href={`tel:${contact.phone}`}
+            class="btn-primary"
+            onclick="if (typeof gtag !== 'undefined') { gtag('event', 'click', {event_category: 'engagement', event_label: 'call_phone'}); }"
+            >Sună acum</a
+          >
         </div>
       </div>
     </div>
@@ -46,13 +51,7 @@ import contact from '../config/contact';
   >
     <div class="flex gap-4">
       <a href="/apartamente" class="flex-1 btn-secondary text-center"> apartamente </a>
-      <a
-        href={`tel:${contact.phone}`}
-        class="flex-1 btn-primary text-center"
-        onclick="if (typeof gtag !== 'undefined') { gtag('event', 'click', {event_category: 'engagement', event_label: 'call_phone'}); }"
-      >
-        Sună acum
-      </a>
+      <a href={`tel:${contact.phone}`} class="flex-1 btn-primary text-center"> Sună acum </a>
     </div>
   </div>
 </footer>
