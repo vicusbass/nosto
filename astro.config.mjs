@@ -15,8 +15,6 @@ import vercelStatic from '@astrojs/vercel';
 
 import sitemap from '@astrojs/sitemap';
 
-import partytown from '@astrojs/partytown';
-
 export default defineConfig({
   site: 'https://nosto.ro',
   integrations: [
@@ -28,11 +26,6 @@ export default defineConfig({
       useCdn: false,
     }),
     sitemap(),
-    partytown({
-      config: {
-        forward: ['gtag'],
-      },
-    }),
   ],
 
   vite: {
