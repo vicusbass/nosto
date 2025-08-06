@@ -9,16 +9,16 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: Rule => Rule.required()
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
       options: {
-        hotspot: true
+        hotspot: true,
       },
-      validation: Rule => Rule.required()
-    })
-  ]
+      validation: (Rule) => Rule.required(),
+    }),
+  ],
 })
