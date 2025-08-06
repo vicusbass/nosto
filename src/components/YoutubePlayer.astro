@@ -6,13 +6,84 @@ interface Props {
 const { videoId } = Astro.props;
 ---
 
-<div class="relative w-full" style="padding-bottom: 56.25%;">
-  <iframe
-    class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-    src={`https://www.youtube.com/embed/${videoId}`}
-    title="YouTube video player"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
+<div
+  class="relative w-full youtube-lazy-container"
+  style="padding-bottom: 56.25%;"
+  data-video-id={videoId}
+>
+  <div
+    class="absolute top-0 left-0 w-full h-full bg-gray-200 rounded-lg shadow-lg flex items-center justify-center"
   >
-  </iframe>
+    <svg class="w-16 h-16 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+      <path
+        d="M23.498 6.186a2.83 2.83 0 0 0-2.001-2.006C19.728 3.75 12 3.75 12 3.75s-7.728 0-9.497.43A2.83 2.83 0 0 0 .502 6.186C0 7.95 0 12 0 12s0 4.05.502 5.814a2.83 2.83 0 0 0 2.001 2.006c1.769.43 9.497.43 9.497.43s7.728 0 9.497-.43a2.83 2.83 0 0 0 2.001-2.006C24 16.05 24 12 24 12s0-4.05-.502-5.814zM9.75 15.75V8.25L15.75 12l-6 3.75z"
+      ></path>
+    </svg>
+  </div>
 </div>
+
+<script>
+  let youtubeObserver = null;
+
+  function initLazyYouTube() {
+    // Clean up existing observer to prevent duplicates
+    if (youtubeObserver) {
+      youtubeObserver.disconnect();
+      youtubeObserver = null;
+    }
+
+    const containers = document.querySelectorAll('.youtube-lazy-container:not([data-loaded])');
+
+    if (!containers.length) return;
+
+    youtubeObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const container = entry.target as HTMLElement;
+            const videoId = container.dataset.videoId;
+
+            if (videoId && !container.dataset.loaded) {
+              // Mark as loaded to prevent re-initialization
+              container.dataset.loaded = 'true';
+
+              // Create iframe
+              const iframe = document.createElement('iframe');
+              iframe.className = 'absolute top-0 left-0 w-full h-full rounded-lg shadow-lg';
+              iframe.src = `https://www.youtube.com/embed/${videoId}`;
+              iframe.title = 'YouTube video player';
+              iframe.allow =
+                'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+              iframe.allowFullscreen = true;
+
+              // Replace placeholder with iframe
+              container.innerHTML = '';
+              container.appendChild(iframe);
+
+              // Stop observing this container
+              youtubeObserver.unobserve(container);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '50px',
+        threshold: 0.1,
+      }
+    );
+
+    containers.forEach((container) => {
+      youtubeObserver.observe(container);
+    });
+  }
+
+  // Initialize on initial page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLazyYouTube);
+  } else {
+    initLazyYouTube();
+  }
+
+  // Initialize on client-side navigation (Astro View Transitions)
+  document.addEventListener('astro:page-load', initLazyYouTube);
+</script>

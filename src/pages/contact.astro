@@ -147,7 +147,10 @@ import FAQ from '../components/FAQ.astro';
     </div>
 
     <!-- Privacy Policy Popup Modal -->
-    <div id="privacy-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div
+      id="privacy-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
       <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
         <div class="flex justify-between items-center p-6 border-b">
           <h2 class="text-xl font-bold">Politica de Confidențialitate</h2>
@@ -158,42 +161,42 @@ import FAQ from '../components/FAQ.astro';
         <div class="p-6 space-y-4">
           <h3 class="text-lg font-semibold">Colectarea și procesarea datelor personale</h3>
           <p class="text-gray-700">
-            Prin completarea formularului de contact, sunteți de acord cu colectarea și procesarea datelor personale 
-            furnizate (nume, adresă de email, mesaj) în scopul răspunsului la solicitarea dumneavoastră.
+            Prin completarea formularului de contact, sunteți de acord cu colectarea și procesarea
+            datelor personale furnizate (nume, adresă de email, mesaj) în scopul răspunsului la
+            solicitarea dumneavoastră.
           </p>
-          
+
           <h3 class="text-lg font-semibold">Utilizarea datelor</h3>
-          <p class="text-gray-700">
-            Datele personale furnizate vor fi utilizate exclusiv pentru:
-          </p>
+          <p class="text-gray-700">Datele personale furnizate vor fi utilizate exclusiv pentru:</p>
           <ul class="list-disc list-inside text-gray-700 space-y-1">
             <li>Răspunsul la solicitarea dumneavoastră</li>
             <li>Comunicarea directă cu dumneavoastră</li>
-            <li>Furnizarea de informații despre serviciile noastre (doar dacă ați bifat această opțiune)</li>
+            <li>
+              Furnizarea de informații despre serviciile noastre (doar dacă ați bifat această
+              opțiune)
+            </li>
           </ul>
-          
+
           <h3 class="text-lg font-semibold">Protecția datelor</h3>
           <p class="text-gray-700">
-            Ne angajăm să protejăm datele dumneavoastră personale și să nu le transmitem către terți 
+            Ne angajăm să protejăm datele dumneavoastră personale și să nu le transmitem către terți
             fără consimțământul dumneavoastră explicit.
           </p>
-          
+
           <h3 class="text-lg font-semibold">Drepturile dumneavoastră</h3>
           <p class="text-gray-700">
-            Aveți dreptul să solicitați accesul, rectificarea, ștersarea sau portabilitatea datelor personale, 
-            precum și dreptul de a vă opune procesării acestora.
+            Aveți dreptul să solicitați accesul, rectificarea, ștersarea sau portabilitatea datelor
+            personale, precum și dreptul de a vă opune procesării acestora.
           </p>
-          
+
           <h3 class="text-lg font-semibold">Contact</h3>
           <p class="text-gray-700">
-            Pentru orice întrebări legate de procesarea datelor personale, ne puteți contacta prin intermediul 
-            informațiilor de contact disponibile pe acest site.
+            Pentru orice întrebări legate de procesarea datelor personale, ne puteți contacta prin
+            intermediul informațiilor de contact disponibile pe acest site.
           </p>
         </div>
         <div class="flex justify-end p-6 border-t">
-          <button id="accept-privacy-btn" class="btn-primary">
-            Am înțeles
-          </button>
+          <button id="accept-privacy-btn" class="btn-primary"> Am înțeles </button>
         </div>
       </div>
     </div>

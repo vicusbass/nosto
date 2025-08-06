@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'location',
@@ -35,7 +35,7 @@ export default defineType({
       media: 'image',
     },
     prepare(selection) {
-      const { title, subtitle, media } = selection
+      const {title, subtitle, media} = selection
       return {
         title: title || 'Untitled Location',
         subtitle: subtitle ? `${subtitle.substring(0, 60)}...` : 'No description',
@@ -47,12 +47,12 @@ export default defineType({
     {
       title: 'Title A-Z',
       name: 'titleAsc',
-      by: [{ field: 'title', direction: 'asc' }],
+      by: [{field: 'title', direction: 'asc'}],
     },
     {
       title: 'Title Z-A',
       name: 'titleDesc',
-      by: [{ field: 'title', direction: 'desc' }],
+      by: [{field: 'title', direction: 'desc'}],
     },
   ],
 })
