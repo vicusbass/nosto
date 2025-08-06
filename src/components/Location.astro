@@ -9,12 +9,23 @@ interface Props {
 const { showGoogleMapsLink = true } = Astro.props;
 ---
 
+<!-- Load Leaflet CSS with low priority to not block rendering -->
 <link
-  rel="stylesheet"
+  rel="preload"
   href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
   crossorigin=""
 />
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+</noscript>
 
 <section class="py-0 bg-gray-100">
   <div class="w-full relative h-[60vh] min-h-[400px]">
@@ -101,7 +112,9 @@ const { showGoogleMapsLink = true } = Astro.props;
   }
 </style>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<!-- Load Leaflet JS with defer to not block rendering -->
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
 <script is:inline>
   let mapInstance = null;
 
@@ -126,7 +139,8 @@ const { showGoogleMapsLink = true } = Astro.props;
     }
 
     if (typeof L === 'undefined') {
-      console.error('Leaflet library (L) not loaded. Map cannot be initialized.');
+      // If Leaflet isn't loaded yet, wait a bit and try again
+      setTimeout(initializeLeafletMap, 100);
       return;
     }
 
@@ -155,7 +169,13 @@ const { showGoogleMapsLink = true } = Astro.props;
     }).addTo(mapInstance);
 
     const marker = L.marker(center).addTo(mapInstance);
-    // marker.bindPopup(title).openPopup();
+
+    // Force map to recalculate size
+    setTimeout(() => {
+      if (mapInstance) {
+        mapInstance.invalidateSize();
+      }
+    }, 100);
 
     const zoomCityButton = document.getElementById('zoom-city');
     const zoomAreaButton = document.getElementById('zoom-area');
@@ -187,5 +207,13 @@ const { showGoogleMapsLink = true } = Astro.props;
     }
   }
 
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeLeafletMap);
+  } else {
+    initializeLeafletMap();
+  }
+
+  // Initialize on client-side navigation
   document.addEventListener('astro:page-load', initializeLeafletMap);
 </script>
