@@ -120,7 +120,7 @@
   }
 
   svg .highlight-apartment {
-    fill: var(--color-bg-secondary);
+    fill: var(--color-main-btn);
     fill-opacity: 0.8;
     transition: fill-opacity 0.3s;
   }
@@ -132,12 +132,13 @@
   }
 
   svg .apartment-sold {
-    fill: var(--color-sold-apt);
-    fill-opacity: 0.8;
+    fill: url(#apartment-sold-stripes);
+    fill-opacity: 1;
+    cursor: default;
   }
 
   svg .no-highlight {
-    fill: var(--color-not-selected-apt);
+    fill: var(--color-tab-secondary);
     fill-opacity: 0.8;
   }
 

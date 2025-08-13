@@ -30,7 +30,6 @@
         const label = document.querySelector(`.secondary-label[data-ap-id="${apartmentId}"]`);
 
         el.onclick = (_e) => onApartmentClick(apartmentId);
-        el.onmouseleave = () => (el.style = '');
 
         if (unit?.sold) {
           el.classList.add('apartment-sold');
@@ -39,7 +38,7 @@
           el.onclick = null;
           if (label) {
             label.style = 'cursor: default;';
-            label.innerHTML = 'vândut';
+            label.innerHTML = 'VÂNDUT';
           }
           if (title) title.style = 'cursor: default;';
         } else {
@@ -61,6 +60,7 @@
             el.classList.add('no-highlight');
             el.classList.remove('apartment-sold');
           }
+          el.onmouseleave = () => (el.style = '');
         }
       }
     });
