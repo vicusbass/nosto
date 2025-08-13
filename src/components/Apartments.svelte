@@ -30,7 +30,6 @@
   let selectedIdx = $state(0);
   let selectedRooms = $state([]);
   let displayableUnits = $state([]);
-  let isFloorInfoExpanded = $state(false);
 
   // Dispatch event when component is mounted to signal readiness
   onMount(() => {
@@ -142,11 +141,6 @@
   }
 
   function selectFloor(idx) {
-    if (selectedIdx === idx) {
-      isFloorInfoExpanded = !isFloorInfoExpanded;
-    } else {
-      isFloorInfoExpanded = true;
-    }
     selectedIdx = idx;
     saveState();
   }
@@ -156,9 +150,9 @@
   {#each roomOptions as room}
     <button
       type="button"
-      class="min-w-28 font-heading font-light text-base uppercase px-2 md:mx-2 md:px-3 py-1 cursor-pointer hover:text-[var(--color-bg-secondary)] hover:border-b-2 hover:border-bg-secondary transition-all
+      class="min-w-28 font-heading font-light text-base uppercase px-2 md:mx-2 md:px-3 py-1 cursor-pointer border-b-2 border-transparent hover:text-[var(--color-bg-secondary)] hover:border-bg-secondary transition-all
         {selectedRooms.includes(room)
-        ? 'color-main-btn font-medium border-b-2 border-bg-secondary'
+        ? 'btn-primary'
         : ''}"
       aria-pressed={selectedRooms.includes(room)}
       onclick={() => toggleRoom(room)}
@@ -188,47 +182,14 @@
       <div class="mb-4">
         <button
           type="button"
-          class="w-full px-3 py-4 font-medium text-left rounded-tr-2xl bg-tab-secondary transition-all flex items-center justify-between"
-          aria-expanded={selectedIdx === idx}
-          aria-controls={`floor-panel-${idx}`}
+          class="w-full px-3 py-4 font-medium text-left rounded-tr-2xl transition-all flex items-center justify-between {selectedIdx === idx ? 'bg-main-btn text-white' : 'bg-tab-secondary'}"
           onclick={() => selectFloor(idx)}
         >
           <span class="font-heading text-2xl font-light">{floor.name}</span>
-          <div class="flex">
-            <span class="font-heading text-lg font-light mr-3"
-              >{units.filter((unit) => unit.floor === floor.name && !unit.sold).length} apartamente disponibile</span
-            >
-            <svg
-              class="w-6 h-6 transition-transform duration-200"
-              style="transform: rotate({selectedIdx === idx && isFloorInfoExpanded ? 180 : 0}deg);"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
+          <span class="font-heading text-lg font-light"
+            >{units.filter((unit) => unit.floor === floor.name && !unit.sold).length} apartamente disponibile</span
+          >
         </button>
-        <div
-          id={`floor-panel-${idx}`}
-          class="bg-tab-secondary px-3 overflow-hidden transition-all duration-300 ease-in-out"
-          style="max-height: {selectedIdx === idx && isFloorInfoExpanded
-            ? '500px'
-            : '0px'}; opacity: {selectedIdx === idx && isFloorInfoExpanded
-            ? '1'
-            : '0'}; padding-bottom: {selectedIdx === idx && isFloorInfoExpanded ? '2rem' : '0'};"
-        >
-          <ul class="py-2">
-            {#each displayableUnits
-              .filter((unit) => unit.floor === floor.name && !unit.sold)
-              .sort((a, b) => parseInt(a.name.replace('Ap', '')) - parseInt(b.name.replace('Ap', ''))) as unit}
-              <li class="text-lg">
-                {unit.name.replace('Ap', 'Apartament ')}
-              </li>
-            {/each}
-          </ul>
-        </div>
       </div>
     {/each}
   </div>

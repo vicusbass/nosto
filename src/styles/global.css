@@ -49,13 +49,13 @@
   }
 
   .btn-primary {
-    @apply bg-[var(--color-main-btn)] hover:bg-[var(--color-main-btn-hover)] text-white px-4 py-2 uppercase text-sm font-medium rounded-tr-2xl transition-colors duration-300;
+    @apply inline-flex items-center justify-center bg-[var(--color-main-btn)] hover:bg-[var(--color-main-btn-hover)] text-white px-4 py-2 uppercase text-sm font-medium rounded-tr-2xl transition-colors duration-300;
     font-family: var(--font-heading);
     font-size: 1rem;
   }
 
   .btn-secondary {
-    @apply bg-white border-2 border-[var(--color-main-btn)] text-[var(--color-main-btn)] 
+    @apply inline-flex items-center justify-center bg-white border-2 border-[var(--color-main-btn)] text-[var(--color-main-btn)] 
       hover:bg-[var(--color-main-btn-hover)] hover:text-white
       px-4 py-2 uppercase text-sm font-medium rounded-tr-2xl transition-colors duration-300;
     font-family: var(--font-heading);
@@ -120,7 +120,7 @@
   }
 
   svg .highlight-apartment {
-    fill: var(--color-bg-secondary);
+    fill: var(--color-main-btn);
     fill-opacity: 0.8;
     transition: fill-opacity 0.3s;
   }
@@ -132,12 +132,13 @@
   }
 
   svg .apartment-sold {
-    fill: var(--color-sold-apt);
-    fill-opacity: 0.8;
+    fill: url(#apartment-sold-stripes);
+    fill-opacity: 1;
+    cursor: default;
   }
 
   svg .no-highlight {
-    fill: var(--color-not-selected-apt);
+    fill: var(--color-tab-secondary);
     fill-opacity: 0.8;
   }
 
