@@ -150,7 +150,7 @@
   {#each roomOptions as room}
     <button
       type="button"
-      class="min-w-28 font-heading font-light text-base uppercase px-2 md:mx-2 md:px-3 py-1 cursor-pointer hover:text-[var(--color-bg-secondary)] hover:border-b-2 hover:border-bg-secondary transition-all
+      class="min-w-28 font-heading font-light text-base uppercase px-2 md:mx-2 md:px-3 py-1 cursor-pointer border-b-2 border-transparent hover:text-[var(--color-bg-secondary)] hover:border-bg-secondary transition-all
         {selectedRooms.includes(room)
         ? 'btn-primary'
         : ''}"
