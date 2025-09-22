@@ -101,7 +101,7 @@ if (unit) {
                   <>
                     {unit.rooms.map((room: { name: string; surface: number }, index: number) => (
                       <div
-                        class={`flex justify-between py-3 ${index === unit.rooms.length - 1 ? '' : 'border-b border-gray-200'}`}
+                        class={`flex justify-between py-3 ${index === (unit.rooms?.length ?? 0) - 1 ? '' : 'border-b border-gray-200'}`}
                       >
                         <span>{room.name}</span>
                         <span>{room.surface}mp</span>
@@ -147,7 +147,10 @@ if (unit) {
             </div>
 
             {/* Middle - Floor plan image */}
-            <div id="images" class="lg:w-3/5 bg-white p-4 flex flex-col order-1 lg:order-2">
+            <div
+              id="images"
+              class="lg:w-3/5 bg-white px-4 pt-4 pb-4 flex flex-col order-1 lg:order-2"
+            >
               {/* Apartment info at the top */}
               <div class="flex justify-center items-center gap-2 text-center mb-6 font-light">
                 <h1 class="text-2xl md:text-4xl">{unit.name}</h1>
@@ -160,7 +163,7 @@ if (unit) {
               </div>
 
               {/* Floor plan image */}
-              <div class="flex items-center justify-center flex-grow">
+              <div class="flex items-start justify-center flex-grow">
                 {unit.images && unit.images.length > 0 && (
                   <Image
                     id="main-image"
@@ -220,10 +223,16 @@ if (unit) {
             </div>
 
             {/* Right column - Image thumbnails - hidden on mobile */}
-            <div class="hidden lg:flex lg:w-1/6 bg-white/80 p-4 flex-col gap-4 order-3">
+            <div
+              id="desktop-thumbs"
+              class="hidden lg:flex lg:w-1/6 bg-white/80 p-4 flex-col gap-4 order-3 relative lg:max-h-[80vh] overflow-hidden min-h-0"
+            >
               {unit.images && unit.images.length > 0 ? (
-                <div class="flex flex-col gap-3">
-                  {unit.images.slice(0, 4).map((image: SanityImageSource, index: number) => (
+                <div
+                  id="desktop-thumbs-scroll"
+                  class="flex-1 flex flex-col gap-3 overflow-y-auto no-scrollbar pb-12"
+                >
+                  {unit.images.map((image: SanityImageSource, index: number) => (
                     <div
                       class={`cursor-pointer hover:opacity-80 transition-all duration-200 aspect-square w-full border-2 ${index === 0 ? 'border-primary' : 'border-transparent'} hover:border-primary/50`}
                       data-thumbnail-index={index}
@@ -243,6 +252,15 @@ if (unit) {
               ) : (
                 <p class="text-center text-sm text-gray-500">Nu există imagini disponibile</p>
               )}
+
+              {/* Scroll arrow indicator for desktop thumbnails */}
+              <div
+                id="thumbs-scroll-arrow"
+                class="hidden lg:flex absolute bottom-2 left-1/2 -translate-x-1/2 bg-[var(--color-main-btn)] text-white rounded-full w-8 h-8 items-center justify-center shadow-lg animate-pulse"
+                aria-hidden="true"
+              >
+                <Icon name="mdi:chevron-down" class="w-5 h-5" />
+              </div>
             </div>
           </div>
         </div>
@@ -283,6 +301,16 @@ if (unit) {
       display: none;
     }
 
+    /* Hide scrollbar for desktop thumbs scroll area */
+    #desktop-thumbs-scroll.no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    #desktop-thumbs-scroll.no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
     /* Smooth scrolling for mobile gallery */
     #mobile-gallery {
       scroll-snap-type: x mandatory;
@@ -303,8 +331,31 @@ if (unit) {
       const mobileThumbnails = document.querySelectorAll('[data-mobile-thumbnail-index]');
       const mobileGallery = document.getElementById('mobile-gallery');
       const scrollArrow = document.getElementById('scroll-arrow');
+      const desktopThumbs = document.getElementById('desktop-thumbs');
+      const desktopThumbsScroll = document.getElementById('desktop-thumbs-scroll');
+      const thumbsScrollArrow = document.getElementById('thumbs-scroll-arrow');
 
       if (!mainImage) return;
+      // Desktop thumbs scroll hint behavior
+      if (desktopThumbsScroll && thumbsScrollArrow) {
+        function updateThumbsArrowVisibility() {
+          const atBottom =
+            desktopThumbsScroll.scrollTop + desktopThumbsScroll.clientHeight >=
+            desktopThumbsScroll.scrollHeight - 4;
+          const hasOverflow =
+            desktopThumbsScroll.scrollHeight > desktopThumbsScroll.clientHeight + 2;
+          thumbsScrollArrow.style.display = hasOverflow && !atBottom ? 'flex' : 'none';
+        }
+
+        updateThumbsArrowVisibility();
+        desktopThumbsScroll.addEventListener('scroll', updateThumbsArrowVisibility);
+        window.addEventListener('resize', updateThumbsArrowVisibility);
+
+        thumbsScrollArrow.addEventListener('click', function (event) {
+          event.preventDefault();
+          desktopThumbsScroll.scrollBy({ top: 160, behavior: 'smooth' });
+        });
+      }
 
       // Desktop thumbnail functionality
       function updateDesktopActiveState(activeIndex) {
@@ -350,7 +401,6 @@ if (unit) {
       mobileThumbnails.forEach((thumbnail, index) => {
         function handleMobileThumbnailClick(event) {
           event.preventDefault();
-          console.log('Mobile thumbnail clicked:', index);
 
           const newSrc = this.dataset.mobileImageSrc;
           const newAlt = this.dataset.mobileImageAlt;
