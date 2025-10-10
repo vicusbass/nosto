@@ -15,11 +15,33 @@ import FAQ from '../components/FAQ.astro';
       <div class="w-full md:w-5/12 bg-tab-secondary py-4 px-4 md:px-8">
         <form id="contact-form" class="space-y-3" method="POST">
           <div>
+            <label for="prenume" class="block mb-1 text-sm">Prenume</label>
+            <input
+              type="text"
+              id="prenume"
+              name="prenume"
+              required
+              class="w-full py-2 px-2 bg-white border-none"
+            />
+          </div>
+
+          <div>
             <label for="nume" class="block mb-1 text-sm">Nume</label>
             <input
               type="text"
               id="nume"
               name="nume"
+              required
+              class="w-full py-2 px-2 bg-white border-none"
+            />
+          </div>
+
+          <div>
+            <label for="telefon" class="block mb-1 text-sm">Telefon</label>
+            <input
+              type="tel"
+              id="telefon"
+              name="telefon"
               required
               class="w-full py-2 px-2 bg-white border-none"
             />
@@ -211,16 +233,39 @@ import FAQ from '../components/FAQ.astro';
       const closeModalBtn = document.getElementById('close-modal-btn');
       const acceptPrivacyBtn = document.getElementById('accept-privacy-btn');
 
+      // Get all required form fields
+      const prenumeInput = document.getElementById('prenume');
+      const numeInput = document.getElementById('nume');
+      const telefonInput = document.getElementById('telefon');
+      const emailInput = document.getElementById('email');
+      const mesajInput = document.getElementById('mesaj');
+
       function updateSubmitButtonState() {
         if (
           confidentialitateCheckbox instanceof HTMLInputElement &&
           submitButton instanceof HTMLButtonElement
         ) {
-          submitButton.disabled = !confidentialitateCheckbox.checked;
+          // Check if all required fields are filled and privacy checkbox is checked
+          const allFieldsFilled =
+            prenumeInput?.value.trim() &&
+            numeInput?.value.trim() &&
+            telefonInput?.value.trim() &&
+            emailInput?.value.trim() &&
+            mesajInput?.value.trim();
+
+          submitButton.disabled = !confidentialitateCheckbox.checked || !allFieldsFilled;
         }
       }
 
       confidentialitateCheckbox?.addEventListener('change', updateSubmitButtonState);
+
+      // Add event listeners to all required fields
+      prenumeInput?.addEventListener('input', updateSubmitButtonState);
+      numeInput?.addEventListener('input', updateSubmitButtonState);
+      telefonInput?.addEventListener('input', updateSubmitButtonState);
+      emailInput?.addEventListener('input', updateSubmitButtonState);
+      mesajInput?.addEventListener('input', updateSubmitButtonState);
+
       updateSubmitButtonState(); // Initial state
 
       // Privacy policy popup functionality
@@ -288,8 +333,7 @@ import FAQ from '../components/FAQ.astro';
           const result = await response.json();
 
           if (response.ok) {
-            status.textContent = result.message;
-            form.reset();
+            window.location.href = '/multumim';
           } else {
             status.textContent = result.message || 'A apărut o eroare. Încercați din nou.';
           }
