@@ -9,10 +9,10 @@ const resend = new Resend(import.meta.env.RESEND_API_KEY);
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
-    const { nume, email, mesaj, informari } = data;
+    const { prenume, nume, telefon, email, mesaj, informari } = data;
 
     // Basic validation
-    if (!nume || !email || !mesaj) {
+    if (!prenume || !nume || !telefon || !email || !mesaj) {
       return new Response(JSON.stringify({ message: 'Toate câmpurile sunt obligatorii.' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
@@ -24,10 +24,12 @@ export const POST: APIRoute = async ({ request }) => {
       from: 'request@nosto.ro',
       to: 'info@nosto.ro',
       replyTo: email,
-      subject: `Mesaj nou de contact de la ${nume}`,
+      subject: `Mesaj nou de contact de la ${prenume} ${nume}`,
       html: `
         <h3>Mesaj nou de contact</h3>
+        <p><strong>Prenume:</strong> ${prenume}</p>
         <p><strong>Nume:</strong> ${nume}</p>
+        <p><strong>Telefon:</strong> ${telefon}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Mesaj:</strong></p>
         <p>${mesaj.replace(/\n/g, '<br>')}</p>
