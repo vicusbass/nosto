@@ -56,6 +56,15 @@ if (!unitid) {
       "planUrl": plan.asset->url
     }`;
     unit = await sanityClient.fetch(query, { unitid });
+
+    // Filter out images that don't have valid asset references
+    if (unit && unit.images) {
+      unit.images = unit.images.filter((img: any) => {
+        return img && typeof img === 'object' && 'asset' in img && img.asset && !('_upload' in img);
+      });
+    }
+
+    console.log(JSON.stringify(unit, null, 2));
   } catch (e) {
     console.error('Sanity fetch error:', e);
     Astro.response.status = 500;
@@ -147,7 +156,10 @@ if (unit) {
             </div>
 
             {/* Middle - Floor plan image */}
-            <div id="images" class="lg:w-3/5 bg-white px-4 pt-4 pb-4 flex flex-col order-1 lg:order-2">
+            <div
+              id="images"
+              class="lg:w-3/5 bg-white px-4 pt-4 pb-4 flex flex-col order-1 lg:order-2"
+            >
               {/* Apartment info at the top */}
               <div class="flex justify-center items-center gap-2 text-center mb-6 font-light">
                 <h1 class="text-2xl md:text-4xl">{unit.name}</h1>
