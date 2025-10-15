@@ -6,7 +6,7 @@ const menuItems = [
   { name: 'Apartamente', href: '/apartamente' },
   { name: 'Locație', href: '/locatie' },
   { name: 'Stadiu Șantier', href: '/noutati' },
-  { name: 'Contact', href: '/contact' },
+  // { name: 'Contact', href: '/contact' },
 ];
 ---
 
@@ -28,7 +28,7 @@ const menuItems = [
           </a>
         ))
       }
-      <!-- <a href={`tel:${contact.phone}`} class="btn-primary ml-6">CONTACT</a> -->
+      <a href="/contact" class="btn-primary ml-6">Contact</a>
     </div>
     <div class="flex items-center sm:hidden">
       <button
@@ -62,7 +62,7 @@ const menuItems = [
         ))
       }
       <div class="pt-2">
-        <a href={`tel:${contact.phone}`} class="btn-primary">SUNĂ ACUM</a>
+        <a href="/contact" class="btn-primary">Contact</a>
       </div>
     </div>
   </div>
