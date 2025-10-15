@@ -3,6 +3,8 @@ import { Icon } from 'astro-icon/components';
 import footerLogo from '../assets/footer-logo.svg';
 import { Image } from 'astro:assets';
 import contact from '../config/contact';
+
+const isContactPage = Astro.url.pathname === '/contact' || Astro.url.pathname === '/contact/';
 ---
 
 <footer class="footer py-8">
@@ -51,7 +53,7 @@ import contact from '../config/contact';
   >
     <div class="flex gap-4">
       <a href="/apartamente" class="flex-1 btn-secondary text-center"> apartamente </a>
-      <a href={`tel:${contact.phone}`} class="flex-1 btn-primary text-center"> Sună acum </a>
+      <a href={isContactPage ? `tel:${contact.phone}` : '/contact'} class="flex-1 btn-primary text-center"> {isContactPage ? 'Sună acum' : 'Contact'} </a>
     </div>
   </div>
 </footer>

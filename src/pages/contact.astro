@@ -59,6 +59,68 @@ import FAQ from '../components/FAQ.astro';
           </div>
 
           <div>
+            <label class="block mb-2 text-sm">Mă intereseaza:</label>
+            <div class="space-y-2 pl-4">
+              <div class="flex items-center">
+                <input type="checkbox" id="studio" name="intereseaza" value="Studio" class="mr-2" />
+                <label for="studio" class="text-sm">Studio</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="1.5-camere" name="intereseaza" value="1.5 Camere" class="mr-2" />
+                <label for="1.5-camere" class="text-sm">1.5 Camere</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="2-camere" name="intereseaza" value="2 Camere" class="mr-2" />
+                <label for="2-camere" class="text-sm">2 Camere</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="2.5-camere" name="intereseaza" value="2.5 Camere" class="mr-2" />
+                <label for="2.5-camere" class="text-sm">2.5 Camere</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="3-camere" name="intereseaza" value="3 Camere" class="mr-2" />
+                <label for="3-camere" class="text-sm">3 Camere</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="4-camere" name="intereseaza" value="4 Camere" class="mr-2" />
+                <label for="4-camere" class="text-sm">4 Camere</label>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block mb-2 text-sm">Modalitate de achiziție:</label>
+            <div class="space-y-2 pl-4">
+              <div class="flex items-center">
+                <input type="checkbox" id="resurse-proprii" name="modalitate" value="Resurse proprii" class="mr-2" />
+                <label for="resurse-proprii" class="text-sm">Resurse proprii</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="credit-bancar" name="modalitate" value="Credit bancar" class="mr-2" />
+                <label for="credit-bancar" class="text-sm">Credit bancar</label>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block mb-2 text-sm">Cum doriți să fiți contactat?</label>
+            <div class="space-y-2 pl-4">
+              <div class="flex items-center">
+                <input type="checkbox" id="contact-telefonic" name="contact_method" value="Telefonic" class="mr-2" />
+                <label for="contact-telefonic" class="text-sm">Telefonic</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="contact-email" name="contact_method" value="Email" class="mr-2" />
+                <label for="contact-email" class="text-sm">Email</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="contact-whatsapp" name="contact_method" value="WhatsApp" class="mr-2" />
+                <label for="contact-whatsapp" class="text-sm">WhatsApp</label>
+              </div>
+            </div>
+          </div>
+
+          <div>
             <label for="mesaj" class="block mb-1 text-sm">Mesajul dumneavoastră</label>
             <textarea
               id="mesaj"
@@ -109,13 +171,23 @@ import FAQ from '../components/FAQ.astro';
       >
         <div class="flex flex-col gap-8 p-3 md:p-6 w-full max-w-xs">
           <div class="md:hidden flex items-center">
+            <Icon name="mdi:whatsapp" class="h-8 w-8 text-[#c27154] mr-4" />
+            <a
+              href={`https://wa.me/${contact.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-2xl hover:underline">WhatsApp</a
+            >
+          </div>
+
+          <div class="md:hidden flex items-center">
             <Icon name="mdi:phone" class="h-8 w-8 text-[#c27154] mr-4" />
-            <a href={`tel:${contact.phone}`} class="text-xl hover:underline">{contact.phone}</a>
+            <a href={`tel:${contact.phone}`} class="text-2xl hover:underline">{contact.phone}</a>
           </div>
 
           <div class="md:hidden flex items-center">
             <Icon name="mdi:email" class="h-8 w-8 text-[#c27154] mr-4" />
-            <a href={`mailto:${contact.email}`} class="text-xl hover:underline">{contact.email}</a>
+            <a href={`mailto:${contact.email}`} class="text-2xl hover:underline">{contact.email}</a>
           </div>
 
           <div class="md:hidden flex items-center">
@@ -124,27 +196,26 @@ import FAQ from '../components/FAQ.astro';
               href={contact.address}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-xl hover:underline">{contact.addressText}</a
+              class="text-2xl hover:underline">{contact.addressText}</a
             >
           </div>
 
-          <div class="md:hidden flex items-center">
-            <Icon name="mdi:whatsapp" class="h-8 w-8 text-[#c27154] mr-4" />
+          <div class="hidden md:flex items-center">
+            <Icon name="mdi:whatsapp" class="h-8 w-8 color-main-btn mr-4" />
             <a
               href={`https://wa.me/${contact.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-xl hover:underline">WhatsApp</a
+              class="text-2xl hover:underline">WhatsApp</a
             >
           </div>
-
           <div class="hidden md:flex items-center">
             <Icon name="mdi:phone" class="h-8 w-8 color-main-btn mr-4" />
-            <a href={`tel:${contact.phone}`} class="text-xl hover:underline">{contact.phone}</a>
+            <a href={`tel:${contact.phone}`} class="text-2xl hover:underline">{contact.phone}</a>
           </div>
           <div class="hidden md:flex items-center">
             <Icon name="mdi:email" class="h-8 w-8 color-main-btn mr-4" />
-            <a href={`mailto:${contact.email}`} class="text-xl hover:underline">{contact.email}</a>
+            <a href={`mailto:${contact.email}`} class="text-2xl hover:underline">{contact.email}</a>
           </div>
           <div class="hidden md:flex items-center">
             <Icon name="mdi:map-marker" class="h-8 w-8 color-main-btn mr-4" />
@@ -152,16 +223,7 @@ import FAQ from '../components/FAQ.astro';
               href={contact.address}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-xl hover:underline">{contact.addressText}</a
-            >
-          </div>
-          <div class="hidden md:flex items-center">
-            <Icon name="mdi:whatsapp" class="h-8 w-8 color-main-btn mr-4" />
-            <a
-              href={`https://wa.me/${contact.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-xl hover:underline">WhatsApp</a
+              class="text-2xl hover:underline">{contact.addressText}</a
             >
           </div>
         </div>
@@ -319,7 +381,21 @@ import FAQ from '../components/FAQ.astro';
         submitButton.disabled = true;
 
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
+
+        // Convert FormData to object, handling multiple checkbox values
+        const data = {};
+        formData.forEach((value, key) => {
+          if (data[key]) {
+            // If key already exists, convert to array or append to existing array
+            if (Array.isArray(data[key])) {
+              data[key].push(value);
+            } else {
+              data[key] = [data[key], value];
+            }
+          } else {
+            data[key] = value;
+          }
+        });
 
         try {
           const response = await fetch('/api/send-email', {
