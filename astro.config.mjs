@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-console.log(process.env.SANITY_STUDIO_PROJECT_ID);
+// console.log(process.env.SANITY_STUDIO_PROJECT_ID);
 
 import svelte from '@astrojs/svelte';
 
