@@ -64,7 +64,7 @@ if (!unitid) {
       });
     }
 
-    console.log(JSON.stringify(unit, null, 2));
+    // console.log(JSON.stringify(unit, null, 2));
   } catch (e) {
     console.error('Sanity fetch error:', e);
     Astro.response.status = 500;
@@ -333,7 +333,7 @@ if (unit) {
   <script is:inline>
     // Image gallery functionality
     function initializeImageGallery() {
-      console.log('Initializing image gallery...');
+      // console.log('Initializing image gallery...');
 
       const mainImage = document.getElementById('main-image');
       const thumbnails = document.querySelectorAll('[data-thumbnail-index]');
