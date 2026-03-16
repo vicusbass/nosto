@@ -66,7 +66,10 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
     <meta name="geo.position" content="45.75216;21.2759468" />
     <meta name="ICBM" content="45.75216, 21.2759468" />
     <meta name="author" content="Nosto Development" />
-    <meta name="keywords" content="apartamente timisoara, proiect rezidential, apartamente noi, vanzare apartamente, dezvoltator imobiliar, finisaje moderne, preturi competitive, zona verde, timisoara rezidential" />
+    <meta
+      name="keywords"
+      content="apartamente timisoara, proiect rezidential, apartamente noi, vanzare apartamente, dezvoltator imobiliar, finisaje moderne, preturi competitive, zona verde, timisoara rezidential"
+    />
     <meta name="copyright" content="Nosto Development" />
     <!-- Business schema -->
     <script type="application/ld+json">
@@ -88,35 +91,53 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
       }
     </script>
     <!-- Google Tag Manager -->
-    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <!-- <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-W3KX76MD');</script>
-    <!-- End Google Tag Manager -->
+    })(window,document,'script','dataLayer','GTM-W3KX76MD');</script> -->
+    <!-- End Google Tag Manager
 
     <!-- Meta Pixel Code -->
     <script is:inline>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '714838384770271');
       fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=714838384770271&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=714838384770271&ev=PageView&noscript=1"
+      /></noscript
+    >
     <!-- End Meta Pixel Code -->
   </head>
   <body class="font-sans flex flex-col min-h-screen">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3KX76MD"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W3KX76MD"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    > -->
     <!-- End Google Tag Manager (noscript) -->
     <svg
       aria-hidden="true"
