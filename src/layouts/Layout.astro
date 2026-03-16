@@ -27,7 +27,6 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <ClientRouter />
     <title>{title}</title>
     <meta name="description" content={description || defaultDescription} />
     <link rel="canonical" href={canonicalURL} />
@@ -69,6 +68,8 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
       content="apartamente timisoara, proiect rezidential, apartamente noi, vanzare apartamente, dezvoltator imobiliar, finisaje moderne, preturi competitive, zona verde, timisoara rezidential"
     />
     <meta name="copyright" content="Nosto Development" />
+    <ClientRouter />
+
     <!-- Business schema -->
     <script type="application/ld+json">
       {
@@ -170,7 +171,7 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
       </defs>
     </svg>
     <Navbar transition:persist />
-    <main transition:animate="none" class="pt-16 flex-grow mb-16 pb-16 md:pb-0">
+    <main class="pt-16 flex-grow mb-16 pb-16 md:pb-0">
       <slot />
     </main>
     <Footer transition:persist />
