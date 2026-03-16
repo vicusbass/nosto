@@ -22,13 +22,12 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
 ---
 
 <!doctype html>
-<html lang="ro" class="!scroll-smooth">
+<html lang="ro">
   <head>
     <meta charset="UTF-8" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <ClientRouter />
     <title>{title}</title>
     <meta name="description" content={description || defaultDescription} />
@@ -62,27 +61,12 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
 
     <!-- Additional SEO meta tags -->
     <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="language" content="Romanian" />
     <meta name="geo.region" content="RO-TM" />
     <meta name="geo.placename" content="Timișoara" />
     <meta name="geo.position" content="45.75216;21.2759468" />
     <meta name="ICBM" content="45.75216, 21.2759468" />
-
-    <!-- Author and contact -->
     <meta name="author" content="Nosto Development" />
-    <meta name="contact" content="info@nosto.ro" />
-
-    <!-- Keywords for Romanian real estate -->
-    <meta
-      name="keywords"
-      content="apartamente timisoara, proiect rezidential, apartamente noi, vanzare apartamente, dezvoltator imobiliar, finisaje moderne, preturi competitive, zona verde, timisoara rezidential"
-    />
-
-    <!-- Revisit and refresh -->
-    <meta name="revisit-after" content="7 days" />
-
-    <!-- Copyright -->
+    <meta name="keywords" content="apartamente timisoara, proiect rezidential, apartamente noi, vanzare apartamente, dezvoltator imobiliar, finisaje moderne, preturi competitive, zona verde, timisoara rezidential" />
     <meta name="copyright" content="Nosto Development" />
     <!-- Business schema -->
     <script type="application/ld+json">
