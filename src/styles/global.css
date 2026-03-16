@@ -31,8 +31,16 @@
     min-height: 100vh;
     background-color: var(--color-bg-primary);
     @apply font-sans font-normal text-xl text-[var(--color-text-body)];
-    /* Debug: force Amiko to test */
-    font-family: 'Amiko', sans-serif !important;
+  }
+
+  @font-face {
+    font-family: 'Amiko';
+    font-display: block;
+  }
+
+  @font-face {
+    font-family: 'Josefin Sans Variable';
+    font-display: block;
   }
 
   h2 {
