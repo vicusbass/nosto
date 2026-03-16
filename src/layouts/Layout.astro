@@ -3,7 +3,6 @@ import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
-import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   title: string;
@@ -168,6 +167,5 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
       <slot />
     </main>
     <Footer transition:persist />
-    <SpeedInsights />
   </body>
 </html>
