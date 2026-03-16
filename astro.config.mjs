@@ -11,7 +11,7 @@ import svelte from '@astrojs/svelte';
 
 import sanity from '@sanity/astro';
 
-import vercelStatic from '@astrojs/vercel';
+import vercel from '@astrojs/vercel';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -32,7 +32,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  adapter: vercelStatic(),
-
-  output: 'static',
+  adapter: vercel(),
 });

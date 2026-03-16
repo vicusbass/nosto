@@ -44,7 +44,6 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
     <meta property="og:locale" content="ro_RO" />
     <meta property="og:site_name" content="Nosto - Proiect Rezidential" />
 
-    <!-- WhatsApp specific -->
     <meta name="theme-color" content="#c56d44" />
     <meta
       property="og:image:alt"
@@ -90,15 +89,22 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
       }
     </script>
     <!-- Google Tag Manager -->
-    <!-- <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-W3KX76MD');</script> -->
-    <!-- End Google Tag Manager
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-W3KX76MD');
+    </script>
+    <!-- End Google Tag Manager -->
 
     <!-- Meta Pixel Code -->
-    <!-- <script is:inline>
+    <script is:inline>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
         n = f.fbq = function () {
@@ -117,27 +123,28 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
       })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '714838384770271');
       fbq('track', 'PageView');
-    </script> -->
-    <!-- <noscript
-      ><img
-        height="1"
-        width="1"
-        style="display:none"
-        src="https://www.facebook.com/tr?id=714838384770271&ev=PageView&noscript=1"
-      /></noscript -->
-    >
+    </script>
+
     <!-- End Meta Pixel Code -->
   </head>
   <body class="font-sans flex flex-col min-h-screen">
     <!-- Google Tag Manager (noscript) -->
-    <!-- <noscript
+    <noscript
       ><iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-W3KX76MD"
         height="0"
         width="0"
         style="display:none;visibility:hidden"></iframe></noscript
-    > -->
+    >
     <!-- End Google Tag Manager (noscript) -->
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=714838384770271&ev=PageView&noscript=1"
+      /></noscript
+    >
     <svg
       aria-hidden="true"
       width="0"
@@ -163,7 +170,7 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
       </defs>
     </svg>
     <Navbar transition:persist />
-    <main class="pt-16 flex-grow mb-16 pb-16 md:pb-0">
+    <main transition:animate="none" class="pt-16 flex-grow mb-16 pb-16 md:pb-0">
       <slot />
     </main>
     <Footer transition:persist />
