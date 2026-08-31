@@ -1,0 +1,1 @@
+# astro-icon scans this dir for local SVG icons; keeps the dir tracked so the loader does not warn
