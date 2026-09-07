@@ -23702,30 +23702,30 @@
       />
     </g>
     <path
-      id="ap7"
+      id="ap7-b"
       data-rooms="2.5"
       d="m138.01 114.15h-42.806v-39.362h-71.098v-51.417h8.8565v-23.125h69.868v22.879h36.164z"
     />
     <path
-      id="ap8"
+      id="ap8-b"
       data-rooms="2.5"
       d="m278.24 75.034h-137.52v-52.155h54.123v-22.633h74.788v22.633h9.8405z"
     />
     <path
-      id="ap9"
+      id="ap9-b"
       data-rooms="3"
       d="m244.54 77.494h36.41v-54.861h53.385v134.08h-33.212v23.863h-55.599z"
     />
-    <path id="ap10" data-rooms="1.5" d="m242.81 93.485h-86.351v87.089h38.624v-21.403h47.973z" />
-    <path id="ap11" data-rooms="2" d="m180.82 290.05h-85.858v-115.38h63.225v56.337h22.633z" />
-    <rect id="ap12" data-rooms="2.5" x=".24601" y="290.79" width="157.2" height="53.631" />
+    <path id="ap10-b" data-rooms="1.5" d="m242.81 93.485h-86.351v87.089h38.624v-21.403h47.973z" />
+    <path id="ap11-b" data-rooms="2" d="m180.82 290.05h-85.858v-115.38h63.225v56.337h22.633z" />
+    <rect id="ap12-b" data-rooms="2.5" x=".24601" y="290.79" width="157.2" height="53.631" />
     <path
-      id="ap13"
+      id="ap13-b"
       data-rooms="2.5"
       d="m76.756 153.51v134.82h-52.647v-54.615h-23.863v-72.82h24.355v-7.3804z"
     />
     <path
-      id="ap14"
+      id="ap14-b"
       data-rooms="1"
       d="m92.751 151.12-68.272-0.31019v-17.467h-23.987v-57.567h92.009z"
     />
@@ -23736,7 +23736,7 @@
       text-anchor="end"
       clip-path="url(#nc)"
       xml:space="preserve"
-      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap10">AP. 10</tspan
+      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap10-b">AP. 10</tspan
       ></text
     >
     <text
@@ -23744,15 +23744,15 @@
       text-anchor="end"
       clip-path="url(#my)"
       xml:space="preserve"
-      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap10">1.5 camere</tspan></text
+      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap10-b">1.5 camere</tspan></text
     >
-    <!-- <text transform="matrix(1.3333 0 0 1.3333 640.69 367.02)" text-anchor="end" clip-path="url(#my)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap10">S=44.02mp</tspan></text> -->
+    <!-- <text transform="matrix(1.3333 0 0 1.3333 640.69 367.02)" text-anchor="end" clip-path="url(#my)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap10-b">S=44.02mp</tspan></text> -->
     <text
       transform="matrix(1.3333 0 0 1.3333 623.53 282.16)"
       text-anchor="end"
       clip-path="url(#mr)"
       xml:space="preserve"
-      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap8">AP. 8</tspan
+      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap8-b">AP. 8</tspan
       ></text
     >
     <text
@@ -23760,15 +23760,15 @@
       text-anchor="end"
       clip-path="url(#mo)"
       xml:space="preserve"
-      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap8">2.5 camere</tspan></text
+      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap8-b">2.5 camere</tspan></text
     >
-    <!-- <text transform="matrix(1.3333 0 0 1.3333 623.46 292.41)" text-anchor="end" clip-path="url(#mo)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap8">S=56.07mp</tspan></text> -->
+    <!-- <text transform="matrix(1.3333 0 0 1.3333 623.46 292.41)" text-anchor="end" clip-path="url(#mo)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap8-b">S=56.07mp</tspan></text> -->
     <text
       transform="matrix(1.3333 0 0 1.3333 544.06 336.17)"
       text-anchor="end"
       clip-path="url(#mi)"
       xml:space="preserve"
-      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap9">AP. 9</tspan
+      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap9-b">AP. 9</tspan
       ></text
     >
     <text
@@ -23776,15 +23776,15 @@
       text-anchor="end"
       clip-path="url(#mf)"
       xml:space="preserve"
-      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap9">3 camere</tspan></text
+      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap9-b">3 camere</tspan></text
     >
-    <!-- <text transform="matrix(1.3333 0 0 1.3333 543.99 346.43)" text-anchor="end" clip-path="url(#mf)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap9">S=77.47mp</tspan></text> -->
+    <!-- <text transform="matrix(1.3333 0 0 1.3333 543.99 346.43)" text-anchor="end" clip-path="url(#mf)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap9-b">S=77.47mp</tspan></text> -->
     <text
       transform="matrix(1.3333 0 0 1.3333 710.25 486.71)"
       text-anchor="end"
       clip-path="url(#lz)"
       xml:space="preserve"
-      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap11">AP. 11</tspan
+      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap11-b">AP. 11</tspan
       ></text
     >
     <text
@@ -23792,15 +23792,15 @@
       text-anchor="end"
       clip-path="url(#lu)"
       xml:space="preserve"
-      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap11">2 camere</tspan></text
+      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap11-b">2 camere</tspan></text
     >
-    <!-- <text transform="matrix(1.3333 0 0 1.3333 709.25 496.97)" text-anchor="end" clip-path="url(#lu)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap11">S=55.84mp</tspan></text> -->
+    <!-- <text transform="matrix(1.3333 0 0 1.3333 709.25 496.97)" text-anchor="end" clip-path="url(#lu)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap11-b">S=55.84mp</tspan></text> -->
     <text
       transform="matrix(1.3333 0 0 1.3333 745.54 285.75)"
       text-anchor="end"
       clip-path="url(#lo)"
       xml:space="preserve"
-      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap7">AP. 7</tspan
+      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap7-b">AP. 7</tspan
       ></text
     >
     <text
@@ -23808,15 +23808,15 @@
       text-anchor="end"
       clip-path="url(#ll)"
       xml:space="preserve"
-      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap7">2.5 camere</tspan></text
+      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap7-b">2.5 camere</tspan></text
     >
-    <!-- <text transform="matrix(1.3333 0 0 1.3333 745.46 296.01)" text-anchor="end" clip-path="url(#ll)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap7">S=60.23mp</tspan></text> -->
+    <!-- <text transform="matrix(1.3333 0 0 1.3333 745.46 296.01)" text-anchor="end" clip-path="url(#ll)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap7-b">S=60.23mp</tspan></text> -->
     <text
       transform="matrix(1.3333 0 0 1.3333 728.56 551.98)"
       text-anchor="end"
       clip-path="url(#lf)"
       xml:space="preserve"
-      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap12">AP. 12</tspan
+      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap12-b">AP. 12</tspan
       ></text
     >
     <text
@@ -23824,15 +23824,15 @@
       text-anchor="end"
       clip-path="url(#lb)"
       xml:space="preserve"
-      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap12">2.5 camere</tspan></text
+      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap12-b">2.5 camere</tspan></text
     >
-    <!-- <text transform="matrix(1.3333 0 0 1.3333 727.45 562.24)" text-anchor="end" clip-path="url(#lb)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap12">S=55.84mp</tspan></text> -->
+    <!-- <text transform="matrix(1.3333 0 0 1.3333 727.45 562.24)" text-anchor="end" clip-path="url(#lb)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap12-b">S=55.84mp</tspan></text> -->
     <text
       transform="matrix(1.3333 0 0 1.3333 799.67 459.28)"
       text-anchor="end"
       clip-path="url(#kv)"
       xml:space="preserve"
-      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap13">AP. 13</tspan
+      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap13-b">AP. 13</tspan
       ></text
     >
     <text
@@ -23840,15 +23840,15 @@
       text-anchor="end"
       clip-path="url(#ks)"
       xml:space="preserve"
-      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap13">2.5 camere</tspan></text
+      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap13-b">2.5 camere</tspan></text
     >
-    <!-- <text transform="matrix(1.3333 0 0 1.3333 798.56 469.54)" text-anchor="end" clip-path="url(#ks)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap13">S=56.91mp</tspan></text> -->
+    <!-- <text transform="matrix(1.3333 0 0 1.3333 798.56 469.54)" text-anchor="end" clip-path="url(#ks)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap13-b">S=56.91mp</tspan></text> -->
     <text
       transform="matrix(1.3333 0 0 1.3333 783.47 343.84)"
       text-anchor="end"
       clip-path="url(#km)"
       xml:space="preserve"
-      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap14">AP. 14</tspan
+      ><tspan x="0" y="0" dx="0 -0.036665902" class="primary-label" data-ap-id="ap14-b">AP. 14</tspan
       ></text
     >
     <text
@@ -23856,8 +23856,8 @@
       text-anchor="end"
       clip-path="url(#kj)"
       xml:space="preserve"
-      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap14">1 camera</tspan></text
+      ><tspan x="0" y="0" class="secondary-label" data-ap-id="ap14-b">1 camera</tspan></text
     >
-    <!-- <text transform="matrix(1.3333 0 0 1.3333 782.37 354.1)" text-anchor="end" clip-path="url(#kj)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap14">S=40.73mp</tspan></text> -->
+    <!-- <text transform="matrix(1.3333 0 0 1.3333 782.37 354.1)" text-anchor="end" clip-path="url(#kj)" xml:space="preserve"><tspan x="0" y="0" class="secondary-label" data-ap-id="ap14-b">S=40.73mp</tspan></text> -->
   </g>
 </svg>

@@ -12,6 +12,7 @@ import Dotari from '../../components/Dotari.astro';
 
 // Define the unit type
 type UnitType = {
+  _type: 'unit' | 'unitCorpB';
   name: string;
   price: number;
   floorName: string;
@@ -27,7 +28,7 @@ type UnitType = {
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const UNITS_QUERY = `*[_type == "unit" && defined(uniqueId)]{
+  const UNITS_QUERY = `*[_type in ["unit", "unitCorpB"] && defined(uniqueId)]{
     "params": {"unitid": uniqueId}
   }`;
   const paths = await sanityClient.fetch<{ params: { unitid: string } }[]>(UNITS_QUERY);
@@ -43,7 +44,8 @@ if (!unitid) {
   fetchError = 'ID-ul apartamentului lipsește din URL.';
 } else {
   try {
-    const query = `*[_type == "unit" && uniqueId == $unitid][0] {
+    const query = `*[_type in ["unit", "unitCorpB"] && uniqueId == $unitid][0] {
+      _type,
       name,
       price,
       "floorName": floor->name,
@@ -79,11 +81,13 @@ if (unit) {
   Astro.response.status = 404;
   fetchError = `Apartamentul cu ID "${unitid}" nu a fost găsit.`;
 }
+
+const backHref = unit?._type === 'unitCorpB' ? '/apartamente-b' : '/apartamente';
 ---
 
 <Layout title={pageTitle}>
   <a
-    href="/apartamente"
+    href={backHref}
     class="px-6 pt-6 inline-block text-primary hover:underline font-medium font-heading"
   >
     &larr; ÎNAPOI

@@ -4,7 +4,7 @@ import ApartmentsB2 from '../components/ApartmentsB2.svelte';
 import { sanityClient } from 'sanity:client';
 
 let units = [];
-const query = `*[_type == "unit"]{
+const query = `*[_type == "unitCorpB"]{
   uniqueId,
   name,
   type,
@@ -23,7 +23,7 @@ try {
 }
 ---
 
-<Layout title="Apartamente A - Nosto">
+<Layout title="Apartamente B - Nosto">
   <section class="py-10">
     <div class="flex justify-center my-8 px-2 sm:px-6 lg:px-8">
       <div class="w-full max-w-[95vw] lg:max-w-[1600px] h-auto relative">
