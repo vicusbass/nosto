@@ -1,9 +1,9 @@
 <script>
   import { onMount } from 'svelte';
-  import Parter from './Parter.svelte';
-  import Etaj1 from './Etaj1.svelte';
-  import Etaj2 from './Etaj2.svelte';
-  import Etaj3 from './Etaj3.svelte';
+  import Parter from './ParterB2.svelte';
+  import Etaj1 from './Etaj1B2.svelte';
+  import Etaj2 from './Etaj2B2.svelte';
+  import Etaj3 from './Etaj3B2.svelte';
   import Floor from './Floor.svelte';
 
   const { units = [] } = $props();

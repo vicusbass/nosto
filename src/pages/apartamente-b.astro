@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Apartments from '../components/Apartments.svelte';
+import ApartmentsB2 from '../components/ApartmentsB2.svelte';
 import { sanityClient } from 'sanity:client';
 
 let units = [];
@@ -23,7 +23,7 @@ try {
 }
 ---
 
-<Layout title="Apartamente - Nosto">
+<Layout title="Apartamente A - Nosto">
   <section class="py-10">
     <div class="flex justify-center my-8 px-2 sm:px-6 lg:px-8">
       <div class="w-full max-w-[95vw] lg:max-w-[1600px] h-auto relative">
@@ -44,7 +44,7 @@ try {
           </svg>
         </div>
         <div id="apartments-svelte">
-          <Apartments units={units} client:only="svelte" />
+          <ApartmentsB2 units={units} client:only="svelte" />
         </div>
       </div>
     </div>
