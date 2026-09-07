@@ -9,7 +9,8 @@ export interface Building {
   status: BuildingStatus;
   statusLabel: string;
   description: string;
-  cta: { label: string; href: string };
+  /** Links shown under the description; the first one is the primary action. */
+  ctas: { label: string; href: string }[];
   image: ImageMetadata;
   imageAlt: string;
   /** CSS `object-position` used when the image is cropped to the panel ratio. */
@@ -26,7 +27,7 @@ export const buildings: Building[] = [
     statusLabel: 'Finalizat',
     description:
       'Construcția este finalizată. Apartamentele pot fi vizionate la fața locului și se vând direct de la dezvoltator.',
-    cta: { label: 'Vezi apartamentele', href: '/apartamente' },
+    ctas: [{ label: 'Vezi apartamentele', href: '/apartamente' }],
     image: corpATerasa,
     imageAlt: 'Corp A finalizat – terasa de la ultimul etaj, cu vedere spre Timișoara',
     imagePosition: '50% 45%',
@@ -37,7 +38,7 @@ export const buildings: Building[] = [
     statusLabel: 'În construcție',
     description:
       'Lucrările la al doilea corp sunt în desfășurare, pe terenul alăturat. Contactați-ne pentru detalii despre apartamentele disponibile.',
-    cta: { label: 'Contactează-ne', href: '/contact' },
+    ctas: [{ label: 'Vezi apartamentele', href: '/apartamente-b' }],
     image: corpABSantier,
     imageAlt: 'Vedere aeriană: Corp A finalizat în stânga, șantierul Corp B cu macara în dreapta',
     imagePosition: '50% 80%',

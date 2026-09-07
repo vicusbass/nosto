@@ -104,6 +104,16 @@ if (unit) {
           <div class="flex flex-col lg:flex-row gap-4 p-4 lg:p-8 lg:items-start">
             {/* Left column - Room details and pricing */}
             <div id="room-details" class="lg:w-1/4 flex flex-col gap-6 order-2 lg:order-1">
+              {/* Pricing information */}
+              {unit.price && (
+                <div class="p-6">
+                  <p class="text-center text-lg">Preț apartament finisat FĂRĂ TVA</p>
+                  <p class="text-center text-4xl md:text-6xl font-light mt-2">
+                    {new Intl.NumberFormat('ro-RO').format(unit.price)}€
+                  </p>
+                </div>
+              )}
+
               {/* Room details */}
               <div id="room-data" class="bg-white/80 p-6 w-full">
                 {unit.rooms && unit.rooms.length > 0 ? (
@@ -141,16 +151,6 @@ if (unit) {
                     <Icon name="mdi:file-pdf-box" class="w-6 h-6" />
                     Descarcă planul
                   </a>
-                </div>
-              )}
-
-              {/* Pricing information */}
-              {unit.price && (
-                <div class="p-6">
-                  <p class="text-center text-lg">Preț apartament finisat FĂRĂ TVA</p>
-                  <p class="text-center text-4xl md:text-6xl font-light mt-2">
-                    {new Intl.NumberFormat('ro-RO').format(unit.price)}€
-                  </p>
                 </div>
               )}
             </div>

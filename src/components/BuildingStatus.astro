@@ -68,22 +68,29 @@ const fullImages = await Promise.all(
                 <p class="text-base md:text-lg leading-relaxed max-w-prose">
                   {building.description}
                 </p>
-                <a href={building.cta.href} class="building-cta">
-                  <span>{building.cta.label}</span>
-                  <svg
-                    aria-hidden="true"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M3 10h14M11 4l6 6-6 6" />
-                  </svg>
-                </a>
+                <div class="building-ctas">
+                  {building.ctas.map((cta, ctaIndex) => (
+                    <a
+                      href={cta.href}
+                      class:list={['building-cta', { 'building-cta--secondary': ctaIndex > 0 }]}
+                    >
+                      <span>{cta.label}</span>
+                      <svg
+                        aria-hidden="true"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 10h14M11 4l6 6-6 6" />
+                      </svg>
+                    </a>
+                  ))}
+                </div>
               </div>
             </article>
           );
@@ -252,11 +259,18 @@ const fullImages = await Promise.all(
     }
   }
 
+  .building-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 2rem;
+    margin-top: 1.5rem;
+  }
+
   .building-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    margin-top: 1.5rem;
     font-family: var(--font-heading);
     font-size: 0.95rem;
     font-weight: 500;
@@ -268,6 +282,10 @@ const fullImages = await Promise.all(
 
   .building-cta svg {
     transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .building-cta--secondary {
+    color: var(--color-text-body);
   }
 
   .building-cta:hover {
