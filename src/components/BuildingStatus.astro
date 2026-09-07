@@ -1,0 +1,397 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { buildings, buildingsIntro } from '../config/buildings';
+
+// Full-size variants for the lightbox (original dimensions, re-encoded as WebP).
+const fullImages = await Promise.all(
+  buildings.map((building) => getImage({ src: building.image, format: 'webp', quality: 82 }))
+);
+---
+
+<section id="corpuri" class="section-x-padding bg-main pb-16 md:pb-24">
+  <div class="max-w-[1000px] mx-auto">
+    <p class="text-center max-w-3xl mx-auto mb-10 text-balance">{buildingsIntro}</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16 gap-y-16">
+      {
+        buildings.map((building, index) => {
+          const mirrored = index % 2 === 1;
+          const full = fullImages[index];
+          return (
+            <article class="building relative flex flex-col">
+              <a
+                href={full.src}
+                target="_blank"
+                rel="noopener"
+                data-lightbox
+                data-alt={building.imageAlt}
+                data-caption={`${building.name} · ${building.statusLabel}`}
+                aria-label={`Deschide imaginea mărită: ${building.imageAlt}`}
+                class:list={[
+                  'building-image relative block aspect-[4/5] md:aspect-square overflow-hidden',
+                  mirrored ? 'rounded-bl-[96px]' : 'rounded-br-[96px]',
+                ]}
+              >
+                <Image
+                  src={building.image}
+                  alt={building.imageAlt}
+                  widths={[480, 800, 1100]}
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  class="w-full h-full object-cover"
+                  style={`object-position: ${building.imagePosition}`}
+                />
+                <span class="building-zoom" aria-hidden="true">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M12 3h5v5M17 3l-6 6M8 17H3v-5M3 17l6-6" />
+                  </svg>
+                </span>
+              </a>
+
+              <div class="pt-5 md:pt-6">
+                <div class="flex flex-wrap items-center gap-x-5 gap-y-3 mb-4">
+                  <h3 class="font-heading font-light text-3xl md:text-4xl text-black leading-none">
+                    {building.name}
+                  </h3>
+                  <span class:list={['status', `status--${building.status}`]}>
+                    {building.statusLabel}
+                  </span>
+                </div>
+                <p class="text-base md:text-lg leading-relaxed max-w-prose">
+                  {building.description}
+                </p>
+                <a href={building.cta.href} class="building-cta">
+                  <span>{building.cta.label}</span>
+                  <svg
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 10h14M11 4l6 6-6 6" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <dialog id="building-lightbox" class="lightbox" aria-label="Imagine mărită">
+    <button type="button" class="lightbox-close" data-close aria-label="Închide">
+      <svg
+        aria-hidden="true"
+        width="22"
+        height="22"
+        viewBox="0 0 20 20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+      >
+        <path d="M4 4l12 12M16 4L4 16"></path>
+      </svg>
+    </button>
+    <figure class="lightbox-figure">
+      <img alt="" />
+      <figcaption></figcaption>
+    </figure>
+  </dialog>
+</section>
+
+<script>
+  function openLightbox(trigger: HTMLAnchorElement, dialog: HTMLDialogElement) {
+    const img = dialog.querySelector('img');
+    const caption = dialog.querySelector('figcaption');
+    if (!img || !caption) return;
+    img.src = trigger.href;
+    img.alt = trigger.dataset.alt ?? '';
+    caption.textContent = trigger.dataset.caption ?? '';
+    dialog.showModal();
+  }
+
+  // Delegated once per document so it survives ClientRouter navigations.
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    const dialog = document.getElementById('building-lightbox') as HTMLDialogElement | null;
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+
+    const trigger = target.closest<HTMLAnchorElement>('a[data-lightbox]');
+    if (trigger) {
+      event.preventDefault();
+      openLightbox(trigger, dialog);
+      return;
+    }
+
+    if (dialog.open && (target === dialog || target.closest('[data-close]'))) {
+      dialog.close();
+    }
+  });
+
+  // Release the large image once the dialog closes.
+  document.addEventListener(
+    'close',
+    (event) => {
+      const dialog = event.target as HTMLElement;
+      if (dialog.id !== 'building-lightbox') return;
+      const img = dialog.querySelector('img');
+      if (img) img.removeAttribute('src');
+    },
+    true
+  );
+</script>
+
+<style>
+  .building-image {
+    cursor: zoom-in;
+  }
+
+  .building-image img {
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Expand hint in the top-right corner of each photo. */
+  .building-zoom {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    background-color: rgba(249, 247, 240, 0.9);
+    color: var(--color-text-body);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    transition:
+      opacity 300ms,
+      transform 300ms;
+  }
+
+  @media (hover: hover) {
+    .building-zoom {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+
+    .building:hover .building-image img {
+      transform: scale(1.03);
+    }
+
+    .building:hover .building-zoom,
+    .building-image:focus-visible .building-zoom {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .building-image:focus-visible {
+    outline: 3px solid var(--color-main-btn);
+    outline-offset: 4px;
+  }
+
+  /* Status pill – echoes the .btn-primary silhouette (rounded-tr-2xl). */
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem 0.3rem;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1;
+    border-top-right-radius: 1rem;
+    border: 1.5px solid var(--color-main-btn);
+  }
+
+  .status--finalizat {
+    background-color: var(--color-main-btn);
+    color: #fff;
+  }
+
+  .status--in-constructie {
+    color: var(--color-main-btn);
+    background-color: transparent;
+  }
+
+  .status--in-constructie::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: currentColor;
+    animation: status-pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes status-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.35;
+      transform: scale(0.7);
+    }
+  }
+
+  .building-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-main-btn);
+    transition: color 200ms;
+  }
+
+  .building-cta svg {
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .building-cta:hover {
+    color: var(--color-main-btn-hover);
+  }
+
+  .building-cta:hover svg {
+    transform: translateX(6px);
+  }
+
+  /* Lightbox: native <dialog>, closes on Esc, backdrop click or the × button. */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    display: none;
+    place-items: center;
+    color: #fff;
+  }
+
+  .lightbox[open] {
+    display: grid;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(18, 16, 13, 0.88);
+  }
+
+  .lightbox-figure {
+    margin: 0;
+    display: grid;
+    justify-items: center;
+    gap: 0.9rem;
+    padding: 1rem;
+    pointer-events: none;
+  }
+
+  .lightbox-figure img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(100vw - 2rem, 1400px);
+    max-height: calc(100vh - 7rem);
+    object-fit: contain;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    pointer-events: auto;
+  }
+
+  .lightbox-figure figcaption {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 200ms;
+  }
+
+  .lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.24);
+  }
+
+  .lightbox-close:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  /* Scroll-driven reveal: CSS-only, progressive enhancement, no JS. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .building {
+        animation: building-reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 45%;
+      }
+    }
+  }
+
+  @keyframes building-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .status--in-constructie::before,
+    .building-image img,
+    .building-cta svg,
+    .building-zoom {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Lock page scroll while the lightbox is open. */
+  html:has(#building-lightbox[open]) {
+    overflow: hidden;
+  }
+</style>
