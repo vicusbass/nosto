@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Apartments from '../components/Apartments.svelte';
 import { sanityClient } from 'sanity:client';
+import UnitList from '../components/UnitList.astro';
 
 let units = [];
 const query = `*[_type == "unit"]{
@@ -12,6 +13,7 @@ const query = `*[_type == "unit"]{
   size,
   sold,
   "floor": floor->name,
+  "floorLevel": floor->level,
   images
 }`;
 
@@ -26,7 +28,9 @@ try {
 <Layout title="Apartamente A - Nosto">
   <section class="py-10">
     <div class="flex justify-center my-8 px-2 sm:px-6 lg:px-8">
-      <div class="w-full max-w-[95vw] lg:max-w-[1600px] h-auto relative">
+      <div
+        class="w-full max-w-[95vw] lg:max-w-[1600px] h-auto relative min-h-[900px] md:min-h-[600px] lg:min-h-[720px]"
+      >
         <div
           id="apartments-loader"
           class="absolute inset-0 flex items-center justify-center bg-white z-10"
@@ -49,6 +53,7 @@ try {
       </div>
     </div>
   </section>
+  <UnitList units={units} building="Corp A" />
   <script>
     window.addEventListener('apartments-ready', () => {
       document.getElementById('apartments-loader')?.classList.add('hidden');

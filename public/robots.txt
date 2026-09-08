@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# /multumim is excluded via <meta name="robots" content="noindex"> instead of
+# a Disallow rule: crawlers must be able to fetch the page to see the noindex.
+
+Sitemap: https://www.nosto.ro/sitemap-index.xml

@@ -29,7 +29,7 @@ const planQuery = (type: string) => `floor=parter&rooms=${type.replace(/ /g, '+'
         <button
           class="flex-1 h-full tab-button"
           data-index={index}
-          aria-label={`Show ${apartment.type} details`}
+          aria-label={`Afișează detalii ${apartment.type}`}
         />
       ))
     }
@@ -52,7 +52,7 @@ const planQuery = (type: string) => `floor=parter&rooms=${type.replace(/ /g, '+'
         >
           <Image
             src={apartment.planImage}
-            alt={`Plan ${apartment.type}`}
+            alt={`Planul unui apartament tip ${apartment.type.toLowerCase()} din ansamblul Nosto`}
             class="object-contain rounded-tr-[120px] max-h-[460px]"
             width={600}
             height={460}

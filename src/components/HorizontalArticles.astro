@@ -10,6 +10,7 @@ export interface Article {
   text?: any;
   image?: any;
   imageUrl?: string;
+  imageAlt?: string;
 }
 
 interface Props {
@@ -83,7 +84,11 @@ const defaultTextClass =
                 <div class={`${defaultImageContainerClass} ${imageContainerClass}`}>
                   <img
                     src={imageUrl}
-                    alt={article.title}
+                    alt={article.imageAlt || article.title}
+                    width={600}
+                    height={400}
+                    loading="lazy"
+                    decoding="async"
                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>

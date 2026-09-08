@@ -3,21 +3,52 @@ import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
+import contact from '../config/contact';
+import headerLogo from '../assets/header-logo.svg';
+import { toJsonLd } from '../utils/jsonLd';
 
 interface Props {
   title: string;
   description?: string;
   image?: string;
   url?: string;
+  /** Keep the page out of search engines (e.g. the thank-you page). */
+  noindex?: boolean;
 }
 
-const { title, description, image, url } = Astro.props;
+const { title, description, image, url, noindex = false } = Astro.props;
 
 const defaultDescription =
   'Proiect NOU in TIMIȘOARA, vânzare direct de la dezvoltator, apartamente cu finisaje moderne si de calitate, preturi competitive, zonă liniștită si verde preponderent rezidențiala.';
 const defaultImage = new URL('/og.jpg', Astro.url).href;
 const canonicalURL = url || Astro.url.href;
 const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
+
+const siteUrl = Astro.site ?? Astro.url;
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'RealEstateAgent',
+  '@id': new URL('/#organization', siteUrl).href,
+  name: 'Nosto - Proiect Rezidential',
+  url: siteUrl.href,
+  logo: new URL(headerLogo.src, siteUrl).href,
+  image: defaultImage,
+  telephone: contact.phoneInternational,
+  email: contact.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: contact.streetAddress,
+    addressLocality: 'Timișoara',
+    addressRegion: 'Timiș',
+    addressCountry: 'RO',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 45.75216,
+    longitude: 21.2759468,
+  },
+  sameAs: Object.values(contact.social),
+};
 ---
 
 <!doctype html>
@@ -57,7 +88,7 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
     <meta name="twitter:image" content={ogImage} />
 
     <!-- Additional SEO meta tags -->
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
     <meta name="geo.region" content="RO-TM" />
     <meta name="geo.placename" content="Timișoara" />
     <meta name="geo.position" content="45.75216;21.2759468" />
@@ -71,24 +102,7 @@ const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
     <ClientRouter />
 
     <!-- Business schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "RealEstateAgent",
-        "name": "Nosto - Proiect Rezidential",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Timișoara",
-          "addressRegion": "TM",
-          "addressCountry": "RO"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "45.75216",
-          "longitude": "21.2759468"
-        }
-      }
-    </script>
+    <script type="application/ld+json" is:inline set:html={toJsonLd(businessSchema)} />
     <!-- Google Tag Manager -->
     <script is:inline>
       (function (w, d, s, l, i) {
