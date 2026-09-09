@@ -12,6 +12,14 @@ export interface Props {
 }
 
 const { apartments } = Astro.props;
+
+/** Interactive plan pages; each button opens the plan filtered to the showcased type. */
+const plans = [
+  { label: 'Corp A', href: '/apartamente' },
+  { label: 'Corp B', href: '/apartamente-b' },
+];
+
+const planQuery = (type: string) => `floor=parter&rooms=${type.replace(/ /g, '+').toLowerCase()}`;
 ---
 
 <div class="pb-0" id="apartment-showcase">
@@ -21,7 +29,7 @@ const { apartments } = Astro.props;
         <button
           class="flex-1 h-full tab-button"
           data-index={index}
-          aria-label={`Show ${apartment.type} details`}
+          aria-label={`Afișează detalii ${apartment.type}`}
         />
       ))
     }
@@ -44,7 +52,7 @@ const { apartments } = Astro.props;
         >
           <Image
             src={apartment.planImage}
-            alt={`Plan ${apartment.type}`}
+            alt={`Planul unui apartament tip ${apartment.type.toLowerCase()} din ansamblul Nosto`}
             class="object-contain rounded-tr-[120px] max-h-[460px]"
             width={600}
             height={460}
@@ -53,14 +61,21 @@ const { apartments } = Astro.props;
             <p class="text-xl text-justify indent-8 max-h-[33vh] overflow-hidden text-ellipsis mb-4">
               {apartment.description}
             </p>
-            <div>
-              <a
-                href={`/apartamente?floor=parter&rooms=${apartment.type.replace(/ /g, '+').toLowerCase()}`}
-                class="btn-primary px-6 py-3"
-                aria-label={`More details about ${apartment.type}`}
-              >
-                VEZI MAI MULTE OPȚIUNI
-              </a>
+            <div class="flex flex-col gap-3">
+              <p class="heading-font text-base uppercase tracking-wider">
+                Vezi mai multe opțiuni în:
+              </p>
+              <div class="flex flex-wrap gap-3">
+                {plans.map((plan) => (
+                  <a
+                    href={`${plan.href}?${planQuery(apartment.type)}`}
+                    class="btn-primary px-6 py-3"
+                    aria-label={`Vezi opțiuni ${apartment.type} în ${plan.label}`}
+                  >
+                    {plan.label.toUpperCase()}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>

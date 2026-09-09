@@ -16,7 +16,7 @@ import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://nosto.ro',
+  site: 'https://www.nosto.ro',
   integrations: [
     icon(),
     svelte(),
@@ -25,7 +25,10 @@ export default defineConfig({
       dataset: 'production',
       useCdn: false,
     }),
-    sitemap(),
+    sitemap({
+      // The thank-you page is noindex; keep it out of the sitemap too.
+      filter: (page) => !page.includes('/multumim'),
+    }),
   ],
 
   vite: {

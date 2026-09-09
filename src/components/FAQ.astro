@@ -2,20 +2,42 @@
 import type { SanityDocument } from '@sanity/client';
 import { sanityClient } from 'sanity:client';
 import { PortableText } from 'astro-portabletext';
+import { toJsonLd } from '../utils/jsonLd';
 
 interface Props {
   faqs?: SanityDocument[];
+  /** Emit FAQPage JSON-LD. Enable on a single page so the same FAQ is not marked up site-wide. */
+  jsonLd?: boolean;
 }
 
-const { faqs: propsFaqs } = Astro.props;
+const { faqs: propsFaqs, jsonLd = false } = Astro.props;
 
 // Query FAQs from Sanity if not provided as props
-const FAQ_QUERY = '*[_type == "faq"]|order(priority asc){title,details}';
+const FAQ_QUERY =
+  '*[_type == "faq"]|order(priority asc){title,details,"answerText":pt::text(details)}';
 const fetchedFaqs = propsFaqs || (await sanityClient.fetch<SanityDocument[]>(FAQ_QUERY));
 
 // Use either the provided FAQs or the ones fetched from Sanity
 const faqs = fetchedFaqs;
+
+const faqSchema =
+  jsonLd && faqs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.title,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: typeof faq.details === 'string' ? faq.details : (faq.answerText ?? ''),
+          },
+        })),
+      }
+    : null;
 ---
+
+{faqSchema && <script type="application/ld+json" is:inline set:html={toJsonLd(faqSchema)} />}
 
 <section id="faq" class="section-x-padding max-w-4xl mx-auto py-2 md:py-4">
   {

@@ -16,23 +16,28 @@ const query = `*[
 const posts = await sanityClient.fetch<SanityDocument[]>(query);
 
 // Transform posts to match the component interface
-const articles = posts.map((post) => ({
-  ...post,
-  imageUrl: post?.image
-    ? urlForImage(post.image)?.auto('format').width(600).height(400).url()
-    : null,
-  title: new Date(post.date).toLocaleString('ro-RO', {
-    month: 'long',
-    year: 'numeric',
-  }),
-  text: post.text,
-}));
+const articles = posts.map((post) => {
+  const title = new Date(post.date).toLocaleString('ro-RO', { month: 'long', year: 'numeric' });
+  return {
+    ...post,
+    imageUrl: post?.image
+      ? urlForImage(post.image)?.auto('format').width(600).height(400).url()
+      : null,
+    imageAlt: post.image?.alt || `Stadiul șantierului Nosto, ${title}`,
+    title,
+    text: post.text,
+  };
+});
 ---
 
 <Layout title="Noutati - Nosto">
   <section id="hero" class="section-x-padding py-8">
     <div class="w-full h-[300px] relative overflow-hidden rounded-tr-[6rem]">
-      <Image src={heroSantier} alt="Stadiu Șantier" class="w-full h-full object-cover" />
+      <Image
+        src={heroSantier}
+        alt="Muncitori în echipament de protecție pe schelă, sub o macara, pe șantier"
+        class="w-full h-full object-cover"
+      />
       <div class="absolute inset-0 flex items-center justify-center bg-opacity-30">
         <h2 class="font-medium text-center">Stadiu Șantier</h2>
       </div>

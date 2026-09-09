@@ -3,7 +3,8 @@ import { Image } from 'astro:assets';
 import headerLogo from '../assets/header-logo.svg';
 import contact from '../config/contact';
 const menuItems = [
-  { name: 'Apartamente', href: '/apartamente' },
+  { name: 'Apartamente A', href: '/apartamente' },
+  { name: 'Apartamente B', href: '/apartamente-b' },
   { name: 'Locație', href: '/locatie' },
   { name: 'Stadiu Șantier', href: '/noutati' },
   // { name: 'Contact', href: '/contact' },
@@ -14,7 +15,7 @@ const menuItems = [
   <div class="flex justify-between items-center h-full px-6 md:px-[70px]">
     <div class="flex-shrink-0 flex items-center">
       <a href="/" aria-label="Acasă">
-        <Image src={headerLogo} alt="Nosto Logo" height={50} />
+        <Image src={headerLogo} alt="Logo Nosto" height={50} />
       </a>
     </div>
     <div class="hidden sm:flex sm:items-center">
@@ -35,7 +36,7 @@ const menuItems = [
         type="button"
         class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary"
       >
-        <span class="sr-only">Open main menu</span>
+        <span class="sr-only">Deschide meniul principal</span>
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             stroke-linecap="round"

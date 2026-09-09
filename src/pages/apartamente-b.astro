@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Apartments from '../components/Apartments.svelte';
+import ApartmentsB2 from '../components/ApartmentsB2.svelte';
 import { sanityClient } from 'sanity:client';
 import UnitList from '../components/UnitList.astro';
 
 let units = [];
-const query = `*[_type == "unit"]{
+const query = `*[_type == "unitCorpB"]{
   uniqueId,
   name,
   type,
@@ -25,7 +25,7 @@ try {
 }
 ---
 
-<Layout title="Apartamente A - Nosto">
+<Layout title="Apartamente B - Nosto">
   <section class="py-10">
     <div class="flex justify-center my-8 px-2 sm:px-6 lg:px-8">
       <div
@@ -48,12 +48,12 @@ try {
           </svg>
         </div>
         <div id="apartments-svelte">
-          <Apartments units={units} client:only="svelte" />
+          <ApartmentsB2 units={units} client:only="svelte" />
         </div>
       </div>
     </div>
   </section>
-  <UnitList units={units} building="Corp A" />
+  <UnitList units={units} building="Corp B" />
   <script>
     window.addEventListener('apartments-ready', () => {
       document.getElementById('apartments-loader')?.classList.add('hidden');

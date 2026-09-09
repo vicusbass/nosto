@@ -1,0 +1,133 @@
+---
+import SectionTitle from './SectionTitle.astro';
+
+export interface UnitListItem {
+  uniqueId: string;
+  name: string;
+  type: string;
+  price: number;
+  size: number;
+  sold?: boolean;
+  floor?: string | null;
+  floorLevel?: number | null;
+}
+
+interface Props {
+  units: UnitListItem[];
+  /** Building label shown in the heading, e.g. "Corp A". */
+  building: string;
+}
+
+const { units, building } = Astro.props;
+
+const TYPE_LABELS: Record<string, string> = {
+  C: 'Spațiu comercial',
+  '1': 'Studio',
+  '1.5': '1.5 camere',
+  '2': '2 camere',
+  '2.5': '2.5 camere',
+  '3': '3 camere',
+  '4': '4 camere',
+};
+
+const UNKNOWN_FLOOR = 'Etaj nespecificat';
+const priceFormatter = new Intl.NumberFormat('ro-RO');
+
+const formatPrice = (price: number) =>
+  price > 0 ? `${priceFormatter.format(price)} €` : 'Preț la cerere';
+
+/** Numeric part of the uniqueId ("ap12-b" -> 12) so units sort naturally within a floor. */
+const unitNumber = (unit: UnitListItem) =>
+  Number.parseInt(unit.uniqueId.replace(/\D/g, ''), 10) || 0;
+
+// Floors in building order (Parter first), each with its units sorted by number.
+const floorLevels = new Map<string, number>();
+for (const unit of units) {
+  const name = unit.floor ?? UNKNOWN_FLOOR;
+  const level = unit.floorLevel ?? Number.MAX_SAFE_INTEGER;
+  floorLevels.set(name, Math.min(floorLevels.get(name) ?? level, level));
+}
+const floors = [...floorLevels.entries()]
+  .sort((a, b) => a[1] - b[1])
+  .map(([name]) => ({
+    name,
+    units: units
+      .filter((unit) => (unit.floor ?? UNKNOWN_FLOOR) === name)
+      .sort((a, b) => unitNumber(a) - unitNumber(b)),
+  }));
+
+const availableCount = units.filter((unit) => !unit.sold).length;
+---
+
+<SectionTitle title={`Lista apartamentelor – ${building}`} id="lista-apartamente-title" />
+<section id="lista-apartamente" class="section-x-padding pb-12">
+  <p class="mb-8 max-w-3xl">
+    {availableCount} apartamente disponibile din {units.length} în {building}. Prețurile sunt pentru
+    apartamente finisate, fără TVA. Apasă pe numele apartamentului pentru plan, suprafețe și
+    imagini.
+  </p>
+  {
+    floors.map((floor) => (
+      <div class="mb-10">
+        <h3 class="font-heading font-light text-2xl md:text-3xl mb-3 flex flex-wrap items-baseline gap-x-4">
+          {floor.name}
+          <span class="text-base text-gray-600">
+            {floor.units.filter((unit) => !unit.sold).length} disponibile din {floor.units.length}
+          </span>
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[560px] table-fixed text-left text-base border-collapse">
+            <colgroup>
+              <col style="width: 22%" />
+              <col style="width: 22%" />
+              <col style="width: 22%" />
+              <col style="width: 18%" />
+              <col style="width: 16%" />
+            </colgroup>
+            <thead class="bg-tab-secondary font-heading text-sm uppercase tracking-wide">
+              <tr>
+                <th scope="col" class="whitespace-nowrap px-3 py-2 font-normal">
+                  Apartament
+                </th>
+                <th scope="col" class="whitespace-nowrap px-3 py-2 font-normal">
+                  Tip
+                </th>
+                <th scope="col" class="whitespace-nowrap px-3 py-2 font-normal">
+                  Suprafață utilă
+                </th>
+                <th scope="col" class="whitespace-nowrap px-3 py-2 font-normal">
+                  Preț
+                </th>
+                <th scope="col" class="whitespace-nowrap px-3 py-2 font-normal">
+                  Status
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {floor.units.map((unit) => (
+                <tr class={`border-b border-gray-200 ${unit.sold ? 'text-gray-500' : ''}`}>
+                  <th scope="row" class="whitespace-nowrap px-3 py-2 font-medium">
+                    <a
+                      href={`/apartamente/${unit.uniqueId}`}
+                      class="text-[var(--color-main-btn)] hover:underline"
+                    >
+                      {unit.name}
+                    </a>
+                  </th>
+                  <td class="whitespace-nowrap px-3 py-2">{TYPE_LABELS[unit.type] ?? unit.type}</td>
+                  <td class="whitespace-nowrap px-3 py-2">{unit.size} mp</td>
+                  <td class="whitespace-nowrap px-3 py-2">
+                    {unit.sold ? '–' : formatPrice(unit.price)}
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-2 font-heading uppercase text-sm">
+                    {unit.sold ? 'Vândut' : 'Disponibil'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    ))
+  }
+</section>
