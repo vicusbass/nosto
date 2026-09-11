@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import heroImage from '../assets/hero-img-min.png';
 import proiectImgLarge from '../assets/despre_proiect_big.jpeg';
 import heroLogo from '../assets/hero-logo-ded.svg';
@@ -18,17 +18,38 @@ import Finish from '../components/Finish.astro';
 import { techDetails } from '../config/techDetails.ts';
 import YoutubePlayer from '../components/YoutubePlayer.astro';
 import BuildingStatus from '../components/BuildingStatus.astro';
+
+// Same widths/quality/format as the hero <Image> below, so these resolve to the
+// exact same generated files and the preload is a hit rather than a second
+// download.
+const HERO_WIDTHS = [768, 1200, 1440];
+const HERO_SIZES = '100vw';
+const heroPreload = await getImage({
+  src: heroImage,
+  widths: HERO_WIDTHS,
+  sizes: HERO_SIZES,
+  format: 'webp',
+  quality: 75,
+});
 ---
 
-<Layout title="Proiect Rezidential - Nosto">
+<Layout
+  title="Proiect Rezidential - Nosto"
+  preloadImage={{
+    href: heroPreload.src,
+    imagesrcset: heroPreload.srcSet.attribute,
+    imagesizes: HERO_SIZES,
+  }}
+>
   <!-- Hero Section -->
   <section id="about" class="relative h-screen w-full overflow-hidden">
     <Image
       src={heroImage}
       alt="Randare a ansamblului rezidențial Nosto din Timișoara: fațada cu balcoane și curtea interioară amenajată, la apus"
       class="w-full h-full object-cover object-center"
-      widths={[768, 1200, 1440]}
-      sizes="100vw"
+      widths={HERO_WIDTHS}
+      sizes={HERO_SIZES}
+      format="webp"
       quality={75}
       loading="eager"
       fetchpriority="high"

@@ -14,9 +14,15 @@ interface Props {
   url?: string;
   /** Keep the page out of search engines (e.g. the thank-you page). */
   noindex?: boolean;
+  /**
+   * LCP image to preload. Without this the hero is only discovered once the
+   * render-blocking CSS has landed, which on mobile left it waiting ~563ms
+   * before its request even started.
+   */
+  preloadImage?: { href: string; imagesrcset?: string; imagesizes?: string };
 }
 
-const { title, description, image, url, noindex = false } = Astro.props;
+const { title, description, image, url, noindex = false, preloadImage } = Astro.props;
 
 const defaultDescription =
   'Proiect NOU in TIMIȘOARA, vânzare direct de la dezvoltator, apartamente cu finisaje moderne si de calitate, preturi competitive, zonă liniștită si verde preponderent rezidențiala.';
@@ -61,6 +67,18 @@ const businessSchema = {
     <title>{title}</title>
     <meta name="description" content={description || defaultDescription} />
     <link rel="canonical" href={canonicalURL} />
+    {
+      preloadImage && (
+        <link
+          rel="preload"
+          as="image"
+          href={preloadImage.href}
+          imagesrcset={preloadImage.imagesrcset}
+          imagesizes={preloadImage.imagesizes}
+          fetchpriority="high"
+        />
+      )
+    }
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -123,9 +141,14 @@ const businessSchema = {
       // Meta's own snippet, with one change: the `fbq` stub and the queued
       // init/PageView stay synchronous (so no event is lost), but fbevents.js
       // itself — ~111 KiB on a 20-minute TTL we do not control — is fetched only
-      // once the browser goes idle or the visitor interacts, whichever is first.
-      // The idle callback carries a 5s timeout, so it always loads for anyone who
-      // stays on the page; only sub-5s bounces with no interaction go unrecorded.
+      // once the visitor interacts.
+      //
+      // Interaction is the trigger on purpose, with no idle or timeout fallback.
+      // An idle fallback put the library's parse/execute inside Lighthouse's TBT
+      // window (FCP → TTI), which on 4x-throttled mobile CPU cost more score than
+      // the deferral saved. `pointerdown` also covers clicking a link, so anyone
+      // who actually engages is still recorded; a visitor who bounces without
+      // touching anything is not.
       !(function (f, b, e, v) {
         if (f.fbq) return;
         var n = (f.fbq = function () {
@@ -156,23 +179,6 @@ const businessSchema = {
         triggers.forEach(function (type) {
           f.addEventListener(type, load, { passive: true });
         });
-
-        // Idle alone is not enough: on a light page the browser reaches idle
-        // within ~60ms, so wait for `load` first — then the fetch can never
-        // compete with the resources that decide FCP/LCP.
-        function schedule() {
-          if (typeof f.requestIdleCallback === 'function') {
-            f.requestIdleCallback(load, { timeout: 5000 });
-          } else {
-            f.setTimeout(load, 2000);
-          }
-        }
-
-        if (b.readyState === 'complete') {
-          schedule();
-        } else {
-          f.addEventListener('load', schedule, { once: true });
-        }
       })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '714838384770271');
       fbq('track', 'PageView');
