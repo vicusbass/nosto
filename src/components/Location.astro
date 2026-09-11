@@ -9,24 +9,6 @@ interface Props {
 const { showGoogleMapsLink = true } = Astro.props;
 ---
 
-<!-- Load Leaflet CSS with low priority to not block rendering -->
-<link
-  rel="preload"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  as="style"
-  onload="this.onload=null;this.rel='stylesheet'"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""
-/>
-<noscript>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
-</noscript>
-
 <section class="py-0 bg-gray-100">
   <div class="w-full relative h-[60vh] min-h-[400px]">
     <!-- Map container with buttons positioned absolutely inside -->
@@ -112,11 +94,38 @@ const { showGoogleMapsLink = true } = Astro.props;
   }
 </style>
 
-<!-- Load Leaflet JS with defer to not block rendering -->
-<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-
 <script is:inline>
   let mapInstance = null;
+  let leafletPromise = null;
+
+  // Leaflet and its OpenStreetMap tiles are third-party requests we cannot cache
+  // any longer than their origins allow, so the only saving available is to not
+  // make them until the map is actually about to be seen.
+  function loadLeaflet() {
+    if (typeof L !== 'undefined') return Promise.resolve();
+    if (leafletPromise) return leafletPromise;
+
+    leafletPromise = new Promise((resolve, reject) => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+      link.crossOrigin = '';
+      document.head.appendChild(link);
+
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      script.crossOrigin = '';
+      script.onload = resolve;
+      script.onerror = () => {
+        leafletPromise = null;
+        reject(new Error('Leaflet failed to load'));
+      };
+      document.head.appendChild(script);
+    });
+
+    return leafletPromise;
+  }
 
   function initializeLeafletMap() {
     const mapContainer = document.getElementById('leaflet-map');
@@ -207,13 +216,42 @@ const { showGoogleMapsLink = true } = Astro.props;
     }
   }
 
-  // Initialize on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeLeafletMap);
-  } else {
-    initializeLeafletMap();
+  function startMapWhenVisible() {
+    const mapContainer = document.getElementById('leaflet-map');
+    if (!mapContainer) return;
+
+    const start = () =>
+      loadLeaflet()
+        .then(initializeLeafletMap)
+        .catch((error) => console.error('Map could not be initialized:', error));
+
+    // On /locatie the map sits near the top, so this fires straight away; on the
+    // home page it holds the requests back until the visitor scrolls near it.
+    if (!('IntersectionObserver' in window)) {
+      start();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        observer.disconnect();
+        start();
+      },
+      { rootMargin: '400px 0px' }
+    );
+
+    observer.observe(mapContainer);
   }
 
-  // Initialize on client-side navigation
-  document.addEventListener('astro:page-load', initializeLeafletMap);
+  // Arm on first load...
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startMapWhenVisible);
+  } else {
+    startMapWhenVisible();
+  }
+
+  // ...and again after each client-side navigation, which swaps in a fresh
+  // #leaflet-map element that the previous observer is no longer watching.
+  document.addEventListener('astro:page-load', startMapWhenVisible);
 </script>

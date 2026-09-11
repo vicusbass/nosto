@@ -120,21 +120,59 @@ const businessSchema = {
 
     <!-- Meta Pixel Code -->
     <script is:inline>
-      !(function (f, b, e, v, n, t, s) {
+      // Meta's own snippet, with one change: the `fbq` stub and the queued
+      // init/PageView stay synchronous (so no event is lost), but fbevents.js
+      // itself — ~111 KiB on a 20-minute TTL we do not control — is fetched only
+      // once the browser goes idle or the visitor interacts, whichever is first.
+      // The idle callback carries a 5s timeout, so it always loads for anyone who
+      // stays on the page; only sub-5s bounces with no interaction go unrecorded.
+      !(function (f, b, e, v) {
         if (f.fbq) return;
-        n = f.fbq = function () {
+        var n = (f.fbq = function () {
           n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-        };
+        });
         if (!f._fbq) f._fbq = n;
         n.push = n;
         n.loaded = !0;
         n.version = '2.0';
         n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
+
+        var triggers = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+        var requested = false;
+
+        function load() {
+          if (requested) return;
+          requested = true;
+          triggers.forEach(function (type) {
+            f.removeEventListener(type, load);
+          });
+          var t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          var s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        }
+
+        triggers.forEach(function (type) {
+          f.addEventListener(type, load, { passive: true });
+        });
+
+        // Idle alone is not enough: on a light page the browser reaches idle
+        // within ~60ms, so wait for `load` first — then the fetch can never
+        // compete with the resources that decide FCP/LCP.
+        function schedule() {
+          if (typeof f.requestIdleCallback === 'function') {
+            f.requestIdleCallback(load, { timeout: 5000 });
+          } else {
+            f.setTimeout(load, 2000);
+          }
+        }
+
+        if (b.readyState === 'complete') {
+          schedule();
+        } else {
+          f.addEventListener('load', schedule, { once: true });
+        }
       })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '714838384770271');
       fbq('track', 'PageView');
