@@ -60,6 +60,7 @@ const fullImages = await Promise.all(
                   sizes={PANEL_SIZES}
                   format="webp"
                   quality={70}
+                  fetchpriority="low"
                   class="w-full h-full object-cover"
                   style={`object-position: ${building.imagePosition}`}
                 />
