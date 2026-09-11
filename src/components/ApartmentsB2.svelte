@@ -160,6 +160,17 @@
   {/each}
 </div>
 
+<p
+  class="mx-auto mb-6 flex max-w-2xl items-start justify-center gap-3 px-4 text-base leading-snug"
+>
+  <span aria-hidden="true" class="mt-1 inline-block h-4 w-4 shrink-0 rounded-sm bg-main-btn opacity-80"></span>
+  <span>
+    Apasă pe un apartament portocaliu, marcat
+    <span class="font-heading font-semibold tracking-wide">DISPONIBIL</span>, pentru a vedea planul,
+    suprafețele și prețul.
+  </span>
+</p>
+
 <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
   <div class="md:col-span-3 p-3 md:p-6 md:max-w-150 lg:ml-20">
     <Floor
@@ -193,13 +204,5 @@
         </button>
       </div>
     {/each}
-    <p class="flex items-start gap-3 px-1 text-base leading-snug">
-      <span aria-hidden="true" class="mt-1 inline-block h-4 w-4 shrink-0 rounded-sm bg-main-btn opacity-80"></span>
-      <span>
-        Apasă pe un apartament portocaliu, marcat
-        <span class="font-heading font-semibold tracking-wide">DISPONIBIL</span>, pentru a vedea planul,
-        suprafețele și prețul.
-      </span>
-    </p>
   </div>
 </div>
