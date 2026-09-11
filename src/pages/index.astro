@@ -4,8 +4,6 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import heroImage from '../assets/hero-img-min.png';
 import proiectImgLarge from '../assets/despre_proiect_big.jpeg';
-import proiectImg1 from '../assets/despre_proiect_1.jpeg';
-import proiectImg2 from '../assets/despre_proiect_2.jpeg';
 import heroLogo from '../assets/hero-logo-ded.svg';
 import tipStudio from '../assets/apartmentTypes/tip_studio.jpg';
 import tip15 from '../assets/apartmentTypes/tip_1_5.jpg';
@@ -48,9 +46,18 @@ import BuildingStatus from '../components/BuildingStatus.astro';
 
   <SectionTitle title="Prezentarea generală a proiectului" id="despre-proiect-title" class="pt-8" />
   <section id="despre" class="section-x-padding bg-main pt-8">
-    <div class="flex flex-col mx-auto">
-      <div class="w-full mb-4">
-        <h1 class="text-justify indent-12">
+    <div class="flex flex-col md:flex-row md:items-center gap-8">
+      <div class="md:w-1/2">
+        <Image
+          src={proiectImgLarge}
+          alt="Vedere aeriană a ansamblului rezidențial Nosto din Timișoara, cu parcări și spații verzi între clădiri"
+          class="shadow-lg w-full h-auto object-cover"
+          width={600}
+        />
+      </div>
+
+      <div class="md:w-1/2 flex flex-col gap-4">
+        <h1 class="indent-12">
           Proiect NOU in TIMIȘOARA, vânzare direct de la dezvoltator, apartamente cu finisaje
           moderne si de calitate, preturi competitive, zonă liniștită si verde preponderent
           rezidențiala. Apartamentele de vânzare din acest proiect se diferențiază prin atenția
@@ -59,59 +66,25 @@ import BuildingStatus from '../components/BuildingStatus.astro';
           vin și cu o propunere concretă de mobilare, ajutând la o mai bună apreciere a spațiului și
           a măsurii în care acesta corespunde nevoilor dumneavoastră.
         </h1>
-      </div>
 
-      <div class="flex flex-col md:flex-row gap-8">
-        <div class="md:w-1/2">
-          <Image
-            src={proiectImgLarge}
-            alt="Vedere aeriană a ansamblului rezidențial Nosto din Timișoara, cu parcări și spații verzi între clădiri"
-            class="shadow-lg w-full h-full object-cover"
-            width={600}
-          />
-        </div>
+        <p class="indent-12">
+          Un preț corect și competitiv oferă o valoare excelentă banilor investiți în acest proiect.
+        </p>
 
-        <div class="md:w-1/2 flex flex-col gap-8">
-          <div class="flex gap-4 h-1/2">
-            <div class="w-1/2">
-              <Image
-                src={proiectImg1}
-                alt="Fațada clădirii Nosto la apus, cu terase la ultimul etaj și balcoane cu jardiniere"
-                class="shadow-lg w-full h-full object-cover"
-                width={300}
-              />
-            </div>
-            <div class="w-1/2">
-              <Image
-                src={proiectImg2}
-                alt="Fațada laterală a clădirii Nosto, cu locuri de parcare la parter și grădină amenajată"
-                class="shadow-lg w-full h-full object-cover"
-                width={300}
-              />
-            </div>
-          </div>
-
-          <div class="h-1/2">
-            <p class="mb-2 indent-12 text-justify">
-              Un preț corect și competitiv oferă o valoare excelentă banilor investiți în acest
-              proiect.
-            </p>
-            <ul class="space-y-2">
-              <li class="flex items-center">
-                <span class="w-6 h-6 mr-2">✓</span>
-                Calitatea bună a construcției
-              </li>
-              <li class="flex items-center">
-                <span class="w-6 h-6 mr-2">✓</span>
-                Finisajele moderne
-              </li>
-              <li class="flex items-center">
-                <span class="w-6 h-6 mr-2">✓</span>
-                O zonă liniștită și bine conectată în Timișoara
-              </li>
-            </ul>
-          </div>
-        </div>
+        <ul class="space-y-2">
+          <li class="flex items-center">
+            <span class="w-6 h-6 mr-2">✓</span>
+            Calitatea bună a construcției
+          </li>
+          <li class="flex items-center">
+            <span class="w-6 h-6 mr-2">✓</span>
+            Finisajele moderne
+          </li>
+          <li class="flex items-center">
+            <span class="w-6 h-6 mr-2">✓</span>
+            O zonă liniștită și bine conectată în Timișoara
+          </li>
+        </ul>
       </div>
     </div>
   </section>

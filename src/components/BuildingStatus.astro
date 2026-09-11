@@ -2,9 +2,30 @@
 import { Image, getImage } from 'astro:assets';
 import { buildings, buildingsIntro } from '../config/buildings';
 
-// Full-size variants for the lightbox (original dimensions, re-encoded as WebP).
+// The lightbox never paints wider than ~1400px, and the sources are phone photos
+// up to 2856px on the long edge, so cap the variants: a full-resolution re-encode
+// costs ~1MB for no visible gain. Quality/format match the <Image> below so the
+// 1600px entry and this href resolve to the same generated file.
+const LIGHTBOX_WIDTHS = [800, 1200, 1600];
+const LIGHTBOX_MAX = LIGHTBOX_WIDTHS[LIGHTBOX_WIDTHS.length - 1];
+const LIGHTBOX_SIZES = '(min-width: 1500px) 1400px, 100vw';
+
+// Panel geometry: .section-x-padding (24px / 64px from md) around a
+// max-w-[1000px] container, split into two columns with a 40px gap (64px from
+// lg). So the widest a panel ever paints is (1000 - 64) / 2 = 468px, which is
+// also why the largest variant is 936px: exactly that slot at DPR 2.
+const PANEL_SIZES = [
+  '(min-width: 1128px) 468px',
+  '(min-width: 1024px) calc(50vw - 96px)',
+  '(min-width: 768px) calc(50vw - 84px)',
+  'calc(100vw - 48px)',
+].join(', ');
+
+// Plain-URL fallback for the <a href>, used when JS is unavailable.
 const fullImages = await Promise.all(
-  buildings.map((building) => getImage({ src: building.image, format: 'webp', quality: 82 }))
+  buildings.map((building) =>
+    getImage({ src: building.image, width: LIGHTBOX_MAX, format: 'webp', quality: 82 })
+  )
 );
 ---
 
@@ -23,8 +44,7 @@ const fullImages = await Promise.all(
                 href={full.src}
                 target="_blank"
                 rel="noopener"
-                data-lightbox
-                data-alt={building.imageAlt}
+                data-lightbox={index}
                 data-caption={`${building.name} · ${building.statusLabel}`}
                 aria-label={`Deschide imaginea mărită: ${building.imageAlt}`}
                 class:list={[
@@ -35,8 +55,11 @@ const fullImages = await Promise.all(
                 <Image
                   src={building.image}
                   alt={building.imageAlt}
-                  widths={[480, 800, 1100]}
-                  sizes="(min-width: 768px) 50vw, 100vw"
+                  width={936}
+                  widths={[480, 800, 936]}
+                  sizes={PANEL_SIZES}
+                  format="webp"
+                  quality={70}
                   class="w-full h-full object-cover"
                   style={`object-position: ${building.imagePosition}`}
                 />
@@ -115,19 +138,40 @@ const fullImages = await Promise.all(
       </svg>
     </button>
     <figure class="lightbox-figure">
-      <img alt="" />
+      {
+        buildings.map((building, index) => (
+          <Image
+            src={building.image}
+            alt={building.imageAlt}
+            width={LIGHTBOX_MAX}
+            widths={LIGHTBOX_WIDTHS}
+            sizes={LIGHTBOX_SIZES}
+            format="webp"
+            quality={82}
+            loading="lazy"
+            data-lightbox-image={index}
+            hidden
+          />
+        ))
+      }
       <figcaption></figcaption>
     </figure>
   </dialog>
 </section>
 
 <script>
-  function openLightbox(trigger: HTMLAnchorElement, dialog: HTMLDialogElement) {
-    const img = dialog.querySelector('img');
+  function showOnly(dialog: HTMLDialogElement, index: string | null) {
+    dialog.querySelectorAll<HTMLImageElement>('[data-lightbox-image]').forEach((img) => {
+      // Toggling `hidden` is what triggers the lazy load, so nothing is fetched
+      // until a panel is actually opened.
+      img.hidden = img.dataset.lightboxImage !== index;
+    });
+  }
+
+  function openLightbox(trigger: HTMLElement, dialog: HTMLDialogElement) {
     const caption = dialog.querySelector('figcaption');
-    if (!img || !caption) return;
-    img.src = trigger.href;
-    img.alt = trigger.dataset.alt ?? '';
+    if (!caption) return;
+    showOnly(dialog, trigger.dataset.lightbox ?? null);
     caption.textContent = trigger.dataset.caption ?? '';
     dialog.showModal();
   }
@@ -150,14 +194,13 @@ const fullImages = await Promise.all(
     }
   });
 
-  // Release the large image once the dialog closes.
+  // Hide every variant again once the dialog closes.
   document.addEventListener(
     'close',
     (event) => {
-      const dialog = event.target as HTMLElement;
+      const dialog = event.target as HTMLDialogElement;
       if (dialog.id !== 'building-lightbox') return;
-      const img = dialog.querySelector('img');
-      if (img) img.removeAttribute('src');
+      showOnly(dialog, null);
     },
     true
   );
@@ -328,6 +371,12 @@ const fullImages = await Promise.all(
     gap: 0.9rem;
     padding: 1rem;
     pointer-events: none;
+  }
+
+  /* Beats `.lightbox-figure img { display: block }`, which would otherwise
+     override the UA stylesheet's `[hidden] { display: none }`. */
+  .lightbox-figure img[hidden] {
+    display: none;
   }
 
   .lightbox-figure img {
