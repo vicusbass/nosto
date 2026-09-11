@@ -1,5 +1,5 @@
 import type { ImageMetadata } from 'astro';
-import corpATerasa from '../assets/corp-a-terasa.jpg';
+import corpAReal from '../assets/corp-a-real.jpeg';
 import corpABSantier from '../assets/corp-a-corp-b-santier.jpg';
 
 export type BuildingStatus = 'finalizat' | 'in-constructie';
@@ -28,9 +28,9 @@ export const buildings: Building[] = [
     description:
       'Construcția este finalizată. Apartamentele pot fi vizionate la fața locului și se vând direct de la dezvoltator.',
     ctas: [{ label: 'Vezi apartamentele', href: '/apartamente' }],
-    image: corpATerasa,
-    imageAlt: 'Corp A finalizat – terasa de la ultimul etaj, cu vedere spre Timișoara',
-    imagePosition: '50% 45%',
+    image: corpAReal,
+    imageAlt: 'Corp A finalizat – fațada clădirii cu balcoane, văzută peste spațiul verde amenajat',
+    imagePosition: '50% 15%',
   },
   {
     name: 'Corp B',
