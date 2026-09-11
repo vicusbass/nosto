@@ -473,9 +473,9 @@ const backHref = unit?._type === 'unitCorpB' ? '/apartamente-b' : '/apartamente'
           }
         }
 
-        // Add both click and touchend events for better mobile support
+        // `click` only, deliberately: a `touchend` listener also fires when the
+        // touch was a scroll-swipe through the gallery, not a tap.
         thumbnail.addEventListener('click', handleMobileThumbnailClick);
-        thumbnail.addEventListener('touchend', handleMobileThumbnailClick);
       });
 
       // Mobile scroll arrow functionality
@@ -492,14 +492,6 @@ const backHref = unit?._type === 'unitCorpB' ? '/apartamente-b' : '/apartamente'
         scrollArrow.addEventListener('click', function (event) {
           event.preventDefault();
           const scrollAmount = 100; // Adjust this value as needed
-          mobileGallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-          hideScrollArrow();
-        });
-
-        // Hide arrow on touch
-        scrollArrow.addEventListener('touchend', function (event) {
-          event.preventDefault();
-          const scrollAmount = 100;
           mobileGallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
           hideScrollArrow();
         });
@@ -531,19 +523,14 @@ const backHref = unit?._type === 'unitCorpB' ? '/apartamente-b' : '/apartamente'
           document.body.style.overflow = ''; // Restore scrolling
         }
 
+        // `click` only, deliberately: `touchend` also fires when the touch was a
+        // page scroll that happened to start on the image, which opened the modal
+        // on nearly every scroll. The browser only synthesizes `click` for a real tap.
         mainImage.addEventListener('click', openImageModal);
-        mainImage.addEventListener('touchend', function (event) {
-          event.preventDefault();
-          openImageModal();
-        });
 
         // Close modal events
         if (closeModal) {
           closeModal.addEventListener('click', closeImageModal);
-          closeModal.addEventListener('touchend', function (event) {
-            event.preventDefault();
-            closeImageModal();
-          });
         }
 
         // Close modal when clicking outside the image
