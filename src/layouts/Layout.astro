@@ -121,34 +121,71 @@ const businessSchema = {
 
     <!-- Business schema -->
     <script type="application/ld+json" is:inline set:html={toJsonLd(businessSchema)} />
+    <!-- Third-party tag loading -->
+    <script is:inline>
+      // GTM and the Meta Pixel are both loaded on first interaction rather than
+      // during page load. Their bytes and parse cost are not ours to change --
+      // only when we pay them. Deferring to idle instead puts that work inside
+      // Lighthouse's TBT window (FCP -> TTI), which on 4x-throttled mobile CPU
+      // costs more than the deferral saves.
+      //
+      // `pointerdown` fires before `click`, so clicking a link or a button counts
+      // as engagement and the tags load. A visitor who leaves without touching
+      // anything is not recorded -- the accepted trade for the score.
+      (function (w) {
+        var triggers = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+        var pending = [];
+        var fired = false;
+
+        function run() {
+          if (fired) return;
+          fired = true;
+          triggers.forEach(function (type) {
+            w.removeEventListener(type, run);
+          });
+          while (pending.length) pending.shift()();
+        }
+
+        triggers.forEach(function (type) {
+          w.addEventListener(type, run, { passive: true });
+        });
+
+        w.__onFirstInteraction = function (callback) {
+          fired ? callback() : pending.push(callback);
+        };
+      })(window);
+    </script>
+
     <!-- Google Tag Manager -->
     <script is:inline>
-      (function (w, d, s, l, i) {
+      (function (w, d, l, i) {
         w[l] = w[l] || [];
         w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-W3KX76MD');
+
+        // Google's canonical gtag stub, defined synchronously. Calls made before
+        // gtm.js lands (the footer's call button) queue on the dataLayer and are
+        // replayed once it loads, instead of being dropped by a `typeof gtag`
+        // guard against an undefined function.
+        w.gtag = function () {
+          w[l].push(arguments);
+        };
+
+        w.__onFirstInteraction(function () {
+          var j = d.createElement('script');
+          j.async = true;
+          j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + (l != 'dataLayer' ? '&l=' + l : '');
+          d.head.appendChild(j);
+        });
+      })(window, document, 'dataLayer', 'GTM-W3KX76MD');
     </script>
     <!-- End Google Tag Manager -->
 
     <!-- Meta Pixel Code -->
     <script is:inline>
       // Meta's own snippet, with one change: the `fbq` stub and the queued
-      // init/PageView stay synchronous (so no event is lost), but fbevents.js
-      // itself — ~111 KiB on a 20-minute TTL we do not control — is fetched only
-      // once the visitor interacts.
-      //
-      // Interaction is the trigger on purpose, with no idle or timeout fallback.
-      // An idle fallback put the library's parse/execute inside Lighthouse's TBT
-      // window (FCP → TTI), which on 4x-throttled mobile CPU cost more score than
-      // the deferral saved. `pointerdown` also covers clicking a link, so anyone
-      // who actually engages is still recorded; a visitor who bounces without
-      // touching anything is not.
+      // init/PageView stay synchronous (so no event is lost), while fbevents.js
+      // itself waits for the first interaction.
       !(function (f, b, e, v) {
         if (f.fbq) return;
         var n = (f.fbq = function () {
@@ -160,30 +197,17 @@ const businessSchema = {
         n.version = '2.0';
         n.queue = [];
 
-        var triggers = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
-        var requested = false;
-
-        function load() {
-          if (requested) return;
-          requested = true;
-          triggers.forEach(function (type) {
-            f.removeEventListener(type, load);
-          });
+        f.__onFirstInteraction(function () {
           var t = b.createElement(e);
           t.async = !0;
           t.src = v;
           var s = b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t, s);
-        }
-
-        triggers.forEach(function (type) {
-          f.addEventListener(type, load, { passive: true });
         });
       })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '714838384770271');
       fbq('track', 'PageView');
     </script>
-
     <!-- End Meta Pixel Code -->
   </head>
   <body class="font-sans flex flex-col min-h-screen">
