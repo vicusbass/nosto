@@ -13,7 +13,9 @@ const LIGHTBOX_SIZES = '(min-width: 1500px) 1400px, 100vw';
 // Panel geometry: .section-x-padding (24px / 64px from md) around a
 // max-w-[1000px] container, split into two columns with a 40px gap (64px from
 // lg). So the widest a panel ever paints is (1000 - 64) / 2 = 468px, which is
-// also why the largest variant is 936px: exactly that slot at DPR 2.
+// also why the largest variant is 936px: exactly that slot at DPR 2. 640px
+// covers the common phone case -- 364 CSS px at DPR 1.75 is 637 device px, which
+// was rounding up to the 800w file and costing ~93KB across the two panels.
 const PANEL_SIZES = [
   '(min-width: 1128px) 468px',
   '(min-width: 1024px) calc(50vw - 96px)',
@@ -56,7 +58,7 @@ const fullImages = await Promise.all(
                   src={building.image}
                   alt={building.imageAlt}
                   width={936}
-                  widths={[480, 800, 936]}
+                  widths={[480, 640, 800, 936]}
                   sizes={PANEL_SIZES}
                   format="webp"
                   quality={70}
