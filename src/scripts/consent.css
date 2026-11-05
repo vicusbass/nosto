@@ -1,0 +1,113 @@
+/*
+ * Cookie banner themed to the site: cream panels, Josefin Sans headings,
+ * uppercase terracotta buttons with the site's single rounded top-right corner,
+ * and the section-title square in front of the banner title. Colours come from
+ * the @theme tokens in global.css (hex fallbacks only in case a token is
+ * tree-shaken out of the page CSS).
+ */
+#cc-main {
+  --nosto-accent: var(--color-main-btn, #c56d44);
+  --nosto-accent-hover: var(--color-main-btn-hover, #c8592d);
+  --nosto-text: var(--color-text-body, #3d3d3d);
+  --nosto-line: var(--color-tab-secondary, #d8d2c2);
+  --nosto-muted: var(--color-apt-hover, #a89588);
+
+  --cc-font-family: var(--font-sans, 'Amiko', sans-serif);
+  --cc-bg: var(--color-bg-primary, #f9f7f0);
+  --cc-primary-color: var(--nosto-text);
+  --cc-secondary-color: var(--nosto-text);
+  --cc-link-color: var(--nosto-accent);
+  --cc-modal-border-radius: 0 1.5rem 0 0;
+  --cc-btn-border-radius: 0 1rem 0 0;
+  --cc-pm-toggle-border-radius: 0 0.75rem 0 0;
+
+  --cc-btn-primary-bg: var(--nosto-accent);
+  --cc-btn-primary-color: #fff;
+  --cc-btn-primary-border-color: var(--nosto-accent);
+  --cc-btn-primary-hover-bg: var(--nosto-accent-hover);
+  --cc-btn-primary-hover-color: #fff;
+  --cc-btn-primary-hover-border-color: var(--nosto-accent-hover);
+
+  --cc-btn-secondary-bg: #fff;
+  --cc-btn-secondary-color: var(--nosto-accent);
+  --cc-btn-secondary-border-color: var(--nosto-accent);
+  --cc-btn-secondary-hover-bg: var(--nosto-accent-hover);
+  --cc-btn-secondary-hover-color: #fff;
+  --cc-btn-secondary-hover-border-color: var(--nosto-accent-hover);
+
+  --cc-separator-border-color: var(--nosto-line);
+  --cc-section-category-border: var(--nosto-line);
+
+  --cc-toggle-on-bg: var(--nosto-accent);
+  --cc-toggle-off-bg: var(--nosto-muted);
+  --cc-toggle-on-knob-bg: #fff;
+  --cc-toggle-off-knob-bg: #fff;
+  --cc-toggle-enabled-icon-color: var(--nosto-accent);
+  --cc-toggle-disabled-icon-color: var(--nosto-muted);
+  --cc-toggle-readonly-bg: var(--nosto-line);
+  --cc-toggle-readonly-knob-bg: #fff;
+  --cc-toggle-readonly-knob-icon-color: var(--nosto-muted);
+
+  --cc-cookie-category-block-bg: #fff;
+  --cc-cookie-category-block-border: var(--nosto-line);
+  --cc-cookie-category-block-hover-bg: #fff;
+  --cc-cookie-category-block-hover-border: var(--nosto-accent);
+  --cc-cookie-category-expanded-block-bg: #fff;
+  --cc-cookie-category-expanded-block-hover-bg: #fff;
+
+  --cc-overlay-bg: rgb(61 61 61 / 0.6);
+  --cc-footer-bg: #fff;
+  --cc-footer-color: var(--nosto-text);
+  --cc-footer-border-color: var(--nosto-line);
+  --cc-webkit-scrollbar-bg: var(--nosto-line);
+  --cc-webkit-scrollbar-hover-bg: var(--nosto-muted);
+}
+
+#cc-main .cm,
+#cc-main .pm {
+  box-shadow: 0 0.75rem 2rem rgb(61 61 61 / 0.25);
+}
+
+#cc-main .cm__title,
+#cc-main .pm__title,
+#cc-main .pm__section-title {
+  font-family: var(--font-heading, 'Josefin Sans Variable', sans-serif);
+  color: #000;
+}
+
+#cc-main .cm__title {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 1.4em;
+  font-weight: 400;
+}
+
+/* The terracotta square from .section-title, scaled down. */
+#cc-main .cm__title::before {
+  content: '';
+  flex: none;
+  width: 0.7em;
+  height: 0.7em;
+  background: var(--nosto-accent);
+}
+
+#cc-main .pm__title {
+  font-size: 1.3em;
+  font-weight: 400;
+}
+
+#cc-main .cm__desc,
+#cc-main .pm__section-desc {
+  line-height: 1.5;
+}
+
+#cc-main .cm__btn,
+#cc-main .pm__btn {
+  font-family: var(--font-heading, 'Josefin Sans Variable', sans-serif);
+  font-size: 0.95em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-width: 2px;
+}
