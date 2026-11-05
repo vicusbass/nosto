@@ -363,6 +363,8 @@ const businessSchema = {
       // the tags load), or whenever a `[data-cookie-settings]` control is
       // clicked. Bundled scripts run once per full page load, and the listener
       // sits on `document`, so it survives ClientRouter navigations.
+      import type { TransitionBeforeSwapEvent } from 'astro:transitions/client';
+
       const loadConsent = () => import('../scripts/consent');
 
       if (!window.__consent.stored) {
@@ -377,6 +379,34 @@ const businessSchema = {
         }
         event.preventDefault();
         loadConsent().then((consent) => consent.showPreferences());
+      });
+
+      // A ClientRouter navigation replaces <body>, resets <html>'s attributes
+      // to the new page's, and drops <head> stylesheets the new page lacks. The
+      // banner lives in all three: `#cc-main` in the body, its open/closed state
+      // as classes on <html>, its CSS as <link>s added to the head at runtime.
+      // Without carrying them over, a visitor who navigates before choosing
+      // loses the banner until a full reload, and "Setări cookie" stops opening.
+      const BANNER_STATE = /^(show--|disable--|cc--)/;
+      let bannerRoot: HTMLElement | null = null;
+
+      document.addEventListener('astro:before-swap', (event) => {
+        const { newDocument } = event as TransitionBeforeSwapEvent;
+        // Astro keeps a head stylesheet when the incoming page has a <link>
+        // with the same href, so the live ones stay applied (no unstyled frame).
+        document
+          .querySelectorAll('link[data-cookie-banner]')
+          .forEach((link) => newDocument.head.append(link.cloneNode()));
+        newDocument.documentElement.classList.add(
+          ...[...document.documentElement.classList].filter((c) => BANNER_STATE.test(c))
+        );
+        bannerRoot = document.getElementById('cc-main');
+      });
+
+      document.addEventListener('astro:after-swap', () => {
+        // Same node re-attached, so the plugin's references and listeners hold.
+        if (bannerRoot && !bannerRoot.isConnected) document.body.append(bannerRoot);
+        bannerRoot = null;
       });
     </script>
   </body>
