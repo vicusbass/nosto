@@ -50,7 +50,10 @@ const { videoId } = Astro.props;
               // Create iframe
               const iframe = document.createElement('iframe');
               iframe.className = 'absolute top-0 left-0 w-full h-full rounded-lg shadow-lg';
-              iframe.src = `https://www.youtube.com/embed/${videoId}`;
+              // Privacy-enhanced embed: unlike www.youtube.com it sets no
+              // tracking cookies when the player loads, only once it is played,
+              // so showing the video does not bypass the cookie banner.
+              iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}`;
               iframe.title = 'YouTube video player';
               iframe.allow =
                 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
