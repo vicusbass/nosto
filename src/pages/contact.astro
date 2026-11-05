@@ -469,6 +469,22 @@ import FAQ from '../components/FAQ.astro';
           const result = await response.json();
 
           if (response.ok) {
+            // One-shot flag the thank-you page turns into a `generate_lead`
+            // event, so refreshing it or opening it directly is not a lead.
+            // Only the (non-personal) interest choices travel with it.
+            const choices = (value) =>
+              Array.isArray(value) ? value.join(', ') : value || 'nespecificat';
+            try {
+              sessionStorage.setItem(
+                'nosto:lead',
+                JSON.stringify({
+                  interest: choices(data.intereseaza),
+                  purchase_method: choices(data.modalitate),
+                })
+              );
+            } catch {
+              // Storage blocked: the lead is still sent, just not measured.
+            }
             window.location.href = '/multumim';
           } else {
             status.textContent = result.message || 'A apărut o eroare. Încercați din nou.';

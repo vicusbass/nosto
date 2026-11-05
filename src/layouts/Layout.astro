@@ -20,9 +20,23 @@ interface Props {
    * before its request even started.
    */
   preloadImage?: { href: string; imagesrcset?: string; imagesizes?: string };
+  /**
+   * Load GTM and the Meta Pixel straight away instead of on first interaction.
+   * For pages whose only job is to be measured (the thank-you page carries the
+   * Google Ads lead conversion), where a visitor may read and leave untouched.
+   */
+  eagerTags?: boolean;
 }
 
-const { title, description, image, url, noindex = false, preloadImage } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  url,
+  noindex = false,
+  preloadImage,
+  eagerTags = false,
+} = Astro.props;
 
 const defaultDescription =
   'Proiect NOU in TIMIȘOARA, vânzare direct de la dezvoltator, apartamente cu finisaje moderne si de calitate, preturi competitive, zonă liniștită si verde preponderent rezidențiala.';
@@ -58,7 +72,7 @@ const businessSchema = {
 ---
 
 <!doctype html>
-<html lang="ro">
+<html lang="ro" data-eager-tags={eagerTags || undefined}>
   <head>
     <meta charset="UTF-8" />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -132,6 +146,15 @@ const businessSchema = {
       // `pointerdown` fires before `click`, so clicking a link or a button counts
       // as engagement and the tags load. A visitor who leaves without touching
       // anything is not recorded -- the accepted trade for the score.
+      //
+      // Two exceptions load the tags immediately:
+      // - pages rendered with `eagerTags` (the thank-you page, whose page view
+      //   *is* the Google Ads conversion);
+      // - landings from an ad (gclid/gbraid/wbraid/fbclid/utm_* in the URL).
+      //   The tags read the click id from the address bar, and if the first
+      //   interaction is a tap on an internal link, the ClientRouter swaps the
+      //   URL before gtm.js runs and the click can no longer be attributed.
+      //   Lab tests never carry these parameters, so the score is unaffected.
       (function (w) {
         var triggers = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
         var pending = [];
@@ -153,7 +176,58 @@ const businessSchema = {
         w.__onFirstInteraction = function (callback) {
           fired ? callback() : pending.push(callback);
         };
+
+        if (
+          w.document.documentElement.hasAttribute('data-eager-tags') ||
+          /[?&](gclid|gbraid|wbraid|fbclid|utm_[a-z]+)=/i.test(w.location.search)
+        ) {
+          run();
+        }
       })(window);
+    </script>
+
+    <!-- Consent defaults (Google Consent Mode v2, advanced) -->
+    <script is:inline>
+      // Must run before GTM: the consent default has to be on the dataLayer
+      // ahead of the `gtm.js` event. Nothing is granted until the visitor
+      // chooses in the banner (src/scripts/consent.ts); denied Google tags still
+      // send cookieless pings, which Google uses to model conversions.
+      // A returning visitor's stored choice is read straight from the banner's
+      // `cc_cookie`, so their tags start with the right consent and the banner
+      // code itself never has to load for them.
+      (function (w, d) {
+        var stored = null;
+        try {
+          var m = d.cookie.match(/(?:^|;\s*)cc_cookie=([^;]+)/);
+          if (m) stored = JSON.parse(decodeURIComponent(m[1])).categories || [];
+        } catch (e) {}
+        var cats = stored || [];
+        w.__consent = {
+          stored: !!stored,
+          analytics: cats.indexOf('analytics') > -1,
+          marketing: cats.indexOf('marketing') > -1,
+        };
+        var state = function (granted) {
+          return granted ? 'granted' : 'denied';
+        };
+
+        // Google's canonical gtag stub, defined synchronously. Calls made
+        // before gtm.js lands queue on the dataLayer and are replayed once it
+        // loads, instead of being dropped by a `typeof gtag` guard.
+        w.dataLayer = w.dataLayer || [];
+        w.gtag = function () {
+          w.dataLayer.push(arguments);
+        };
+        w.gtag('consent', 'default', {
+          analytics_storage: state(w.__consent.analytics),
+          ad_storage: state(w.__consent.marketing),
+          ad_user_data: state(w.__consent.marketing),
+          ad_personalization: state(w.__consent.marketing),
+          functionality_storage: 'granted',
+          security_storage: 'granted',
+        });
+        w.gtag('set', 'ads_data_redaction', true);
+      })(window, document);
     </script>
 
     <!-- Google Tag Manager -->
@@ -162,14 +236,6 @@ const businessSchema = {
         w[l] = w[l] || [];
         w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
 
-        // Google's canonical gtag stub, defined synchronously. Calls made before
-        // gtm.js lands (the footer's call button) queue on the dataLayer and are
-        // replayed once it loads, instead of being dropped by a `typeof gtag`
-        // guard against an undefined function.
-        w.gtag = function () {
-          w[l].push(arguments);
-        };
-
         w.__onFirstInteraction(function () {
           var j = d.createElement('script');
           j.async = true;
@@ -177,15 +243,47 @@ const businessSchema = {
             'https://www.googletagmanager.com/gtm.js?id=' + i + (l != 'dataLayer' ? '&l=' + l : '');
           d.head.appendChild(j);
         });
+
+        // Lead-intent clicks, pushed as dataLayer events for GTM to forward to
+        // GA4 and Google Ads. One listener on `document` covers every link on
+        // every page, including ones in Sanity content, and survives
+        // ClientRouter swaps (the document persists; only its body changes).
+        // The `pointerdown` before the click has already started loading
+        // gtm.js; the push waits on the dataLayer until it runs. Phone links
+        // keep the page open and WhatsApp opens a new tab, so nothing unloads
+        // the page before then.
+        d.addEventListener('click', function (e) {
+          var a = e.target instanceof Element ? e.target.closest('a[href]') : null;
+          if (!a) return;
+          var href = a.getAttribute('href') || '';
+          var event = /^tel:/i.test(href)
+            ? 'phone_click'
+            : /^https?:\/\/(wa\.me|api\.whatsapp\.com)\//i.test(href)
+              ? 'whatsapp_click'
+              : /^mailto:/i.test(href)
+                ? 'email_click'
+                : null;
+          if (!event) return;
+          w[l].push({
+            event: event,
+            link_section: a.closest('footer')
+              ? 'footer'
+              : a.closest('header, nav')
+                ? 'header'
+                : 'content',
+          });
+        });
       })(window, document, 'dataLayer', 'GTM-W3KX76MD');
     </script>
     <!-- End Google Tag Manager -->
 
     <!-- Meta Pixel Code -->
     <script is:inline>
-      // Meta's own snippet, with one change: the `fbq` stub and the queued
+      // Meta's own snippet, with two changes: the `fbq` stub and the queued
       // init/PageView stay synchronous (so no event is lost), while fbevents.js
-      // itself waits for the first interaction.
+      // itself waits for the first interaction; and consent is declared before
+      // `init`, so nothing is sent to Meta until marketing cookies are accepted
+      // (the banner grants it later via fbq('consent', 'grant')).
       !(function (f, b, e, v) {
         if (f.fbq) return;
         var n = (f.fbq = function () {
@@ -205,6 +303,7 @@ const businessSchema = {
           s.parentNode.insertBefore(t, s);
         });
       })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('consent', window.__consent.marketing ? 'grant' : 'revoke');
       fbq('init', '714838384770271');
       fbq('track', 'PageView');
     </script>
@@ -257,5 +356,28 @@ const businessSchema = {
       <slot />
     </main>
     <Footer transition:persist />
+
+    <script>
+      // Cookie banner, loaded on demand so it costs nothing at page load: on the
+      // first interaction for visitors who have not chosen yet (the same moment
+      // the tags load), or whenever a `[data-cookie-settings]` control is
+      // clicked. Bundled scripts run once per full page load, and the listener
+      // sits on `document`, so it survives ClientRouter navigations.
+      const loadConsent = () => import('../scripts/consent');
+
+      if (!window.__consent.stored) {
+        window.__onFirstInteraction(() => {
+          loadConsent().then((consent) => consent.start());
+        });
+      }
+
+      document.addEventListener('click', (event) => {
+        if (!(event.target instanceof Element) || !event.target.closest('[data-cookie-settings]')) {
+          return;
+        }
+        event.preventDefault();
+        loadConsent().then((consent) => consent.showPreferences());
+      });
+    </script>
   </body>
 </html>

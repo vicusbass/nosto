@@ -29,6 +29,12 @@ const isContactPage = Astro.url.pathname === '/contact' || Astro.url.pathname ==
               {contact.addressText}
             </a>
           </p>
+          <p class="flex items-center gap-2">
+            <Icon name="mdi:cookie-cog-outline" class="h-5 w-5" />
+            <button type="button" data-cookie-settings class="cursor-pointer hover:underline">
+              Setări cookie
+            </button>
+          </p>
         </div>
       </div>
 
@@ -37,12 +43,7 @@ const isContactPage = Astro.url.pathname === '/contact' || Astro.url.pathname ==
           <a href="/contact" class="btn-primary">Contact</a>
           <a href="/apartamente" class="btn-primary hidden md:inline-flex">Apartamente A</a>
           <a href="/apartamente-b" class="btn-primary hidden md:inline-flex">Apartamente B</a>
-          <a
-            href={`tel:${contact.phone}`}
-            class="btn-primary"
-            onclick="if (typeof gtag !== 'undefined') { gtag('event', 'click', {event_category: 'engagement', event_label: 'call_phone'}); }"
-            >Sună acum</a
-          >
+          <a href={`tel:${contact.phone}`} class="btn-primary">Sună acum</a>
         </div>
       </div>
     </div>
