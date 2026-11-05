@@ -21,6 +21,8 @@ function loadStylesheet(href: string): Promise<void> {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = href;
+    // Lets Layout.astro carry these across ClientRouter navigations.
+    link.dataset.cookieBanner = '';
     // Resolve on error too: an unstyled banner beats no consent prompt.
     link.onload = link.onerror = () => resolve();
     document.head.appendChild(link);

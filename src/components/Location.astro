@@ -101,18 +101,31 @@ const { showGoogleMapsLink = true } = Astro.props;
   // Leaflet and its OpenStreetMap tiles are third-party requests we cannot cache
   // any longer than their origins allow, so the only saving available is to not
   // make them until the map is actually about to be seen.
-  function loadLeaflet() {
-    if (typeof L !== 'undefined') return Promise.resolve();
-    if (leafletPromise) return leafletPromise;
-
-    leafletPromise = new Promise((resolve, reject) => {
+  //
+  // The stylesheet is checked on every call, not only the first: a ClientRouter
+  // navigation drops <head> stylesheets the next page does not declare, while
+  // `L` survives as a global. Without this, returning to a page with the map
+  // drew it unstyled -- tiles spilling out of the frame, broken marker images.
+  function loadLeafletCss() {
+    if (document.querySelector('link[data-leaflet-css]')) return Promise.resolve();
+    return new Promise((resolve) => {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
       link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
       link.crossOrigin = '';
+      link.dataset.leafletCss = '';
+      link.onload = link.onerror = resolve;
       document.head.appendChild(link);
+    });
+  }
 
+  function loadLeaflet() {
+    const css = loadLeafletCss();
+    if (typeof L !== 'undefined') return css;
+    if (leafletPromise) return Promise.all([css, leafletPromise]);
+
+    leafletPromise = new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
       script.crossOrigin = '';
@@ -124,7 +137,7 @@ const { showGoogleMapsLink = true } = Astro.props;
       document.head.appendChild(script);
     });
 
-    return leafletPromise;
+    return Promise.all([css, leafletPromise]);
   }
 
   function initializeLeafletMap() {
