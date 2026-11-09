@@ -77,8 +77,19 @@ if (!unitid) {
 }
 
 let pageTitle = 'Detalii Apartament - Nosto';
+let pageDescription: string | undefined;
 if (unit) {
-  pageTitle = `Apartament ${unit.name} - Nosto`;
+  // Corp A and Corp B reuse unit names (both have an "Ap 1"), so the title
+  // carries the building, type, size and unit name to stay unique and match searches.
+  const building = unit._type === 'unitCorpB' ? 'Corp B' : 'Corp A';
+  const size = `${new Intl.NumberFormat('ro-RO', { maximumFractionDigits: 2 }).format(unit.size)} mp`;
+  const rooms = Number(String(unit.type).replace(',', '.'));
+  const kind =
+    unit.type === 'C'
+      ? 'Spațiu comercial'
+      : `Apartament ${String(unit.type).replace('.', ',')} ${rooms === 1 ? 'cameră' : 'camere'}`;
+  pageTitle = `${kind}, ${size}, ${building} (${unit.name}) | Nosto`;
+  pageDescription = `${kind} de ${size}${unit.floorName ? `, ${unit.floorName.toLowerCase()}` : ''}, ${building} (${unit.name}), în ansamblul Nosto din cartierul Plopi, Timișoara. Vânzare direct de la dezvoltator.`;
 } else if (!fetchError) {
   Astro.response.status = 404;
   fetchError = `Apartamentul cu ID "${unitid}" nu a fost găsit.`;
@@ -87,7 +98,7 @@ if (unit) {
 const backHref = unit?._type === 'unitCorpB' ? '/apartamente-b' : '/apartamente';
 ---
 
-<Layout title={pageTitle}>
+<Layout title={pageTitle} description={pageDescription}>
   <a
     href={backHref}
     class="px-6 pt-6 inline-block text-primary hover:underline font-medium font-heading"
