@@ -3,7 +3,7 @@ import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
 import { Image, getImage } from 'astro:assets';
 import heroImage from '../assets/hero-img-min.png';
-import proiectImgLarge from '../assets/despre_proiect_big.jpeg';
+import corpAPhoto from '../assets/corp-a-new.jpg';
 import heroLogo from '../assets/hero-logo-ded.svg';
 import tipStudio from '../assets/apartmentTypes/tip_studio.jpg';
 import tip15 from '../assets/apartmentTypes/tip_1_5.jpg';
@@ -71,8 +71,8 @@ const heroPreload = await getImage({
     <div class="flex flex-col md:flex-row md:items-center gap-8">
       <div class="md:w-1/2">
         <Image
-          src={proiectImgLarge}
-          alt="Vedere aeriană a ansamblului rezidențial Nosto din Timișoara, cu parcări și spații verzi între clădiri"
+          src={corpAPhoto}
+          alt="Corpul A al ansamblului Nosto din Timișoara, finalizat, cu balcoane și grădină cu gazon"
           class="shadow-lg w-full h-auto object-cover"
           width={600}
         />
