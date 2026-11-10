@@ -1,92 +1,89 @@
 ---
+import { Icon } from 'astro-icon/components';
+import video from '../config/video';
+
 interface Props {
-  videoId: string;
+  videoId?: string;
+  title?: string;
 }
 
-const { videoId } = Astro.props;
+const { videoId = video.youtubeId, title = video.title } = Astro.props;
+
+// YouTube's own thumbnails, so the poster always matches whatever video is
+// set. Not every upload has the 1280px `maxresdefault`; for those YouTube
+// answers with a 404 whose body is a 120×90 grey placeholder (so `onerror`
+// alone does not fire), and the inline handlers fall back to `hqdefault`,
+// which always exists.
+const poster = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+const posterFallback = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+const swapToFallback = `if(this.src!==this.dataset.fallback)this.src=this.dataset.fallback`;
 ---
 
 <div
-  class="relative w-full youtube-lazy-container"
-  style="padding-bottom: 56.25%;"
-  data-video-id={videoId}
+  class="youtube-facade relative w-full aspect-video overflow-hidden rounded-lg shadow-lg bg-[var(--color-text-body)]"
 >
-  <div
-    class="absolute top-0 left-0 w-full h-full bg-gray-200 rounded-lg shadow-lg flex items-center justify-center"
+  <button
+    type="button"
+    class="group absolute inset-0 h-full w-full cursor-pointer"
+    data-youtube-play={videoId}
+    data-youtube-title={title}
+    aria-label={`Redă: ${title}`}
   >
-    <svg class="w-16 h-16 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-      <path
-        d="M23.498 6.186a2.83 2.83 0 0 0-2.001-2.006C19.728 3.75 12 3.75 12 3.75s-7.728 0-9.497.43A2.83 2.83 0 0 0 .502 6.186C0 7.95 0 12 0 12s0 4.05.502 5.814a2.83 2.83 0 0 0 2.001 2.006c1.769.43 9.497.43 9.497.43s7.728 0 9.497-.43a2.83 2.83 0 0 0 2.001-2.006C24 16.05 24 12 24 12s0-4.05-.502-5.814zM9.75 15.75V8.25L15.75 12l-6 3.75z"
-      ></path>
-    </svg>
-  </div>
+    <img
+      src={poster}
+      data-fallback={posterFallback}
+      onload={`if(this.naturalWidth<=120){${swapToFallback}}`}
+      onerror={swapToFallback}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      width="1280"
+      height="720"
+      class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+    />
+    <span
+      class="absolute left-1/2 top-1/2 flex h-16 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-tr-2xl bg-[var(--color-main-btn)] text-white shadow-lg transition-colors duration-300 group-hover:bg-[var(--color-main-btn-hover)] group-focus-visible:bg-[var(--color-main-btn-hover)] md:h-20 md:w-24"
+    >
+      <Icon name="mdi:play" class="h-10 w-10 md:h-12 md:w-12" />
+    </span>
+  </button>
 </div>
 
 <script>
-  let youtubeObserver = null;
+  // Click-to-play: the YouTube player (about 1 MB of scripts, plus YouTube's
+  // storage) loads only after the visitor asks for it. One listener on
+  // `document` covers every player and survives ClientRouter page swaps,
+  // because the document persists and this module runs only once.
+  document.addEventListener('click', (e) => {
+    const button =
+      e.target instanceof Element
+        ? e.target.closest<HTMLButtonElement>('button[data-youtube-play]')
+        : null;
+    if (!button) return;
 
-  function initLazyYouTube() {
-    // Clean up existing observer to prevent duplicates
-    if (youtubeObserver) {
-      youtubeObserver.disconnect();
-      youtubeObserver = null;
-    }
-
-    const containers = document.querySelectorAll('.youtube-lazy-container:not([data-loaded])');
-
-    if (!containers.length) return;
-
-    youtubeObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const container = entry.target as HTMLElement;
-            const videoId = container.dataset.videoId;
-
-            if (videoId && !container.dataset.loaded) {
-              // Mark as loaded to prevent re-initialization
-              container.dataset.loaded = 'true';
-
-              // Create iframe
-              const iframe = document.createElement('iframe');
-              iframe.className = 'absolute top-0 left-0 w-full h-full rounded-lg shadow-lg';
-              // Privacy-enhanced embed: unlike www.youtube.com it sets no
-              // tracking cookies when the player loads, only once it is played,
-              // so showing the video does not bypass the cookie banner.
-              iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}`;
-              iframe.title = 'YouTube video player';
-              iframe.allow =
-                'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-              iframe.allowFullscreen = true;
-
-              // Replace placeholder with iframe
-              container.innerHTML = '';
-              container.appendChild(iframe);
-
-              // Stop observing this container
-              youtubeObserver.unobserve(container);
-            }
-          }
-        });
-      },
-      {
-        rootMargin: '50px',
-        threshold: 0.1,
-      }
-    );
-
-    containers.forEach((container) => {
-      youtubeObserver.observe(container);
+    const params = new URLSearchParams({
+      autoplay: '1',
+      // Suggest only videos from the same channel when playback ends.
+      rel: '0',
+      playsinline: '1',
+      // Player controls in Romanian, matching the site, whatever the
+      // visitor's browser language.
+      hl: 'ro',
     });
-  }
+    const iframe = document.createElement('iframe');
+    // Privacy-enhanced domain: no tracking cookies until the video is played,
+    // and by now the visitor has asked for exactly that.
+    iframe.src = `https://www.youtube-nocookie.com/embed/${button.dataset.youtubePlay}?${params}`;
+    iframe.title = button.dataset.youtubeTitle ?? 'YouTube video';
+    iframe.allow =
+      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    // YouTube refuses to play embeds that arrive without a referrer
+    // ("Error 153"), so do not leave this to the page's default policy.
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.className = 'absolute inset-0 h-full w-full';
 
-  // Initialize on initial page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLazyYouTube);
-  } else {
-    initLazyYouTube();
-  }
-
-  // Initialize on client-side navigation (Astro View Transitions)
-  document.addEventListener('astro:page-load', initLazyYouTube);
+    button.replaceWith(iframe);
+    iframe.focus();
+  });
 </script>
