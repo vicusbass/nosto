@@ -1,7 +1,5 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Image } from 'astro:assets';
-import tiktok from '../assets/tiktok.svg';
 import contact from '../config/contact';
 import Layout from '../layouts/Layout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
@@ -501,26 +499,29 @@ import FAQ from '../components/FAQ.astro';
     </script>
   </section>
 
-  <!-- TODO: Add Social Media section -->
-  <!-- <SectionTitle title="Social Media" class="py-2 md:py-8" />
+  <SectionTitle title="Social Media" class="py-2 md:py-8" />
   <section class="section-x-padding font-heading py-0 md:py-4">
-    <div class="flex justify-center">
-      <div class="flex flex-row gap-3 md:gap-36 items-center">
-        <div class="flex items-center gap-2">
-          <Icon name="mdi:facebook" class="h-6 w-6 color-main-btn" />
-          <a href={contact.social.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-        </div>
-        <div class="flex items-center gap-2">
-          <Icon name="mdi:instagram" class="h-6 w-6 color-main-btn" />
-          <a href={contact.social.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
-        </div>
-        <div class="flex items-center gap-2">
-          <Image src={tiktok} alt="TikTok" class="h-6 w-6 color-main-btn" />
-          <a href={contact.social.tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
-        </div>
-      </div>
+    <div class="flex flex-row justify-center gap-8 md:gap-36">
+      <a
+        href={contact.social.facebook}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-2xl hover:underline"
+      >
+        <Icon name="mdi:facebook" class="h-8 w-8 color-main-btn" />
+        Facebook
+      </a>
+      <a
+        href={contact.social.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-2xl hover:underline"
+      >
+        <Icon name="mdi:instagram" class="h-8 w-8 color-main-btn" />
+        Instagram
+      </a>
     </div>
-  </section> -->
+  </section>
 
   <SectionTitle title="Întrebări frecvente" class="pt-8 md:pt-16" />
   <FAQ jsonLd />
