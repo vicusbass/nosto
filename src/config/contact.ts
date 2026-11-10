@@ -7,9 +7,9 @@ export default {
   addressText: 'str Delinesti 7, TIMIȘOARA',
   streetAddress: 'Strada Delinești 7',
   whatsapp: '40723617123',
+  /** Also published as JSON-LD `sameAs` in Layout.astro, so list only Nosto's own profiles. */
   social: {
-    facebook: 'https://www.facebook.com/nostorocluja',
-    instagram: 'https://www.instagram.com/nostorocluja',
-    tiktok: 'https://www.tiktok.com/@nostorocluja',
+    facebook: 'https://www.facebook.com/profile.php?id=61578137346057',
+    instagram: 'https://www.instagram.com/nosto.apartments/',
   },
 };

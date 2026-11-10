@@ -35,6 +35,26 @@ const isContactPage = Astro.url.pathname === '/contact' || Astro.url.pathname ==
               Setări cookie
             </button>
           </p>
+          <div class="flex items-center gap-4 pt-1">
+            <a
+              href={contact.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Nosto pe Facebook"
+              class="transition-colors duration-300 hover:text-[var(--color-main-btn)]"
+            >
+              <Icon name="mdi:facebook" class="h-6 w-6" />
+            </a>
+            <a
+              href={contact.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Nosto pe Instagram"
+              class="transition-colors duration-300 hover:text-[var(--color-main-btn)]"
+            >
+              <Icon name="mdi:instagram" class="h-6 w-6" />
+            </a>
+          </div>
         </div>
       </div>
 
