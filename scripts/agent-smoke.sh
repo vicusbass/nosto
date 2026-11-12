@@ -17,7 +17,9 @@ BASE="${BASE%/}"
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
 
-CURL=(curl -sS -L --max-time 30)
+# No -L: curl would resend the bypass header to every host a redirect points
+# at. Pass the final URL (https://www.nosto.ro, not the apex that 308s to it).
+CURL=(curl -sS --proto =https --max-time 30)
 if [[ -n "${VERCEL_AUTOMATION_BYPASS_SECRET:-}" ]]; then
   CURL+=(-H "x-vercel-protection-bypass: $VERCEL_AUTOMATION_BYPASS_SECRET")
 fi
