@@ -6,6 +6,7 @@ import { ClientRouter } from 'astro:transitions';
 import contact from '../config/contact';
 import headerLogo from '../assets/header-logo.svg';
 import { toJsonLd } from '../utils/jsonLd';
+import { siteDescription } from '../config/home.ts';
 
 interface Props {
   title: string;
@@ -26,6 +27,11 @@ interface Props {
    * Google Ads lead conversion), where a visitor may read and leave untouched.
    */
   eagerTags?: boolean;
+  /**
+   * Path of this page's Markdown version, advertised to agents with
+   * `<link rel="alternate" type="text/markdown">`.
+   */
+  markdownAlternate?: string;
 }
 
 const {
@@ -36,10 +42,10 @@ const {
   noindex = false,
   preloadImage,
   eagerTags = false,
+  markdownAlternate,
 } = Astro.props;
 
-const defaultDescription =
-  'Proiect nou în Timișoara, vânzare direct de la dezvoltator: apartamente cu finisaje moderne și de calitate, prețuri competitive, într-o zonă liniștită și verde, preponderent rezidențială.';
+const defaultDescription = siteDescription;
 const defaultImage = new URL('/og.jpg', Astro.url).href;
 const canonicalURL = url || Astro.url.href;
 const ogImage = image ? new URL(image, Astro.url).href : defaultImage;
@@ -50,6 +56,7 @@ const businessSchema = {
   '@type': 'RealEstateAgent',
   '@id': new URL('/#organization', siteUrl).href,
   name: 'Nosto - Proiect Rezidential',
+  description: siteDescription,
   url: siteUrl.href,
   logo: new URL(headerLogo.src, siteUrl).href,
   image: defaultImage,
@@ -81,6 +88,15 @@ const businessSchema = {
     <title>{title}</title>
     <meta name="description" content={description || defaultDescription} />
     <link rel="canonical" href={canonicalURL} />
+    {
+      markdownAlternate && (
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href={new URL(markdownAlternate, siteUrl).href}
+        />
+      )
+    }
     {
       preloadImage && (
         <link
