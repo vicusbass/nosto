@@ -1,0 +1,33 @@
+name: CI
+
+# Builds the site and checks the build output, including the Accept: text/markdown
+# routes patched into .vercel/output/config.json (integrations/agent-markdown.mjs).
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Formatting
+        run: npm run format:check
+      - name: Unit tests
+        run: npm test
+      - name: Build
+        # The build reads published content from Sanity, like every Vercel deploy.
+        run: npm run build
+        env:
+          SANITY_STUDIO_PROJECT_ID: ${{ vars.SANITY_STUDIO_PROJECT_ID }}
+      - name: Build output tests
+        run: npm run test:build

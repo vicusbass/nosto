@@ -9,7 +9,17 @@ const resend = new Resend(import.meta.env.RESEND_API_KEY);
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
-    const { prenume, nume, telefon, email, mesaj, informari, intereseaza, modalitate, contact_method } = data;
+    const {
+      prenume,
+      nume,
+      telefon,
+      email,
+      mesaj,
+      informari,
+      intereseaza,
+      modalitate,
+      contact_method,
+    } = data;
 
     // Basic validation
     if (!prenume || !nume || !telefon || !email || !mesaj) {
