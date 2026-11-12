@@ -1,0 +1,54 @@
+name: Agent smoke test
+
+# Runs scripts/agent-smoke.sh against real deployments, the only place Vercel's
+# routing (and so the Markdown negotiation) can be observed:
+# - after every successful Vercel deployment (Vercel reports them to GitHub);
+# - weekly against production, to catch platform changes between deploys;
+# - by hand, against any URL.
+on:
+  deployment_status:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Base URL to check
+        default: https://www.nosto.ro
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    if: github.event_name != 'deployment_status' || github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pick the URL
+        id: target
+        env:
+          EVENT: ${{ github.event_name }}
+          ENVIRONMENT: ${{ github.event.deployment.environment }}
+          DEPLOYMENT_URL: ${{ github.event.deployment_status.environment_url }}
+          INPUT_URL: ${{ inputs.url }}
+          HAS_BYPASS: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET != '' }}
+        run: |
+          if [[ "$EVENT" == workflow_dispatch ]]; then
+            url="$INPUT_URL"
+          elif [[ "$EVENT" == schedule || "$ENVIRONMENT" == Production ]]; then
+            # The deployment's own *.vercel.app URL sits behind Vercel
+            # Authentication; the production domain does not.
+            url=https://www.nosto.ro
+          elif [[ "$HAS_BYPASS" == true ]]; then
+            url="$DEPLOYMENT_URL"
+          else
+            echo "::notice::Preview deployments are protected. Add the VERCEL_AUTOMATION_BYPASS_SECRET secret to check them."
+            url=
+          fi
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Check the deployment
+        if: steps.target.outputs.url != ''
+        env:
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+          TARGET_URL: ${{ steps.target.outputs.url }}
+        run: scripts/agent-smoke.sh "$TARGET_URL"

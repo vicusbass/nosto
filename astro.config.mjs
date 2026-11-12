@@ -15,6 +15,8 @@ import vercel from '@astrojs/vercel';
 
 import sitemap from '@astrojs/sitemap';
 
+import agentMarkdown from './integrations/agent-markdown.mjs';
+
 export default defineConfig({
   site: 'https://www.nosto.ro',
 
@@ -37,6 +39,8 @@ export default defineConfig({
       // The thank-you page is noindex; keep it out of the sitemap too.
       filter: (page) => !page.includes('/multumim'),
     }),
+    // Serves Markdown to agents that ask for it; see the file for the routing.
+    agentMarkdown(),
   ],
 
   vite: {

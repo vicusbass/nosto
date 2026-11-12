@@ -9,3 +9,6 @@ pnpm-lock.yaml
 yarn.lock
 .remember/
 CLAUDE.md
+
+# Markdown is not formatted by Prettier.
+*.md

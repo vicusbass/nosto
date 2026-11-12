@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Pagina nu a fost găsită | Nosto"
+  description="Pagina căutată nu există pe nosto.ro."
+  noindex
+>
+  <section class="section-x-padding bg-main py-24 text-center">
+    <h1 class="font-heading font-light text-4xl md:text-5xl text-black mb-6">
+      Pagina nu a fost găsită
+    </h1>
+    <p class="mb-10 max-w-2xl mx-auto">
+      Pagina pe care ați cerut-o nu există. Este posibil ca adresa să fie greșită sau ca pagina să
+      fi fost mutată.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="/" class="btn-primary">Pagina principală</a>
+      <a href="/apartamente" class="btn-secondary">Apartamente Corp A</a>
+      <a href="/apartamente-b" class="btn-secondary">Apartamente Corp B</a>
+      <a href="/contact" class="btn-secondary">Contact</a>
+    </div>
+  </section>
+</Layout>

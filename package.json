@@ -12,7 +12,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "node --test \"test/unit/*.test.*\"",
+    "test:build": "node --test \"test/build/*.test.*\"",
+    "smoke": "scripts/agent-smoke.sh"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
