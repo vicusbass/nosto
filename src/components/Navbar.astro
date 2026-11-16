@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 import headerLogo from '../assets/header-logo.svg';
 import contact from '../config/contact';
 const menuItems = [
@@ -64,6 +65,24 @@ const menuItems = [
       }
       <div class="pt-2">
         <a href="/contact" class="btn-primary">Contact</a>
+      </div>
+      <div class="flex flex-col pt-2 border-t border-[var(--color-tab-secondary)]">
+        <a
+          href={`tel:${contact.phone}`}
+          class="flex items-center gap-3 px-4 py-3 text-lg heading-font text-black hover:text-[var(--color-bg-secondary)] transition-colors"
+        >
+          <Icon name="mdi:phone" class="h-5 w-5 color-main-btn" aria-hidden="true" />
+          {contact.phone}
+        </a>
+        <a
+          href={`https://wa.me/${contact.whatsapp}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 px-4 py-3 text-lg heading-font text-black hover:text-[var(--color-bg-secondary)] transition-colors"
+        >
+          <Icon name="mdi:whatsapp" class="h-5 w-5 color-main-btn" aria-hidden="true" />
+          WhatsApp
+        </a>
       </div>
     </div>
   </div>
