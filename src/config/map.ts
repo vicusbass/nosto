@@ -5,18 +5,18 @@ export default {
   locationDetails: [
     {
       icon: 'mdi:car',
-      title: 'Centru Timișoara',
-      details: '8 minute',
+      title: 'Cu mașina',
+      details: '8 minute până în centru',
     },
     {
       icon: 'mdi:bike',
-      title: 'Centru Timișoara',
-      details: '15 minute',
+      title: 'Cu bicicleta',
+      details: '15 minute până în centru',
     },
     {
       icon: 'mdi:walk',
-      title: 'Centru Timișoara',
-      details: '30 minute pe jos',
+      title: 'Pe jos',
+      details: '30 minute până în centru',
     },
     {
       icon: 'mdi:bus',

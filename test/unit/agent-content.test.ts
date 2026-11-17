@@ -76,7 +76,7 @@ test('homepage Markdown carries the homepage copy', () => {
   }
   for (const apartment of apartmentTypes) assert.ok(home.includes(`### ${apartment.type}`));
   for (const detail of techDetails) assert.ok(home.includes(`**${detail.title}**`));
-  assert.ok(home.includes('Centru Timișoara: 8 minute cu mașina'));
+  assert.ok(home.includes('Cu mașina: 8 minute până în centru'));
   assert.ok(home.includes(`tel:${contact.phoneInternational}`));
 });
 
