@@ -54,11 +54,6 @@ const clean = (text: string) => escapeMarkdown(text.replace(/\s+/g, ' ').trim())
 const absolute = (siteUrl: string, path: string) => new URL(path, siteUrl).href;
 
 /** Location items are shown as icons on the page; spell out the mode of travel. */
-const TRAVEL_MODE: Record<string, string> = {
-  'mdi:car': 'cu mașina',
-  'mdi:bike': 'cu bicicleta',
-};
-
 const contactLines = (contact: AgentContact) => [
   `- Telefon: [${contact.phone}](tel:${contact.phoneInternational})`,
   `- WhatsApp: [${contact.phone}](https://wa.me/${contact.whatsapp})`,
@@ -108,8 +103,7 @@ export function homeMarkdown(input: HomeMarkdownInput): string {
 
   lines.push('', '## Locație și mobilitate', '');
   for (const item of input.locationDetails) {
-    const mode = TRAVEL_MODE[item.icon];
-    lines.push(`- ${clean(item.title)}: ${clean(item.details)}${mode ? ` ${mode}` : ''}`);
+    lines.push(`- ${clean(item.title)}: ${clean(item.details)}`);
   }
   lines.push('', `Detalii și hartă: [Locație](${url('/locatie')})`);
 
