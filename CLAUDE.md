@@ -84,7 +84,7 @@ Non-CMS copy lives in `src/config/*.ts` (`buildings`, `contact`, `finishes`, `ma
 
 ### Styling
 
-Tailwind 4 via `@tailwindcss/vite`; the theme (fonts Amiko + Josefin Sans, brand colors) is declared with `@theme` in `src/styles/global.css`, and reusable classes (`btn-primary`, `section-x-padding`, `bg-main`, the SVG apartment classes) are in its `@layer components` / `@layer utilities` blocks. Prefer those tokens over new hex values. `Layout.astro` provides SEO/OG tags, GTM, Meta Pixel, and Astro `ClientRouter` view transitions (`Navbar`/`Footer` use `transition:persist`; client scripts must re-init on `astro:page-load`/`astro:after-swap`).
+Tailwind 4 via `@tailwindcss/vite`; the theme (fonts Amiko + Josefin Sans, brand colors) is declared with `@theme` in `src/styles/global.css`, and reusable classes (`btn-primary`, `section-x-padding`, `bg-main`, the SVG apartment classes) are in its `@layer components` / `@layer utilities` blocks. Prefer those tokens over new hex values. `Layout.astro` provides SEO/OG tags, GTM, Meta Pixel, and Astro `ClientRouter` view transitions (`<Navbar>`/`<Footer>` carry `transition:persist`, but neither component forwards it to its root element, so both are replaced on every navigation; an `is:inline` script inside them runs only on the first full load, so bind to the new elements on `astro:page-load`).
 
 ### Svelte 5
 

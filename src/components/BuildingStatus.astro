@@ -82,7 +82,7 @@ const fullImages = await Promise.all(
                 </span>
               </a>
 
-              <div class="pt-5 md:pt-6">
+              <div class="flex flex-1 flex-col pt-5 md:pt-6">
                 <div class="flex flex-wrap items-center gap-x-5 gap-y-3 mb-4">
                   <h3 class="font-heading font-light text-3xl md:text-4xl text-black leading-none">
                     {building.name}
@@ -310,7 +310,9 @@ const fullImages = await Promise.all(
     flex-wrap: wrap;
     align-items: center;
     gap: 0.75rem 2rem;
-    margin-top: 1.5rem;
+    /* Pinned to the panel's foot so the two buildings' links share a row. */
+    margin-top: auto;
+    padding-top: 1.5rem;
   }
 
   .building-cta {

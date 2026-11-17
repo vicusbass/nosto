@@ -19,7 +19,8 @@ const plans = [
   { label: 'Corp B', href: '/apartamente-b' },
 ];
 
-const planQuery = (type: string) => `floor=parter&rooms=${type.replace(/ /g, '+').toLowerCase()}`;
+// No floor: the plan page opens the first floor with an available unit of this type.
+const planQuery = (type: string) => `rooms=${type.replace(/ /g, '+').toLowerCase()}`;
 ---
 
 <div class="pb-0" id="apartment-showcase">
