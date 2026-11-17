@@ -4,8 +4,8 @@ export default {
   phoneInternational: '+40723617123',
   email: 'info@nosto.ro',
   address: 'https://maps.app.goo.gl/VaRfRMyJi5aHt9kYA',
-  addressText: 'str Delinesti 7, TIMIȘOARA',
-  streetAddress: 'Strada Delinești 7',
+  addressText: 'Str. Delinești 7 – Parâng 5A, Timișoara',
+  streetAddress: 'Str. Delinești 7 – Parâng 5A',
   whatsapp: '40723617123',
   /** Also published as JSON-LD `sameAs` in Layout.astro, so list only Nosto's own profiles. */
   social: {

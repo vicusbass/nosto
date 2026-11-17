@@ -29,7 +29,7 @@ test('homepage: exactly one H1, before every other heading', () => {
 });
 
 test('homepage: the overview copy is a paragraph again, not a heading', () => {
-  assert.match(html, /<p class="indent-12"[^>]*>Proiect NOU in TIMIȘOARA/);
+  assert.match(html, /<p class="indent-12"[^>]*>Proiect NOU în TIMIȘOARA/);
 });
 
 test('homepage: meaningful text without JavaScript', () => {
