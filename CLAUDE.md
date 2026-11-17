@@ -65,7 +65,7 @@ Corp A and Corp B are parallel copies rather than one parameterized path:
 - `/apartamente` → `Apartments.svelte` → `Parter`, `Etaj1`, `Etaj2`, `Etaj3` (queries `_type == "unit"`)
 - `/apartamente-b` → `ApartmentsB2.svelte` → `ParterB2`, `Etaj1B2`, `Etaj2B2`, `Etaj3B2` (queries `_type == "unitCorpB"`)
 
-`Apartments.svelte` and `ApartmentsB2.svelte` are near-identical; a fix in one usually belongs in the other. Both mount with `client:only="svelte"` and fire an `apartments-ready` event that hides the page's spinner.
+`Apartments.svelte` and `ApartmentsB2.svelte` are near-identical; a fix in one usually belongs in the other. Both mount with `client:only="svelte"`; the page's spinner is the island's `slot="fallback"` child, which Astro removes when the component renders. Don't hide it from a window event: with `ClientRouter` the island can hydrate before the page's inline script attaches a listener.
 
 The detail page `src/pages/apartamente/[unitid].astro` is shared: `getStaticPaths` covers both types, `unitid` is the Sanity `uniqueId`, and the back link is chosen from `_type`.
 
