@@ -12,8 +12,8 @@ const menuItems = [
 ];
 ---
 
-<nav class="fixed w-full h-[70px] z-50 bg-main">
-  <div class="flex justify-between items-center h-full px-6 md:px-[70px]">
+<nav class="site-nav fixed w-full h-[70px] z-[60]" data-menu="closed">
+  <div class="relative z-10 h-full bg-main flex justify-between items-center px-6 md:px-[70px]">
     <div class="flex-shrink-0 flex items-center">
       <a href="/" aria-label="Acasă">
         <Image src={headerLogo} alt="Logo Nosto" height={50} />
@@ -32,115 +32,112 @@ const menuItems = [
       }
       <a href="/contact" class="btn-primary ml-6">Contact</a>
     </div>
-    <div class="flex items-center sm:hidden">
-      <button
-        type="button"
-        class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary"
-      >
-        <span class="sr-only">Deschide meniul principal</span>
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
+    <button
+      type="button"
+      class="menu-toggle sm:hidden"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      aria-label="Deschide meniul principal"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </div>
 
-  <div
-    class="sm:hidden mobile-menu hidden bg-white absolute w-full top-[70px] left-0 shadow-lg transform transition-all duration-300 ease-in-out opacity-0 translate-y-[-10px]"
-  >
-    <div class="px-4 pt-4 pb-6 space-y-3">
+  <div class="menu-scrim sm:hidden" aria-hidden="true"></div>
+
+  <div id="mobile-menu" class="mobile-menu sm:hidden" inert>
+    <ul class="menu-links">
       {
-        menuItems.map((item) => (
-          <a
-            href={item.href}
-            class="nav-link block px-4 py-3 text-lg font-light heading-font text-black hover:text-[var(--color-bg-secondary)] hover:underline hover:bg-gray-50 rounded-md transition-colors"
-          >
-            {item.name}
-          </a>
+        menuItems.map((item, i) => (
+          <li style={`--i: ${i}`}>
+            <a href={item.href} class="nav-link menu-link heading-font">
+              {item.name}
+            </a>
+          </li>
         ))
       }
-      <div class="pt-2">
-        <a href="/contact" class="btn-primary">Contact</a>
-      </div>
-      <div class="flex flex-col pt-2 border-t border-[var(--color-tab-secondary)]">
-        <a
-          href={`tel:${contact.phone}`}
-          class="flex items-center gap-3 px-4 py-3 text-lg heading-font text-black hover:text-[var(--color-bg-secondary)] transition-colors"
-        >
-          <Icon name="mdi:phone" class="h-5 w-5 color-main-btn" aria-hidden="true" />
-          {contact.phone}
-        </a>
-        <a
-          href={`https://wa.me/${contact.whatsapp}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-3 px-4 py-3 text-lg heading-font text-black hover:text-[var(--color-bg-secondary)] transition-colors"
-        >
-          <Icon name="mdi:whatsapp" class="h-5 w-5 color-main-btn" aria-hidden="true" />
-          WhatsApp
-        </a>
-      </div>
+    </ul>
+    <div class="menu-contact" style={`--i: ${menuItems.length}`}>
+      <a href="/contact" class="btn-primary menu-cta">Contact</a>
+      <a href={`tel:${contact.phone}`} class="menu-channel heading-font">
+        <Icon name="mdi:phone" class="h-6 w-6 color-main-btn" aria-hidden="true" />
+        {contact.phone}
+      </a>
+      <a
+        href={`https://wa.me/${contact.whatsapp}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="menu-channel heading-font"
+      >
+        <Icon name="mdi:whatsapp" class="h-6 w-6 color-main-btn" aria-hidden="true" />
+        WhatsApp
+      </a>
     </div>
   </div>
 
   <script is:inline>
-    function toggleMobileMenu() {
-      const mobileMenu = document.querySelector('.mobile-menu');
-
-      if (mobileMenu) {
-        // If menu is currently hidden, show it with animation
-        if (mobileMenu.classList.contains('hidden')) {
-          // First remove hidden to make it visible
-          mobileMenu.classList.remove('hidden');
-
-          // Force a reflow to ensure the transition works
-          void mobileMenu.offsetWidth;
-
-          // Then add the visible styles
-          mobileMenu.classList.add('opacity-100', 'translate-y-0');
-          mobileMenu.classList.remove('opacity-0', 'translate-y-[-10px]');
-        } else {
-          // Hide with animation
-          mobileMenu.classList.remove('opacity-100', 'translate-y-0');
-          mobileMenu.classList.add('opacity-0', 'translate-y-[-10px]');
-
-          // After animation completes, hide the element
-          setTimeout(() => {
-            mobileMenu.classList.add('hidden');
-          }, 300); // Match this to your transition duration
-        }
-      }
-    }
-
-    function setupMobileMenu() {
-      const mobileMenuButton = document.querySelector('.mobile-menu-button');
-      const mobileMenu = document.querySelector('.mobile-menu');
-
-      if (mobileMenuButton) {
-        // Check if a listener is already attached to this specific button instance
-        if (!mobileMenuButton.hasAttribute('data-menu-listener-attached')) {
-          mobileMenuButton.addEventListener('click', toggleMobileMenu);
-          mobileMenuButton.setAttribute('data-menu-listener-attached', 'true');
-        }
-      }
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-          // Check if click is outside the menu and the menu button
-          if (!mobileMenu.contains(e.target) && !e.target.closest('.mobile-menu-button')) {
-            toggleMobileMenu();
+    // Astro runs this inline script once per full page load, but every client-side
+    // navigation swaps in a fresh <nav> (`transition:persist` on <Navbar> does not
+    // reach this element). So each new <nav> is bound on `astro:page-load`, and the
+    // document-level listeners are added only once, always acting on the current one.
+    (function () {
+      const desktop = window.matchMedia('(min-width: 640px)');
+      const parts = () => {
+        const nav = document.querySelector('nav.site-nav');
+        return (
+          nav && {
+            nav,
+            toggle: nav.querySelector('.menu-toggle'),
+            menu: nav.querySelector('.mobile-menu'),
+            scrim: nav.querySelector('.menu-scrim'),
           }
-        }
-      });
-    }
+        );
+      };
+      const isOpen = () => document.querySelector('nav.site-nav')?.dataset.menu === 'open';
 
-    // The navbar is `transition:persist`ed, so the active link must be recomputed
-    // on every client-side navigation, not just at build time.
+      function setMenu(open, { restoreFocus = false } = {}) {
+        const p = parts();
+        if (!p || open === isOpen()) return;
+        p.nav.dataset.menu = open ? 'open' : 'closed';
+        p.toggle.setAttribute('aria-expanded', String(open));
+        p.toggle.setAttribute('aria-label', open ? 'Închide meniul' : 'Deschide meniul principal');
+        p.menu.toggleAttribute('inert', !open);
+        // Keep the page still behind the sheet.
+        document.documentElement.style.overflow = open ? 'hidden' : '';
+        if (open) p.menu.querySelector('a')?.focus({ preventScroll: true });
+        else if (restoreFocus) p.toggle.focus({ preventScroll: true });
+      }
+
+      function bind() {
+        const p = parts();
+        if (!p || p.nav.dataset.menuReady) return;
+        p.nav.dataset.menuReady = 'true';
+        p.toggle.addEventListener('click', () => setMenu(!isOpen()));
+        p.scrim.addEventListener('click', () => setMenu(false));
+        // Any link in the sheet (pages, Contact, phone, WhatsApp) dismisses it.
+        p.menu.addEventListener('click', (e) => {
+          if (e.target instanceof Element && e.target.closest('a')) setMenu(false);
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen()) setMenu(false, { restoreFocus: true });
+      });
+      desktop.addEventListener('change', (e) => {
+        if (e.matches) setMenu(false);
+      });
+      // The incoming page's <nav> starts closed, so the page must scroll again.
+      document.addEventListener('astro:after-swap', () => {
+        document.documentElement.style.overflow = '';
+      });
+      bind();
+      document.addEventListener('astro:page-load', bind);
+    })();
+
+    // The active link must be recomputed on every client-side navigation, not
+    // just at build time.
     function markActiveNavLink() {
       // A page can name its section explicitly (Corp B apartment pages live under
       // /apartamente/, which would otherwise match the Corp A link).
@@ -148,7 +145,7 @@ const menuItems = [
         .querySelector('main[data-active-nav]')
         ?.getAttribute('data-active-nav');
       const path = override || window.location.pathname.replace(/\/+$/, '') || '/';
-      document.querySelectorAll('nav a.nav-link').forEach((link) => {
+      document.querySelectorAll('nav a.nav-link, a[data-nav-link]').forEach((link) => {
         const href = link.getAttribute('href');
         const isActive = path === href || path.startsWith(href + '/');
         if (isActive) {
@@ -159,12 +156,235 @@ const menuItems = [
       });
     }
 
-    function onPageLoad() {
-      setupMobileMenu();
-      markActiveNavLink();
-    }
-
-    onPageLoad();
-    document.addEventListener('astro:page-load', onPageLoad);
+    markActiveNavLink();
+    document.addEventListener('astro:page-load', markActiveNavLink);
   </script>
 </nav>
+
+<style>
+  /*
+   * Mobile menu motion. Opening follows the iOS sheet curve: a fast start that
+   * settles long and soft. Closing accelerates away, quicker than it arrived.
+   */
+  .site-nav {
+    --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1);
+    --ease-away: cubic-bezier(0.5, 0, 0.75, 0);
+    --open-ms: 560ms;
+    --close-ms: 300ms;
+  }
+
+  /* Hamburger -> close */
+  .menu-toggle {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    color: var(--color-text-body);
+  }
+  .menu-toggle .bar {
+    position: absolute;
+    left: 11px;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+    transition:
+      transform var(--close-ms) var(--ease-sheet),
+      opacity 150ms linear;
+  }
+  .menu-toggle .bar:nth-child(1) {
+    top: 15px;
+  }
+  .menu-toggle .bar:nth-child(2) {
+    top: 21px;
+  }
+  .menu-toggle .bar:nth-child(3) {
+    top: 27px;
+  }
+  .site-nav[data-menu='open'] .menu-toggle .bar {
+    transition:
+      transform 480ms var(--ease-sheet),
+      opacity 150ms linear;
+  }
+  .site-nav[data-menu='open'] .bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .site-nav[data-menu='open'] .bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  .site-nav[data-menu='open'] .bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  .menu-toggle:focus-visible {
+    outline: 2px solid var(--color-main-btn);
+    outline-offset: -2px;
+  }
+
+  /* Backdrop */
+  .menu-scrim {
+    position: fixed;
+    inset: 70px 0 0;
+    background: rgb(18 16 13 / 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--close-ms) ease-in,
+      visibility 0s linear var(--close-ms);
+  }
+  .site-nav[data-menu='open'] .menu-scrim {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 400ms ease-out;
+  }
+
+  /* The sheet: slides out from behind the bar, so it reads as the bar unfolding */
+  .mobile-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    max-height: calc(100dvh - 70px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 12px 0 64px;
+    background: var(--color-bg-primary);
+    border-bottom-right-radius: 6rem;
+    box-shadow: 0 28px 48px -24px rgb(18 16 13 / 0.45);
+    transform: translateY(calc(-100% - 70px));
+    visibility: hidden;
+    transition:
+      transform var(--close-ms) var(--ease-away),
+      visibility 0s linear var(--close-ms);
+  }
+  .site-nav[data-menu='open'] .mobile-menu {
+    transform: none;
+    visibility: visible;
+    transition: transform var(--open-ms) var(--ease-sheet);
+  }
+
+  /* Rows trail the sheet by a beat and settle into place */
+  .menu-links li,
+  .menu-contact {
+    opacity: 0;
+    transform: translateY(-24px);
+    transition:
+      opacity 120ms linear,
+      transform 0s linear 150ms;
+  }
+  .site-nav[data-menu='open'] .menu-links li,
+  .site-nav[data-menu='open'] .menu-contact {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 360ms ease-out calc(90ms + var(--i) * 45ms),
+      transform 640ms var(--ease-sheet) calc(60ms + var(--i) * 45ms);
+  }
+
+  .menu-link {
+    position: relative;
+    display: block;
+    padding: 18px 24px 16px 56px;
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 1;
+    color: #000;
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+  .menu-link:hover,
+  .menu-link:active {
+    color: var(--color-main-btn-hover);
+  }
+  .menu-link:focus-visible {
+    outline: 2px solid var(--color-main-btn);
+    outline-offset: -4px;
+  }
+  /* The current page carries the section-title square, flush to the screen edge */
+  .menu-link[aria-current='page'] {
+    text-decoration: none;
+  }
+  .menu-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    margin-top: -17px;
+    background: var(--color-main-btn);
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  .menu-link[aria-current='page']::before {
+    transform: none;
+  }
+  .site-nav[data-menu='open'] .menu-link[aria-current='page']::before {
+    animation: menu-marker 520ms var(--ease-sheet) 260ms backwards;
+  }
+  @keyframes menu-marker {
+    from {
+      transform: scaleX(0);
+    }
+  }
+
+  .menu-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin: 28px 24px 0 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-tab-secondary);
+  }
+  .menu-cta {
+    margin-bottom: 12px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+  .menu-channel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 1.375rem;
+    color: var(--color-text-body);
+    transition: color 200ms ease;
+  }
+  .menu-channel:hover {
+    color: var(--color-main-btn-hover);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu,
+    .site-nav[data-menu='open'] .mobile-menu {
+      transform: none;
+    }
+    .mobile-menu {
+      opacity: 0;
+      transition:
+        opacity 150ms linear,
+        visibility 0s linear 150ms;
+    }
+    .site-nav[data-menu='open'] .mobile-menu {
+      opacity: 1;
+      transition: opacity 200ms linear;
+    }
+    .menu-links li,
+    .menu-contact,
+    .site-nav[data-menu='open'] .menu-links li,
+    .site-nav[data-menu='open'] .menu-contact {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .site-nav[data-menu='open'] .menu-link[aria-current='page']::before {
+      animation: none;
+    }
+    .menu-toggle .bar,
+    .site-nav[data-menu='open'] .menu-toggle .bar {
+      transition: opacity 150ms linear;
+    }
+  }
+</style>

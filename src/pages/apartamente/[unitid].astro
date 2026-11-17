@@ -96,15 +96,33 @@ if (unit) {
 }
 
 const backHref = unit?._type === 'unitCorpB' ? '/apartamente-b' : '/apartamente';
+// What the share sheet (or the copied link's preview) says: the title's facts, minus the brand suffix.
+const shareText = pageTitle.replace(/ \| Nosto$/, '') + ' – Nosto, Timișoara';
 ---
 
 <Layout title={pageTitle} description={pageDescription} activeNav={backHref}>
-  <a
-    href={backHref}
-    class="px-6 pt-6 inline-block text-primary hover:underline font-medium font-heading"
-  >
-    &larr; ÎNAPOI
-  </a>
+  <div class="flex items-center justify-between gap-4 px-6 pt-6 pb-4">
+    <a href={backHref} class="inline-block text-primary hover:underline font-medium font-heading">
+      &larr; ÎNAPOI
+    </a>
+    {
+      unit && !fetchError && (
+        <button
+          type="button"
+          class="btn-secondary share-btn gap-2 px-3 py-1.5 cursor-pointer"
+          data-share
+          data-share-title={pageTitle}
+          data-share-text={shareText}
+        >
+          <Icon name="mdi:share-variant" class="share-icon h-5 w-5" aria-hidden="true" />
+          <Icon name="mdi:check" class="share-done h-5 w-5" aria-hidden="true" />
+          <span class="share-label">Distribuie</span>
+          <span class="share-done-label">Link copiat</span>
+        </button>
+      )
+    }
+  </div>
+  <p class="sr-only" aria-live="polite" data-share-status></p>
   <section class="font-heading bg-tab-secondary">
     {
       fetchError && (
@@ -336,6 +354,18 @@ const backHref = unit?._type === 'unitCorpB' ? '/apartamente-b' : '/apartamente'
   <FAQ />
 
   <style>
+    /* Share button: the "copied" face shows only while [data-copied] is set. */
+    .share-btn .share-done,
+    .share-btn .share-done-label,
+    .share-btn[data-copied] .share-icon,
+    .share-btn[data-copied] .share-label {
+      display: none;
+    }
+    .share-btn[data-copied] .share-done,
+    .share-btn[data-copied] .share-done-label {
+      display: inline;
+    }
+
     /* Hide scrollbar for mobile gallery */
     .scrollbar-hide {
       -ms-overflow-style: none;
@@ -367,6 +397,66 @@ const backHref = unit?._type === 'unitCorpB' ? '/apartamente-b' : '/apartamente'
   </style>
 
   <script is:inline>
+    // Share: the native share sheet where the browser has one (phones, Safari),
+    // otherwise copy the link. One delegated listener, so it keeps working on
+    // every apartment page reached through the ClientRouter.
+    if (!window.__nostoShareBound) {
+      window.__nostoShareBound = true;
+      document.addEventListener('click', async (event) => {
+        const button =
+          event.target instanceof Element ? event.target.closest('[data-share]') : null;
+        if (!button) return;
+        const url = location.origin + location.pathname;
+        const status = document.querySelector('[data-share-status]');
+        let method = null;
+
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: button.dataset.shareTitle,
+              text: button.dataset.shareText,
+              url,
+            });
+            method = 'native';
+          } catch (error) {
+            // Dismissing the sheet is not a failure; anything else falls back to copying.
+            if (error && error.name === 'AbortError') return;
+          }
+        }
+
+        if (!method) {
+          try {
+            await navigator.clipboard.writeText(url);
+          } catch {
+            const field = document.createElement('textarea');
+            field.value = url;
+            field.setAttribute('readonly', '');
+            field.style.cssText = 'position:fixed;opacity:0';
+            document.body.appendChild(field);
+            field.select();
+            document.execCommand('copy');
+            field.remove();
+          }
+          method = 'copy';
+          button.setAttribute('data-copied', '');
+          if (status) status.textContent = 'Linkul a fost copiat.';
+          clearTimeout(button.__copiedTimer);
+          button.__copiedTimer = setTimeout(() => {
+            button.removeAttribute('data-copied');
+            if (status) status.textContent = '';
+          }, 2500);
+        }
+
+        // GA4's recommended `share` event; GTM needs a tag to forward it.
+        (window.dataLayer = window.dataLayer || []).push({
+          event: 'share',
+          method,
+          content_type: 'apartment',
+          item_id: location.pathname.split('/').pop(),
+        });
+      });
+    }
+
     // Image gallery functionality
     function initializeImageGallery() {
       // console.log('Initializing image gallery...');

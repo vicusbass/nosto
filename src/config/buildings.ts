@@ -37,7 +37,7 @@ export const buildings: Building[] = [
     status: 'in-constructie',
     statusLabel: 'În construcție',
     description:
-      'Lucrările la al doilea corp sunt în desfășurare, pe terenul alăturat, cu termen de finalizare 30 noiembrie 2027. Contactați-ne pentru detalii despre apartamentele disponibile.',
+      'Lucrările la al doilea corp sunt în desfășurare, pe terenul alăturat, cu termen de finalizare 30 noiembrie 2027.',
     ctas: [{ label: 'Vezi apartamentele', href: '/apartamente-b' }],
     image: corpABSantier,
     imageAlt: 'Vedere aeriană: Corp A finalizat în stânga, șantierul Corp B cu macara în dreapta',

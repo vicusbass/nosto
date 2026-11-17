@@ -74,11 +74,22 @@ import contact from '../config/contact';
     <!-- Plain tel: / wa.me hrefs: the click listener in Layout.astro matches them for
          the phone_click / whatsapp_click conversion events. -->
     <div class="flex gap-2">
-      <a href="/apartamente" class="flex-1 btn-secondary text-center px-2">Corp A</a>
-      <a href="/apartamente-b" class="flex-1 btn-secondary text-center px-2">Corp B</a>
+      <!-- data-nav-link: Navbar.astro marks the current building with aria-current. -->
+      <a
+        href="/apartamente"
+        data-nav-link
+        class="flex-1 btn-secondary text-center px-2 aria-[current=page]:bg-[var(--color-main-btn)] aria-[current=page]:text-white"
+        >Corp A</a
+      >
+      <a
+        href="/apartamente-b"
+        data-nav-link
+        class="flex-1 btn-secondary text-center px-2 aria-[current=page]:bg-[var(--color-main-btn)] aria-[current=page]:text-white"
+        >Corp B</a
+      >
       <a
         href={`tel:${contact.phone}`}
-        class="btn-primary shrink-0 w-12 px-0"
+        class="btn-primary shrink-0 w-14 px-0"
         aria-label={`Apel telefonic: ${contact.phone}`}
       >
         <Icon name="mdi:phone" class="h-6 w-6" aria-hidden="true" />
@@ -87,7 +98,7 @@ import contact from '../config/contact';
         href={`https://wa.me/${contact.whatsapp}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-primary shrink-0 w-12 px-0"
+        class="btn-primary bg-whatsapp hover:bg-whatsapp-hover shrink-0 w-14 px-0"
         aria-label="Mesaj pe WhatsApp"
       >
         <Icon name="mdi:whatsapp" class="h-6 w-6" aria-hidden="true" />

@@ -1,4 +1,5 @@
 <script>
+  import { untrack } from 'svelte';
   import Parter from './Parter.svelte';
   import Etaj1 from './Etaj1.svelte';
   import Etaj2 from './Etaj2.svelte';
@@ -47,9 +48,27 @@
       const url = new URL(window.location);
 
       const floorParam = url.searchParams.get('floor');
+      const roomsParam = url.searchParams.get('rooms');
+      let validRooms = roomsParam
+        ? roomsParam.split(',').filter((room) => roomOptions.includes(room))
+        : [];
+
       if (floorParam) {
         const floorIndex = floors.findIndex((f) => f.id === floorParam);
         if (floorIndex >= 0) selectedIdx = floorIndex;
+      } else if (validRooms.length > 0) {
+        // Linked by apartment type only (the homepage showcase): open the first floor
+        // with an unsold unit of that type, or drop the filter if the building has none.
+        const types = validRooms.map((room) => ROOM_TYPE_TO_SANITY_VALUE[room]);
+        const floorIndex = floors.findIndex((f) =>
+          units.some((unit) => unit.floor === f.name && !unit.sold && types.includes(unit.type)),
+        );
+        selectedIdx = Math.max(floorIndex, 0);
+        if (floorIndex < 0) validRooms = [];
+        // Write the outcome back to the URL; untracked so this effect does not
+        // re-run on every later floor or filter change.
+        selectedRooms = validRooms;
+        untrack(saveState);
       } else {
         // Fall back to localStorage
         const savedFloor = localStorage.getItem('selectedFloor');
@@ -59,10 +78,7 @@
         }
       }
 
-      const roomsParam = url.searchParams.get('rooms');
       if (roomsParam) {
-        const roomsList = roomsParam.split(',');
-        const validRooms = roomsList.filter((room) => roomOptions.includes(room));
         if (validRooms.length > 0) selectedRooms = validRooms;
       }
       // Only load from localStorage if there are URL parameters present

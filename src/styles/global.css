@@ -17,6 +17,9 @@
   --color-not-selected-apt: #f0b193;
   --color-apt-hover: #a89588;
   --color-text-body: #3d3d3d;
+  /* WhatsApp's dark brand green: only on the WhatsApp button of the mobile sticky bar. */
+  --color-whatsapp: #128c7e;
+  --color-whatsapp-hover: #075e54;
 }
 
 /* Base layer: HTML elements and browser defaults */
