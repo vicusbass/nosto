@@ -98,7 +98,7 @@ if (unit) {
 const backHref = unit?._type === 'unitCorpB' ? '/apartamente-b' : '/apartamente';
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout title={pageTitle} description={pageDescription} activeNav={backHref}>
   <a
     href={backHref}
     class="px-6 pt-6 inline-block text-primary hover:underline font-medium font-heading"

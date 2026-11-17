@@ -32,6 +32,11 @@ interface Props {
    * `<link rel="alternate" type="text/markdown">`.
    */
   markdownAlternate?: string;
+  /**
+   * Navbar link to mark as current when the URL alone is ambiguous: apartment
+   * detail pages live under `/apartamente/` for both buildings.
+   */
+  activeNav?: string;
 }
 
 const {
@@ -43,6 +48,7 @@ const {
   preloadImage,
   eagerTags = false,
   markdownAlternate,
+  activeNav,
 } = Astro.props;
 
 const defaultDescription = siteDescription;
@@ -368,7 +374,7 @@ const businessSchema = {
       </defs>
     </svg>
     <Navbar transition:persist />
-    <main class="pt-16 flex-grow mb-16 pb-16 md:pb-0">
+    <main class="pt-16 flex-grow mb-16 pb-16 md:pb-0" data-active-nav={activeNav}>
       <slot />
     </main>
     <Footer transition:persist />

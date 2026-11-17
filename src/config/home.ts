@@ -13,7 +13,7 @@ export const homeHeading = 'Nosto – apartamente noi în Timișoara, direct de 
 
 export const overview = {
   paragraphs: [
-    'Proiect NOU in TIMIȘOARA, vânzare direct de la dezvoltator, apartamente cu finisaje moderne si de calitate, preturi competitive, zonă liniștită si verde preponderent rezidențiala. Apartamentele de vânzare din acest proiect se diferențiază prin atenția acordată spațiului de locuit și finisajelor. Fiecare apartament a fost supus unui studiu, în vederea optimizării spațiului și a funcționalității acestuia. Planurile de prezentare vin și cu o propunere concretă de mobilare, ajutând la o mai bună apreciere a spațiului și a măsurii în care acesta corespunde nevoilor dumneavoastră.',
+    'Proiect NOU în TIMIȘOARA, vânzare direct de la dezvoltator, apartamente cu finisaje moderne și de calitate, prețuri competitive, zonă liniștită și verde, preponderent rezidențială. Apartamentele de vânzare din acest proiect se diferențiază prin atenția acordată spațiului de locuit și finisajelor. Fiecare apartament a fost supus unui studiu, în vederea optimizării spațiului și a funcționalității acestuia. Planurile de prezentare vin și cu o propunere concretă de mobilare, ajutând la o mai bună apreciere a spațiului și a măsurii în care acesta corespunde nevoilor dumneavoastră.',
     'Un preț corect și competitiv oferă o valoare excelentă banilor investiți în acest proiect.',
   ],
   highlights: [
@@ -49,7 +49,7 @@ export const apartmentTypes: ApartmentType[] = [
     mobileType: '1.5 CAM',
     size: '65mp',
     description:
-      'Chiar dacă are o suprafața redusă față de standardul apartamentelor de 2 camere acest tip de apartament îndeplinește  cu succes funcțiile unui apartament de 2 camere.',
+      'Chiar dacă are o suprafață redusă față de standardul apartamentelor de 2 camere, acest tip de apartament îndeplinește cu succes funcțiile unui apartament de 2 camere.',
   },
   {
     key: '2',
@@ -73,7 +73,7 @@ export const apartmentTypes: ApartmentType[] = [
     mobileType: '3 CAM',
     size: '85mp',
     description:
-      'Apartament pentru familii cu copii. Suprafața decentă, cele două băii precum si cămara aferentă bucătăriei satisface nevoile unei familii  cu 3 sau 4 membri.',
+      'Apartament pentru familii cu copii. Suprafața decentă, cele două băi precum și cămara aferentă bucătăriei satisfac nevoile unei familii cu 3 sau 4 membri.',
   },
   {
     key: '4',

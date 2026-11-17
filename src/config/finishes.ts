@@ -26,7 +26,7 @@ export const finishesData = {
       value: '+ LAVOAR 60CM (BAI)',
     },
     {
-      label: 'PACHET REZERVOR INCASTRAT',
+      label: 'PACHET REZERVOR ÎNCASTRAT',
       value: 'VAS WC SUSPENDAT',
     },
     {
@@ -38,11 +38,11 @@ export const finishesData = {
       value: '',
     },
     {
-      label: 'BATERII PENTRU LAVOAR ȘI CADA',
+      label: 'BATERII PENTRU LAVOAR ȘI CADĂ',
       value: '',
     },
     {
-      label: 'PRIZE SI INTRERUPĂTOARE',
+      label: 'PRIZE ȘI ÎNTRERUPĂTOARE',
       value: '',
     },
   ],

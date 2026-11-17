@@ -142,7 +142,12 @@ const menuItems = [
     // The navbar is `transition:persist`ed, so the active link must be recomputed
     // on every client-side navigation, not just at build time.
     function markActiveNavLink() {
-      const path = window.location.pathname.replace(/\/+$/, '') || '/';
+      // A page can name its section explicitly (Corp B apartment pages live under
+      // /apartamente/, which would otherwise match the Corp A link).
+      const override = document
+        .querySelector('main[data-active-nav]')
+        ?.getAttribute('data-active-nav');
+      const path = override || window.location.pathname.replace(/\/+$/, '') || '/';
       document.querySelectorAll('nav a.nav-link').forEach((link) => {
         const href = link.getAttribute('href');
         const isActive = path === href || path.startsWith(href + '/');
