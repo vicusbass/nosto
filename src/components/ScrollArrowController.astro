@@ -94,21 +94,17 @@ const rightBtnMobileClass = `scroll-right-mobile-${uniqueId}`;
       const isAtStart = container.scrollLeft <= 10;
       const isAtEnd = container.scrollLeft >= container.scrollWidth - container.clientWidth - 10;
 
-      // Desktop arrows
-      leftBtn.style.opacity = isAtStart ? '0' : '0.5';
-      rightBtn.style.opacity = isAtEnd ? '0.2' : '0.5';
-      leftBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
-      rightBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+      // An arrow is fully opaque while it can scroll and gone once its end is reached.
+      const setArrow = (btn, hidden) => {
+        if (!btn) return;
+        btn.style.opacity = hidden ? '0' : '1';
+        btn.style.pointerEvents = hidden ? 'none' : 'auto';
+      };
 
-      // Mobile arrows
-      if (leftBtnMobile) {
-        leftBtnMobile.style.opacity = isAtStart ? '0' : '0.5';
-        leftBtnMobile.style.pointerEvents = isAtStart ? 'none' : 'auto';
-      }
-      if (rightBtnMobile) {
-        rightBtnMobile.style.opacity = isAtEnd ? '0.2' : '0.5';
-        rightBtnMobile.style.pointerEvents = isAtEnd ? 'none' : 'auto';
-      }
+      setArrow(leftBtn, isAtStart);
+      setArrow(rightBtn, isAtEnd);
+      setArrow(leftBtnMobile, isAtStart);
+      setArrow(rightBtnMobile, isAtEnd);
     };
 
     // Initial visibility check
