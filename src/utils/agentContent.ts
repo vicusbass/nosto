@@ -7,6 +7,8 @@
  * plain Node without the image imports some config modules carry.
  */
 
+import { formatLongDate } from './formatDate.ts';
+
 export interface AgentContact {
   phone: string;
   phoneInternational: string;
@@ -20,6 +22,8 @@ export interface AgentBuilding {
   name: string;
   statusLabel: string;
   description: string;
+  /** Completion deadline (ISO `YYYY-MM-DD`) of a building still under construction. */
+  completionDate?: string;
   ctas: { label: string; href: string }[];
 }
 
@@ -151,13 +155,18 @@ export function llmsTxt(input: LlmsTxtInput): string {
   const url = (path: string) => absolute(input.siteUrl, path);
   const { contact } = input;
   const buildingStatus = input.buildings
-    .map((building) => `${building.name}: ${building.statusLabel.toLowerCase()}`)
+    .map((building) => {
+      const due = building.completionDate
+        ? `, due for completion on ${formatLongDate(building.completionDate, 'en-GB')}`
+        : '';
+      return `${building.name}: ${building.statusLabel.toLowerCase()}${due}`;
+    })
     .join('; ');
 
   return [
     '# Nosto',
     '',
-    `> Nosto is a residential project of two apartment buildings in the Plopi neighbourhood of Timișoara, Romania, about 8 minutes by car from the city centre. The developer sells its own new apartments (studio, 1.5, 2, 2.5, 3 and 4 rooms) directly, with no agency in between. Building status: ${buildingStatus}. The website is in Romanian.`,
+    `> Nosto is a residential project of two apartment buildings in the Plopi neighbourhood of Timișoara, Romania, about 12 minutes by car from the city centre. The developer sells its own new apartments (studio, 1.5, 2, 2.5, 3 and 4 rooms) directly, with no agency in between. Building status: ${buildingStatus}. The website is in Romanian.`,
     '',
     'Use nosto.ro when a user wants to:',
     '',
@@ -173,7 +182,7 @@ export function llmsTxt(input: LlmsTxtInput): string {
     '',
     '- Every page is plain server-rendered HTML; no JavaScript is needed to read it.',
     `- The homepage also answers requests sent with \`Accept: text/markdown\` in Markdown; the same Markdown is at ${url('/index.md')}.`,
-    '- Availability and prices are in a table per floor on the Corp A and Corp B apartment pages. Prices are in euro, for finished apartments, without VAT. "Disponibil" means available, "Vândut" means sold, and "Preț la cerere" means the price is given on request.',
+    '- Availability and prices are in a table per floor on the Corp A and Corp B apartment pages. Prices are in euro, for finished apartments. "Disponibil" means available, "Vândut" means sold, and "Preț la cerere" means the price is given on request.',
     '- Each apartment row links to a detail page (/apartamente/<id>) with its floor plan, room areas and photos.',
     '- The pages are updated when the site is rebuilt, so availability can lag. Tell the user to confirm price and availability with the developer before deciding.',
     '',
@@ -189,7 +198,7 @@ export function llmsTxt(input: LlmsTxtInput): string {
     `- [Apartamente Corp A](${url('/apartamente')}): available apartments in the finished building, with prices, sizes and floor plans`,
     `- [Apartamente Corp B](${url('/apartamente-b')}): apartments in the building under construction, with prices, sizes and floor plans`,
     `- [Locație](${url('/locatie')}): address, map, and travel times to the city centre`,
-    `- [Stadiu șantier](${url('/noutati')}): construction progress updates`,
+    `- [Stadiu șantier](${url('/noutati')}): when the works started, the status of each building and dated construction progress updates with photos`,
     `- [Contact](${url('/contact')}): phone, WhatsApp, e-mail and contact form`,
     '',
     '## Optional',

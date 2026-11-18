@@ -6,12 +6,12 @@ export default {
     {
       icon: 'mdi:car',
       title: 'Cu mașina',
-      details: '8 minute până în centru',
+      details: '12 minute până în centru',
     },
     {
       icon: 'mdi:bike',
       title: 'Cu bicicleta',
-      details: '15 minute până în centru',
+      details: '18 minute până în centru',
     },
     {
       icon: 'mdi:walk',

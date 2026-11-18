@@ -28,6 +28,7 @@ const buildings = [
     name: 'Corp B',
     statusLabel: 'În construcție',
     description: 'Lucrările sunt în desfășurare.',
+    completionDate: '2027-11-30',
     ctas: [{ label: 'Vezi apartamentele', href: '/apartamente-b' }],
   },
 ];
@@ -76,7 +77,7 @@ test('homepage Markdown carries the homepage copy', () => {
   }
   for (const apartment of apartmentTypes) assert.ok(home.includes(`### ${apartment.type}`));
   for (const detail of techDetails) assert.ok(home.includes(`**${detail.title}**`));
-  assert.ok(home.includes('Cu mașina: 8 minute până în centru'));
+  assert.ok(home.includes('Cu mașina: 12 minute până în centru'));
   assert.ok(home.includes(`tel:${contact.phoneInternational}`));
 });
 
@@ -131,5 +132,9 @@ test('llms.txt tells agents when to use the site and how to act on it', () => {
   assert.match(text, /^How to act for the user:$/m);
   assert.ok(text.includes('Accept: text/markdown'));
   assert.ok(text.includes(contact.phoneInternational));
-  assert.ok(text.includes('Corp A: finalizat; Corp B: în construcție'));
+  assert.ok(
+    text.includes(
+      'Corp A: finalizat; Corp B: în construcție, due for completion on 30 November 2027.'
+    )
+  );
 });

@@ -60,11 +60,17 @@ const defaultTextClass =
 <section id={sectionId} class={`${sectionClass}`}>
   <!-- Horizontal scrolling articles container -->
   <div class="relative overflow-x-hidden">
+    {
+      /* Below md the card is taller than its photo, so the arrows are centred on the photo
+        (card padding + half the image height) rather than on the card, where they would cover
+        the title. */
+    }
     <ScrollArrowController
       containerSelector={`#${sectionId} .articles-container`}
       scrollAmount={525}
       showMobileArrows={true}
       arrowSize="large"
+      arrowClassName="max-md:top-[calc(2rem+25vw)] sm:max-md:top-[calc(2rem+20vw)]"
     />
 
     <div

@@ -20,15 +20,17 @@ const iconSizes = {
   large: { width: '24', height: '24' },
 };
 
+// Solid terracotta with a white chevron and ring, so the control reads on photos, white cards
+// and the cream page alike.
+const surfaceClasses =
+  'bg-[var(--color-main-btn)] hover:bg-[var(--color-main-btn-hover)] text-white shadow-lg ring-2 ring-white items-center justify-center';
 const baseClasses =
-  variant === 'desktop'
-    ? 'bg-black/40 hover:bg-black/60 backdrop-blur-sm shadow-md ring-1 ring-[var(--color-main-btn)] md:flex hidden items-center justify-center'
-    : 'bg-white/80 hover:bg-white shadow-md ring-1 ring-[var(--color-main-btn)] md:hidden';
+  variant === 'desktop' ? `${surfaceClasses} md:flex hidden` : `${surfaceClasses} flex md:hidden`;
 
 const positionClasses =
   direction === 'left'
-    ? 'absolute left-2 md:left-32 top-1/2 -translate-y-1/2'
-    : 'absolute right-2 md:right-0 top-1/2 -translate-y-1/2';
+    ? 'absolute left-2 md:left-4 top-1/2 -translate-y-1/2'
+    : 'absolute right-2 md:right-4 top-1/2 -translate-y-1/2';
 
 const arrowPath = direction === 'left' ? 'm15 18-6-6 6-6' : 'm9 18 6-6-6-6';
 
@@ -50,7 +52,6 @@ const iconSize = iconSizes[size];
     stroke-width="2.5"
     stroke-linecap="round"
     stroke-linejoin="round"
-    class="color-main-btn drop-shadow-md"
   >
     <path d={arrowPath}></path>
   </svg>
