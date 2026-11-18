@@ -7,6 +7,10 @@ import SectionTitle from '../components/SectionTitle.astro';
 import HorizontalArticles from '../components/HorizontalArticles.astro';
 import heroSantier from '../assets/hero-santier.jpg';
 import urlForImage from '../utils/sanityImageUrl';
+import { corpBCompletionDate, worksStarted } from '../config/buildings.ts';
+import { formatLongDate } from '../utils/formatDate.ts';
+
+const corpBCompletion = formatLongDate(corpBCompletionDate);
 
 const query = `*[
   _type == "newsPost"
@@ -32,7 +36,7 @@ const articles = posts.map((post) => {
 
 <Layout
   title="Stadiul șantierului | Nosto Timișoara"
-  description="Fotografii și noutăți despre stadiul lucrărilor la ansamblul rezidențial Nosto din cartierul Plopi, Timișoara."
+  description={`Stadiul lucrărilor la Nosto, Timișoara: Corp A este finalizat, iar Corp B are termen de finalizare ${corpBCompletion}. Fotografii și noutăți de pe șantier.`}
 >
   <section id="hero" class="section-x-padding py-8">
     <div class="w-full h-[300px] relative overflow-hidden rounded-tr-[6rem]">
@@ -46,9 +50,9 @@ const articles = posts.map((post) => {
       </div>
     </div>
     <p class="pt-8 text-justify">
-      Am început lucrările in cursul lunii iunie 2025. S-a realizat săpătura generală și
-      îmbunătățirea terenului de fundare prin realizarea unui blocaj de piatră. In cursul lunii
-      iulie vom finaliza fundațiile - radierul general
+      Lucrările au început în {worksStarted}. Corp A este finalizat și aproape complet vândut: au
+      mai rămas disponibile doar câteva apartamente. Corp B este în construcție, cu termen de
+      finalizare {corpBCompletion}.
     </p>
   </section>
 
