@@ -6,6 +6,22 @@ export const newsPost = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'building',
+      title: 'Corp',
+      type: 'string',
+      description:
+        'Clădirea la care se referă noutatea. Articolele mai vechi, fără valoare, apar la Corp A.',
+      options: {
+        list: [
+          {title: 'Corp A', value: 'corp-a'},
+          {title: 'Corp B', value: 'corp-b'},
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+      initialValue: 'corp-b',
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
@@ -93,12 +109,14 @@ export const newsPost = defineType({
       title: 'title',
       date: 'date',
       media: 'image',
+      building: 'building',
     },
     prepare(selection) {
-      const {title, date, media} = selection
+      const {title, date, media, building} = selection
+      const corp = building === 'corp-b' ? 'Corp B' : 'Corp A'
       return {
         title,
-        subtitle: date ? new Date(date).toLocaleDateString() : 'No date',
+        subtitle: `${corp} · ${date ? new Date(date).toLocaleDateString() : 'No date'}`,
         media,
       }
     },

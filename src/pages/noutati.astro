@@ -12,26 +12,39 @@ import { formatLongDate } from '../utils/formatDate.ts';
 
 const corpBCompletion = formatLongDate(corpBCompletionDate);
 
-const query = `*[
-  _type == "newsPost"
-  && defined(slug.current)
-]|order(date desc)[0...12]{_id, title, slug, date, text, image}`;
+// Older posts predate the `building` field and are all about Corp A, so anything not marked
+// Corp B belongs to Corp A.
+const query = `{
+  "corpA": *[_type == "newsPost" && defined(slug.current) && coalesce(building, "corp-a") != "corp-b"]
+    |order(date desc)[0...12]{_id, title, slug, date, text, image},
+  "corpB": *[_type == "newsPost" && defined(slug.current) && building == "corp-b"]
+    |order(date desc)[0...12]{_id, title, slug, date, text, image}
+}`;
 
-const posts = await sanityClient.fetch<SanityDocument[]>(query);
+const { corpA, corpB } = await sanityClient.fetch<{
+  corpA: SanityDocument[];
+  corpB: SanityDocument[];
+}>(query);
 
-// Transform posts to match the component interface
-const articles = posts.map((post) => {
-  const title = new Date(post.date).toLocaleString('ro-RO', { month: 'long', year: 'numeric' });
-  return {
-    ...post,
-    imageUrl: post?.image
-      ? urlForImage(post.image)?.auto('format').width(600).height(400).url()
-      : null,
-    imageAlt: post.image?.alt || `Stadiul șantierului Nosto, ${title}`,
-    title,
-    text: post.text,
-  };
-});
+// Cards are titled with the post's month and year; the post text is the card body.
+const toArticles = (posts: SanityDocument[], building: string) =>
+  posts.map((post) => {
+    const title = new Date(post.date).toLocaleString('ro-RO', { month: 'long', year: 'numeric' });
+    return {
+      ...post,
+      imageUrl: post?.image
+        ? urlForImage(post.image)?.auto('format').width(600).height(400).url()
+        : null,
+      imageAlt: post.image?.alt || `Stadiul șantierului Nosto, ${building}, ${title}`,
+      title,
+      text: post.text,
+    };
+  });
+
+const timelines = [
+  { id: 'corp-a', title: 'Corp A', articles: toArticles(corpA, 'Corp A') },
+  { id: 'corp-b', title: 'Corp B', articles: toArticles(corpB, 'Corp B') },
+].filter((timeline) => timeline.articles.length > 0);
 ---
 
 <Layout
@@ -56,11 +69,17 @@ const articles = posts.map((post) => {
     </p>
   </section>
 
-  <SectionTitle title="Timeline" id="timeline-title" />
-
-  <HorizontalArticles
-    articles={articles}
-    sectionClass="md:overflow-x-visible"
-    containerClass="pl-6 md:pl-[70px]"
-  />
+  {
+    timelines.map((timeline) => (
+      <>
+        <SectionTitle title={timeline.title} id={`timeline-${timeline.id}-title`} />
+        <HorizontalArticles
+          articles={timeline.articles}
+          sectionId={`timeline-${timeline.id}`}
+          sectionClass="md:overflow-x-visible"
+          containerClass="pl-6 md:pl-[70px]"
+        />
+      </>
+    ))
+  }
 </Layout>
